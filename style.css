@@ -1,0 +1,738 @@
+/* Decoration for Full Website */
+/* in order to avoid the conflict between Bootstrap CSS and this css , 'Important" tag is used */
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+html,
+body {
+	min-height: 100%;
+}
+body,
+div,
+form,
+input,
+select,
+textarea,
+p {
+	font-weight: normal !important;
+	outline: none;
+	font-family: Roboto, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 22px;
+}
+
+.dropdown-content {
+	width: 190px !important;
+}
+
+.dropbtn {
+	background-color: #6a5acd;
+	color: white;
+	padding: 12px !important;
+	font-family: "Roboto", "Sans Serif";
+	border: none;
+	border-radius: 5px !important;
+}
+
+#overrideDropdown {
+	width: 120px;
+}
+
+.overrideIcons {
+	/* background-color: red; */
+	padding: 3px 0px !important;
+	height: 40px !important;
+	margin-left: 20px;
+}
+.overrideIcons:hover {
+	filter: invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
+}
+
+.glyphicon {
+	font-family: Roboto, Arial, sans-serif !important;
+}
+
+.navButtons {
+	color: aliceblue !important;
+	border: #496181 solid 2px;
+	background-color: #395170;
+	margin-right: 10px;
+	cursor: help !important;
+}
+
+#viewOrderButton {
+	background-color: rgb(46, 129, 206);
+}
+
+#viewOrderButton:hover {
+	opacity: 0.85;
+	cursor: pointer !important;
+}
+
+/* Decoration of CSS Headers tags for Full Website  */
+
+h1,
+h2,
+h3 {
+	margin: 0 !important;
+	font-weight: normal !important;
+	color: #e0ece4 !important;
+}
+
+h1 {
+	font-size: 40px !important;
+}
+
+h2 {
+	font-size: 18px;
+}
+
+/* Decoration of Paragraph , Unordered and Ordered List tags for Full Website  */
+
+p,
+ul,
+ol {
+	margin-top: 0;
+	line-height: 240%;
+	text-align: justify;
+}
+
+h6 {
+	line-height: 0;
+	font-size: 16px !important;
+	font-family: roboto;
+	/* font-weight: bold !important; */
+	color: #e0ece4 !important;
+	text-align: justify;
+}
+
+/* Header Line Segment Display */
+hr {
+	display: none;
+}
+
+/* Header Content of the Website*/
+
+#header {
+	width: 1000px;
+	height: 60px;
+	margin: 0 auto;
+	padding: 0px;
+}
+
+/* Game Speed LOGO Decoration */
+#logo {
+	width: 1000px;
+	height: 110px;
+	margin: 0 auto;
+	margin-bottom: 20px;
+	padding: 10px 20px 20px 20px;
+}
+#logo img {
+	height: 80px;
+	width: 80px;
+	margin-right: 10px;
+
+	transition-property: transform;
+	transition-duration: 1s;
+}
+#logo img:hover {
+	/* transform: rotate(180deg); */
+	animation-name: rotate;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+@keyframes rotate {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+/* Game Speed LOGO Decoration with Heading and paragraph Tags*/
+
+#logo h1,
+#logo p {
+	margin: 0px;
+	line-height: normal;
+	font-weight: normal;
+	color: #6a5acd;
+}
+
+/* Game Speed LOGO Decoration with paragraph Tags */
+
+#logo p {
+	margin-top: -4px;
+	font-size: 13px;
+	color: #6a5acd;
+}
+
+/* Game Speed LOGO Decoration with Heading Tags */
+
+#logo header {
+	color: rgb(163, 208, 248);
+	font-size: 50px !important;
+	font-weight: 500 !important;
+	font-family: 'Bebas Neue' !important;
+	letter-spacing: 3px;
+	text-shadow: 1px 1px #9dfcfc;
+}
+
+header:hover {
+	filter: invert(7%) sepia(31%) saturate(288%) hue-rotate(346deg) brightness(104%) contrast(97%);
+}
+
+.registerUser {
+	float: right;
+	height: 20px;
+	margin-top: 20px !important;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+		'Helvetica Neue', sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #32337a !important;
+}
+.registerUser:hover {
+	font-size: 15px;
+	font-weight: bolder;
+	color: rgb(165, 59, 192) !important;
+}
+
+/* Game Speed LOGO Decoration with Hyperlink Tags*/
+
+#logo a {
+	text-decoration: none;
+	color: #6a5acd;
+}
+
+/* Game Speed LOGO Decoration with Heading and Hyperlink Tags */
+
+#logo h1 a {
+	text-decoration: none;
+	color: #d7df01;
+}
+
+/* Decoration of Top/Main Navigation Bar (Menu Content)*/
+#menu {
+	float: left;
+	height: 60px;
+}
+
+/* Decoration of Top/Main Navigation Bar with Unordered List Tags (Menu Content)*/
+
+#menu ul {
+	margin: 0;
+	padding: 0px;
+	list-style: none;
+	line-height: normal;
+}
+
+/* Decoration of Top/Main Navigation Bar with List Tags (Menu Content)*/
+
+#menu li {
+	display: block;
+	float: left;
+}
+
+/* Decoration of Top/Main Navigation Bar with Hyperlink Tags (Menu Content)*/
+
+#menu a {
+	display: block;
+	float: left;
+	height: 32px;
+	padding: 12px 20px 0px 20px;
+	letter-spacing: -1px;
+	text-decoration: none;
+	text-align: center;
+	font-family: "Roboto", "Sans Serif";
+	font-size: 18px;
+	font-weight: normal;
+	color: #ffffff;
+}
+
+/* Decoration of Top/Main Navigation Bar with :hover Tags (Menu Content)*/
+
+#menu a:hover {
+	text-decoration: none;
+}
+
+/* Page Display Decoration*/
+
+#page {
+	width: 1000px;
+	margin: 0 auto;
+	padding: 20px 20px 0px 20px;
+}
+
+/* Content on the Screen (Products)*/
+
+#content {
+	float: right;
+	width: 750px;
+	background-color: #4e89ae;
+	border-radius: 5px;
+}
+
+/* Products Display on the Main Content Screen */
+.post {
+	width: 750px;
+	margin-bottom: 20px;
+	padding: 20px 0px;
+	background: #4e89ae;
+	border-radius: 5px;
+}
+
+/* Decoration for Title of Products in the Main Content Screen */
+
+.post .title {
+	height: 44px;
+	padding: 0px 20px;
+	font-family: "Roboto", "Sans Serif";
+}
+
+/* Decoration for Product Title Links in the Main Content Screen */
+
+.post .title a {
+	letter-spacing: 1px;
+	text-decoration: none;
+	font-size: 30px !important;
+	font-weight: 900;
+	color: aliceblue;
+}
+
+.post #best-seller {
+	font-size: 40px !important;
+	font-weight: bold;
+	animation: flashText 900ms linear infinite;
+}
+
+@keyframes flashText {
+	from {
+		color: hsl(268, 65%, 52%);
+	}
+	to {
+		color: rgb(207, 54, 54);
+	}
+}
+
+/* Decoration for Products Display in the Main Content Screen */
+
+.post .meta {
+	height: 32px;
+	margin-top: -10px;
+	margin-left: 2px;
+	padding: 4px 30px 6px 20px;
+	background: url(images/site/1.png) repeat-x left bottom;
+	background-size: fill;
+	font-family: "Roboto", "Sans Serif";
+	font-weight: bold;
+	font-size: 30px;
+	color: #66665e;
+	height: 50px;
+	text-align: center;
+}
+
+/* Decoration for Products Display with span Tags*/
+
+.post .meta span {
+	display: block;
+	margin-top: -10px;
+}
+
+.post .entry {
+	padding: 20px 20px;
+	overflow-x: auto;
+}
+
+.post .links {
+	background: #90bf35;
+	border: 1px solid #5f817e;
+}
+
+/* Decoration for Different Products in Game Speed Store. */
+
+.post .links {
+	display: block;
+	width: 120px;
+	height: 18px;
+	margin: 0px 0px 4px 0px;
+	padding: 3px 0px 0px 40px;
+	text-decoration: none;
+	font-family: "Roboto", "Sans Serif";
+	font-size: 11px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+/* Decoration for Products Reviews in the Main Content Screen */
+.post .comments {
+	display: block;
+	width: 120px;
+	height: 18px;
+	margin: 0px;
+	padding: 3px 0px 0px 40px;
+	background: #90bf35;
+	border: 1px solid #5f817e;
+	text-decoration: none;
+	font-family: "Roboto", "Sans Serif";
+	font-size: 11px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+/* Left Navigation Bar - Sidebar */
+#sidebar {
+	float: left;
+	width: 225px;
+	font-size: 12px;
+}
+
+/* Left Navigation Bar - Decoration for Unordered List */
+
+#sidebar ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	line-height: normal;
+	border: none;
+}
+
+/* Left Navigation Bar - Decoration for List Items*/
+
+#sidebar li {
+	type: square;
+	margin-bottom: 20px;
+	padding: 10px 0px 10px 0px;
+	border-radius: 5px;
+	background: #68b0ab !important;
+}
+
+/* Left Navigation Bar - Decoration for Consoles , Games , Tablets */
+
+#sidebar li ul {
+	margin: 0px 0px;
+	border: none;
+}
+
+/* Left Navigation Bar - Decoration for Various Product Lists */
+
+#sidebar li li {
+	margin: 0;
+	padding: 10px 0px;
+	border: none;
+	background: url(images/site/img06.jpg) repeat-x left top;
+}
+
+/* Left Navigation Bar - Decoration for List Bullets */
+
+#sidebar li li a {
+	padding: 0px 0px 0px 30px;
+	font-weight: normal;
+	border: none;
+	background: url(images/site/bullet.png) no-repeat 10px -1.5px;
+	background-size: 20px 20px;
+}
+
+#sidebar li li li a {
+	padding: 0px 0px 0px 30px;
+	font-weight: normal;
+	border: none;
+	background: url(images/site/bullet.png) no-repeat 10px 1px;
+	background-size: 15px 15px;
+}
+
+#sidebar li li a.viewmore {
+	background: none;
+	float: right;
+	margin-right: 20px;
+}
+
+/* Left Navigation Bar - Decoration for Hyperlink hover Tags ( Colour Changes) */
+
+#sidebar li li a:hover {
+	color: #666666;
+}
+
+/* Left Navigation Bar - Decoration for Paragraph Tags */
+
+#sidebar p {
+	margin: 0;
+	padding: 0px 14px;
+	line-height: 200%;
+}
+
+/* Left Navigation Bar - Decoration for Heading Tags */
+
+#sidebar h2 {
+	min-height: 32px;
+	margin: 0 0 10px 0px;
+	padding: 8px 0 10px 20px;
+	background: url(images/site/1.png) repeat-x left bottom;
+	font-size: 24px;
+	font-weight: normal;
+	color: #000000;
+	font-size: 24px;
+}
+
+/* Left Navigation Bar - Decoration for Heading Tags */
+
+#sidebar h3 {
+	margin-top: 5px;
+	text-align: center;
+}
+
+/* Left Navigation Bar - Decoration for Hyperlink Tags */
+
+#sidebar a {
+	text-align: left;
+	text-decoration: none;
+	font-weight: bold;
+	color: #000000;
+}
+
+/* Footer Content for Game Speed */
+
+#footer {
+	width: 100%;
+	height: 60px;
+	margin: 0 auto;
+	padding: 0;
+	background: #323232 url(images/site/img02.jpg) repeat-x left top;
+}
+
+/* HTML Paragraph Element for Footer Content */
+
+#footer p {
+	margin: 0;
+	padding: 30px 0px 0px 0px;
+	text-align: center;
+	line-height: normal;
+	font-size: 14px;
+	color: #c7dae5;
+}
+
+/*  Items in the Store Display */
+
+#shop_item {
+	border-radius: 5px;
+	border: 2px solid #0a192f;
+	padding: 4px;
+	width: 200px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 10px 5px;
+	box-shadow: 1px 1px #292929;
+}
+
+/*  Unordered List of Items in the Store Display */
+
+#shop_item ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	border: none;
+}
+
+/*  Unordered List of Items and List Tags in the Store Display */
+
+#shop_item ul li {
+	margin-bottom: 5px;
+	margin-top: 6px;
+}
+
+/*  Image Display of Products in the Store  */
+
+#shop_item #item img {
+	display: block;
+	width: 196px;
+	height: 160px;
+	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* Decoration for Display of Products in the Store  */
+
+#shop_item strong {
+	display: block;
+	text-align: center;
+	margin-bottom: 5px;
+}
+
+/* Border Decoration for Display of Products in the Store  */
+
+#shop_item #item {
+	border: 1px solid #000;
+	border-radius: 5px;
+}
+
+/* Heading Tag for Display of Products in the Store  */
+
+#shop_item h3 {
+	text-align: center;
+	font-size: 18px;
+	padding-bottom: 15px;
+	line-height: inherit;
+}
+
+/* Button Decoration for Display of Products in the Store  */
+
+#shop_item button {
+	width: 100%;
+	margin-bottom: 6px;
+	overflow-x: scroll;
+}
+
+/* Best Seller Products display on Home Screen*/
+
+#bestseller {
+	width: 100%;
+}
+
+/* Best Seller Products display Table Data Decoration*/
+
+#bestseller td {
+	padding-bottom: 20px;
+}
+
+/* Buy Now buttons  Decoration for Products in Game Speed*/
+
+.btnbuy {
+	-webkit-border-radius: 5;
+	-moz-border-radius: 5;
+	border-radius: 8px;
+	font-family: "Roboto", "Sans Serif";
+	color: #ffffff;
+	font-size: 15px;
+	background: #1a95e7;
+	padding: 5px 10px 5px 10px;
+	text-decoration: none;
+	display: block;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	min-width: 150px;
+}
+
+.btnremove {
+	-webkit-border-radius: 5;
+	-moz-border-radius: 5;
+	border-radius: 5px;
+	font-family: "Roboto", "Sans Serif";
+	color: wheat;
+	font-size: 15px;
+	background: #ff4949;
+	padding: 5px 10px 5px 10px;
+	text-decoration: none;
+	display: block;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.btnremove:hover {
+	color: white;
+	opacity: 0.90;
+	background: red;
+}
+
+/* Review Buttons Decoration for Products in Game Speed*/
+
+.btnreview {
+	-webkit-border-radius: 5;
+	-moz-border-radius: 5;
+	border-radius: 5px;
+	font-family: "Roboto", "Sans Serif";
+	color: #ffffff;
+	font-size: 15px;
+	background: #3498db;
+	padding: 5px 10px 5px 10px;
+	text-decoration: none;
+	display: block;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+
+	/* Hide the element completely */
+	display: none !important;
+	height: 0 !important;
+	/* Hide the element completely */
+}
+
+/* Buy and Review Buttons Decoration for Products with :hover tags*/
+
+.btnbuy:hover,
+.btnreview:hover {
+	background: #3cb0fd;
+	text-decoration: none;
+}
+
+/* Product Search Box Decoration ( Upper Right Corner)  */
+
+.input {
+	width: 100%;
+	height: 20px;
+	margin: 5px;
+	margin-left: 0px;
+	background-color: #f4f4f4;
+}
+
+/* Cart Details Table ( Table Displayed During Check Out)  */
+
+table.gridtable {
+	font-family: "Roboto", "Sans Serif";
+	font-size: 11px;
+	color: #333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+}
+
+/* Decoration for Cart Details with Table Head Tags */
+
+table.gridtable th {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #dedede;
+}
+
+/* Decoration for Cart Details with Table Data Tags */
+
+table.gridtable td {
+	border-width: 1px;
+	padding: 8px;
+	border-style: solid;
+	border-color: #666666;
+	background-color: #ffffff;
+}
+/* style for prev annd next button of carousel */
+
+.prev,
+.next {
+	cursor: pointer;
+	position: absolute;
+	top: 50%;
+	width: auto;
+	margin-top: -22px;
+	padding: 16px;
+	color: white;
+	font-weight: bold;
+	font-size: 18px;
+	transition: 0.6s ease;
+	border-radius: 0 3px 3px 0;
+}
+
+.container {
+	width: auto !important;
+	height: auto !important;
+	position: relative;
+	overflow: hidden;
+}

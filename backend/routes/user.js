@@ -13,5 +13,12 @@ router.get('/', (req, res) => {
 	});
 });
 
+router.get('/:id', (req, res) => {
+	Users.findAll({
+		attributes: ['userName', 'password', 'userType'],
+		where: {
+			userName: req.params.id
+		},
+
 // Export the rputer
 export { router as userRoute };

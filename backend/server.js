@@ -5,7 +5,7 @@ import exphbs from 'express-handlebars';
 import bodyParser from 'body-parser';
 import { MongoDB, MySQL, SQL } from './config/db.js';
 
-import { userRoute } from './routes/user.js';
+import { usersRoute } from './routes/users.js';
 
 dotenv.config();
 
@@ -16,12 +16,8 @@ SQL.authenticate()
 
 const app = express();
 
-// USER routes
-app.use('/user', userRoute);
-
-// USER routes
-app.use('/user/:id', userRoute);
-
+// Mount routers
+app.use('/users', usersRoute);
 
 // Listen to the PORT
 const PORT = process.env.PORT || 5005;

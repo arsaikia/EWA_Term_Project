@@ -8,8 +8,15 @@ const Op = Sequelize.Op;
 router.get('/', (req, res) => {
 	Users.findAll({
 		attributes: ['userName', 'password', 'userType'],
+	}).then(function (results) {
+		res.status(200).json(results);
+	});
+});
+router.get('/:id', (req, res) => {
+	Users.findAll({
+		attributes: ['userName', 'password', 'userType'],
 		where: {
-			password: '#2fxvUdcS#',
+			userName: req.params.id
 		},
 	}).then(function (results) {
 		res.status(200).json(results);
@@ -17,4 +24,4 @@ router.get('/', (req, res) => {
 });
 
 export { router as userRoute };
-s;
+

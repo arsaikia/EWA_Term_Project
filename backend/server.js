@@ -11,13 +11,17 @@ dotenv.config();
 
 // Test DB using sequelize
 SQL.authenticate()
-	.then(() => console.log(`DB Connected Sequalize!`))
+	.then(() => console.log(`DB Connected Sequalize!`.cyan.bold.underline))
 	.catch((err) => console.log(`DB Not Connected Sequalize! ${err}`.red.bold));
 
 const app = express();
 
 // USER routes
 app.use('/user', userRoute);
+
+// USER routes
+app.use('/user/:id', userRoute);
+
 
 // Listen to the PORT
 const PORT = process.env.PORT || 5005;

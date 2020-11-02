@@ -6,7 +6,6 @@ import { Sequelize } from 'sequelize';
 const Op = Sequelize.Op;
 
 router.get('/', (req, res) => {
-	// const [results, metadata] = await SQL.query('SELECT * from USERS;');
 	Users.findAll({
 		attributes: ['userName', 'password', 'userType'],
 		where: {
@@ -18,3 +17,4 @@ router.get('/', (req, res) => {
 });
 
 export { router as userRoute };
+s;

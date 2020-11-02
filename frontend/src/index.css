@@ -1,13 +1,27 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	font-family: 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+		'Droid Sans', 'Helvetica Neue', sans-serif;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+	font-family: 'Roboto', source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+		monospace;
+}
+
+main {
+	min-height: 95.5vh;
+	background-color: #eff7fa;
+}
+
+/* override bootstrap navbar colors */
+.navbar,
+.navbar-default {
+	background-image: linear-gradient(
+		to right,
+		#0ec6b6 0%,
+		#29d793 100%
+	) !important; /* override background image gradient w/ flat color */
 }

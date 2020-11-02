@@ -13,4 +13,5 @@ router.get('/', (req, res) => {
 	});
 });
 
+// Export the rputer
 export { router as userRoute };

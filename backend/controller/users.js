@@ -56,7 +56,42 @@ const getUser = asyncHandler(async (req, res, next) => {
 		// );
 	}
 	console.log(req.params.id);
+	return next(res.status(200).json({ success: true, data: user }));
+});
+
+/*
+ * @desc     Create user in Db
+ * @route    GET /api/v1/users/
+ * @access   Public
+ */
+
+const createUser = asyncHandler(async (req, res, next) => {
+	// Validate Body is not empty
+	if (!req.body.userName || !req.body.password) {
+		return next(
+			res.status(400).send({
+				message: 'Content can not be empty!',
+			})
+		);
+	}
+
+	const user = await Users.create({
+		userName: req.body.userName,
+		password: req.body.password,
+	});
+
+	if (!user || user.length == 0) {
+		console.log(`User Not Found with id ${res}`);
+		return res.status(500).json({
+			success: false,
+			error: `"Some error occurred while creating the User.`,
+		});
+		// return next(
+		// 	new ErrorResponse(`User not found with ID of: ${req.params.id}`, 404)
+		// );
+	}
+
 	res.status(200).json({ success: true, data: user });
 });
 
-export { getUsers, getUser };
+export { getUsers, getUser, createUser };

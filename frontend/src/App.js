@@ -11,36 +11,42 @@ import Footer from './components/Footer';
 import Routes from './Routes';
 
 const App = (props) => {
-  const [showHeader, setShowHeader] = useState(true);
-  const [showDropdown, setShowDropdown] = useState(false);
+    const [showHeader, setShowHeader] = useState(true);
+    const [showDropdown, setShowDropdown] = useState(false);
 
-  // If there is no header to show, hide the menu
-  useEffect(() => {
-    !showHeader && setShowDropdown(false);
-  }, [showHeader]);
+    // If there is no header to show, hide the menu
+    useEffect(() => {
+        !showHeader && setShowDropdown(false);
+    }, [showHeader]);
 
-  return (
-    <Router>
-      <>
-        <Header
-          setShowHeader={setShowHeader}
-          showHeader={showHeader}
-          showDropdown={showDropdown}
-          setShowDropdown={setShowDropdown}
-          props={props}
-        />
+    return (
+        <Router>
+            <>
+                <Header
+                    setShowHeader={setShowHeader}
+                    showHeader={showHeader}
+                    showDropdown={showDropdown}
+                    setShowDropdown={setShowDropdown}
+                    props={props}
+                />
 
-        <main className='py-3' onClick={() => setShowDropdown(false)}>
-          <Container fluid style={{ paddingTop: '120px' }}>
-            <Container>
-              <Routes setShowHeader={setShowHeader} showHeader={showHeader} />
-            </Container>
-          </Container>
-        </main>
-        <Footer showHeader={showHeader} />
-      </>
-    </Router>
-  );
+                <main className='py-3' onClick={() => setShowDropdown(false)}>
+                    <Container
+                        fluid
+                        style={{ paddingTop: '120px' }}
+                        width='100vw'>
+                        <Container fluid>
+                            <Routes
+                                setShowHeader={setShowHeader}
+                                showHeader={showHeader}
+                            />
+                        </Container>
+                    </Container>
+                </main>
+                <Footer showHeader={showHeader} />
+            </>
+        </Router>
+    );
 };
 
 export default App;

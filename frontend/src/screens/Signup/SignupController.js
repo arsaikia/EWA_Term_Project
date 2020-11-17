@@ -30,7 +30,7 @@ const SignupController = ({ showHeader, setShowHeader, ...props }) => {
     // On Load/Page refresh,  make sure header is hidden
     useEffect(() => {
         setShowHeader(false);
-        // getAllUsers();
+        getAllUsers();
     }, []);
 
     /********************************************
@@ -57,7 +57,7 @@ const SignupController = ({ showHeader, setShowHeader, ...props }) => {
     // Get All registered Users
     const getAllUsers = async () => {
         const response = await API.GET({ url: 'users' });
-        const allUsers = get(response.data, 'data');
+        const allUsers = get(response, 'data');
         console.log('allUsers', allUsers);
     };
 
@@ -96,6 +96,7 @@ const SignupController = ({ showHeader, setShowHeader, ...props }) => {
     const registerUser = () => {
         setShowHeader(true);
         createUser();
+        props.history.push('/');
     };
 
     /*

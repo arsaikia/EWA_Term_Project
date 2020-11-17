@@ -25,7 +25,7 @@ const SignupScreen = ({
     registerUser,
     GetFormData,
     validateEmail,
-    selectedPreference,
+    setRememberMe,
     setSelectedPreference,
 }) => {
     return (
@@ -41,7 +41,7 @@ const SignupScreen = ({
             <FlexContainer
                 justifyContent='center'
                 alignItems='center'
-                width='50%'
+                width='30%'
                 minWidth='400px'
                 padding='60px 30px'
                 backgroundColor='white'
@@ -114,12 +114,12 @@ const SignupScreen = ({
                                 setSelectedPreference(e.target.value)
                             }
                             custom>
-                            <option value='0'>
+                            <option value='ALL'>
                                 Select what best describes your food preferenes{' '}
                             </option>
-                            <option value='1'>Vegan</option>
-                            <option value='2'>Meat</option>
-                            <option value='3'>Healthy</option>
+                            <option value='VEGAN'>Vegan</option>
+                            <option value='MEAT'>Meat</option>
+                            <option value='HEALTHY'>Healthy</option>
                         </Form.Control>
                     </div>
                     <div className='form-group'>
@@ -129,7 +129,7 @@ const SignupScreen = ({
                                 className='custom-control-input'
                                 id='customCheck1'
                                 onChange={(e) =>
-                                    GetFormData('rememberMe', e.target.checked)
+                                    setRememberMe(e.target.checked)
                                 }
                             />
                             <label

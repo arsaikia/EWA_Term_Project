@@ -11,7 +11,7 @@ import ErrorResponse from '../middleware/error.js';
 
 const getUsers = asyncHandler(async (req, res, next) => {
     const users = await Users.findAll({
-        attributes: ['userName', 'password', 'userType'],
+        attributes: ['email', 'firstName', 'lastName', 'password', 'userType', 'foodPreference' ],
     });
 
     if (!users) {
@@ -39,9 +39,9 @@ const getUser = asyncHandler(async (req, res, next) => {
     // const user = await SQL.query(`select * from users;`);
 
     const user = await Users.findAll({
-        attributes: ['userName', 'password', 'userType'],
+        attributes: ['email', 'firstName', 'lastName', 'password', 'userType', 'foodPreference' ],
         where: {
-            userName: req.params.id,
+			email: req.params.id,
         },
     });
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 
-const Footer = () => {
+const Footer = ({showHeader}) => {
 	return (
-		<footer>
+		<footer style={{display: !showHeader && 'None'}}>
 			<Container
 				className='py-2'
 				style={{

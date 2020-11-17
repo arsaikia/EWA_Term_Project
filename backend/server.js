@@ -3,6 +3,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import exphbs from 'express-handlebars';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 import { MongoDB, MySQL, SQL } from './config/db.js';
 
 import { usersRoute } from './routes/users.js';
@@ -18,6 +19,9 @@ const app = express();
 
 // Body Parser
 app.use(express.json());
+
+// Allow CORS
+app.use(cors());
 
 // Mount routers
 app.use('/users', usersRoute);

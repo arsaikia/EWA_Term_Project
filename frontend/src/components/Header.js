@@ -31,6 +31,12 @@ const AccountDropdown = styled(FlexContainer)`
     }
 `;
 
+const StyledInput = styled(Form.Control)`
+    font-family: roboto;
+    padding: 5px;
+    width: 25rem !important;
+`;
+
 const Header = ({
     setShowHeader,
     showHeader,
@@ -129,42 +135,48 @@ const Header = ({
         <>
             <header style={{ display: !showHeader && 'None', padding: '0px' }}>
                 <Navbar
+                    width='100%'
                     bg='dark'
                     variant='dark'
                     expand='md'
-                    collapseOnSelect
+                    // collapseOnSelect
                     fixed='top'
                     fluid>
                     <Container fluid>
-                        <LinkContainer to='/'>
-                            <Navbar.Brand>
-                                <Image
-                                    src={logo}
-                                    alt='eatFreshLogo..'
-                                    style={{ width: '60px' }}
-                                />
-                            </Navbar.Brand>
-                        </LinkContainer>
-
-                        <Form inline className='mr rounded p-1'>
-                            <FormControl
-                                // style={{ marginLeft: '500px' }}
-                                type='text'
-                                placeholder='Search Products'
-                                className='mr-sm-2'
-                                onChange={(e) => setSearchKey(e.target.value)}
-                            />
-                            <Button
-                                variant='outline-primary'
-                                onClick={() => console.log(searchKey)}>
-                                Search
-                            </Button>
-                        </Form>
-
-                        <Navbar.Toggle aria-controls='basic-navbar-nav' />
-
-                        <Navbar.Collapse id='basic-navbar-nav'>
-                            <Nav className='ml-auto'>
+                        <FlexContainer
+                            justifyContent='space-between'
+                            alignItems='center'
+                            width='100%'>
+                            <FlexContainer>
+                                <LinkContainer to='/'>
+                                    <Navbar.Brand>
+                                        <Image
+                                            src={logo}
+                                            alt='eatFreshLogo..'
+                                            style={{ width: '60px' }}
+                                        />
+                                    </Navbar.Brand>
+                                </LinkContainer>
+                            </FlexContainer>
+                            <FlexContainer>
+                                <Form inline className='mr rounded p-1'>
+                                    <StyledInput
+                                        type='text'
+                                        placeholder='Search Products'
+                                        className='mr-sm-2'
+                                        onChange={(e) =>
+                                            setSearchKey(e.target.value)
+                                        }
+                                    />
+                                    <Button
+                                        className='d-none d-md-block'
+                                        variant='outline-primary'
+                                        onClick={() => console.log(searchKey)}>
+                                        Search
+                                    </Button>
+                                </Form>
+                            </FlexContainer>
+                            <FlexContainer>
                                 <LinkContainer
                                     to='/login'
                                     onClick={() => setShowHeader(false)}>
@@ -194,8 +206,8 @@ const Header = ({
                                         </FlexContainer>
                                     </Nav.Link>
                                 </LinkContainer>
-                            </Nav>
-                        </Navbar.Collapse>
+                            </FlexContainer>
+                        </FlexContainer>
                     </Container>
                 </Navbar>
                 <FlexContainer
@@ -204,7 +216,8 @@ const Header = ({
                     position='fixed'
                     width='100%'
                     marginTop='70px'
-                    backgroundColor='#232F3E'>
+                    backgroundColor='#232F3E'
+                    zIndex='10'>
                     <FlexContainer
                         flexDirection='row'
                         width='15%'

@@ -10,6 +10,8 @@ import {
     FadeInContainer,
 } from '../../components/StylingComponents/index';
 import './login.css';
+import { Popup } from '../../components/Popup';
+import REGISTER from '../../Images/register.svg';
 
 const SignupScreen = ({
     email,
@@ -29,133 +31,146 @@ const SignupScreen = ({
     setSelectedPreference,
 }) => {
     return (
-        <FadeInContainer
-            style={{ display: showHeader ? 'None' : 'flex' }}
-            width='100%'
-            height='100%'
-            flexDirection='column'
-            justifyContent='center'
-            alignItems='center'
-            fadeIn
-            duration={'500'}>
-            <FlexContainer
+        <>
+            <FadeInContainer
+                style={{
+                    display: showHeader ? 'None' : 'flex',
+                    backgroundImage: `url(${REGISTER})`,
+                    backgroundPosition: 'top',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: '80%',
+                }}
+                width='100%'
+                height='100vh'
+                flexDirection='column'
                 justifyContent='center'
                 alignItems='center'
-                width='30%'
-                minWidth='400px'
-                padding='60px 30px'
-                backgroundColor='white'
-                borderRadius='20px'>
-                <Container width='80%'>
-                    <FlexContainer
-                        justifyContent='center'
-                        alignItems='center'
-                        width='100%'>
-                        <strong>
-                            <h2>Register</h2>
-                        </strong>
-                    </FlexContainer>
-                    <Spacing space='20px' mobileSpace='10px' />
-                    <div className='form-group required'>
-                        <label>Email</label>
-                        <input
-                            style={{ display: 'flex', width: '100%' }}
-                            type='email'
-                            className='form-control'
-                            placeholder='Enter email'
-                            onChange={(e) => setEmail(e.target.value)}
-                            onFocus={() => setFieldOnFocus('email')}
-                            onBlur={validateEmail}
-                            required
-                        />
-                        {fieldOnFocus !== 'email' && !isEmpty(error.type) && (
-                            <Alert variant={'danger'}>
-                                {get(error.msg, error.type) || 'Email Error'}
-                            </Alert>
-                        )}
-                    </div>
-
-                    <div className='form-group'>
-                        <label>First Name</label>
-                        <input
-                            type='text'
-                            className='form-control'
-                            placeholder='Enter email'
-                            onChange={(e) => setFirstName(e.target.value)}
-                            onFocus={() => setFieldOnFocus('fName')}
-                        />
-                    </div>
-                    <div className='form-group'>
-                        <label>Last Name</label>
-                        <input
-                            type='text'
-                            className='form-control'
-                            placeholder='Enter email'
-                            onChange={(e) => setLastName(e.target.value)}
-                            onFocus={() => setFieldOnFocus('lName')}
-                        />
-                    </div>
-
-                    <div className='form-group'>
-                        <label>Password</label>
-                        <input
-                            type='password'
-                            className='form-control'
-                            placeholder='Enter password'
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </div>
-                    <div className='form-group'>
-                        <Form.Control
-                            as='select'
-                            className='mr-sm-2'
-                            id='inlineFormCustomSelect'
-                            onChange={(e) =>
-                                setSelectedPreference(e.target.value)
-                            }
-                            custom>
-                            <option value='ALL'>
-                                Select what best describes your food preferenes{' '}
-                            </option>
-                            <option value='VEGAN'>Vegan</option>
-                            <option value='MEAT'>Meat</option>
-                            <option value='HEALTHY'>Healthy</option>
-                        </Form.Control>
-                    </div>
-                    <div className='form-group'>
-                        <div className='custom-control custom-checkbox'>
+                alignSelf='center'
+                fadeIn
+                duration={'500'}>
+                <FlexContainer
+                    justifyContent='center'
+                    alignItems='center'
+                    alignSelf='center'
+                    width='30%'
+                    minWidth='400px'
+                    padding='60px 30px'
+                    backgroundColor='rgba(255,255,255,0.95)'
+                    borderRadius='20px'>
+                    <Container width='80%'>
+                        <FlexContainer
+                            justifyContent='center'
+                            alignItems='center'
+                            width='100%'>
+                            <strong>
+                                <h2>Register</h2>
+                            </strong>
+                        </FlexContainer>
+                        <Spacing space='20px' mobileSpace='10px' />
+                        <div className='form-group required'>
+                            <label>Email</label>
                             <input
-                                type='checkbox'
-                                className='custom-control-input'
-                                id='customCheck1'
-                                onChange={(e) =>
-                                    setRememberMe(e.target.checked)
-                                }
+                                style={{ display: 'flex', width: '100%' }}
+                                type='email'
+                                className='form-control'
+                                placeholder='Enter email'
+                                onChange={(e) => setEmail(e.target.value)}
+                                onFocus={() => setFieldOnFocus('email')}
+                                onBlur={validateEmail}
+                                required
                             />
-                            <label
-                                className='custom-control-label'
-                                htmlFor='customCheck1'>
-                                Remember me
-                            </label>
+                            {fieldOnFocus !== 'email' &&
+                                !isEmpty(error.type) && (
+                                    <Alert variant={'danger'}>
+                                        {get(error.msg, error.type) ||
+                                            'Email Error'}
+                                    </Alert>
+                                )}
                         </div>
-                    </div>
-                    <button
-                        disabled={isEmpty(email) || isEmpty(password)}
-                        type='submit'
-                        className='btn btn-dark btn-lg btn-block'
-                        onClick={registerUser}>
-                        Register
-                    </button>
-                    <p className='forgot-password text-right'>
-                        Already Registed{' '}
-                        <a href='/login'>
-                            <strong>Login Instead?</strong>
-                        </a>
-                    </p>
-                    <Spacing space='20px' mobileSpace='10px' />
-                </Container>
-            </FlexContainer>
-        </FadeInContainer>
+
+                        <div className='form-group'>
+                            <label>First Name</label>
+                            <input
+                                type='text'
+                                className='form-control'
+                                placeholder='Enter email'
+                                onChange={(e) => setFirstName(e.target.value)}
+                                onFocus={() => setFieldOnFocus('fName')}
+                            />
+                        </div>
+                        <div className='form-group'>
+                            <label>Last Name</label>
+                            <input
+                                type='text'
+                                className='form-control'
+                                placeholder='Enter email'
+                                onChange={(e) => setLastName(e.target.value)}
+                                onFocus={() => setFieldOnFocus('lName')}
+                            />
+                        </div>
+
+                        <div className='form-group'>
+                            <label>Password</label>
+                            <input
+                                type='password'
+                                className='form-control'
+                                placeholder='Enter password'
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </div>
+                        <div className='form-group'>
+                            <Form.Control
+                                as='select'
+                                className='mr-sm-2'
+                                id='inlineFormCustomSelect'
+                                onChange={(e) =>
+                                    setSelectedPreference(e.target.value)
+                                }
+                                custom>
+                                <option value='ALL'>
+                                    Select what best describes your food
+                                    preferenes{' '}
+                                </option>
+                                <option value='VEGAN'>Vegan</option>
+                                <option value='MEAT'>Meat</option>
+                                <option value='HEALTHY'>Healthy</option>
+                            </Form.Control>
+                        </div>
+                        <div className='form-group'>
+                            <div className='custom-control custom-checkbox'>
+                                <input
+                                    type='checkbox'
+                                    className='custom-control-input'
+                                    id='customCheck1'
+                                    onChange={(e) =>
+                                        setRememberMe(e.target.checked)
+                                    }
+                                />
+                                <label
+                                    className='custom-control-label'
+                                    htmlFor='customCheck1'>
+                                    Remember me
+                                </label>
+                            </div>
+                        </div>
+                        <button
+                            disabled={isEmpty(email) || isEmpty(password)}
+                            type='submit'
+                            className='btn btn-dark btn-lg btn-block'
+                            onClick={registerUser}>
+                            Register
+                        </button>
+                        <p className='forgot-password text-right'>
+                            Already Registed{' '}
+                            <a href='/login'>
+                                <strong>Login Instead?</strong>
+                            </a>
+                        </p>
+                        <Spacing space='20px' mobileSpace='10px' />
+                    </Container>
+                </FlexContainer>
+            </FadeInContainer>
+        </>
     );
 };
 

@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 
 const Footer = ({ showHeader }) => {
     return (
-        <footer>
+        showHeader && <footer>
             <Container
                 className='py-2'
                 style={{

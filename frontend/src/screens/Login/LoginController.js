@@ -14,7 +14,6 @@ const LoginController = ({ showHeader, setShowHeader, ...props }) => {
 		setShowHeader(false);
 	}, [])
 
-	console.log("In Login", setShowHeader)
 	// Get All Users
 	const getAllUsers = () => {
 		axios({

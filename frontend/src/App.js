@@ -2,31 +2,45 @@ import './index.css';
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Container, Row, Col } from 'react-bootstrap';
-// import { Login, Signup } from './components/Login';
+import {
+    Container as MyContainer,
+    FlexContainer,
+} from './components/StylingComponents';
+import React, { useState, useEffect, useContext } from 'react';
+import UserState from './Context/User/UserState';
+import AppState from './Context/AppContext/AppState';
 import Login from './screens/Login/LoginScreen';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Routes from './Routes';
+import { Colors } from './components/Colors';
+import Loader from './components/Loader';
 
-const App = () => {
-	return (
-		<Router>
-			<Header />
-			<main className='py-3'>
-				<Container fluid style={{ paddingTop: '100px' }}>
-					<Container>
-						{/* <Row>
-							<Col xs>First, but unordered</Col>
-							<Col xs={{ order: 12 }}>Second, but last</Col>
-							<Col xs={{ order: 1 }}>Third, but second</Col>
-						</Row> */}
+import AppContext from './Context/AppContext/appContext';
 
-						<Login></Login>
-					</Container>
-				</Container>
-			</main>
-			<Footer />
-		</Router>
-	);
+const App = (props) => {
+    /*
+     ***************************************************
+     * GLOBAL STATE FROM CONTEXT API
+     ***************************************************
+     */
+
+    // const appContext = useContext(AppContext);
+    // const {showHeader, setShowHeader} = appContext;
+
+    const [showDropdown, setShowDropdown] = useState(false);
+
+    return (
+        <Router>
+            <AppState>
+                <UserState>
+                    <MyContainer backgroundColor={Colors.backgroundColor} fluid>
+                        <Routes showDropdown={showDropdown} setShowDropdown={setShowDropdown} />
+                    </MyContainer>
+                </UserState>
+            </AppState>
+        </Router>
+    );
 };
 
 export default App;

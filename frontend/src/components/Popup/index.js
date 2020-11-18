@@ -39,13 +39,7 @@ const PopupContainer = styled.div`
 
     @media (min-width: 768px) {
         max-width: 594px;
-        padding: 60px 70px 60px 70px;
-    }
-
-    @media (max-width: 768px) {
-        max-width: 80vw;
-        width: 425px;
-        padding: 21px 24px 21px 24px;
+        padding: 25px;
     }
 `;
 

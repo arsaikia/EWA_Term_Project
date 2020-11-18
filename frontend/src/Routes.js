@@ -1,13 +1,29 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
-
+import AppContext from './Context/AppContext/appContext';
 import Login from './screens/Login';
 import Signup from './screens/Signup';
 import Home from './screens/Home';
+import Header from './components/Header';
+import Footer from './components/Footer';
 
-const Routes = ({ showHeader, setShowHeader,setShowDropdown, props }) => {
+const Routes = ({ props }) => {
+    const appContext = useContext(AppContext);
+    const {
+        showHeader,
+        setShowHeader,
+        showDropdown,
+        setShowDropdown,
+    } = appContext;
     return (
         <>
+            <Header
+                showHeader={showHeader}
+                setShowHeader={setShowHeader}
+                showDropdown={showDropdown}
+                setShowDropdown={setShowDropdown}
+                props={props}
+            />
             <Switch>
                 <Route
                     path={'/login'}
@@ -29,6 +45,7 @@ const Routes = ({ showHeader, setShowHeader,setShowDropdown, props }) => {
                         />
                     )}
                 />
+
                 <Route
                     path={'/home'}
                     render={(props) => (
@@ -51,6 +68,7 @@ const Routes = ({ showHeader, setShowHeader,setShowDropdown, props }) => {
                     )}
                 />
             </Switch>
+            <Footer showHeader={showHeader} />
         </>
     );
 };

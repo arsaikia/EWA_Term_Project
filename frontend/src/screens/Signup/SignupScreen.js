@@ -25,10 +25,12 @@ const SignupScreen = ({
     setLastName,
     setFieldOnFocus,
     registerUser,
-    GetFormData,
     validateEmail,
     setRememberMe,
     setSelectedPreference,
+    validatePassword,
+    rePassword,
+    setRePassword,
 }) => {
     return (
         <>
@@ -76,11 +78,12 @@ const SignupScreen = ({
                                 placeholder='Enter email'
                                 onChange={(e) => setEmail(e.target.value)}
                                 onFocus={() => setFieldOnFocus('email')}
-                                onBlur={validateEmail}
+                                onBlur={(e) => validateEmail(e.target.value)}
                                 required
                             />
                             {fieldOnFocus !== 'email' &&
-                                !isEmpty(error.type) && (
+                                !isEmpty(error.type) &&
+                                error.type === 'email' && (
                                     <Alert variant={'danger'}>
                                         {get(error.msg, error.type) ||
                                             'Email Error'}
@@ -116,8 +119,37 @@ const SignupScreen = ({
                                 className='form-control'
                                 placeholder='Enter password'
                                 onChange={(e) => setPassword(e.target.value)}
+                                onBlur={validatePassword}
+                                onFocus={() => setFieldOnFocus('password')}
                             />
+                            {!isEmpty(error.type) &&
+                                error.type === 'password' && (
+                                    <Alert variant={'danger'}>
+                                        {get(error.msg, 'password') ||
+                                            'password Error'}
+                                    </Alert>
+                                )}
                         </div>
+
+                        <div className='form-group'>
+                            <label>Confirm Password</label>
+                            <input
+                                type='password'
+                                className='form-control'
+                                placeholder='Confirm password'
+                                onChange={(e) => setRePassword(e.target.value)}
+                                onBlur={() => validatePassword('repassword')}
+                                onFocus={() => setFieldOnFocus('repassword')}
+                            />
+                            {!isEmpty(error.type) &&
+                                error.type === 'repassword' && (
+                                    <Alert variant={'danger'}>
+                                        {get(error.msg, 'password') ||
+                                            'repassword Error'}
+                                    </Alert>
+                                )}
+                        </div>
+
                         <div className='form-group'>
                             <Form.Control
                                 as='select'
@@ -128,8 +160,7 @@ const SignupScreen = ({
                                 }
                                 custom>
                                 <option value='ALL'>
-                                    Select what best describes your food
-                                    preferenes{' '}
+                                    Select your food preferenes{' '}
                                 </option>
                                 <option value='VEGAN'>Vegan</option>
                                 <option value='MEAT'>Meat</option>
@@ -154,7 +185,11 @@ const SignupScreen = ({
                             </div>
                         </div>
                         <button
-                            disabled={isEmpty(email) || isEmpty(password)}
+                            disabled={
+                                isEmpty(email) ||
+                                isEmpty(password) ||
+                                !isEmpty(error.type)
+                            }
                             type='submit'
                             className='btn btn-dark btn-lg btn-block'
                             onClick={registerUser}>

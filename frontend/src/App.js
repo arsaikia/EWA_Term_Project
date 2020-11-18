@@ -6,44 +6,39 @@ import {
     Container as MyContainer,
     FlexContainer,
 } from './components/StylingComponents';
-import React, { useState, useEffect } from 'react';
-// import { Login, Signup } from './components/Login';
+import React, { useState, useEffect, useContext } from 'react';
+import UserState from './Context/User/UserState';
+import AppState from './Context/AppContext/AppState';
 import Login from './screens/Login/LoginScreen';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Routes from './Routes';
 import { Colors } from './components/Colors';
+import Loader from './components/Loader';
+
+import AppContext from './Context/AppContext/appContext';
 
 const App = (props) => {
-    const [showHeader, setShowHeader] = useState(true);
-    const [showDropdown, setShowDropdown] = useState(false);
+    /*
+     ***************************************************
+     * GLOBAL STATE FROM CONTEXT API
+     ***************************************************
+     */
 
-    // If there is no header to show, hide the menu
-    useEffect(() => {
-        !showHeader && setShowDropdown(false);
-    }, [showHeader]);
+    // const appContext = useContext(AppContext);
+    // const {showHeader, setShowHeader} = appContext;
+
+    const [showDropdown, setShowDropdown] = useState(false);
 
     return (
         <Router>
-            <>
-                <Header
-                    setShowHeader={setShowHeader}
-                    showHeader={showHeader}
-                    showDropdown={showDropdown}
-                    setShowDropdown={setShowDropdown}
-                    props={props}
-                />
-
-                <MyContainer backgroundColor={Colors.backgroundColor} fluid>
-                    <Routes
-                        setShowHeader={setShowHeader}
-                        showHeader={showHeader}
-                        setShowDropdown={setShowDropdown}
-                    />
-                </MyContainer>
-
-                <Footer showHeader={showHeader} />
-            </>
+            <AppState>
+                <UserState>
+                    <MyContainer backgroundColor={Colors.backgroundColor} fluid>
+                        <Routes showDropdown={showDropdown} setShowDropdown={setShowDropdown} />
+                    </MyContainer>
+                </UserState>
+            </AppState>
         </Router>
     );
 };

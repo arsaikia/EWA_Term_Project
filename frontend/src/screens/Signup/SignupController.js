@@ -1,20 +1,41 @@
 import axios from 'axios';
 import Cookie from 'js-cookie';
 import { get, isEmpty } from 'lodash';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useCallback } from 'react';
 import isEmail from 'validator/lib/isEmail';
 import { useParams } from 'react-router-dom';
 import SignupScreen from './SignupScreen';
 import API from '../../utils/Query';
+import { isPassword } from '../../utils/Validators';
+
+import UserContext from '../../Context/User/userContext';
 
 const SignupController = ({ showHeader, setShowHeader, ...props }) => {
+    /*
+     ***************************************************
+     * GLOBAL STATE FROM CONTEXT API
+     ***************************************************
+     */
+    const userContext = useContext(UserContext);
+    const {
+        allRegisteredUsers,
+        allRegisteredUsersFetched,
+        getAllRegisteredUsers,
+        registerUser,
+    } = userContext;
     /********************************************
      * Local States
      ********************************************/
+    const [allUserEmails, setAllUserEmails] = useState([]);
+    const [isAllUsersApiLoading, setIsAllUsersApiLoading] = useState(true);
+    const [fillingScreenData, setFillingScreenData] = useState(true);
+
+    // Registration Form States
     const [email, setEmail] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [password, setPassword] = useState('');
+    const [rePassword, setRePassword] = useState('');
     const [selectedPreference, setSelectedPreference] = useState(0);
     const [rememberMe, setRememberMe] = useState(false);
     const [error, setError] = useState({
@@ -23,77 +44,185 @@ const SignupController = ({ showHeader, setShowHeader, ...props }) => {
     });
     const [fieldOnFocus, setFieldOnFocus] = useState('');
 
-    /********************************************
-     * On Load Use Effects
-     ********************************************/
+    /*
+     ***************************************************
+     * HANDLER FUNCTIONS
+     ***************************************************
+     */
+
+    /*
+     ***************************************************
+     * LOADING AND PAGE POPULATION HANDLERS
+     **************************************************
+     */
+
+    const loadData = useCallback(() => {
+        setShowHeader(false);
+        if (isAllUsersApiLoading && !allRegisteredUsersFetched) {
+            setIsAllUsersApiLoading(false);
+            return getAllRegisteredUsers();
+        }
+
+        if (!isAllUsersApiLoading && allRegisteredUsersFetched) {
+            setFillingScreenData(false);
+            setAllUserEmails(allRegisteredUsers.map((el) => el.email));
+        }
+    }, [
+        setShowHeader,
+        allRegisteredUsers,
+        isAllUsersApiLoading,
+        allRegisteredUsersFetched,
+        getAllRegisteredUsers,
+    ]);
 
     // On Load/Page refresh,  make sure header is hidden
     useEffect(() => {
-        setShowHeader(false);
-        getAllUsers();
-    }, []);
+        loadData();
+    }, [loadData]);
 
     /********************************************
      * Frm Data check handlers
      ********************************************/
 
-    const validateEmail = () => {
-        console.log('Vali', email);
-        if (!isEmail(email)) {
-            setError({
+    const validateEmail = (emailToValidate) => {
+        if (!isEmail(emailToValidate)) {
+            return setError({
                 type: 'email',
                 msg: {
-                    email: 'Email should be in format hello@eatdresh.com',
+                    email: (
+                        <p>
+                            Email should be in format{' '}
+                            <strong style={{ color: '#ff4949' }}>
+                                "hello@eatFresh.com"
+                            </strong>{' '}
+                            !
+                        </p>
+                    ),
                     fName: '',
                     lname: '',
                     password: '',
                 },
             });
+        } else clearErrors('EMAIL');
+
+        if (allUserEmails.includes(emailToValidate)) {
+            setError({
+                type: 'email',
+                msg: {
+                    email:
+                        'An account already exists with the selected email !',
+                    fName: '',
+                    lname: '',
+                    password: '',
+                },
+            });
+        } else clearErrors('EMAIL');
+    };
+
+    const clearErrors = (val) => {
+        switch (val) {
+            case 'ALL':
+                setError({
+                    type: '',
+                    msg: {
+                        email: error.msg.email,
+                        fName: error.msg.fName,
+                        lname: error.msg.lname,
+                        password: error.msg.password,
+                    },
+                });
+                break;
+
+            case 'EMAIL':
+                setError({
+                    type: '',
+                    msg: {
+                        email: '',
+                        fName: error.msg.fName,
+                        lname: error.msg.lname,
+                        password: error.msg.password,
+                    },
+                });
+                break;
+
+            case 'NAME':
+                setError({
+                    type: '',
+                    msg: {
+                        email: error.msg.email,
+                        fName: '',
+                        lname: '',
+                        password: error.msg.password,
+                    },
+                });
+                break;
+
+            default:
+                break;
         }
     };
 
-    const GetFormData = (fieldName, value) => {};
-
-    // Get All registered Users
-    const getAllUsers = async () => {
-        const response = await API.GET({ url: 'users' });
-        const allUsers = get(response, 'data');
-        console.log('allUsers', allUsers);
+    const validatePassword = (val = '') => {
+        console.log('equal', password, rePassword);
+        if (val === 'repassword') {
+            if (password !== rePassword) {
+                return setError({
+                    type: 'repassword',
+                    msg: {
+                        email: '',
+                        fName: '',
+                        lname: '',
+                        password: 'Passwords do not match!',
+                    },
+                });
+            }
+        }
+        if (!isPassword(password)) {
+            setError({
+                type: 'password',
+                msg: {
+                    email: '',
+                    fName: '',
+                    lname: '',
+                    password:
+                        'Invalid Password: need `1 char` `1 number` `1 uppercase` `1 lowercase` and `1 special char`',
+                },
+            });
+        } else clearErrors('EMAIL');
     };
 
-    /* Create A User
-     * Expected Request Body:
-     * {
-     *  "email": "arsaikia@gmail.com",
-     *  "firstName": "Arunabh",
-     *  "lastName": "Saikia",
-     *  "password": "#2fxvUdcS#",
-     *  "userType": "ADMIN",
-     *  "foodPreference": "VEGAN"
-     *  }
-     */
     const createUser = async () => {
-        const response = await API.POST({
-            url: 'users',
-            body: {
-                email: email,
-                firstName: firstName,
-                lastName: lastName,
-                password: password,
-                userType: 'CUSTOMER',
-                foodPreference: selectedPreference,
-            },
-        });
+        const body = {
+            email: email,
+            firstName: firstName,
+            lastName: lastName,
+            password: password,
+            userType: 'CUSTOMER',
+            foodPreference: selectedPreference,
+        };
+        registerUser(body);
 
-        console.log(response.data.data.id, response.data.success);
-        Cookie.set(
-            'USER_ID',
-            get(get(get(response, 'data') || '', 'data') || '', 'id') || ''
-        );
-        Cookie.set('REMEMBER_USER', rememberMe);
+        // const response = await API.POST({
+        //     url: 'users',
+        //     body: {
+        //         email: email,
+        //         firstName: firstName,
+        //         lastName: lastName,
+        //         password: password,
+        //         userType: 'CUSTOMER',
+        //         foodPreference: selectedPreference,
+        //     },
+        // });
+
+        // console.log(response.data.data.id, response.data.success);
+        // Cookie.set(
+        //     'USER_ID',
+        //     get(get(get(response, 'data') || '', 'data') || '', 'id') || ''
+        // );
+        // Cookie.set('REMEMBER_USER', rememberMe);
     };
 
-    const registerUser = () => {
+    const registerUserX = () => {
         setShowHeader(true);
         createUser();
         props.history.push('/');
@@ -106,6 +235,9 @@ const SignupController = ({ showHeader, setShowHeader, ...props }) => {
         setShowHeader(true);
     };
 
+    if (fillingScreenData || isAllUsersApiLoading) {
+        return null;
+    }
     return (
         <SignupScreen
             setEmail={setEmail}
@@ -117,15 +249,17 @@ const SignupController = ({ showHeader, setShowHeader, ...props }) => {
             setLastName={setLastName}
             lastName={lastName}
             validateEmail={validateEmail}
+            validatePassword={validatePassword}
             fieldOnFocus={fieldOnFocus}
             setFieldOnFocus={setFieldOnFocus}
             error={error}
-            registerUser={registerUser}
+            registerUser={registerUserX}
             showHeader={showHeader}
-            GetFormData={GetFormData}
             setRememberMe={setRememberMe}
             setSelectedPreference={setSelectedPreference}
             selectedPreference={selectedPreference}
+            setRePassword={setRePassword}
+            rePassword={rePassword}
         />
     );
 };

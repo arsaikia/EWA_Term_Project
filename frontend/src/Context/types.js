@@ -1,0 +1,6 @@
+export const GET_ALL_USERS = 'GET_ALL_USERS';
+export const REGISTER_NEW_USER = 'REGISTER_NEW_USER';
+export const SHOW_HEADER = 'SHOW_HEADER';
+export const HIDE_HEADER = 'HIDE_HEADER';
+export const SHOW_DROPDOWN = 'SHOW_DROPDOWN';
+export const HIDE_DROPDOWN = 'HIDE_DROPDOWN';

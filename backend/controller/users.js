@@ -11,7 +11,15 @@ import ErrorResponse from '../middleware/error.js';
 
 const getUsers = asyncHandler(async (req, res, next) => {
     const users = await Users.findAll({
-        attributes: ['email', 'firstName', 'lastName', 'password', 'userType', 'foodPreference' ],
+        attributes: [
+            'id',
+            'email',
+            'firstName',
+            'lastName',
+            'password',
+            'userType',
+            'foodPreference',
+        ],
     });
 
     if (!users) {
@@ -19,14 +27,6 @@ const getUsers = asyncHandler(async (req, res, next) => {
     }
     res.status(200).json({ success: true, data: users });
 });
-
-//  router.get('/', (req, res) => {
-// 	Users.findAll({
-// 		attributes: ['userName', 'password', 'userType'],
-// 	}).then(function (results) {
-// 		res.status(200).json(results);
-// 	});
-// });
 
 /*
  * @desc     Get user with id
@@ -37,11 +37,18 @@ const getUsers = asyncHandler(async (req, res, next) => {
 const getUser = asyncHandler(async (req, res, next) => {
     //? We can fire direct SQL query as the below line
     // const user = await SQL.query(`select * from users;`);
-
     const user = await Users.findAll({
-        attributes: ['email', 'firstName', 'lastName', 'password', 'userType', 'foodPreference' ],
+        attributes: [
+            'id',
+            'email',
+            'firstName',
+            'lastName',
+            'password',
+            'userType',
+            'foodPreference',
+        ],
         where: {
-			email: req.params.id,
+            email: req.params.id,
         },
     });
 
@@ -79,8 +86,8 @@ const createUser = asyncHandler(async (req, res, next) => {
         email: req.body.email,
         firstName: req.body.firstName,
         lastName: req.body.lastName,
-		password: req.body.password,
-		userType: req.body.userType,
+        password: req.body.password,
+        userType: req.body.userType,
         foodPreference: req.body.foodPreference,
     });
 

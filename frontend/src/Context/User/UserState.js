@@ -36,7 +36,6 @@ const UserState = (props) => {
     /*
      *   REGISTER_NEW_USER
      */
-    console.log("regisetrere : ", state.allRegisteredUsers)
     const registerUser = async (body) => {
         const response = await API.POST({
             url: 'users',

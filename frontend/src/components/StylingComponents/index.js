@@ -16,6 +16,8 @@ const Container = styled.div`
     overflow: ${(props) => props.overflow};
     text-overflow: ${(props) => props.textOverflow};
 
+    pointer-events: ${(props) => props.disabled};
+
     border: ${(props) => props.border};
     border-top: ${(props) => props.borderTop};
     border-right: ${(props) => props.borderRight};

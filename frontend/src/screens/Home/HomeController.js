@@ -7,10 +7,22 @@ import Footer from '../../components/Footer';
 import Header from '../../components/Header';
 import HomeScreen from './HomeScreen';
 import AppContext from '../../Context/AppContext/appContext';
+import CartContext from '../../Context/Cart/cartContext';
 
 const HomeController = ({ setShowDropdown, ...props }) => {
     const appContext = useContext(AppContext);
     const { showHeader, setShowHeader } = appContext;
+
+    const cartContext = useContext(CartContext);
+    const {
+        fetchAllProducts,
+        fetchProductsInCart,
+        updateProductsInCart,
+        allProducts,
+        allProductsFetched,
+        productsInCart,
+        productsInCartFetched,
+    } = cartContext;
     /*
      * On Browser Back
      */
@@ -18,13 +30,22 @@ const HomeController = ({ setShowDropdown, ...props }) => {
 
     useEffect(() => {
         setShowHeader(true);
+
+        fetchAllProducts();
+        fetchProductsInCart();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
         <>
-            <HomeScreen setShowDropdown={setShowDropdown} />
-
+            <HomeScreen
+                setShowDropdown={setShowDropdown}
+                updateProductsInCart={updateProductsInCart}
+                allProducts={allProducts}
+                allProductsFetched={allProductsFetched}
+                productsInCart={productsInCart}
+                productsInCartFetched={productsInCartFetched}
+            />
         </>
     );
 };

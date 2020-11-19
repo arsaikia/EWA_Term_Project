@@ -7,10 +7,11 @@ import {
     FadeInContainer,
 } from '../../components/StylingComponents/index';
 import { Popup } from '../../components/Popup/index';
-import FRUIT from '../../Images/fruit_orange.png';
-import CAKE from '../../Images/food_cake.png';
+import FRUIT from '../../Images/products/fruit_orange.png';
+import CAKE from '../../Images/products/food_cake.png';
 
 import Loader from '../../components/Loader';
+import { v4 as uuid } from 'uuid';
 
 import { ItemCard } from '../../components/Cards';
 
@@ -26,7 +27,41 @@ const HomeScreen = ({
     );
     const [showPopup, setShowPopup] = useState(false);
     const [zipCode, setZipCode] = useState('60616');
-    console.log('zipCode', zipCode);
+
+    const productId1 = uuid();
+    const productId2 = uuid();
+    const products = [
+        {
+            productId: productId1,
+            productImage: CAKE,
+            isVeg: false,
+            discount: 15,
+            productName: 'Chocolate Deloche',
+            quantity: 5,
+            price: 15.99,
+        },
+        {
+            productId: productId2,
+            productImage: FRUIT,
+            isVeg: true,
+            discount: 17.25,
+            productName: 'Chocolate Deloche',
+            quantity: 0,
+            price: 12.5,
+        },
+    ];
+    const inCartItems = [{ productId: productId1, count: 1 }];
+
+    const isAddedToCart = (productIdX) => {
+        let containsInBag = false;
+        inCartItems.forEach((el) => {
+            if (el.productId === productIdX) {
+                containsInBag = true;
+                return;
+            }
+        });
+        return containsInBag;
+    };
 
     return (
         <FadeInContainer
@@ -34,18 +69,39 @@ const HomeScreen = ({
             minHeight='96vh'
             padding='8rem 2rem 0rem 2rem'
             onClick={() => setShowDropdown(false)}>
-            <ItemCard
+            {products.map((product) => {
+                // console.log("ProductId", product.productId)
+                return (
+                    <ItemCard
+                        idx={product.productId}
+                        productId={product.productId}
+                        productImage={product.productImage}
+                        isVeg={product.isVeg}
+                        discount={product.discount}
+                        productName={product.productName}
+                        quantity={product.quantity}
+                        price={product.price}
+                        inCartItems={inCartItems}
+                        isAddedToCart={isAddedToCart(product.productId)}
+                    />
+                );
+            })}
+            {/* <ItemCard
                 productImage={CAKE}
                 isVeg={!true}
                 discount={15}
                 productName={'Chocolate Deloche'}
+                quantity={2}
+                price={15.99}
             />
             <ItemCard
                 productImage={FRUIT}
                 isVeg={true}
                 discount={17.99}
                 productName={'Fresh Oranges - California'}
-            />
+                quantity={0}
+                price={17.5}
+            /> */}
         </FadeInContainer>
 
         // <FadeInContainer

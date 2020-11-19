@@ -142,7 +142,11 @@ const Header = ({
                     // collapseOnSelect
                     fixed='top'
                     fluid>
-                    <Container fluid>
+                    <Container
+                        fluid
+                        onClick={() => {
+                            setShowDropdown(false);
+                        }}>
                         <FlexContainer
                             justifyContent='space-between'
                             alignItems='center'
@@ -227,8 +231,7 @@ const Header = ({
                         <i
                             class='fas fa-map-marker-alt fa-sm'
                             style={{ color: '#ffff', marginRight: '10px' }}></i>
-                        <FlexContainer flexDirection='column'>
-                            <Note text={'Deliver to Arunabh'} color='#ffff' />
+                        <FlexContainer flexDirection='column' padding='5px'>
                             <Note
                                 text={'Chicago, 60616'}
                                 color='#ffff'
@@ -249,6 +252,7 @@ const Header = ({
                     </FlexContainer>
                     <AccountDropdown
                         onClick={() => setShowDropdown(!showDropdown)}
+                        onBlur={() => setShowDropdown(false)}
                         flexDirection='row'
                         width='15%'
                         alignItems='center'

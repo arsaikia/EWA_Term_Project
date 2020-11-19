@@ -24,50 +24,52 @@ const Routes = ({ props }) => {
                 setShowDropdown={setShowDropdown}
                 props={props}
             />
-            <Switch>
-                <Route
-                    path={'/login'}
-                    render={(props) => (
-                        <Login
-                            setShowHeader={setShowHeader}
-                            showHeader={showHeader}
-                            {...props}
-                        />
-                    )}
-                />
-                <Route
-                    path={'/signup'}
-                    render={(props) => (
-                        <Signup
-                            setShowHeader={setShowHeader}
-                            showHeader={showHeader}
-                            {...props}
-                        />
-                    )}
-                />
+            <main>
+                <Switch>
+                    <Route
+                        path={'/login'}
+                        render={(props) => (
+                            <Login
+                                setShowHeader={setShowHeader}
+                                showHeader={showHeader}
+                                {...props}
+                            />
+                        )}
+                    />
+                    <Route
+                        path={'/signup'}
+                        render={(props) => (
+                            <Signup
+                                setShowHeader={setShowHeader}
+                                showHeader={showHeader}
+                                {...props}
+                            />
+                        )}
+                    />
 
-                <Route
-                    path={'/home'}
-                    render={(props) => (
-                        <Home
-                            setShowHeader={setShowHeader}
-                            showHeader={showHeader}
-                            setShowDropdown={setShowDropdown}
-                            {...props}
-                        />
-                    )}
-                />
-                <Route
-                    render={(props) => (
-                        <Home
-                            setShowHeader={setShowHeader}
-                            setShowDropdown={setShowDropdown}
-                            showHeader={showHeader}
-                            {...props}
-                        />
-                    )}
-                />
-            </Switch>
+                    <Route
+                        path={'/home'}
+                        render={(props) => (
+                            <Home
+                                setShowHeader={setShowHeader}
+                                showHeader={showHeader}
+                                setShowDropdown={setShowDropdown}
+                                {...props}
+                            />
+                        )}
+                    />
+                    <Route
+                        render={(props) => (
+                            <Home
+                                setShowHeader={setShowHeader}
+                                setShowDropdown={setShowDropdown}
+                                showHeader={showHeader}
+                                {...props}
+                            />
+                        )}
+                    />
+                </Switch>
+            </main>
             <Footer showHeader={showHeader} />
         </>
     );

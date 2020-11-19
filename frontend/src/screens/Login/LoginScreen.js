@@ -8,6 +8,7 @@ import {
 } from '../../components/StylingComponents/index';
 import './login.css';
 import { Popup } from '../../components/Popup/index';
+import LOGIN from '../../Images/login.svg';
 
 const LoginScreen = ({
     showHeader,
@@ -28,7 +29,14 @@ const LoginScreen = ({
             justifyContent='center'
             alignItems='center'
             fadeIn
-            duration={'300'}>
+            duration={'300'}
+            style={{
+                display: showHeader ? 'None' : 'flex',
+                backgroundImage: `url(${LOGIN})`,
+                backgroundPosition: 'right',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: '50%',
+            }}>
             {/* <Popup
                 showPopup={showPopup}
                 handlePopup={() => console.log('Clicked on popup')}
@@ -59,7 +67,10 @@ const LoginScreen = ({
                 width='380px'
                 padding='30px'
                 backgroundColor='white'
-                borderRadius='20px'>
+                borderRadius='20px'
+                opacity='1'
+                // border='1px solid grey'
+            >
                 <Container>
                     <>
                         <FlexContainer
@@ -106,7 +117,7 @@ const LoginScreen = ({
                         </div>
                         <button
                             type='submit'
-                            className='btn btn-dark btn-lg btn-block'
+                            className='btn btn-dark btn-logn btn-lg btn-block'
                             onClick={getUsersHandler}>
                             Sign in
                         </button>

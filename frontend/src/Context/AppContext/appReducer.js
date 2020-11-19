@@ -30,7 +30,6 @@ export default (state, action) => {
         case HIDE_DROPDOWN:
             return {
                 ...state,
-                showHeader: false,
                 showDropdown: false,
             };
 

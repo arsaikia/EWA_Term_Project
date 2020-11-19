@@ -17,12 +17,14 @@ const HomeController = ({ setShowDropdown, ...props }) => {
     window.onpopstate = (e) => {};
 
     useEffect(() => {
-        setShowHeader('SHOW');
+        setShowHeader(true);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
         <>
             <HomeScreen setShowDropdown={setShowDropdown} />
+
         </>
     );
 };

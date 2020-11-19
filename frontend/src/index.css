@@ -148,7 +148,7 @@ code {
 
 main {
     min-height: 95.5vh;
-    background-color: #0f769b !important;
+    background-color: #eff7fa !important;
 }
 
 /* override bootstrap navbar colors */
@@ -168,3 +168,8 @@ main {
 p {
     margin: 0px !important;
 }
+
+img:hover {
+    cursor: pointer;
+}
+

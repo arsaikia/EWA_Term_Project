@@ -22,6 +22,7 @@ import {
     Spacing,
 } from './StylingComponents';
 import { Note } from './Texts';
+import AutcompleteSearchBar from './Typehead';
 
 const AccountDropdown = styled(FlexContainer)`
     transition: 300ms;
@@ -164,14 +165,15 @@ const Header = ({
                             </FlexContainer>
                             <FlexContainer>
                                 <Form inline className='mr rounded p-1'>
-                                    <StyledInput
+                                    {/* <StyledInput
                                         type='text'
                                         placeholder='Search Products'
                                         className='mr-sm-2'
                                         onChange={(e) =>
                                             setSearchKey(e.target.value)
                                         }
-                                    />
+                                    /> */}
+                                    <AutcompleteSearchBar />
                                     <Button
                                         className='d-none d-md-block'
                                         variant='outline-primary'

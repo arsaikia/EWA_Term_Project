@@ -137,12 +137,10 @@ const ItemCard = ({
     const showPointer = quantity < 1 ? 'cursor' : 'pointer';
     const inStock = quantity > 0;
 
-
     const itemsInBag = () => {
         const item = inCartItems.filter((el) => el.productId === productId);
         return item[0] ? item[0].count : 0;
     };
-
 
     return (
         <FlexContainer

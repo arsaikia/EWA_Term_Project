@@ -173,3 +173,7 @@ p {
     cursor: pointer;
 } */
 
+#typeahead {
+    color: red;
+    width: 100%;
+}

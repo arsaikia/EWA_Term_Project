@@ -67,6 +67,43 @@ const getUser = asyncHandler(async (req, res, next) => {
 });
 
 /*
+ * @desc     Validate user login id
+ * @route    POST /api/v1/users//login
+ * @access   Public
+ */
+
+const AuthenticateUser = asyncHandler(async (req, res, next) => {
+    const user = await Users.findAll({
+        attributes: [
+            'id',
+            'email',
+            'firstName',
+            'lastName',
+            'password',
+            'userType',
+            'foodPreference',
+        ],
+        where: {
+            email: req.body.email,
+            password: req.body.password,
+        },
+    });
+
+    if (!user || user.length == 0) {
+        console.log(`User Not Found with email ${req.body.email}`);
+        return res.status(404).json({
+            success: false,
+            error: `User Not Found with id '${req.body.email}'`,
+        });
+        // return next(
+        // 	new ErrorResponse(`User not found with ID of: ${req.params.id}`, 404)
+        // );
+    }
+    console.log(req.params.id);
+    return next(res.status(200).json({ success: true, data: user }));
+});
+
+/*
  * @desc     Create user in Db
  * @route    GET /api/v1/users/
  * @access   Public
@@ -105,4 +142,4 @@ const createUser = asyncHandler(async (req, res, next) => {
     res.status(200).json({ success: true, data: user });
 });
 
-export { getUsers, getUser, createUser };
+export { AuthenticateUser, getUsers, getUser, createUser };

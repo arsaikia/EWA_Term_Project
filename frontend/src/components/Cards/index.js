@@ -69,28 +69,13 @@ const BuyButton = () => {
     );
 };
 
-const ItemCard = ({ Image, isVeg = true }) => {
+const ItemCard = ({
+    discount = 15,
+    isVeg = true,
+    productImage,
+    productName = 'Fresh Oranges - California',
+}) => {
     return (
-        // <Container fluid>
-        //     <OuterContainer>
-        //         <Card style={{ width: '18rem', cursor: 'pointer' }}>
-        //             <Row className='py-3 px-3'>
-        //                 <Col className='text-left text-success'>17%</Col>
-        //                 <Col className='text-right'>2 of 2</Col>
-        //             </Row>
-        //             <Card.Img variant='top' src={Image} />
-        //             <Card.Body>
-        //                 <Card.Title>Card Title</Card.Title>
-        //                 <Card.Text>
-        //                     Some quick example text to build on the card title
-        //                     and make up the bulk of the card's content.
-        //                 </Card.Text>
-        //                 <Button variant='primary'>Go somewhere</Button>
-        //             </Card.Body>
-        //         </Card>
-        //     </OuterContainer>
-        // </Container>
-
         <FlexContainer
             width='100%'
             maxHeight='100%'
@@ -119,13 +104,14 @@ const ItemCard = ({ Image, isVeg = true }) => {
                     <FlexContainer
                         alignItems='center'
                         justifyContent='center'
-                        width='3em'
+                        minWidth='3em'
+                        padding='2px 10px'
                         height='80%'
                         backgroundColor='#c7f6b6'
                         borderRadius='5px'
                         pointer>
                         <Discount color='#00ab08' bold={700} pointer>
-                            17%
+                            {`${discount}%`}
                         </Discount>
                     </FlexContainer>
                     {isVeg ? (
@@ -143,7 +129,7 @@ const ItemCard = ({ Image, isVeg = true }) => {
                     overflow='hidden'
                     position='relative'>
                     <img
-                        src={Image}
+                        src={productImage}
                         alt='...'
                         width='100%'
                         style={{ position: 'absolute' }}
@@ -156,7 +142,7 @@ const ItemCard = ({ Image, isVeg = true }) => {
                     alignItems='center'
                     pointer>
                     <CardHeader color='#31363c' bold={700} pointer>
-                        Fresh Oranges - California
+                        {productName}
                     </CardHeader>
                     <FinePrint
                         text={'In Stock'}

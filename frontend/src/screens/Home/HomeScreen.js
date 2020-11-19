@@ -33,10 +33,19 @@ const HomeScreen = ({
             width='100%'
             minHeight='96vh'
             padding='8rem 2rem 0rem 2rem'
-            // backgroundColor='khaki'
-            >
-            <ItemCard Image={CAKE} isVeg={!true}/>
-            <ItemCard Image={FRUIT} isVeg={true}/>
+            onClick={() => setShowDropdown(false)}>
+            <ItemCard
+                productImage={CAKE}
+                isVeg={!true}
+                discount={15}
+                productName={'Chocolate Deloche'}
+            />
+            <ItemCard
+                productImage={FRUIT}
+                isVeg={true}
+                discount={17.99}
+                productName={'Fresh Oranges - California'}
+            />
         </FadeInContainer>
 
         // <FadeInContainer

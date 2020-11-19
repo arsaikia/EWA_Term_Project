@@ -7,6 +7,8 @@ import cors from 'cors';
 import { MongoDB, MySQL, SQL } from './config/db.js';
 
 import { usersRoute } from './routes/users.js';
+import { productsRoute } from './routes/users.js';
+import { storesRoute } from './routes/users.js';
 
 dotenv.config();
 
@@ -25,6 +27,8 @@ app.use(cors());
 
 // Mount routers
 app.use('/users', usersRoute);
+app.use('/products', productRoute);
+app.use('/stores', storeRoute);
 
 // Listen to the PORT
 const PORT = process.env.PORT || 5005;

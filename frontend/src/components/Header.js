@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
+import Cookie from 'js-cookie';
+import { isEmpty } from 'lodash';
 import { ReactComponent as Login } from '../Images/Icons/signup.svg';
 import { ReactComponent as ArrowIcon } from '../Images/Icons/arrow.svg';
 import { ReactComponent as SigninIcon } from '../Images/Icons/signin.svg';
@@ -45,6 +47,7 @@ const Header = ({
     setShowDropdown,
     props,
 }) => {
+    const userName = Cookie.get('USER_NAME');
     const [searchKey, setSearchKey] = useState('');
 
     const DropdownMenu = (props) => {
@@ -260,7 +263,11 @@ const Header = ({
                         alignItems='center'
                         justifyContent='flex-end'>
                         <Note
-                            text={'Your Account'}
+                            text={
+                                !isEmpty(userName)
+                                    ? `Hello, ${userName}`
+                                    : 'Your Account'
+                            }
                             color='rgba(225,225,225,1)'
                             bold
                             pointer

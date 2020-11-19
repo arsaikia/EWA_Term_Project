@@ -23,6 +23,10 @@ const HomeController = ({ setShowDropdown, ...props }) => {
         allProductsFetched,
         productsInCart,
         productsInCartFetched,
+        isUserAuthenticated,
+        loggedInUser,
+        isAuthenticationAttempted,
+        authenticationError,
     } = cartContext;
 
     const isAddedToCart = (productIdX) => {
@@ -48,6 +52,10 @@ const HomeController = ({ setShowDropdown, ...props }) => {
         fetchProductsInCart();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    useEffect(() => {
+        isUserAuthenticated && console.log('loggedInUser', loggedInUser);
+    }, [isUserAuthenticated]);
 
     <Loader showLoader={!allProductsFetched || !productsInCartFetched} />;
 

@@ -5,13 +5,22 @@ import React, { useReducer } from 'react';
 import { v4 as uuid } from 'uuid';
 
 import API from '../../utils/Query';
-import { GET_ALL_USERS, REGISTER_NEW_USER } from '../types';
+import {
+    GET_ALL_USERS,
+    REGISTER_NEW_USER,
+    AUTHENTICATE_USER,
+    AUTHENTICATION_ERROR,
+} from '../types';
 
 import UserContext from './userContext';
 import UserReducer from './userReducer';
 
 const UserState = (props) => {
     const initialState = {
+        isUserAuthenticated: false,
+        isAuthenticationAttempted: false,
+        authenticationError: '',
+        loggedInUser: {},
         allRegisteredUsers: [],
         allRegisteredUsersFetched: false,
     };
@@ -20,6 +29,36 @@ const UserState = (props) => {
 
     const [state, dispatch] = useReducer(UserReducer, initialState);
 
+    /*
+     *   AUTHENTICATE_USER
+     */
+    const authenticateUser = async (email, password) => {
+        try {
+            const response = await API.POST({
+                url: 'users/login',
+                body: { email, password },
+            });
+            const user = get(get(response, 'data'), 'data');
+            const success = get(get(response, 'data'), 'success');
+
+            console.log(user, 'success', success);
+
+            Cookie.set('USER_NAME', get(user[0], 'firstName', ''));
+            if (success) {
+                dispatch({
+                    payload: user,
+                    type: AUTHENTICATE_USER,
+                });
+            }
+        } catch (error) {
+            console.log(error, 'errorMessage', error.message);
+            const errorMessage = get(error, 'message');
+            return dispatch({
+                payload: errorMessage,
+                type: AUTHENTICATION_ERROR,
+            });
+        }
+    };
     /*
      *   GET_ALL_USERS
      */
@@ -55,10 +94,15 @@ const UserState = (props) => {
     return (
         <UserContext.Provider
             value={{
+                isUserAuthenticated: state.isUserAuthenticated,
                 allRegisteredUsers: state.allRegisteredUsers,
                 allRegisteredUsersFetched: state.allRegisteredUsersFetched,
+                isAuthenticationAttempted: state.isAuthenticationAttempted,
+                authenticationError: state.authenticationError,
+                loggedInUser: state.loggedInUser,
                 getAllRegisteredUsers,
                 registerUser,
+                authenticateUser,
             }}>
             {props.children}
         </UserContext.Provider>

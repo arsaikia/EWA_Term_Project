@@ -48,7 +48,7 @@ Users.beforeCreate((user, _) => {
 });
 
 Users.sync().then(() => {
-    console.log('Users created');
+    console.log(`Users created`.cyan.bold);
 });
 
 export default Users;

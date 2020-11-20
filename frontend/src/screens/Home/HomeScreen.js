@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Row, Col } from 'react-bootstrap';
 import {
     Container,

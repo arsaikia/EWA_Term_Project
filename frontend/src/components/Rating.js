@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Rating = ({ value, text, color = '#fc7233' }) => {
+const Rating = ({ value, text, reviewerName, color = '#fc7233' }) => {
     return (
         <div className='rating'>
             <span>
@@ -64,6 +64,9 @@ const Rating = ({ value, text, color = '#fc7233' }) => {
                 />
             </span>
             <span style={{ margin: '10px' }}>{text && `${text} Reviews`}</span>
+            <span style={{ margin: '8px', fontWeight: 700 }}>
+                {reviewerName && reviewerName}
+            </span>
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import Cookie from 'js-cookie';
 import { isEmpty } from 'lodash';
 import { ReactComponent as Login } from '../Images/Icons/signup.svg';

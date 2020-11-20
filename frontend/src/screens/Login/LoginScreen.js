@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Alert } from 'react-bootstrap';
 import {
     Container,

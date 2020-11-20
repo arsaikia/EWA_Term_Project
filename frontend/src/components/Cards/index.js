@@ -17,7 +17,7 @@ import {
 
 import BuyButton from '../BuyButton';
 
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 import VEG_ICON from '../../Images/Icons/icon_vegitarian.svg';
 import NON_VEG_ICON from '../../Images/Icons/icon_nonvegitarian.png';

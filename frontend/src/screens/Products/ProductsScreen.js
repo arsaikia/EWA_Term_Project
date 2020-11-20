@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
 import Rating from '../../components/Rating';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 import { Container as FluidContainer } from 'react-bootstrap';
 
@@ -50,6 +50,15 @@ const Discount = styled.div`
     @media (max-width: 768px) {
         font-size: 12px;
         line-height: 16px;
+    }
+`;
+
+const OuterContainer = styled(FadeInContainer)`
+    margin: 6em 8em 1em 8em;
+
+    @media (max-width: 768px) {
+        margin: 120px 10px 1px 1px;
+        flex-direction: row;
     }
 `;
 
@@ -119,7 +128,7 @@ const ProductDetails = ({
             <FlexContainer marginTop='2%'>
                 <Rating value={productRating} text={totalRatings} />
             </FlexContainer>
-            <FlexContainer marginTop='3%'>
+            <Container marginTop='3%' overflow='hidden'>
                 <Note
                     bold
                     text={
@@ -134,9 +143,8 @@ const ProductDetails = ({
                 soluta, laudantium a fugit, labore unde debitis illo vitae,
                 animi cumque sed est et obcaecati placeat! Suscipit, vero
                 consectetur labore laboriosam pariatur est sit vitae veritatis?
-                Veritatis, corrupti. Corporis, qui sequi! Doloribus sequi maxime
-                dignissimos voluptate ab id cumque mollitia voluptates sint!
-            </FlexContainer>
+                Veritatis, corrupti. Corporis
+            </Container>
             <FlexContainer
                 // backgroundColor='khaki'
                 flexDirection='row'
@@ -192,15 +200,67 @@ const RelatedProducts = () => {
     );
 };
 
-const ProductDescription = () => {
+const DescriptionAndReviews = ({
+    description,
+    reviews = { text: 'lorem', rating: 3.5 },
+}) => {
     return (
         <FlexContainer
             backgroundColor='khaki'
-            justifyContent='center'
-            alignItems='center'
-            minHeight='1500px'></FlexContainer>
+            // justifyContent='center'
+            // alignItems='center'
+            padding='2%'
+            minHeight='150px'>
+            <FlexContainer flexDirection='column'>
+                <HeaderTwo text={<p>Product Description</p>} />
+                <Description text={<p>{description}</p>} />
+                <Spacing space='80px' mobileSpace='80px' />
+                <Container height='2px' width='100%' backgroundColor='black' />
+                <Spacing space='80px' mobileSpace='80px' />
+                <HeaderTwo text={<p>Reviews:</p>} />
+                <Spacing space='10px' mobileSpace='10px' />
+
+                {reviews.map((review) => (
+                    <FlexContainer flexDirection='column' idx={review.id}>
+                        <Rating
+                            value={review.rating}
+                            reviewerName={review.reviewerName}
+                        />
+                        <Description text={<p>{review.text}</p>} />
+                        <Spacing space='30px' mobileSpace='30px' />
+                    </FlexContainer>
+                ))}
+            </FlexContainer>
+        </FlexContainer>
     );
 };
+
+const description =
+    'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores! Nobis beatae similique pariatur tenetur quae minima? Libero nam labore eaque? Saepe vitae labore obcaecati cumque aliquam nemo nam exercitationem atque aut deleniti, quibusdam repudiandae sapiente dolorum, modi magni excepturi, impedit et omnis unde recusandae id laborum? Quo obcaecati molestias consequuntur quam possimus velit dolore, blanditiis dolorum pariatur voluptatibus eligendi tempora reiciendis earum veniam, a facilis quibusdam quidem incidunt tenetur placeat excepturi, cum consectetur. Modi, vel. Voluptatum, iste veritatis facilis perferendis deleniti ducimus, temporibus beatae accusantium optio sint aperiam, esse dolorem commodi voluptatem delectus! Quas laboriosam mollitia excepturi quaerat, minima ea, incidunt laborum dolorem assumenda corporis amet laudantium recusandae quod? Voluptas, quia. Veritatis quod nulla mollitia, esse dicta quibusdam enim quas exercitationem quia ex. Impedit inventore temporibus incidunt iusto, reiciendis, dicta rerum velit ea omnis ad, magnam quod aperiam aspernatur possimus ullam officia eveniet magni explicabo exercitationem doloribus dolores! Quia saepe, esse odit temporibus veniam praesentium cumque quo recusandae quam sit nostrum ducimus rem sunt, omnis ad. Sequi iure magni, animi asperiores necessitatibus delectus reprehenderit. Consequuntur unde ipsam enim ullam voluptatem hic, autem omnis molestiae! Ex quas eos illum minima excepturi expedita soluta inventore modi!';
+
+const reviews = [
+    {
+        id: 1,
+        reviewerName: 'Arunabh saikia',
+        text:
+            'amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!amconsectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!ameet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!',
+        rating: 3.5,
+    },
+    {
+        id: 2,
+        reviewerName: 'John Smith',
+        text:
+            'amet consectetur adipisicing elit. Eligendi quaerat consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!ame eum dignissimos maxime, recusandae consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!ame asperiores!',
+        rating: 4,
+    },
+    {
+        id: 3,
+        reviewerName: 'Jane Smith',
+        text:
+            'amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!ame consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!ame recusandae asperiores!',
+        rating: 3,
+    },
+];
 
 const ProductsScreen = ({
     product = {
@@ -214,22 +274,25 @@ const ProductsScreen = ({
         rating: 4.5,
     },
 }) => (
-    <FluidContainer lg fluid>
-        <FadeInContainer
+    <FluidContainer sm fluid>
+        <OuterContainer
             minHeight='100vh'
             margin='6em 8em 1em 8em'
             // backgroundColor='khaki'
             fadeIn
             duration={'300'}>
-            <FluidContainer lg fluid>
-                <Row>
-                    <Col>
-                        <LeftImageContainer image={FRUIT} />
-                    </Col>
-                    <Col>
-                        <ProductDetails />
-                    </Col>
-                </Row>
+            <FluidContainer md fluid>
+                <FlexContainer>
+                    <Row lg={2} xs={1}>
+                        <Col>
+                            <LeftImageContainer image={FRUIT} />
+                        </Col>
+                        <Col>
+                            <ProductDetails />
+                        </Col>
+                    </Row>
+                </FlexContainer>
+
                 <FlexContainer height='50px' />
                 <Row>
                     <Col>
@@ -239,11 +302,14 @@ const ProductsScreen = ({
                 <FlexContainer height='50px' />
                 <Row>
                     <Col>
-                        <ProductDescription></ProductDescription>
+                        <DescriptionAndReviews
+                            description={description}
+                            reviews={reviews}
+                        />
                     </Col>
                 </Row>
             </FluidContainer>
-        </FadeInContainer>
+        </OuterContainer>
     </FluidContainer>
 );
 export default ProductsScreen;

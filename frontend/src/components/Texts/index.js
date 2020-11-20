@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { isEmpty } from 'lodash';
 
 import { Colors } from '../Colors';
@@ -332,7 +332,7 @@ const FinePrint = ({
     pointer = false,
     bold,
     maxSize,
-    lineThrough
+    lineThrough,
 }) => {
     const getText = () => {
         if (maxSize && !isEmpty(text)) {
@@ -345,7 +345,11 @@ const FinePrint = ({
     };
 
     return (
-        <StyledFinePrint pointer={pointer} color={color} bold={bold} lineThrough={lineThrough}>
+        <StyledFinePrint
+            pointer={pointer}
+            color={color}
+            bold={bold}
+            lineThrough={lineThrough}>
             <p>{getText()}</p>
         </StyledFinePrint>
     );

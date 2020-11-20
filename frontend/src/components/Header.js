@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
+import Cookie from 'js-cookie';
+import { isEmpty } from 'lodash';
 import { ReactComponent as Login } from '../Images/Icons/signup.svg';
 import { ReactComponent as ArrowIcon } from '../Images/Icons/arrow.svg';
 import { ReactComponent as SigninIcon } from '../Images/Icons/signin.svg';
@@ -22,6 +24,7 @@ import {
     Spacing,
 } from './StylingComponents';
 import { Note } from './Texts';
+import AutcompleteSearchBar from './Typehead';
 
 const AccountDropdown = styled(FlexContainer)`
     transition: 300ms;
@@ -44,6 +47,7 @@ const Header = ({
     setShowDropdown,
     props,
 }) => {
+    const userName = Cookie.get('USER_NAME');
     const [searchKey, setSearchKey] = useState('');
 
     const DropdownMenu = (props) => {
@@ -164,14 +168,15 @@ const Header = ({
                             </FlexContainer>
                             <FlexContainer>
                                 <Form inline className='mr rounded p-1'>
-                                    <StyledInput
+                                    {/* <StyledInput
                                         type='text'
                                         placeholder='Search Products'
                                         className='mr-sm-2'
                                         onChange={(e) =>
                                             setSearchKey(e.target.value)
                                         }
-                                    />
+                                    /> */}
+                                    <AutcompleteSearchBar />
                                     <Button
                                         className='d-none d-md-block'
                                         variant='outline-primary'
@@ -258,7 +263,11 @@ const Header = ({
                         alignItems='center'
                         justifyContent='flex-end'>
                         <Note
-                            text={'Your Account'}
+                            text={
+                                !isEmpty(userName)
+                                    ? `Hello, ${userName}`
+                                    : 'Your Account'
+                            }
                             color='rgba(225,225,225,1)'
                             bold
                             pointer

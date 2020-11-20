@@ -169,7 +169,11 @@ p {
     margin: 0px !important;
 }
 
-img:hover {
+/* img:hover {
     cursor: pointer;
-}
+} */
 
+#typeahead {
+    color: red;
+    width: 100%;
+}

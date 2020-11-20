@@ -124,7 +124,7 @@ const StyledNote = styled.div`
     font-size: 14px;
     line-height: 20px;
     color: ${(props) => props.color};
-    cursor: ${(props) => (props.pointer !=='cursor' ? 'pointer' : 'cursor')};
+    cursor: ${(props) => (props.pointer !== 'cursor' ? 'pointer' : 'cursor')};
 
     @media (max-width: 768px) {
         font-size: 12px;
@@ -140,6 +140,9 @@ const StyledFinePrint = styled.div`
     line-height: 16px;
     color: ${(props) => props.color};
     font-weight: ${(props) => (props.bold ? props.bold : 'normal')};
+
+    text-decoration: ${(props) => props.lineThrough};
+
     cursor: ${(props) =>
         props.pointer !== 'cursor' ? 'pointer' : props.pointer};
 
@@ -329,6 +332,7 @@ const FinePrint = ({
     pointer = false,
     bold,
     maxSize,
+    lineThrough
 }) => {
     const getText = () => {
         if (maxSize && !isEmpty(text)) {
@@ -341,7 +345,7 @@ const FinePrint = ({
     };
 
     return (
-        <StyledFinePrint pointer={pointer} color={color} bold={bold}>
+        <StyledFinePrint pointer={pointer} color={color} bold={bold} lineThrough={lineThrough}>
             <p>{getText()}</p>
         </StyledFinePrint>
     );

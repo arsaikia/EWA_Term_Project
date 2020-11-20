@@ -39,6 +39,8 @@ const HomeScreen = ({
     productsInCart,
     productsInCartFetched,
     isAddedToCart,
+    goToProductsPage,
+    ...props
 }) => {
     return (
         <FadeInContainer
@@ -84,9 +86,8 @@ const HomeScreen = ({
                     alignItems='center'>
                     {allProducts.map((product) => {
                         return (
-                            <FlexContainer margin='3%'>
+                            <FlexContainer margin='3%' idx={product.productId}>
                                 <ItemCard
-                                    idx={product.productId}
                                     productId={product.productId}
                                     productImage={product.productImage}
                                     isVeg={product.isVeg}
@@ -98,6 +99,8 @@ const HomeScreen = ({
                                     isAddedToCart={isAddedToCart(
                                         product.productId
                                     )}
+                                    goToProductsPage={goToProductsPage}
+                                    {...props}
                                 />
                             </FlexContainer>
                         );

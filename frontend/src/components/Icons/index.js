@@ -1,8 +1,8 @@
 import React from 'react';
 
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
-const FoodType = ({width=30, height=30}) => {
+const FoodType = ({ width = 30, height = 30 }) => {
     return (
         <svg
             xmlns='http://www.w3.org/2000/svg'

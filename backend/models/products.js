@@ -1,9 +1,16 @@
 import { Sequelize } from 'sequelize';
 import { SQL } from '../config/db.js';
+import { v4 as uuid } from 'uuid';
 
 const Products = SQL.define(
     'products',
     {
+        productId: {
+            allowNull: false,
+            primaryKey: true,
+            type: Sequelize.UUID,
+            defaultValue: uuid(),
+        },
         productName: {
             type: Sequelize.STRING,
             allowNull: false,
@@ -16,7 +23,7 @@ const Products = SQL.define(
             type: Sequelize.STRING,
             allowNull: false,
         },
-        catagory: {
+        category: {
             type: Sequelize.STRING,
             allowNull: false,
         },
@@ -43,8 +50,12 @@ const Products = SQL.define(
     }
 );
 
+Products.beforeCreate((product, _) => {
+    return (product.productId = uuid());
+});
+
 Products.sync().then(() => {
-    console.log('Products created');
+    console.log('Products created'.cyan.bold);
 });
 
 export default Products;

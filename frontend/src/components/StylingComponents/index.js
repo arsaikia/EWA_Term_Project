@@ -107,14 +107,11 @@ const FadeInContainer = styled(FlexContainer)`
     }
 `;
 
-const Spacing = styled.div`
-    width: 0px;
-    height: 0px;
-    padding: 0px;
-    margin: 0px 0px ${(props) => props.space} 0px;
+const Spacing = styled(Container)`
+    height: ${(props) => props.space};
 
     @media (max-width: 768px) {
-        margin: 0px 0px ${(props) => props.mobileSpace} 0px;
+        height: ${(props) => props.mobileSpace};
     }
 `;
 

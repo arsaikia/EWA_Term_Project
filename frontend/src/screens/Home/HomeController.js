@@ -40,6 +40,12 @@ const HomeController = ({ setShowDropdown, ...props }) => {
         return containsInBag;
     };
 
+    const goToProductsPage = (productId, productInStock) => () => {
+        if (productInStock) {
+            return props.history.push(`/products/:${productId}`);
+        }
+    };
+
     /*
      * On Browser Back
      */
@@ -69,6 +75,8 @@ const HomeController = ({ setShowDropdown, ...props }) => {
                 productsInCart={productsInCart}
                 productsInCartFetched={productsInCartFetched}
                 isAddedToCart={isAddedToCart}
+                goToProductsPage={goToProductsPage}
+                {...props}
             />
         </>
     );

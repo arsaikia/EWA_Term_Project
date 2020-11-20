@@ -4,6 +4,7 @@ import AppContext from './Context/AppContext/appContext';
 import Login from './screens/Login';
 import Signup from './screens/Signup';
 import Home from './screens/Home';
+import Products from './screens/Products';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
@@ -58,13 +59,24 @@ const Routes = ({ props }) => {
                             />
                         )}
                     />
+
+                    <Route path={'/products/:productId'}>
+                        return{' '}
+                        <Products
+                            setShowHeader={setShowHeader}
+                            setShowDropdown={setShowDropdown}
+                            showHeader={showHeader}
+                            {...props}
+                        />
+                    </Route>
+
+                    {/*  Fallback Path*/}
                     <Route
-                        render={(props) => (
-                            <Home
-                                setShowHeader={setShowHeader}
-                                setShowDropdown={setShowDropdown}
-                                showHeader={showHeader}
-                                {...props}
+                        render={() => (
+                            <Redirect
+                                to={{
+                                    pathname: '/home',
+                                }}
                             />
                         )}
                     />

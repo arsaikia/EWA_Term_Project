@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Row, Col } from 'react-bootstrap';
 import {
     Container,
@@ -22,6 +22,14 @@ const GridFlexContainer = styled(FlexContainer)`
         align-items: 'center';
     }
 `;
+const SideBar = styled(FlexContainer)`
+    @media screen and (max-width: 1000px) {
+        min-width: 30%;
+    }
+    @media screen and (max-width: 768px) {
+        min-width: 30%;
+    }
+`;
 
 const HomeScreen = ({
     setShowDropdown,
@@ -31,6 +39,8 @@ const HomeScreen = ({
     productsInCart,
     productsInCartFetched,
     isAddedToCart,
+    goToProductsPage,
+    ...props
 }) => {
     return (
         <FadeInContainer
@@ -66,7 +76,7 @@ const HomeScreen = ({
             /> */}
 
             <FlexContainer flexDirection='row' width='100%' height='100%'>
-                <FlexContainer width='25%' border='solid 1px #282c34' />
+                <SideBar width='30%' border='solid 1px #282c34' />
                 <GridFlexContainer
                     minWidth='70%'
                     display='flex'
@@ -76,9 +86,8 @@ const HomeScreen = ({
                     alignItems='center'>
                     {allProducts.map((product) => {
                         return (
-                            <FlexContainer margin='3%'>
+                            <FlexContainer margin='3%' idx={product.productId}>
                                 <ItemCard
-                                    idx={product.productId}
                                     productId={product.productId}
                                     productImage={product.productImage}
                                     isVeg={product.isVeg}
@@ -90,6 +99,8 @@ const HomeScreen = ({
                                     isAddedToCart={isAddedToCart(
                                         product.productId
                                     )}
+                                    goToProductsPage={goToProductsPage}
+                                    {...props}
                                 />
                             </FlexContainer>
                         );

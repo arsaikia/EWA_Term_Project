@@ -1,17 +1,20 @@
-import axios from 'axios';
 import Cookie from 'js-cookie';
 import { get, isEmpty } from 'lodash';
 import React, { useContext, useEffect, useState, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
-import LoginScreen from './LoginScreen';
+import ProductsScreen from './ProductsScreen';
 import UserContext from '../../Context/User/userContext';
+import AppContext from '../../Context/AppContext/appContext';
 
-const LoginController = ({ ...props }) => {
+const ProductsController = ({ ...props }) => {
     /*
      ***************************************************
      * GLOBAL STATE FROM CONTEXT API
      ***************************************************
      */
+    const appContext = useContext(AppContext);
+    const { showHeader, setShowHeader } = appContext;
+
     const userContext = useContext(UserContext);
     const {
         authenticateUser,
@@ -28,40 +31,26 @@ const LoginController = ({ ...props }) => {
     /********************************************
      * Local States
      ********************************************/
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [rememberMe, setRememberMe] = useState(false);
-    const [goHome, setGoHome] = useState(false);
-    const [alreadyLoggedInUser, setAlreadyLoggedInUser] = useState('');
 
-    const validateLogin = useCallback(() => {
-        setGoHome(true);
-        authenticateUser(email, password, rememberMe);
-    }, [authenticateUser, email, password, rememberMe]);
+    const { productId } = useParams();
 
     useEffect(() => {
-        goHome && isUserAuthenticated && props.history.push('/home');
-    }, [isUserAuthenticated, goHome, props.history]);
-
-    useEffect(() => {
-        setAlreadyLoggedInUser(Cookie.get('USER_NAME'));
-        setlLoginFalse();
+        console.log('In Products Controller', productId);
     }, []);
+
+    useEffect(() => {
+        setShowHeader(true);
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     /*
      * On Browser Back
      */
-    window.onpopstate = (e) => {
-        Cookie.set('USER_NAME', alreadyLoggedInUser);
-    };
-
-    console.log('rememberMe', rememberMe);
+    window.onpopstate = (e) => {};
 
     return (
-        <LoginScreen
-            setEmail={setEmail}
-            setPassword={setPassword}
-            setRememberMe={setRememberMe}
-            validateLogin={validateLogin}
+        <ProductsScreen
             isAuthenticationAttempted={isAuthenticationAttempted}
             isUserAuthenticated={isUserAuthenticated}
             authenticationError={authenticationError}
@@ -69,4 +58,4 @@ const LoginController = ({ ...props }) => {
     );
 };
 
-export { LoginController };
+export { ProductsController };

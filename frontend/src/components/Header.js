@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import Cookie from 'js-cookie';
 import { isEmpty } from 'lodash';
 import { ReactComponent as Login } from '../Images/Icons/signup.svg';
@@ -238,7 +238,7 @@ const Header = ({
                             style={{ color: '#ffff', marginRight: '10px' }}></i>
                         <FlexContainer flexDirection='column' padding='5px'>
                             <Note
-                                text={'Chicago, 60616'}
+                                text={'60616'}
                                 color='#ffff'
                                 bold
                                 style={{ margin: '0px' }}

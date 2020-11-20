@@ -1,13 +1,14 @@
 import express from 'express';
 const router = express.Router();
 
-import { getUsers, getUser, createUser, AuthenticateUser } from '../controller/users.js';
 
-router.route('/').get(getUsers);
+import { getProducts, getProduct } from '../controller/stores.js';
 
-// router.route('/:id').get(getUser);
+router.route('/').get(getStores);
 
-// router.route('/login').post(AuthenticateUser);
+// router.route('/:id').get(getProduct);
 
 // Export the rputer
-export { router as storesRoute };
+export { router as usersRoute };
+
+

@@ -1,9 +1,13 @@
 import express from 'express';
 const router = express.Router();
 
-import { getProducts } from '../controller/products.js';
+import { getProducts, getProduct } from '../controller/products.js';
 
 router.route('/').get(getProducts);
 
-// Export the router
-export { router as productsRoute };
+router.route('/:id').get(getProduct);
+
+// Export the rputer
+export { router as usersRoute };
+
+

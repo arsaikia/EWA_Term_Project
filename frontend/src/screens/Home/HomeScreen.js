@@ -22,6 +22,14 @@ const GridFlexContainer = styled(FlexContainer)`
         align-items: 'center';
     }
 `;
+const SideBar = styled(FlexContainer)`
+    @media screen and (max-width: 1000px) {
+        min-width: 30%;
+    }
+    @media screen and (max-width: 768px) {
+        min-width: 30%;
+    }
+`;
 
 const HomeScreen = ({
     setShowDropdown,
@@ -66,7 +74,7 @@ const HomeScreen = ({
             /> */}
 
             <FlexContainer flexDirection='row' width='100%' height='100%'>
-                <FlexContainer width='25%' border='solid 1px #282c34' />
+                <SideBar width='30%' border='solid 1px #282c34' />
                 <GridFlexContainer
                     minWidth='70%'
                     display='flex'

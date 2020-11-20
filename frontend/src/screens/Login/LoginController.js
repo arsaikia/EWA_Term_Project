@@ -16,6 +16,9 @@ const LoginController = ({ ...props }) => {
     const {
         authenticateUser,
         isUserAuthenticated,
+        isAuthenticationAttempted,
+        authenticationError,
+        setlLoginFalse,
         allRegisteredUsers,
         allRegisteredUsersFetched,
         getAllRegisteredUsers,
@@ -27,27 +30,41 @@ const LoginController = ({ ...props }) => {
      ********************************************/
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [rememberMe, setRememberMe] = useState(false);
+    const [goHome, setGoHome] = useState(false);
+    const [alreadyLoggedInUser, setAlreadyLoggedInUser] = useState('');
 
     const validateLogin = useCallback(() => {
-        if (!isUserAuthenticated) authenticateUser(email, password);
-    }, [isUserAuthenticated, authenticateUser, email, password]);
+        setGoHome(true);
+        authenticateUser(email, password, rememberMe);
+    }, [authenticateUser, email, password, rememberMe]);
 
     useEffect(() => {
-        isUserAuthenticated && props.history.push('/home');
-    }, [isUserAuthenticated, props.history]);
+        goHome && isUserAuthenticated && props.history.push('/home');
+    }, [isUserAuthenticated, goHome, props.history]);
 
+    useEffect(() => {
+        setAlreadyLoggedInUser(Cookie.get('USER_NAME'));
+        setlLoginFalse();
+    }, []);
     /*
      * On Browser Back
      */
     window.onpopstate = (e) => {
-        // setShowHeader(true);
+        Cookie.set('USER_NAME', alreadyLoggedInUser);
     };
+
+    console.log('rememberMe', rememberMe);
 
     return (
         <LoginScreen
             setEmail={setEmail}
             setPassword={setPassword}
+            setRememberMe={setRememberMe}
             validateLogin={validateLogin}
+            isAuthenticationAttempted={isAuthenticationAttempted}
+            isUserAuthenticated={isUserAuthenticated}
+            authenticationError={authenticationError}
         />
     );
 };

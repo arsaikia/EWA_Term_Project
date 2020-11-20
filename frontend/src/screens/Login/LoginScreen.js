@@ -1,5 +1,6 @@
 import React, { Component, useState } from 'react';
 import styled from 'styled-components';
+import { Alert } from 'react-bootstrap';
 import {
     Container,
     FlexContainer,
@@ -10,7 +11,15 @@ import './login.css';
 import { Popup } from '../../components/Popup/index';
 import LOGIN from '../../Images/login.svg';
 
-const LoginScreen = ({ validateLogin, setEmail, setPassword }) => {
+const LoginScreen = ({
+    validateLogin,
+    setEmail,
+    setRememberMe,
+    setPassword,
+    isAuthenticationAttempted,
+    isUserAuthenticated,
+    authenticationError,
+}) => {
     return (
         <FadeInContainer
             width='100%'
@@ -47,6 +56,12 @@ const LoginScreen = ({ validateLogin, setEmail, setPassword }) => {
                         </FlexContainer>
                         <Spacing space='20px' mobileSpace='10px' />
                         <div className='form-group'>
+                            {isAuthenticationAttempted &&
+                                !isUserAuthenticated && (
+                                    <Alert variant={'danger'}>
+                                        {authenticationError}
+                                    </Alert>
+                                )}
                             <label>Email</label>
                             <input
                                 type='email'
@@ -72,6 +87,9 @@ const LoginScreen = ({ validateLogin, setEmail, setPassword }) => {
                                     type='checkbox'
                                     className='custom-control-input'
                                     id='customCheck1'
+                                    onChange={(e) =>
+                                        setRememberMe(e.target.checked)
+                                    }
                                 />
                                 <label
                                     className='custom-control-label'

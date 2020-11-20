@@ -89,15 +89,14 @@ const AuthenticateUser = asyncHandler(async (req, res, next) => {
         },
     });
 
+    console.log(user);
+
     if (!user || user.length == 0) {
         console.log(`User Not Found with email ${req.body.email}`);
         return res.status(404).json({
             success: false,
             error: `User Not Found with id '${req.body.email}'`,
         });
-        // return next(
-        // 	new ErrorResponse(`User not found with ID of: ${req.params.id}`, 404)
-        // );
     }
     console.log(req.params.id);
     return next(res.status(200).json({ success: true, data: user }));

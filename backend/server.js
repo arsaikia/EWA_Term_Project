@@ -7,15 +7,15 @@ import cors from 'cors';
 import { MongoDB, MySQL, SQL } from './config/db.js';
 
 import { usersRoute } from './routes/users.js';
-import { productsRoute } from './routes/users.js';
-import { storesRoute } from './routes/users.js';
+import { productsRoute } from './routes/products.js';
+import { storesRoute } from './routes/stores.js';
 
 dotenv.config();
 
 // Test DB using sequelize
 SQL.authenticate()
-	.then(() => console.log(`DB Connected Sequalize!`.cyan.bold.underline))
-	.catch((err) => console.log(`DB Not Connected Sequalize! ${err}`.red.bold));
+    .then(() => console.log(`DB Connected Sequalize!`.cyan.bold.underline))
+    .catch((err) => console.log(`DB Not Connected Sequalize! ${err}`.red.bold));
 
 const app = express();
 
@@ -27,12 +27,12 @@ app.use(cors());
 
 // Mount routers
 app.use('/users', usersRoute);
-app.use('/products', productRoute);
-app.use('/stores', storeRoute);
+app.use('/products', productsRoute);
+app.use('/stores', storesRoute);
 
 // Listen to the PORT
 const PORT = process.env.PORT || 5005;
 
 app.listen(PORT, () => {
-	return console.log(`Server sarted on PORT ${PORT}`.yellow.bold);
+    return console.log(`Server sarted on PORT ${PORT}`.yellow.bold);
 });

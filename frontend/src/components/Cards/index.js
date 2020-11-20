@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, Button, Row, Col } from 'react-bootstrap';
+import { get, isEmpty } from 'lodash';
 import {
     Container,
     FlexContainer,
@@ -13,7 +14,10 @@ import {
     Note,
     FinePrint,
 } from '../../components/Texts';
-import styled from 'styled-components';
+
+import BuyButton from '../BuyButton';
+
+import styled from 'styled-components/macro';
 
 import VEG_ICON from '../../Images/Icons/icon_vegitarian.svg';
 import NON_VEG_ICON from '../../Images/Icons/icon_nonvegitarian.png';
@@ -29,7 +33,7 @@ const Discount = styled.div`
     font-size: 14px;
     line-height: 20px;
     color: ${(props) => props.color};
-    cursor: ${(props) => (props.pointer ? 'pointer' : 'default')};
+    cursor: ${(props) => (props.pointer !== 'cursor' ? 'pointer' : 'cursor')};
 
     @media (max-width: 768px) {
         font-size: 12px;
@@ -50,39 +54,34 @@ const CardHeader = styled(Discount)`
     }
 `;
 
-const BuyButton = () => {
-    return (
-        <FlexContainer
-            width='50%'
-            height='100%'
-            justifyContent='center'
-            alignItems='center'
-            backgroundColor='#fc7233'
-            borderRadius='30px'
-            padding='5px'
-            pointer
-            style={{
-                background: 'linear-gradient(to right,#f64f59,#fc7233)',
-            }}>
-            <FinePrint text={'Add to cart'} color='white' pointer />
-        </FlexContainer>
-    );
-};
-
 const ItemCard = ({
+    productId,
     discount = 15,
     isVeg = true,
     productImage,
     productName = 'Fresh Oranges - California',
+    quantity,
+    price = 12.99,
+    inCartItems,
+    isAddedToCart,
+    goToProductsPage,
+    ...props
 }) => {
+    const showPointer = quantity < 1 ? 'cursor' : 'pointer';
+    const inStock = quantity > 0;
+
+    const itemsInBag = () => {
+        const item = inCartItems.filter((el) => el.productId === productId);
+        return item[0] ? item[0].count : 0;
+    };
+
     return (
         <FlexContainer
             width='100%'
             maxHeight='100%'
             justifyContent='center'
             alignItems='center'
-            alignSelf='center'
-            pointer>
+            alignSelf='center'>
             <FlexContainer
                 width='15em'
                 minHeight='22em'
@@ -91,8 +90,8 @@ const ItemCard = ({
                 backgroundColor='white'
                 borderRadius='3px'
                 padding='1rem 1rem'
-                pointer
-                boxShadow='2px 3px 5px #cdcdcd, 1px 2px 3px #cdcdcd'>
+                pointer={showPointer}
+                boxShadow='#cdcdcd 2px 3px 10px 0px, 1px 2px 3px #cdcdcd'>
                 <FlexContainer
                     height='10%'
                     width='100%'
@@ -100,7 +99,7 @@ const ItemCard = ({
                     justifyContent='space-between'
                     // backgroundColor='khaki'
                     alignItems='center'
-                    pointer>
+                    pointer={showPointer}>
                     <FlexContainer
                         alignItems='center'
                         justifyContent='center'
@@ -109,13 +108,21 @@ const ItemCard = ({
                         height='80%'
                         backgroundColor='#c7f6b6'
                         borderRadius='5px'
-                        pointer>
-                        <Discount color='#00ab08' bold={700} pointer>
+                        pointer={showPointer}>
+                        <Discount
+                            color='#00ab08'
+                            bold={700}
+                            pointer={showPointer}>
                             {`${discount}%`}
                         </Discount>
                     </FlexContainer>
                     {isVeg ? (
-                        <img src={VEG_ICON} alt='...' width='13%' />
+                        <img
+                            src={VEG_ICON}
+                            alt='...'
+                            width='13%'
+                            style={{ pointer: showPointer }}
+                        />
                     ) : (
                         <img src={NON_VEG_ICON} alt='...' width='13%' />
                     )}
@@ -127,7 +134,8 @@ const ItemCard = ({
                     width={'210px'}
                     height={'250px'}
                     overflow='hidden'
-                    position='relative'>
+                    position='relative'
+                    onClick={goToProductsPage(productId, inStock)}>
                     <img
                         src={productImage}
                         alt='...'
@@ -140,31 +148,37 @@ const ItemCard = ({
                     flexDirection='column'
                     justifyContent='center'
                     alignItems='center'
-                    pointer>
-                    <CardHeader color='#31363c' bold={700} pointer>
+                    pointer={showPointer}>
+                    <CardHeader
+                        color='#31363c'
+                        bold={700}
+                        pointer={showPointer}>
                         {productName}
                     </CardHeader>
                     <FinePrint
-                        text={'In Stock'}
+                        text={inStock ? 'In Stock' : 'Out of Stock'}
                         bold={600}
-                        color='#828282'
-                        pointer
+                        color={inStock ? '#828282' : '#e2231a'}
+                        pointer={showPointer}
                     />
                     <Container margin='0.5em'>
                         <Note
-                            text={'$13.99'}
+                            text={`$${price}`}
                             bold={600}
                             color='#0a192f'
-                            pointer
+                            pointer={showPointer}
                         />
                     </Container>
 
-                    <BuyButton />
+                    <BuyButton
+                        disabled={!inStock}
+                        showPointer={showPointer}
+                        productId={productId}
+                        itemsInBag={itemsInBag()}
+                        quantity={quantity}
+                        ContainsInCart={isAddedToCart}
+                    />
                 </FlexContainer>
-
-                {/* <FlexContainer height={'10%'} backgroundColor='khaki'>
-                        <Button>Continue</Button>
-                </FlexContainer> */}
             </FlexContainer>
         </FlexContainer>
     );

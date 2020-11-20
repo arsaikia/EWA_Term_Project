@@ -5,20 +5,72 @@ import React, { useReducer } from 'react';
 import { v4 as uuid } from 'uuid';
 
 import API from '../../utils/Query';
-import { GET_ALL_USERS, REGISTER_NEW_USER } from '../types';
+import {
+    GET_ALL_USERS,
+    REGISTER_NEW_USER,
+    AUTHENTICATE_USER,
+    AUTHENTICATION_ERROR,
+    AUTHENTICATE_USER_FALSE,
+} from '../types';
 
 import UserContext from './userContext';
 import UserReducer from './userReducer';
 
 const UserState = (props) => {
     const initialState = {
+        isUserAuthenticated: false,
+        isAuthenticationAttempted: false,
+        authenticationError: '',
+        loggedInUser: {},
         allRegisteredUsers: [],
         allRegisteredUsersFetched: false,
     };
 
-    const userId = Cookie.get('userId');
-
     const [state, dispatch] = useReducer(UserReducer, initialState);
+
+    /*
+     *   AUTHENTICATE_USER
+     */
+    const authenticateUser = async (email, password, rememberMe) => {
+        try {
+            const response = await API.POST({
+                url: 'users/login',
+                body: { email, password },
+            });
+
+            console.log('In response', response);
+            const user = get(get(response, 'data'), 'data');
+            const success = get(get(response, 'data'), 'success');
+
+            if (success) {
+                Cookie.set('USER_NAME', get(user[0], 'firstName', ''));
+                Cookie.set('REMEMBER_ME', rememberMe, false);
+                return dispatch({
+                    payload: user,
+                    type: AUTHENTICATE_USER,
+                });
+            }
+        } catch (error) {
+            const errorResponse = get(error, 'response');
+            const errorData = get(errorResponse, 'data');
+            const errMsg = get(errorData, 'error') || '';
+
+            return dispatch({
+                payload: errMsg,
+                type: AUTHENTICATION_ERROR,
+            });
+        }
+    };
+
+    /*
+     *   AUTHENTICATE_USER_FALSE
+     */
+    const setlLoginFalse = () => {
+        Cookie.set('USER_NAME', '');
+        dispatch({
+            type: AUTHENTICATE_USER_FALSE,
+        });
+    };
 
     /*
      *   GET_ALL_USERS
@@ -36,7 +88,6 @@ const UserState = (props) => {
     /*
      *   REGISTER_NEW_USER
      */
-    console.log("regisetrere : ", state.allRegisteredUsers)
     const registerUser = async (body) => {
         const response = await API.POST({
             url: 'users',
@@ -56,10 +107,16 @@ const UserState = (props) => {
     return (
         <UserContext.Provider
             value={{
+                isUserAuthenticated: state.isUserAuthenticated,
                 allRegisteredUsers: state.allRegisteredUsers,
                 allRegisteredUsersFetched: state.allRegisteredUsersFetched,
+                isAuthenticationAttempted: state.isAuthenticationAttempted,
+                authenticationError: state.authenticationError,
+                loggedInUser: state.loggedInUser,
                 getAllRegisteredUsers,
                 registerUser,
+                authenticateUser,
+                setlLoginFalse,
             }}>
             {props.children}
         </UserContext.Provider>

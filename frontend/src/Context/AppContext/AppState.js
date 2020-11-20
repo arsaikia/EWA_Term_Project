@@ -4,12 +4,16 @@ import { get } from 'lodash';
 import React, { useReducer } from 'react';
 import { v4 as uuid } from 'uuid';
 
+import FRUIT from '../../Images/products/fruit_orange.png';
+import CAKE from '../../Images/products/food_cake.png';
+
 import API from '../../utils/Query';
 import {
     SHOW_HEADER,
     HIDE_HEADER,
     SHOW_DROPDOWN,
     HIDE_DROPDOWN,
+    GET_ALL_PRODUCTS,
 } from '../types';
 
 import AppContext from './appContext';

@@ -1,9 +1,16 @@
 import { Sequelize } from 'sequelize';
 import { SQL } from '../config/db.js';
+import { v4 as uuid } from 'uuid';
 
 const Users = SQL.define(
     'users',
     {
+        id: {
+            allowNull: false,
+            primaryKey: true,
+            type: Sequelize.UUID,
+            defaultValue: uuid(),
+        },
         email: {
             type: Sequelize.STRING,
             allowNull: false,
@@ -36,8 +43,12 @@ const Users = SQL.define(
     }
 );
 
+Users.beforeCreate((user, _) => {
+    return (user.id = uuid());
+});
+
 Users.sync().then(() => {
-    console.log('Users created');
+    console.log(`Users created`.cyan.bold);
 });
 
 export default Users;

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Colors } from '../Colors';
 import { Description, HeaderTwo } from '../Texts';
 // import { CircledX } from 'Icons';

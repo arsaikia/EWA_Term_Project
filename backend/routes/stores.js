@@ -1,6 +1,7 @@
 import express from 'express';
 const router = express.Router();
 
+
 import { getProducts, getProduct } from '../controller/stores.js';
 
 router.route('/').get(getStores);
@@ -10,4 +11,4 @@ router.route('/').get(getStores);
 // Export the rputer
 export { router as usersRoute };
 
-// 
+

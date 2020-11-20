@@ -1,33 +1,27 @@
-import Products from '../models/products.js';
+
+import { SQL } from '../config/db.js';
+import Products from '../models/Products.js';
+
 import asyncHandler from '../middleware/async.js';
 import ErrorResponse from '../middleware/error.js';
 
 /*
+
  * @desc     Get All Products
  * @route    GET /api/v1/products
  * @access   Public
  */
 
 const getProducts = asyncHandler(async (req, res, next) => {
-    const products = await Products.findAll({
-        attributes: [
-            'id',
-            'productName',
-            'price',
-            'description',
-            'catagory',
-            'image',
-            'isVeg',
-            'quantity',
-            'quantityType',
-        ],
-    });
+
+    const products = await Products.findAll();
 
     if (!products) {
-        return next(new ErrorResponse(`No Products found!`, 404));
+        return next(new ErrorResponse(`No Product found!`, 404));
     }
     res.status(200).json({ success: true, data: products });
 });
+
 
 /*
  * @desc     Get product with id
@@ -73,3 +67,5 @@ export { getProducts, getProduct };
 
 // 
 //
+=======
+export { getProducts };

@@ -1,5 +1,6 @@
 import React, { Component, useState } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
+import { Alert } from 'react-bootstrap';
 import {
     Container,
     FlexContainer,
@@ -11,18 +12,16 @@ import { Popup } from '../../components/Popup/index';
 import LOGIN from '../../Images/login.svg';
 
 const LoginScreen = ({
-    showHeader,
+    validateLogin,
     setEmail,
+    setRememberMe,
     setPassword,
-    getUsersHandler,
+    isAuthenticationAttempted,
+    isUserAuthenticated,
+    authenticationError,
 }) => {
-    // const [showPopup, setShowPopup] = useState(!false);
-    // const [zipCode, setZipCode] = useState('60616');
-    // console.log('zipCode', zipCode);
-
     return (
         <FadeInContainer
-            style={{ display: showHeader ? 'None' : 'flex' }}
             width='100%'
             height='100vh'
             flexDirection='column'
@@ -31,36 +30,11 @@ const LoginScreen = ({
             fadeIn
             duration={'300'}
             style={{
-                display: showHeader ? 'None' : 'flex',
                 backgroundImage: `url(${LOGIN})`,
                 backgroundPosition: 'right',
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: '50%',
             }}>
-            {/* <Popup
-                showPopup={showPopup}
-                handlePopup={() => console.log('Clicked on popup')}
-                content={
-                    <Container>
-                        <label>Enter Zip Code:</label>
-                        <input
-                            type='email'
-                            className='form-control'
-                            placeholder='Enter your zipcode'
-                            onChange={(e) => setZipCode(e.target.value)}
-                        />
-                        <Spacing space='20px' mobileSpace='10px' />
-                        <button
-                            color='#ffff'
-                            type='submit'
-                            className='btn btn-success btn-lg btn-block'
-                            onClick={() => setShowPopup(false)}>
-                            Use This Location
-                        </button>
-                    </Container>
-                }
-            /> */}
-
             <FlexContainer
                 justifyContent='center'
                 alignItems='center'
@@ -82,6 +56,12 @@ const LoginScreen = ({
                         </FlexContainer>
                         <Spacing space='20px' mobileSpace='10px' />
                         <div className='form-group'>
+                            {isAuthenticationAttempted &&
+                                !isUserAuthenticated && (
+                                    <Alert variant={'danger'}>
+                                        {authenticationError}
+                                    </Alert>
+                                )}
                             <label>Email</label>
                             <input
                                 type='email'
@@ -107,6 +87,9 @@ const LoginScreen = ({
                                     type='checkbox'
                                     className='custom-control-input'
                                     id='customCheck1'
+                                    onChange={(e) =>
+                                        setRememberMe(e.target.checked)
+                                    }
                                 />
                                 <label
                                     className='custom-control-label'
@@ -118,7 +101,7 @@ const LoginScreen = ({
                         <button
                             type='submit'
                             className='btn btn-dark btn-logn btn-lg btn-block'
-                            onClick={getUsersHandler}>
+                            onClick={validateLogin}>
                             Sign in
                         </button>
                         <p className='forgot-password text-right'>

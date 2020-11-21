@@ -22,27 +22,17 @@ const getProducts = asyncHandler(async (req, res, next) => {
 
 /*
  * @desc     Get product with id
- * @route    GET /api/v1/products/:id
+ * @route    GET /api/v1/products/:productId
  * @access   Public
  */
 
 const getProduct = asyncHandler(async (req, res, next) => {
 
     const product = await Products.findAll({
-        attributes: [
-            'id',
-            'productName',
-            'price',
-            'description',
-            'catagory',
-            'image',
-            'isVeg',
-            'quantity',
-            'quantityType',
-        ],
-        // where: {
-        //     email: req.params.id,
-        // },
+        
+        where: {
+            productId: req.params.productId,
+        }
     });
 
     if (!product || product.length == 0) {

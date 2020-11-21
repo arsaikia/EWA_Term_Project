@@ -22,17 +22,15 @@ const getProducts = asyncHandler(async (req, res, next) => {
 
 /*
  * @desc     Get product with id
- * @route    GET /api/v1/products/:productId
+ * @route    GET /api/v1/products/:id
  * @access   Public
  */
 
 const getProduct = asyncHandler(async (req, res, next) => {
-
     const product = await Products.findAll({
-        
         where: {
-            productId: req.params.productId,
-        }
+            productId: req.params.id,
+        },
     });
 
     if (!product || product.length == 0) {
@@ -46,7 +44,7 @@ const getProduct = asyncHandler(async (req, res, next) => {
         // );
     }
     console.log(req.params.id);
-    return next(res.status(200).json({ success: true, data: user }));
+    return next(res.status(200).json({ success: true, data: product }));
 });
 
 export { getProducts, getProduct };

@@ -16,7 +16,7 @@ const Footer = ({ showHeader }) => {
                     }}
                     fluid>
                     <Row>
-                        <Col className='text-center' py-3>
+                        <Col className='text-center py-1'>
                             Copyright {'\u00A9'} 2020 Eat Fresh
                         </Col>
                     </Row>

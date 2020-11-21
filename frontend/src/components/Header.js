@@ -1,12 +1,16 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import styled from 'styled-components/macro';
 import Cookie from 'js-cookie';
 import { isEmpty } from 'lodash';
 import { ReactComponent as Login } from '../Images/Icons/signup.svg';
+import { ReactComponent as Logout } from '../Images/Icons/logout.svg';
 import { ReactComponent as ArrowIcon } from '../Images/Icons/arrow.svg';
 import { ReactComponent as SigninIcon } from '../Images/Icons/signin.svg';
 import { ReactComponent as RegisterIcon } from '../Images/Icons/register.svg';
 import { CSSTransition } from 'react-transition-group';
+import CartContext from '../Context/Cart/cartContext';
+import UserContext from '../Context/User/userContext';
+
 import {
     Navbar,
     Nav,
@@ -47,10 +51,61 @@ const Header = ({
     setShowDropdown,
     props,
 }) => {
+    /*
+     ***************************************************
+     * GLOBAL STATE FROM CONTEXT API
+     ***************************************************
+     */
+    const cartContext = useContext(CartContext);
+    const { allProducts, allProductsFetched } = cartContext;
+
+    const userContext = useContext(UserContext);
+    const { isUserAuthenticated } = userContext;
+
+    /*
+     ***************************************************
+     * LOCAL STATES
+     ***************************************************
+     */
+
+    const loggedIn = Cookie.get('USER_NAME');
+
+    /*
+     ***************************************************
+     * LOGOUT
+     ***************************************************
+     */
+
+    const logoutHandler = () => {
+        Cookie.set('USER_NAME', '');
+        Cookie.set('REMEMBER_ME', false);
+
+        if (!Cookie.get('USER_NAME') && !Cookie.get('REMEMBER_ME')) {
+            props.histoty.push('/');
+        }
+    };
+
+    const [searchProducts, setSearchProducts] = useState([]);
+
+    useEffect(() => {
+        if (allProductsFetched) {
+            const searches = [];
+
+            for (const product of allProducts) {
+                searches.push({
+                    id: product.productId,
+                    name: product.productName,
+                });
+            }
+
+            setSearchProducts(searches);
+        }
+    }, [allProductsFetched, allProducts]);
+
     const userName = Cookie.get('USER_NAME');
     const [searchKey, setSearchKey] = useState('');
 
-    const DropdownMenu = (props) => {
+    const DropdownMenu = ({ loggedIn, ...props }) => {
         const [menuHeight, setMenuHeight] = useState(null);
         const [activeMenu, setActiveMenu] = useState('main');
         const dropdownRef = useRef(null);
@@ -97,6 +152,13 @@ const Header = ({
                         </DropdownItems>
                         <DropdownItems>Account</DropdownItems>
                         <DropdownItems>Orders</DropdownItems>
+                        {loggedIn && (
+                            <div onClick={logoutHandler}>
+                                <DropdownItems leftIcon={<Logout />}>
+                                    Log Out
+                                </DropdownItems>
+                            </div>
+                        )}
                     </div>
                 </CSSTransition>
 
@@ -144,8 +206,7 @@ const Header = ({
                     variant='dark'
                     expand='md'
                     // collapseOnSelect
-                    fixed='top'
-                    fluid>
+                    fixed='top'>
                     <Container
                         fluid
                         onClick={() => {
@@ -176,7 +237,9 @@ const Header = ({
                                             setSearchKey(e.target.value)
                                         }
                                     /> */}
-                                    <AutcompleteSearchBar />
+                                    <AutcompleteSearchBar
+                                        options={searchProducts}
+                                    />
                                     <Button
                                         className='d-none d-md-block'
                                         variant='outline-primary'
@@ -220,11 +283,11 @@ const Header = ({
                     </Container>
                 </Navbar>
                 <FlexContainer
-                    padding='0px 2em 0px 2em'
+                    padding='.1em 2em .1em 2em'
                     flexDirection='row'
                     position='fixed'
                     width='100%'
-                    marginTop='70px'
+                    marginTop='4.5em'
                     backgroundColor='#232F3E'
                     zIndex='10'>
                     <FlexContainer
@@ -234,7 +297,7 @@ const Header = ({
                         justifyContent='flex-start'
                         alignItems='center'>
                         <i
-                            class='fas fa-map-marker-alt fa-sm'
+                            className='fas fa-map-marker-alt fa-sm'
                             style={{ color: '#ffff', marginRight: '10px' }}></i>
                         <FlexContainer flexDirection='column' padding='5px'>
                             <Note
@@ -273,7 +336,7 @@ const Header = ({
                             pointer
                         />
                         <i
-                            class='fas fa-angle-down'
+                            className='fas fa-angle-down'
                             style={{
                                 color: '#ffff',
                                 marginLeft: '10px',
@@ -285,6 +348,7 @@ const Header = ({
             {showDropdown && (
                 <DropdownMenu
                     onClick={() => setShowDropdown(!showDropdown)}
+                    loggedIn={loggedIn}
                     {...props}></DropdownMenu>
             )}
         </>

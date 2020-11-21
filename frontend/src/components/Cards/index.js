@@ -68,9 +68,8 @@ const ItemCard = ({
     ...props
 }) => {
     const imageSrc =
-        require(`../../Images/products/${productImage.toLowerCase()}`).default ||
-        'apple';
-    console.log('productImage: ', imageSrc);
+        require(`../../Images/products/${productImage.toLowerCase()}`)
+            .default || 'apple';
     const showPointer = quantity < 1 ? 'cursor' : 'pointer';
     const inStock = quantity > 0;
 

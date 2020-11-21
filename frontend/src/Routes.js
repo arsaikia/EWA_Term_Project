@@ -8,7 +8,7 @@ import Products from './screens/Products';
 import Header from './components/Header';
 import Footer from './components/Footer';
 
-const Routes = ({ props }) => {
+const Routes = (props) => {
     const appContext = useContext(AppContext);
     const {
         showHeader,
@@ -16,6 +16,7 @@ const Routes = ({ props }) => {
         showDropdown,
         setShowDropdown,
     } = appContext;
+
     return (
         <>
             <Header
@@ -66,7 +67,7 @@ const Routes = ({ props }) => {
                             setShowHeader={setShowHeader}
                             setShowDropdown={setShowDropdown}
                             showHeader={showHeader}
-                            {...props}
+                            props={props}
                         />
                     </Route>
 

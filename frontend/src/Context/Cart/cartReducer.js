@@ -1,4 +1,10 @@
-import { GET_ALL_PRODUCTS, GET_PRODUCTS_IN_CART, UPDATE_CART } from '../types';
+import {
+    GET_ALL_PRODUCTS,
+    GET_PRODUCTS_IN_CART,
+    UPDATE_CART,
+    GET_PRODUCT_BY_ID,
+    REMOVE_FETCHED_STATE,
+} from '../types';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state, action) => {
@@ -6,8 +12,24 @@ export default (state, action) => {
         case GET_ALL_PRODUCTS:
             return {
                 ...state,
+                originalProducts: action.payload,
                 allProducts: action.payload,
                 allProductsFetched: true,
+            };
+
+        case REMOVE_FETCHED_STATE:
+            return {
+                ...state,
+
+                allProductsFetched: false,
+                productsInCartFetched: false,
+            };
+
+        case GET_PRODUCT_BY_ID:
+            return {
+                ...state,
+                productById: action.payload,
+                productByIdFetched: true,
             };
 
         case GET_PRODUCTS_IN_CART:

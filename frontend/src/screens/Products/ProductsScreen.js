@@ -200,10 +200,7 @@ const RelatedProducts = () => {
     );
 };
 
-const DescriptionAndReviews = ({
-    description,
-    reviews = { text: 'lorem', rating: 3.5 },
-}) => {
+const DescriptionAndReviews = ({ description, revews }) => {
     return (
         <FlexContainer
             backgroundColor='khaki'
@@ -221,7 +218,7 @@ const DescriptionAndReviews = ({
                 <Spacing space='10px' mobileSpace='10px' />
 
                 {reviews.map((review) => (
-                    <FlexContainer flexDirection='column' idx={review.id}>
+                    <FlexContainer flexDirection='column' key={review.id}>
                         <Rating
                             value={review.rating}
                             reviewerName={review.reviewerName}
@@ -262,54 +259,66 @@ const reviews = [
     },
 ];
 
-const ProductsScreen = ({
-    product = {
-        productId: 'productId2',
-        image: CAKE,
-        isVeg: true,
-        discount: 17.25,
-        name: 'Chocolate Deloche',
-        countInStock: 2,
-        price: 12.5,
-        rating: 4.5,
-    },
-}) => (
-    <FluidContainer sm fluid>
-        <OuterContainer
-            minHeight='100vh'
-            margin='6em 8em 1em 8em'
-            // backgroundColor='khaki'
-            fadeIn
-            duration={'300'}>
-            <FluidContainer md fluid>
-                <FlexContainer>
-                    <Row lg={2} xs={1}>
+const ProductsScreen = ({ productById }) => {
+    const imageSrc =
+        require(`../../Images/products/${productById.image.toLowerCase()}`)
+            .default || 'apple';
+
+    const productPrice =
+        Math.round(
+            (productById.price * (1 - productById.discount / 100) +
+                Number.EPSILON) *
+                100
+        ) / 100;
+
+    return (
+        <FluidContainer sm fluid>
+            <OuterContainer
+                minHeight='100vh'
+                margin='6em 8em 1em 8em'
+                // backgroundColor='khaki'
+                fadeIn
+                duration={'300'}>
+                <FluidContainer md fluid>
+                    <FlexContainer>
+                        <Row lg={2} xs={1}>
+                            <Col>
+                                <LeftImageContainer image={imageSrc} />
+                            </Col>
+                            <Col>
+                                <ProductDetails
+                                    discount={productById.discount}
+                                    productName={productById.productName}
+                                    inStock={productById.countInStock > 0}
+                                    productPrice={productById.price}
+                                    priceAfterDiscount={productPrice}
+                                    productRating={productById.rating || 3.5}
+                                    totalRatings={
+                                        productById.totalRatings || 1210
+                                    }
+                                />
+                            </Col>
+                        </Row>
+                    </FlexContainer>
+
+                    <FlexContainer height='50px' />
+                    <Row>
                         <Col>
-                            <LeftImageContainer image={FRUIT} />
-                        </Col>
-                        <Col>
-                            <ProductDetails />
+                            <RelatedProducts></RelatedProducts>
                         </Col>
                     </Row>
-                </FlexContainer>
-
-                <FlexContainer height='50px' />
-                <Row>
-                    <Col>
-                        <RelatedProducts></RelatedProducts>
-                    </Col>
-                </Row>
-                <FlexContainer height='50px' />
-                <Row>
-                    <Col>
-                        <DescriptionAndReviews
-                            description={description}
-                            reviews={reviews}
-                        />
-                    </Col>
-                </Row>
-            </FluidContainer>
-        </OuterContainer>
-    </FluidContainer>
-);
+                    <FlexContainer height='50px' />
+                    <Row>
+                        <Col>
+                            <DescriptionAndReviews
+                                description={productById.description}
+                                reviews={productById.reviews || reviews}
+                            />
+                        </Col>
+                    </Row>
+                </FluidContainer>
+            </OuterContainer>
+        </FluidContainer>
+    );
+};
 export default ProductsScreen;

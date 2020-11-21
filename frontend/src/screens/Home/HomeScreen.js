@@ -86,7 +86,7 @@ const HomeScreen = ({
                     alignItems='center'>
                     {allProducts.map((product) => {
                         return (
-                            <FlexContainer margin='3%' idx={product.productId}>
+                            <FlexContainer margin='3%' key={product.productId}>
                                 <ItemCard
                                     productId={product.productId}
                                     productImage={product.image}

@@ -83,6 +83,8 @@ const Products = SQL.define(
     }
 );
 
+
+
 Products.beforeCreate((product, _) => {
     return (product.productId = uuid());
 });

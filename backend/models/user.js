@@ -7,7 +7,7 @@ import Stores from './Store.js';
 const Users = SQL.define(
     'users',
     {
-        id: {
+        userId: {
             allowNull: false,
             primaryKey: true,
             type: Sequelize.UUID,
@@ -39,7 +39,14 @@ const Users = SQL.define(
             allowNull: false,
             values: ['ALL', 'VEGAN', 'MEAT', 'HEALTHY'],
         },
-        storeId: {
+        storeManager: {
+            type: Sequelize.UUID,
+            references: {
+                model: 'stores',
+                key: 'storeId',
+            },
+        },
+        storePrefered: {
             type: Sequelize.UUID,
             references: {
                 model: 'stores',
@@ -52,10 +59,10 @@ const Users = SQL.define(
     }
 );
 
-Stores.hasMany(Users);
+// Stores.hasMany(Users);
 
 Users.beforeCreate((user, _) => {
-    return (user.id = uuid());
+    return (user.userId = uuid());
 });
 
 Users.sync()

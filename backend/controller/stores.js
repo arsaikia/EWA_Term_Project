@@ -9,9 +9,7 @@ import ErrorResponse from '../middleware/error.js';
  */
 
 const getStores = asyncHandler(async (req, res, next) => {
-    const stores = await Stores.findAll({
-        attributes: ['id', 'storeName', 'userID', 'description'],
-    });
+    const stores = await Stores.findAll();
 
     if (!stores) {
         return next(new ErrorResponse(`No Store found!`, 404));

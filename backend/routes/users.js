@@ -9,5 +9,5 @@ router.route('/:id').get(getUser);
 
 router.route('/login').post(AuthenticateUser);
 
-// Export the rputer
+// Export the router
 export { router as usersRoute };

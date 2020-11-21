@@ -1,4 +1,4 @@
-import Stores from '../models/stores.js';
+import Stores from '../models/Store.js';
 import asyncHandler from '../middleware/async.js';
 import ErrorResponse from '../middleware/error.js';
 
@@ -10,12 +10,7 @@ import ErrorResponse from '../middleware/error.js';
 
 const getStores = asyncHandler(async (req, res, next) => {
     const stores = await Stores.findAll({
-        attributes: [
-            'id',
-            'storeName',
-            'userID',
-            'description',
-        ],
+        attributes: ['id', 'storeName', 'userID', 'description'],
     });
 
     if (!stores) {
@@ -34,12 +29,7 @@ const getStore = asyncHandler(async (req, res, next) => {
     //? We can fire direct SQL query as the below line
     // const user = await SQL.query(`select * from users;`);
     const store = await Stores.findAll({
-        attributes: [
-            'id',
-            'storeName',
-            'userID',
-            'description',
-        ],
+        attributes: ['id', 'storeName', 'userID', 'description'],
         // where: {
         //     email: req.params.id,
         // },
@@ -61,4 +51,4 @@ const getStore = asyncHandler(async (req, res, next) => {
 
 export { getStores, getStore };
 
-// 
+//

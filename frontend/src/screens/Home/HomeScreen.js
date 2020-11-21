@@ -89,11 +89,11 @@ const HomeScreen = ({
                             <FlexContainer margin='3%' idx={product.productId}>
                                 <ItemCard
                                     productId={product.productId}
-                                    productImage={product.productImage}
+                                    productImage={product.image}
                                     isVeg={product.isVeg}
                                     discount={product.discount}
                                     productName={product.productName}
-                                    quantity={product.quantity}
+                                    quantity={product.countInStock}
                                     price={product.price}
                                     inCartItems={productsInCart}
                                     isAddedToCart={isAddedToCart(

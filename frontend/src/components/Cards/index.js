@@ -67,6 +67,10 @@ const ItemCard = ({
     goToProductsPage,
     ...props
 }) => {
+    const imageSrc =
+        require(`../../Images/products/${productImage.toLowerCase()}`).default ||
+        'apple';
+    console.log('productImage: ', imageSrc);
     const showPointer = quantity < 1 ? 'cursor' : 'pointer';
     const inStock = quantity > 0;
 
@@ -137,7 +141,7 @@ const ItemCard = ({
                     position='relative'
                     onClick={goToProductsPage(productId, inStock)}>
                     <img
-                        src={productImage}
+                        src={imageSrc}
                         alt='...'
                         width='100%'
                         style={{ position: 'absolute' }}

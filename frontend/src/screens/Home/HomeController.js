@@ -12,7 +12,7 @@ import Loader from '../../components/Loader';
 
 const HomeController = ({ setShowDropdown, ...props }) => {
     const appContext = useContext(AppContext);
-    const { showHeader, setShowHeader } = appContext;
+    const { setShowHeader } = appContext;
 
     const cartContext = useContext(CartContext);
     const {
@@ -25,8 +25,6 @@ const HomeController = ({ setShowDropdown, ...props }) => {
         productsInCartFetched,
         isUserAuthenticated,
         loggedInUser,
-        isAuthenticationAttempted,
-        authenticationError,
     } = cartContext;
 
     const isAddedToCart = (productIdX) => {

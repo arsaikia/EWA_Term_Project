@@ -7,7 +7,5 @@ router.route('/').get(getProducts);
 
 router.route('/:id').get(getProduct);
 
-// Export the rputer
-export { router as usersRoute };
-
-
+// Export the router
+export { router as productsRoute };

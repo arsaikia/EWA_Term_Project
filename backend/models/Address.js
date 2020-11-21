@@ -1,9 +1,16 @@
 import { Sequelize } from 'sequelize';
 import { SQL } from '../config/db.js';
+import { v4 as uuid } from 'uuid';
 
 const Address = SQL.define(
-    'products',
+    'addresses',
     {
+        addressId: {
+            allowNull: false,
+            primaryKey: true,
+            type: Sequelize.UUID,
+            defaultValue: uuid(),
+        },
         street1: {
             type: Sequelize.STRING,
             allowNull: false,
@@ -16,7 +23,7 @@ const Address = SQL.define(
             allowNull: false,
         },
         zip: {
-            type: Sequelize.STRING,
+            type: Sequelize.INTEGER,
             allowNull: false,
         },
         state: {
@@ -29,10 +36,16 @@ const Address = SQL.define(
     }
 );
 
-Address.sync().then(() => {
-    console.log('Address created');
+Address.beforeCreate((address, _) => {
+    return (address.addressId = uuid());
 });
 
-export default Products;
+Address.sync()
+    .then(() => {
+        console.log(`Address created`.cyan.bold);
+    })
+    .catch((error) => console.log('ERROR', error));
+
+export default Address;
 
 //

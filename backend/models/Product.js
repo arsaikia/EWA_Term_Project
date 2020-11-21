@@ -11,38 +11,66 @@ const Products = SQL.define(
             type: Sequelize.UUID,
             defaultValue: uuid(),
         },
+
         productName: {
             type: Sequelize.STRING,
             allowNull: false,
         },
-        price: {
-            type: Sequelize.STRING,
-            allowNull: false,
-        },
-        description: {
-            type: Sequelize.STRING,
-            allowNull: false,
-        },
-        category: {
-            type: Sequelize.STRING,
-            allowNull: false,
-        },
+
         image: {
             type: Sequelize.STRING,
             allowNull: false,
         },
+
+        description: {
+            type: Sequelize.STRING,
+            allowNull: false,
+        },
+
+        category: {
+            type: Sequelize.ENUM,
+            allowNull: false,
+            values: [
+                'PRODUCE',
+                'DAIRY_AND_EGGS',
+                'FROZEN',
+                'BEVERAGES',
+                'SNACKS',
+            ],
+            defaultValue: 'PRODUCE',
+        },
+
+        subcategory: {
+            type: Sequelize.STRING,
+            allowNull: false,
+        },
+
+        price: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+        },
+
         isVeg: {
-            type: Sequelize.STRING,
+            type: Sequelize.BOOLEAN,
             allowNull: false,
         },
-        quantity: {
-            type: Sequelize.STRING,
+
+        countInStock: {
+            type: Sequelize.INTEGER,
             allowNull: false,
         },
+
+        foodPreference: {
+            type: Sequelize.ENUM,
+            allowNull: false,
+            values: ['ALL', 'VEGAN', 'MEAT', 'HEALTHY'],
+            defaultValue: 'ALL',
+        },
+
         quantityType: {
             type: Sequelize.ENUM,
             allowNull: false,
-            values: ['NUMBERS', 'LBS', 'OZ'],
+            values: ['NUMBERS', 'LBS'],
         },
     },
     {
@@ -54,8 +82,10 @@ Products.beforeCreate((product, _) => {
     return (product.productId = uuid());
 });
 
-Products.sync().then(() => {
-    console.log('Products created'.cyan.bold);
-});
+Products.sync()
+    .then(() => {
+        console.log('Products created'.cyan.bold);
+    })
+    .catch((error) => console.log('ERROR', error));
 
 export default Products;

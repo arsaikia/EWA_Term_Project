@@ -1,6 +1,5 @@
-
 import { SQL } from '../config/db.js';
-import Products from '../models/Products.js';
+import Products from '../models/Product.js';
 
 import asyncHandler from '../middleware/async.js';
 import ErrorResponse from '../middleware/error.js';
@@ -13,7 +12,6 @@ import ErrorResponse from '../middleware/error.js';
  */
 
 const getProducts = asyncHandler(async (req, res, next) => {
-
     const products = await Products.findAll();
 
     if (!products) {
@@ -22,16 +20,14 @@ const getProducts = asyncHandler(async (req, res, next) => {
     res.status(200).json({ success: true, data: products });
 });
 
-
 /*
  * @desc     Get product with id
- * @route    GET /api/v1/users/:id
+ * @route    GET /api/v1/products/:id
  * @access   Public
  */
 
 const getProduct = asyncHandler(async (req, res, next) => {
-    //? We can fire direct SQL query as the below line
-    // const user = await SQL.query(`select * from users;`);
+
     const product = await Products.findAll({
         attributes: [
             'id',
@@ -64,8 +60,3 @@ const getProduct = asyncHandler(async (req, res, next) => {
 });
 
 export { getProducts, getProduct };
-
-// 
-//
-=======
-export { getProducts };

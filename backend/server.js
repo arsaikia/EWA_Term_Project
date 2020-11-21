@@ -17,6 +17,10 @@ SQL.authenticate()
     .then(() => console.log(`DB Connected Sequalize!`.cyan.bold.underline))
     .catch((err) => console.log(`DB Not Connected Sequalize! ${err}`.red.bold));
 
+// SQL.sync({force: true})
+//     .then(() => console.log(`All Tables Dropped`.blue.bold.underline))
+//     .catch((err) => console.log(`Tables drop Failed ${err}`.red.bold.underline));
+
 const app = express();
 
 // Body Parser

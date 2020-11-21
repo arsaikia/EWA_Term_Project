@@ -17,32 +17,31 @@ const Stores = SQL.define(
             type: Sequelize.STRING,
             allowNull: false,
         },
-        addressId: {
-            type: Sequelize.UUID,
-            references: {
-                model: 'addresses',
-                key: 'addressId',
-            },
-        },
+        // addressId: {
+        //     type: Sequelize.UUID,
+        //     references: {
+        //         model: 'addresses',
+        //         key: 'addressId',
+        //     },
+        // },
     },
     {
         timestamps: false,
     }
 );
 
-Address.hasOne(Stores);
+Stores.belongsTo(Address, {
+    foreignKey: {
+        name: 'addressId',
+    },
+});
 
 //Stores.belongsTo(Address)
 
 const StoreProducts = SQL.define('storeproducts', {
-    storeProductsId: {
-        allowNull: false,
-        primaryKey: true,
-        type: Sequelize.UUID,
-        defaultValue: uuid(),
-    },
     storeId: {
         type: Sequelize.UUID,
+        primaryKey: true,
         references: {
             model: 'stores',
             key: 'storeId',
@@ -50,6 +49,7 @@ const StoreProducts = SQL.define('storeproducts', {
     },
     productId: {
         type: Sequelize.UUID,
+        primaryKey: true,
         references: {
             model: 'products',
             key: 'productId',
@@ -57,16 +57,8 @@ const StoreProducts = SQL.define('storeproducts', {
     },
 });
 
-Stores.belongsToMany(
-    Products,
-    { through: StoreProducts },
-    (foreignKey: { name: 'productId' })
-);
-Products.belongsToMany(
-    Stores,
-    { through: StoreProducts },
-    (foreignKey: { name: 'storeId' })
-);
+Stores.belongsToMany(Products, { through: StoreProducts });
+Products.belongsToMany(Stores, { through: StoreProducts });
 
 Stores.beforeCreate((stores, _) => {
     return (stores.storeId = uuid());

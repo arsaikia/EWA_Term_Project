@@ -9,6 +9,7 @@ import { MongoDB, MySQL, SQL } from './config/db.js';
 import { usersRoute } from './routes/users.js';
 import { productsRoute } from './routes/products.js';
 import { storesRoute } from './routes/stores.js';
+import { cartsRoute } from './routes/carts.js';
 
 dotenv.config();
 
@@ -33,6 +34,7 @@ app.use(cors());
 app.use('/users', usersRoute);
 app.use('/products', productsRoute);
 app.use('/stores', storesRoute);
+app.use('/carts', cartsRoute);
 
 // Listen to the PORT
 const PORT = process.env.PORT || 5005;

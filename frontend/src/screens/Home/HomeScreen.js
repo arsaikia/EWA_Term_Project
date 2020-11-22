@@ -40,6 +40,8 @@ const HomeScreen = ({
     productsInCartFetched,
     isAddedToCart,
     goToProductsPage,
+    addProductToCart,
+    getItemsInBag,
     ...props
 }) => {
     return (
@@ -100,6 +102,8 @@ const HomeScreen = ({
                                         product.productId
                                     )}
                                     goToProductsPage={goToProductsPage}
+                                    addProductToCart={addProductToCart}
+                                    getItemsInBag={getItemsInBag}
                                     {...props}
                                 />
                             </FlexContainer>

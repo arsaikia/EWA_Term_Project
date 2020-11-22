@@ -47,9 +47,11 @@ const createCart = asyncHandler(async (req, res, next) => {
     const cart = await Carts.findAll({
         where: { productId: req.body.productId, userId: req.body.userId },
     });
+    console.log(cart)
 
     if (cart.length <= 0) {
         const cart = await Carts.create({
+            cartId: req.body.cartId,
             userId: req.body.userId,
             productId: req.body.productId,
             quantity: req.body.quantity,

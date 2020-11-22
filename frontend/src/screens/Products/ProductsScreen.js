@@ -180,6 +180,7 @@ const ProductDetails = ({
                     itemsInBag={0}
                     ContainsInCart={false}
                     quantity={2}
+                    
                 />
             </FlexContainer>
         </FlexContainer>

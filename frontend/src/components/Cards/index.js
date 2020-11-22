@@ -65,6 +65,8 @@ const ItemCard = ({
     inCartItems,
     isAddedToCart,
     goToProductsPage,
+    addProductToCart,
+    getItemsInBag,
     ...props
 }) => {
     const imageSrc =
@@ -72,11 +74,6 @@ const ItemCard = ({
             .default || 'apple';
     const showPointer = quantity < 1 ? 'cursor' : 'pointer';
     const inStock = quantity > 0;
-
-    const itemsInBag = () => {
-        const item = inCartItems.filter((el) => el.productId === productId);
-        return item[0] ? item[0].count : 0;
-    };
 
     return (
         <FlexContainer
@@ -177,9 +174,10 @@ const ItemCard = ({
                         disabled={!inStock}
                         showPointer={showPointer}
                         productId={productId}
-                        itemsInBag={itemsInBag()}
+                        itemsInBag={getItemsInBag(productId)}
                         quantity={quantity}
                         ContainsInCart={isAddedToCart}
+                        addProductToCart={addProductToCart}
                     />
                 </FlexContainer>
             </FlexContainer>

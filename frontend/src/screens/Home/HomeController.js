@@ -49,6 +49,7 @@ const HomeController = ({ setShowDropdown, ...props }) => {
      * LOCAL STATES
      ***************************************************
      */
+    const rememberedUserId = Cookie.get('USER_ID');
 
     const comingFromProducts = get(props.location.state, 'fromProducts');
 
@@ -95,6 +96,22 @@ const HomeController = ({ setShowDropdown, ...props }) => {
         });
     };
 
+    const addProductToCart = (productId) => () => {
+        if (!rememberedUserId || !productId) return;
+        updateProductsInCart(rememberedUserId, productId);
+    };
+
+    const getItemsInBag = (productId) => {
+        let retVal = '';
+        productsInCart.forEach((product) => {
+            if (product.productId === productId) {
+                retVal = product.quantity;
+                return;
+            }
+        });
+        return retVal;
+    };
+
     /*
      ***************************************************
      * LOADING AND PAGE POPULATION HANDLERS
@@ -107,18 +124,18 @@ const HomeController = ({ setShowDropdown, ...props }) => {
             fetchAllProducts();
         }
 
-        if (isUserAuthenticated && fetchingCart && !productsInCartFetched) {
+        if (fetchingCart && !productsInCartFetched) {
             setfetchingCart(false);
-            fetchProductsInCart(get(loggedInUser, 'userId'));
+            fetchProductsInCart(rememberedUserId);
         }
     }, [
         fetchingAllProducts,
         allProductsFetched,
         fetchAllProducts,
         fetchingCart,
-        isUserAuthenticated,
         productsInCartFetched,
         fetchProductsInCart,
+        loggedInUser,
     ]);
 
     /*
@@ -138,7 +155,7 @@ const HomeController = ({ setShowDropdown, ...props }) => {
     // Check if we are in a Remember me session:
     useEffect(() => {
         validateRememberMe();
-    }, [validateRememberMe()]);
+    }, [validateRememberMe]);
 
     useEffect(() => {
         setShowHeader(true);
@@ -166,6 +183,8 @@ const HomeController = ({ setShowDropdown, ...props }) => {
                 productsInCartFetched={productsInCartFetched}
                 isAddedToCart={isAddedToCart}
                 goToProductsPage={goToProductsPage}
+                addProductToCart={addProductToCart}
+                getItemsInBag={getItemsInBag}
                 {...props}
             />
         </>

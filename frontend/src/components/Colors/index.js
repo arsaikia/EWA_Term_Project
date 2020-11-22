@@ -27,6 +27,10 @@ const Colors = {
     lightGrey: '#F0F0F0',
     lightestGrey: '#F9F9F9',
 
+    textColor: '#383838',
+    lightTextColor: '#585656',
+    lightOnDark: '#cbd2dd',
+
     // Latest Colors
     backgroundColor: '#eff7fa',
 };

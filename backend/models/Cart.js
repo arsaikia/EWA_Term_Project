@@ -43,15 +43,15 @@ const Cart = SQL.define(
 
 Cart.belongsTo(Users, {
     foreignKey: {
-      name: 'userId'
-    }
-  });
+        name: 'userId',
+    },
+});
 
-  Cart.belongsTo(Products, {
+Cart.belongsTo(Products, {
     foreignKey: {
-      name: 'productId'
-    }
-  });
+        name: 'productId',
+    },
+});
 
 //   Cart.belongsTo(Products, {
 //     foreignKey: {

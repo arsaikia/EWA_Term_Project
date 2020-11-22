@@ -74,15 +74,6 @@ const getUser = asyncHandler(async (req, res, next) => {
 
 const AuthenticateUser = asyncHandler(async (req, res, next) => {
     const user = await Users.findAll({
-        attributes: [
-            'id',
-            'email',
-            'firstName',
-            'lastName',
-            'password',
-            'userType',
-            'foodPreference',
-        ],
         where: {
             email: req.body.email,
             password: req.body.password,

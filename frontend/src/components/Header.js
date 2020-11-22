@@ -1,13 +1,15 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import styled from 'styled-components/macro';
 import Cookie from 'js-cookie';
-import { isEmpty } from 'lodash';
+import { isEmpty, get } from 'lodash';
 import { ReactComponent as Login } from '../Images/Icons/signup.svg';
 import { ReactComponent as Logout } from '../Images/Icons/logout.svg';
 import { ReactComponent as ArrowIcon } from '../Images/Icons/arrow.svg';
 import { ReactComponent as SigninIcon } from '../Images/Icons/signin.svg';
 import { ReactComponent as RegisterIcon } from '../Images/Icons/register.svg';
 import { CSSTransition } from 'react-transition-group';
+import { useHistory } from 'react-router-dom';
+
 import CartContext from '../Context/Cart/cartContext';
 import UserContext from '../Context/User/userContext';
 
@@ -49,15 +51,21 @@ const Header = ({
     showHeader,
     showDropdown,
     setShowDropdown,
-    props,
+    ...props
 }) => {
+    const history = useHistory();
     /*
      ***************************************************
      * GLOBAL STATE FROM CONTEXT API
      ***************************************************
      */
     const cartContext = useContext(CartContext);
-    const { allProducts, allProductsFetched } = cartContext;
+    const {
+        allProducts,
+        allProductsFetched,
+        productsInCartFetched,
+        cartCount,
+    } = cartContext;
 
     const userContext = useContext(UserContext);
     const { isUserAuthenticated } = userContext;
@@ -69,6 +77,21 @@ const Header = ({
      */
 
     const loggedIn = Cookie.get('USER_NAME');
+    const userName = Cookie.get('USER_NAME');
+
+    const [searchButtonText, setSearchButtonText] = useState('Search');
+    const [singleSelections, setSingleSelections] = useState([]);
+
+    const [searchProducts, setSearchProducts] = useState([]);
+    const [searchKey, setSearchKey] = useState('');
+
+    useEffect(() => {
+        if (!isEmpty(get(searchKey, 'id'))) {
+            setSearchButtonText('View Product');
+        } else {
+            setSearchButtonText('Search');
+        }
+    }, [searchKey]);
 
     /*
      ***************************************************
@@ -79,13 +102,7 @@ const Header = ({
     const logoutHandler = () => {
         Cookie.set('USER_NAME', '');
         Cookie.set('REMEMBER_ME', false);
-
-        if (!Cookie.get('USER_NAME') && !Cookie.get('REMEMBER_ME')) {
-            props.histoty.push('/');
-        }
     };
-
-    const [searchProducts, setSearchProducts] = useState([]);
 
     useEffect(() => {
         if (allProductsFetched) {
@@ -102,8 +119,18 @@ const Header = ({
         }
     }, [allProductsFetched, allProducts]);
 
-    const userName = Cookie.get('USER_NAME');
-    const [searchKey, setSearchKey] = useState('');
+    /*
+     ***************************************************
+     * User Clicks on Search
+     ***************************************************
+     */
+
+    const searchHandler = () => {
+        const pId = searchKey.id;
+        setSearchKey('');
+        setSingleSelections([]);
+        return history.push(`/products/${pId}`);
+    };
 
     const DropdownMenu = ({ loggedIn, ...props }) => {
         const [menuHeight, setMenuHeight] = useState(null);
@@ -199,7 +226,11 @@ const Header = ({
 
     return (
         <>
-            <header style={{ display: !showHeader && 'None', padding: '0px' }}>
+            <header
+                style={{
+                    display: !showHeader && 'None',
+                    padding: '0px',
+                }}>
                 <Navbar
                     width='100%'
                     bg='dark'
@@ -229,28 +260,25 @@ const Header = ({
                             </FlexContainer>
                             <FlexContainer>
                                 <Form inline className='mr rounded p-1'>
-                                    {/* <StyledInput
-                                        type='text'
-                                        placeholder='Search Products'
-                                        className='mr-sm-2'
-                                        onChange={(e) =>
-                                            setSearchKey(e.target.value)
-                                        }
-                                    /> */}
                                     <AutcompleteSearchBar
                                         options={searchProducts}
+                                        setSearchKey={setSearchKey}
+                                        singleSelections={singleSelections}
+                                        setSingleSelections={
+                                            setSingleSelections
+                                        }
                                     />
                                     <Button
                                         className='d-none d-md-block'
                                         variant='outline-primary'
-                                        onClick={() => console.log(searchKey)}>
-                                        Search
+                                        onClick={searchHandler}>
+                                        {searchButtonText}
                                     </Button>
                                 </Form>
                             </FlexContainer>
                             <FlexContainer>
                                 <LinkContainer
-                                    to='/login'
+                                    to='/cart'
                                     onClick={() => setShowHeader(false)}>
                                     <Nav.Link>
                                         <FlexContainer
@@ -271,7 +299,12 @@ const Header = ({
                                                     }}></i>
                                             </FlexContainer>
                                             <Note
-                                                text={` ${' My Cart'}`}
+                                                text={
+                                                    productsInCartFetched
+                                                        ? cartCount
+                                                        : ` ${' My Cart'}`
+                                                }
+                                                backgroundColor='#ffff'
                                                 bold
                                                 pointer
                                             />
@@ -282,14 +315,16 @@ const Header = ({
                         </FlexContainer>
                     </Container>
                 </Navbar>
+
                 <FlexContainer
                     padding='.1em 2em .1em 2em'
                     flexDirection='row'
+                    // style={{ position: 'sticky', top: '10em' }}
                     position='fixed'
                     width='100%'
-                    marginTop='4.5em'
+                    marginTop='70px'
                     backgroundColor='#232F3E'
-                    zIndex='10'>
+                    zIndex='1'>
                     <FlexContainer
                         flexDirection='row'
                         width='15%'

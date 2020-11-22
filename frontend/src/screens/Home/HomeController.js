@@ -23,7 +23,11 @@ const HomeController = ({ setShowDropdown, ...props }) => {
     const { setShowHeader } = appContext;
 
     const userContext = useContext(UserContext);
-    const { setUserSemiAuthenticated } = userContext;
+    const {
+        isUserAuthenticated,
+        loggedInUser,
+        setUserSemiAuthenticated,
+    } = userContext;
 
     const cartContext = useContext(CartContext);
     const {
@@ -34,11 +38,7 @@ const HomeController = ({ setShowDropdown, ...props }) => {
         allProductsFetched,
         productsInCart,
         productsInCartFetched,
-        isUserAuthenticated,
-        loggedInUser,
-        searchProductsFetched,
         getProductById,
-        getSearchBarProducts,
         productById,
         removedFetchedState,
         productByIdFetched,
@@ -107,15 +107,16 @@ const HomeController = ({ setShowDropdown, ...props }) => {
             fetchAllProducts();
         }
 
-        if (fetchingCart && !productsInCartFetched) {
+        if (isUserAuthenticated && fetchingCart && !productsInCartFetched) {
             setfetchingCart(false);
-            fetchProductsInCart();
+            fetchProductsInCart(get(loggedInUser, 'userId'));
         }
     }, [
         fetchingAllProducts,
         allProductsFetched,
         fetchAllProducts,
         fetchingCart,
+        isUserAuthenticated,
         productsInCartFetched,
         fetchProductsInCart,
     ]);
@@ -150,12 +151,7 @@ const HomeController = ({ setShowDropdown, ...props }) => {
         isUserAuthenticated && console.log('loggedInUser', loggedInUser);
     }, [isUserAuthenticated, loggedInUser]);
 
-    if (
-        fetchingAllProducts ||
-        fetchingCart ||
-        !allProductsFetched ||
-        !productsInCartFetched
-    ) {
+    if (fetchingAllProducts || !allProductsFetched) {
         return <Loader showLoader />;
     }
 

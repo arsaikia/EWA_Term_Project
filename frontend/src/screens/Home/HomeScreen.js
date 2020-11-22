@@ -76,7 +76,7 @@ const HomeScreen = ({
             /> */}
 
             <FlexContainer flexDirection='row' width='100%' height='100%'>
-                <SideBar width='30%' border='solid 1px #282c34' />
+                <SideBar width='30%' minWidth='300px' minMobileWidth='150px' border='solid 1px #282c34' />
                 <GridFlexContainer
                     minWidth='70%'
                     display='flex'

@@ -30,4 +30,19 @@ export default {
             // eslint-disable-next-line
             console.log(error);
         }),
+
+    DELETE: ({ url = '' }) =>
+        axios({
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                // Authorization: `Bearer ${accessToken}`,
+                'Content-Type': 'application/json',
+            },
+            method: 'DELETE',
+            mode: 'cors',
+            url: process.env.REACT_APP_API_BASE_URL + url,
+        }).catch((error) => {
+            // eslint-disable-next-line
+            console.log(error);
+        }),
 };

@@ -15,6 +15,7 @@ import {
     GET_SEARCH_PRODUCTS,
     GET_PRODUCT_BY_ID,
     REMOVE_FETCHED_STATE,
+    SET_CART_COUNT
 } from '../types';
 
 import CartContext from './cartContext';
@@ -31,6 +32,7 @@ const CartState = (props) => {
         searchProductsFetched: false,
         productsInCart: [],
         productsInCartFetched: false,
+        cartCount: 0
     };
 
     const [state, dispatch] = useReducer(CartReducer, initialState);
@@ -66,23 +68,31 @@ const CartState = (props) => {
     };
 
     // GET_SEARCH_PRODUCTS
-    const getSearchBarProducts = () => {
-        const allowed = ['productId', 'productName'];
-        const filtered = pick(state.allProducts, allowed);
+    const getSearchBarProducts = async() => {
+
+        
 
         dispatch({
             type: GET_SEARCH_PRODUCTS,
         });
     };
 
-    const fetchProductsInCart = () => {
-        const inCartItems = [
-            {
-                //productId: productId1, count: 1
-            },
-        ];
+    const fetchProductsInCart = async(userId) => {
+
+        const response = await API.GET({ url: `carts/${userId}` });
+        const cart = get(get(response, 'data'), 'data') || [];
+       
+        let qty = 0;
+        cart.forEach( product => qty += product.quantity)
+        console.log(qty)
+
         dispatch({
-            payload: inCartItems,
+            payload: qty,
+            type: SET_CART_COUNT,
+        });
+        
+        dispatch({
+            payload: cart,
             type: GET_PRODUCTS_IN_CART,
         });
     };
@@ -94,6 +104,12 @@ const CartState = (props) => {
         });
     };
 
+    const deleteCartItemWithId = async (cartId, userId) => {
+        await API.DELETE({ url: `carts/${cartId}` });
+        
+        fetchProductsInCart(userId);
+    };
+
     return (
         <CartContext.Provider
             value={{
@@ -103,10 +119,12 @@ const CartState = (props) => {
                 getSearchBarProducts,
                 getProductById,
                 removedFetchedState,
+                deleteCartItemWithId,
                 allProducts: state.allProducts,
                 allProductsFetched: state.allProductsFetched,
                 productsInCart: state.productsInCart,
                 productsInCartFetched: state.productsInCartFetched,
+                cartCount: state.cartCount,
                 searchProducts: state.searchProducts,
                 searchProductsFetched: state.searchProductsFetched,
                 productById: state.productById,

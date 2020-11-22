@@ -49,6 +49,7 @@ const ProductsController = (props) => {
             getProductById(productId);
         }
 
+        console.log('Products Controller', productId);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

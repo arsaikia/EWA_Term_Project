@@ -64,7 +64,8 @@ const SignupController = ({ showHeader, setShowHeader, ...props }) => {
 
         if (!isAllUsersApiLoading && allRegisteredUsersFetched) {
             setFillingScreenData(false);
-            setAllUserEmails(allRegisteredUsers.map((el) => el.email));
+            allRegisteredUsers.length > 0 &&
+                setAllUserEmails(allRegisteredUsers.map((el) => el.email));
         }
     }, [
         setShowHeader,

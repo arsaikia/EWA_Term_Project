@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components/macro';
 import { Form } from 'react-bootstrap';
 import { Typeahead } from 'react-bootstrap-typeahead';
@@ -14,8 +14,14 @@ const AutcompleteSearchBar = ({
         { id: 1, name: 'Apple Pie' },
         { id: 12, name: 'Jack' },
     ],
+    setSearchKey,
+    singleSelections,
+    setSingleSelections
 }) => {
-    const [singleSelections, setSingleSelections] = useState([]);
+
+    useEffect(() => {
+        singleSelections && setSearchKey(singleSelections[0]);
+    }, [singleSelections]);
 
     return (
         <>
@@ -26,6 +32,7 @@ const AutcompleteSearchBar = ({
                     id='typeahead'
                     labelKey='name'
                     onChange={setSingleSelections}
+                    onInputChange={setSearchKey}
                     options={options}
                     placeholder='Search for a product...'
                     selected={singleSelections}

@@ -16,14 +16,7 @@ const Stores = SQL.define(
         storeName: {
             type: Sequelize.STRING,
             allowNull: false,
-        },
-        // addressId: {
-        //     type: Sequelize.UUID,
-        //     references: {
-        //         model: 'addresses',
-        //         key: 'addressId',
-        //     },
-        // },
+        }
     },
     {
         timestamps: false,
@@ -38,27 +31,6 @@ Stores.belongsTo(Address, {
 
 //Stores.belongsTo(Address)
 
-const StoreProducts = SQL.define('storeproducts', {
-    storeId: {
-        type: Sequelize.UUID,
-        primaryKey: true,
-        references: {
-            model: 'stores',
-            key: 'storeId',
-        },
-    },
-    productId: {
-        type: Sequelize.UUID,
-        primaryKey: true,
-        references: {
-            model: 'products',
-            key: 'productId',
-        },
-    },
-});
-
-Stores.belongsToMany(Products, { through: StoreProducts });
-Products.belongsToMany(Stores, { through: StoreProducts });
 
 Stores.beforeCreate((stores, _) => {
     return (stores.storeId = uuid());
@@ -67,12 +39,6 @@ Stores.beforeCreate((stores, _) => {
 Stores.sync()
     .then(() => {
         console.log(`Stores created`.cyan.bold);
-    })
-    .catch((error) => console.log('ERROR', error));
-
-StoreProducts.sync()
-    .then(() => {
-        console.log(`StoreProducts created`.red.inverse.underline);
     })
     .catch((error) => console.log('ERROR', error));
 

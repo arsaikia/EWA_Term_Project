@@ -7,6 +7,7 @@ import Home from './screens/Home';
 import Products from './screens/Products';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Cart from './screens/Cart';
 
 const Routes = (props) => {
     const appContext = useContext(AppContext);
@@ -24,7 +25,7 @@ const Routes = (props) => {
                 setShowHeader={setShowHeader}
                 showDropdown={showDropdown}
                 setShowDropdown={setShowDropdown}
-                props={props}
+                {...props}
             />
             <main>
                 <Switch>
@@ -62,8 +63,16 @@ const Routes = (props) => {
                     />
 
                     <Route path={'/products/:productId'}>
-                        return{' '}
                         <Products
+                            setShowHeader={setShowHeader}
+                            setShowDropdown={setShowDropdown}
+                            showHeader={showHeader}
+                            props={props}
+                        />
+                    </Route>
+
+                    <Route path={'/cart'}>
+                        <Cart
                             setShowHeader={setShowHeader}
                             setShowDropdown={setShowDropdown}
                             showHeader={showHeader}

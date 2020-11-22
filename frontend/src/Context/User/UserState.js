@@ -45,6 +45,7 @@ const UserState = (props) => {
 
             if (success) {
                 Cookie.set('USER_NAME', get(user[0], 'firstName', ''));
+                Cookie.set('USER_ID', get(user[0], 'userId', ''));
                 Cookie.set('REMEMBER_ME', rememberMe, false);
                 return dispatch({
                     payload: user,

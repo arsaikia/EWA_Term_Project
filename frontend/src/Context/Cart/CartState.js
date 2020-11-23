@@ -12,7 +12,7 @@ import {
     GET_ALL_PRODUCTS,
     GET_PRODUCTS_IN_CART,
     UPDATE_CART,
-    GET_SEARCH_PRODUCTS,
+    FILTER_PRODUCTS,
     GET_PRODUCT_BY_ID,
     REMOVE_FETCHED_STATE,
     SET_CART_COUNT,
@@ -58,6 +58,7 @@ const CartState = (props) => {
     };
 
     const getProductById = async (productId) => {
+
         const response = await API.GET({ url: `products/${productId}` });
         const product = get(get(response, 'data'), 'data')[0] || [];
 
@@ -67,10 +68,17 @@ const CartState = (props) => {
         });
     };
 
-    // GET_SEARCH_PRODUCTS
-    const getSearchBarProducts = async () => {
+    // FILTER_PRODUCTS
+    const getFilteredProducts = async (searchKey) => {
+        const response = await API.GET({
+            url: `products/matches/${searchKey}`,
+        });
+        const products = get(get(response, 'data'), 'data') || [];
+        
+        console.log(`response Matching ${searchKey} :`, products);
         dispatch({
-            type: GET_SEARCH_PRODUCTS,
+            payload: products,
+            type: FILTER_PRODUCTS,
         });
     };
 
@@ -114,7 +122,7 @@ const CartState = (props) => {
                 fetchAllProducts,
                 fetchProductsInCart,
                 updateProductsInCart,
-                getSearchBarProducts,
+                getFilteredProducts,
                 getProductById,
                 removedFetchedState,
                 deleteCartItemWithId,

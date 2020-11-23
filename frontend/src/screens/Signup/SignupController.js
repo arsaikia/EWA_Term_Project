@@ -56,7 +56,7 @@ const SignupController = ({ showHeader, setShowHeader, ...props }) => {
      */
 
     const loadData = useCallback(() => {
-        setShowHeader(false);
+        showHeader && setShowHeader(false);
         if (isAllUsersApiLoading && !allRegisteredUsersFetched) {
             setIsAllUsersApiLoading(false);
             return getAllRegisteredUsers();
@@ -64,10 +64,12 @@ const SignupController = ({ showHeader, setShowHeader, ...props }) => {
 
         if (!isAllUsersApiLoading && allRegisteredUsersFetched) {
             setFillingScreenData(false);
-            allRegisteredUsers.length > 0 &&
+            allRegisteredUsers &&
+                allRegisteredUsers.length > 0 &&
                 setAllUserEmails(allRegisteredUsers.map((el) => el.email));
         }
     }, [
+        showHeader,
         setShowHeader,
         allRegisteredUsers,
         isAllUsersApiLoading,
@@ -75,7 +77,7 @@ const SignupController = ({ showHeader, setShowHeader, ...props }) => {
         getAllRegisteredUsers,
     ]);
 
-    // On Load/Page refresh,  make sure header is hidden
+    //  On Load/Page refresh,  make sure header is hidden
     useEffect(() => {
         loadData();
     }, [loadData]);

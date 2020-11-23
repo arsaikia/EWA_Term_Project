@@ -50,6 +50,7 @@ const HomeController = ({ setShowDropdown, ...props }) => {
      ***************************************************
      */
     const rememberedUserId = Cookie.get('USER_ID');
+    const rememberMe = Cookie.get('REMEMBER_ME');
 
     const comingFromProducts = get(props.location.state, 'fromProducts');
 
@@ -97,7 +98,8 @@ const HomeController = ({ setShowDropdown, ...props }) => {
     };
 
     const addProductToCart = (productId) => () => {
-        if (!rememberedUserId || !productId) return;
+        if (!productId) return;
+        if (!rememberedUserId) return history.push('/login');
         updateProductsInCart(rememberedUserId, productId);
     };
 
@@ -124,7 +126,7 @@ const HomeController = ({ setShowDropdown, ...props }) => {
             fetchAllProducts();
         }
 
-        if (fetchingCart && !productsInCartFetched) {
+        if (fetchingCart && !productsInCartFetched && rememberedUserId) {
             setfetchingCart(false);
             fetchProductsInCart(rememberedUserId);
         }
@@ -135,7 +137,7 @@ const HomeController = ({ setShowDropdown, ...props }) => {
         fetchingCart,
         productsInCartFetched,
         fetchProductsInCart,
-        loggedInUser,
+        rememberedUserId,
     ]);
 
     /*

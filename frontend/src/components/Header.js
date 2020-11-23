@@ -9,7 +9,7 @@ import { ReactComponent as SigninIcon } from '../Images/Icons/signin.svg';
 import { ReactComponent as RegisterIcon } from '../Images/Icons/register.svg';
 import { CSSTransition } from 'react-transition-group';
 import { useHistory } from 'react-router-dom';
-
+import DropdownMenu from './DropdownMenu';
 import CartContext from '../Context/Cart/cartContext';
 import UserContext from '../Context/User/userContext';
 
@@ -65,6 +65,7 @@ const Header = ({
         allProductsFetched,
         productsInCartFetched,
         cartCount,
+        getFilteredProducts,
     } = cartContext;
 
     const userContext = useContext(UserContext);
@@ -76,7 +77,7 @@ const Header = ({
      ***************************************************
      */
 
-    const loggedIn = Cookie.get('USER_NAME');
+    const rememberedUser = Cookie.get('USER_ID');
     const userName = Cookie.get('USER_NAME');
 
     const [searchButtonText, setSearchButtonText] = useState('Search');
@@ -100,8 +101,14 @@ const Header = ({
      */
 
     const logoutHandler = () => {
-        Cookie.set('USER_NAME', '');
-        Cookie.set('REMEMBER_ME', false);
+        // removed All user Cookies
+        Cookie.remove('USER_NAME');
+        Cookie.remove('REMEMBER_ME');
+        Cookie.remove('USER_ID');
+
+        // Go to home
+        setShowDropdown(false);
+        return history.push('/home');
     };
 
     useEffect(() => {
@@ -126,102 +133,14 @@ const Header = ({
      */
 
     const searchHandler = () => {
-        const pId = searchKey.id;
+        const pId = get(searchKey, 'id');
+        if (!pId) {
+            getFilteredProducts(searchKey);
+            return console.log(searchKey);
+        }
         setSearchKey('');
         setSingleSelections([]);
         return history.push(`/products/${pId}`);
-    };
-
-    const DropdownMenu = ({ loggedIn, ...props }) => {
-        const [menuHeight, setMenuHeight] = useState(null);
-        const [activeMenu, setActiveMenu] = useState('main');
-        const dropdownRef = useRef(null);
-
-        useEffect(() => {
-            setMenuHeight(dropdownRef.current?.firstChild.offsetHeight);
-        }, []);
-
-        const calcHeight = (el) => {
-            const height = el.offsetHeight + 25;
-            setMenuHeight(height);
-        };
-
-        const DropdownItems = (props) => {
-            return (
-                <a
-                    href={props.goToScreen || '#'}
-                    className={'menu-item'}
-                    onClick={() =>
-                        props.goToMenu && setActiveMenu(props.goToMenu)
-                    }>
-                    <span className='icon-button'> {props.leftIcon}</span>
-
-                    {props.children}
-
-                    <span className='icon-right'> {props.rightIcon}</span>
-                </a>
-            );
-        };
-
-        return (
-            <div className='dropdown' style={{ height: menuHeight }}>
-                <CSSTransition
-                    in={activeMenu === 'main'}
-                    unmountOnExit
-                    timeout={500}
-                    classNames='menu-primary'
-                    onEnter={calcHeight}>
-                    <div className='menu'>
-                        <DropdownItems
-                            leftIcon={<SigninIcon />}
-                            goToMenu={'signIn'}>
-                            Sign In / Sign Up
-                        </DropdownItems>
-                        <DropdownItems>Account</DropdownItems>
-                        <DropdownItems>Orders</DropdownItems>
-                        {loggedIn && (
-                            <div onClick={logoutHandler}>
-                                <DropdownItems leftIcon={<Logout />}>
-                                    Log Out
-                                </DropdownItems>
-                            </div>
-                        )}
-                    </div>
-                </CSSTransition>
-
-                <CSSTransition
-                    in={activeMenu === 'signIn'}
-                    unmountOnExit
-                    timeout={500}
-                    classNames='menu-secondary'
-                    onEnter={calcHeight}>
-                    <div className='menu'>
-                        <DropdownItems
-                            leftIcon={<ArrowIcon />}
-                            goToMenu={'main'}
-                        />
-                        <LinkContainer
-                            to='/login'
-                            onClick={() => setShowHeader(false)}>
-                            <div>
-                                <DropdownItems leftIcon={<Login />}>
-                                    Log In
-                                </DropdownItems>
-                            </div>
-                        </LinkContainer>
-                        <LinkContainer
-                            to='/signup'
-                            onClick={() => setShowHeader(false)}>
-                            <div>
-                                <DropdownItems leftIcon={<RegisterIcon />}>
-                                    Register
-                                </DropdownItems>
-                            </div>
-                        </LinkContainer>
-                    </div>
-                </CSSTransition>
-            </div>
-        );
     };
 
     return (
@@ -380,10 +299,14 @@ const Header = ({
                     </AccountDropdown>
                 </FlexContainer>
             </header>
+            {console.log(showDropdown)}
             {showDropdown && (
                 <DropdownMenu
                     onClick={() => setShowDropdown(!showDropdown)}
-                    loggedIn={loggedIn}
+                    showDropdown={showDropdown}
+                    setShowHeader={setShowHeader}
+                    setShowDropdown={setShowDropdown}
+                    rememberedUser={rememberedUser}
                     {...props}></DropdownMenu>
             )}
         </>

@@ -3,6 +3,7 @@ import {
     GET_PRODUCTS_IN_CART,
     UPDATE_CART,
     GET_PRODUCT_BY_ID,
+    FILTER_PRODUCTS,
     REMOVE_FETCHED_STATE,
     SET_CART_COUNT,
 } from '../types';
@@ -32,6 +33,13 @@ export default (state, action) => {
                 ...state,
                 productById: action.payload,
                 productByIdFetched: true,
+            };
+
+        case FILTER_PRODUCTS:
+            return {
+                ...state,
+                allProducts: action.payload,
+                allProductsFetched: true,
             };
 
         case GET_PRODUCTS_IN_CART:

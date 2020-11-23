@@ -113,7 +113,10 @@ const AddressAndCards = () => {
                         required
                     />
 
-                    <FlexContainer width='100%' justifyContent='space-between' marginBottom='10px'>
+                    <FlexContainer
+                        width='100%'
+                        justifyContent='space-between'
+                        marginBottom='10px'>
                         <FlexContainer width='60%'>
                             <DateInput
                                 title={'Expiry Date'}

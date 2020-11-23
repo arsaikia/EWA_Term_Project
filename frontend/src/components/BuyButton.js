@@ -36,6 +36,7 @@ const BuyButton = ({
                 background: !disabled ? gradient : 'grey',
             }}
             onClick={
+                
                 addProductToCart &&
                 showPointer === 'pointer' &&
                 addProductToCart(productId)

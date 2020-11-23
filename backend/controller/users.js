@@ -10,17 +10,7 @@ import ErrorResponse from '../middleware/error.js';
  */
 
 const getUsers = asyncHandler(async (req, res, next) => {
-    const users = await Users.findAll({
-        attributes: [
-            'id',
-            'email',
-            'firstName',
-            'lastName',
-            'password',
-            'userType',
-            'foodPreference',
-        ],
-    });
+    const users = await Users.findAll();
 
     if (!users) {
         return next(new ErrorResponse(`No User found!`, 404));
@@ -38,15 +28,6 @@ const getUser = asyncHandler(async (req, res, next) => {
     //? We can fire direct SQL query as the below line
     // const user = await SQL.query(`select * from users;`);
     const user = await Users.findAll({
-        attributes: [
-            'id',
-            'email',
-            'firstName',
-            'lastName',
-            'password',
-            'userType',
-            'foodPreference',
-        ],
         where: {
             email: req.params.id,
         },
@@ -74,15 +55,6 @@ const getUser = asyncHandler(async (req, res, next) => {
 
 const AuthenticateUser = asyncHandler(async (req, res, next) => {
     const user = await Users.findAll({
-        attributes: [
-            'id',
-            'email',
-            'firstName',
-            'lastName',
-            'password',
-            'userType',
-            'foodPreference',
-        ],
         where: {
             email: req.body.email,
             password: req.body.password,

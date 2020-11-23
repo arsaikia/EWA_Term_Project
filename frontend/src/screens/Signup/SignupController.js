@@ -37,7 +37,6 @@ const SignupController = ({ showHeader, setShowHeader, ...props }) => {
     const [password, setPassword] = useState('');
     const [rePassword, setRePassword] = useState('');
     const [selectedPreference, setSelectedPreference] = useState(0);
-    const [rememberMe, setRememberMe] = useState(false);
     const [error, setError] = useState({
         type: '',
         msg: { email: '', fName: '', lname: '', password: '' },
@@ -57,7 +56,7 @@ const SignupController = ({ showHeader, setShowHeader, ...props }) => {
      */
 
     const loadData = useCallback(() => {
-        setShowHeader(false);
+        showHeader && setShowHeader(false);
         if (isAllUsersApiLoading && !allRegisteredUsersFetched) {
             setIsAllUsersApiLoading(false);
             return getAllRegisteredUsers();
@@ -65,9 +64,12 @@ const SignupController = ({ showHeader, setShowHeader, ...props }) => {
 
         if (!isAllUsersApiLoading && allRegisteredUsersFetched) {
             setFillingScreenData(false);
-            setAllUserEmails(allRegisteredUsers.map((el) => el.email));
+            allRegisteredUsers &&
+                allRegisteredUsers.length > 0 &&
+                setAllUserEmails(allRegisteredUsers.map((el) => el.email));
         }
     }, [
+        showHeader,
         setShowHeader,
         allRegisteredUsers,
         isAllUsersApiLoading,
@@ -75,7 +77,7 @@ const SignupController = ({ showHeader, setShowHeader, ...props }) => {
         getAllRegisteredUsers,
     ]);
 
-    // On Load/Page refresh,  make sure header is hidden
+    //  On Load/Page refresh,  make sure header is hidden
     useEffect(() => {
         loadData();
     }, [loadData]);
@@ -200,32 +202,13 @@ const SignupController = ({ showHeader, setShowHeader, ...props }) => {
             userType: 'CUSTOMER',
             foodPreference: selectedPreference,
         };
-        registerUser(body);
-
-        // const response = await API.POST({
-        //     url: 'users',
-        //     body: {
-        //         email: email,
-        //         firstName: firstName,
-        //         lastName: lastName,
-        //         password: password,
-        //         userType: 'CUSTOMER',
-        //         foodPreference: selectedPreference,
-        //     },
-        // });
-
-        // console.log(response.data.data.id, response.data.success);
-        // Cookie.set(
-        //     'USER_ID',
-        //     get(get(get(response, 'data') || '', 'data') || '', 'id') || ''
-        // );
-        // Cookie.set('REMEMBER_USER', rememberMe);
+        await registerUser(body);
     };
 
     const registerUserX = () => {
         setShowHeader(true);
         createUser();
-        props.history.push('/');
+        props.history.push('/login');
     };
 
     /*
@@ -255,7 +238,6 @@ const SignupController = ({ showHeader, setShowHeader, ...props }) => {
             error={error}
             registerUser={registerUserX}
             showHeader={showHeader}
-            setRememberMe={setRememberMe}
             setSelectedPreference={setSelectedPreference}
             selectedPreference={selectedPreference}
             setRePassword={setRePassword}

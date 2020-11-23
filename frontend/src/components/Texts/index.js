@@ -110,6 +110,7 @@ const StyledDescription = styled.div`
         color: ${(props) => props.color};
         cursor: ${(props) => (props.pointer ? 'pointer' : 'default')};
 
+        width: 100%;
         @media (max-width: 768px) {
             font-size: 14px;
             line-height: 22px;

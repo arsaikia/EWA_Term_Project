@@ -26,7 +26,6 @@ const SignupScreen = ({
     setFieldOnFocus,
     registerUser,
     validateEmail,
-    setRememberMe,
     setSelectedPreference,
     validatePassword,
     rePassword,
@@ -91,7 +90,7 @@ const SignupScreen = ({
                                 )}
                         </div>
 
-                        <div className='form-group'>
+                        <div className='form-group required'>
                             <label>First Name</label>
                             <input
                                 type='text'
@@ -101,7 +100,7 @@ const SignupScreen = ({
                                 onFocus={() => setFieldOnFocus('fName')}
                             />
                         </div>
-                        <div className='form-group'>
+                        <div className='form-group required'>
                             <label>Last Name</label>
                             <input
                                 type='text'
@@ -112,7 +111,7 @@ const SignupScreen = ({
                             />
                         </div>
 
-                        <div className='form-group'>
+                        <div className='form-group required'>
                             <label>Password</label>
                             <input
                                 type='password'
@@ -131,7 +130,7 @@ const SignupScreen = ({
                                 )}
                         </div>
 
-                        <div className='form-group'>
+                        <div className='form-group required'>
                             <label>Confirm Password</label>
                             <input
                                 type='password'
@@ -167,23 +166,7 @@ const SignupScreen = ({
                                 <option value='HEALTHY'>Healthy</option>
                             </Form.Control>
                         </div>
-                        <div className='form-group'>
-                            <div className='custom-control custom-checkbox'>
-                                <input
-                                    type='checkbox'
-                                    className='custom-control-input'
-                                    id='customCheck1'
-                                    onChange={(e) =>
-                                        setRememberMe(e.target.checked)
-                                    }
-                                />
-                                <label
-                                    className='custom-control-label'
-                                    htmlFor='customCheck1'>
-                                    Remember me
-                                </label>
-                            </div>
-                        </div>
+
                         <button
                             disabled={
                                 isEmpty(email) ||

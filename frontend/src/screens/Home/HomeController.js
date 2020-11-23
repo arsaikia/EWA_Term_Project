@@ -9,10 +9,25 @@ import HomeScreen from './HomeScreen';
 import AppContext from '../../Context/AppContext/appContext';
 import CartContext from '../../Context/Cart/cartContext';
 import Loader from '../../components/Loader';
+import UserContext from '../../Context/User/userContext';
+import { useHistory } from 'react-router-dom';
 
 const HomeController = ({ setShowDropdown, ...props }) => {
+    const history = useHistory();
+    /*
+     ***************************************************
+     * GLOBAL STATE FROM CONTEXT API
+     ***************************************************
+     */
     const appContext = useContext(AppContext);
-    const { showHeader, setShowHeader } = appContext;
+    const { setShowHeader } = appContext;
+
+    const userContext = useContext(UserContext);
+    const {
+        isUserAuthenticated,
+        loggedInUser,
+        setUserSemiAuthenticated,
+    } = userContext;
 
     const cartContext = useContext(CartContext);
     const {
@@ -23,11 +38,44 @@ const HomeController = ({ setShowDropdown, ...props }) => {
         allProductsFetched,
         productsInCart,
         productsInCartFetched,
-        isUserAuthenticated,
-        loggedInUser,
-        isAuthenticationAttempted,
-        authenticationError,
+        getProductById,
+        productById,
+        removedFetchedState,
+        productByIdFetched,
     } = cartContext;
+
+    /*
+     ***************************************************
+     * LOCAL STATES
+     ***************************************************
+     */
+    const rememberedUserId = Cookie.get('USER_ID');
+    const rememberMe = Cookie.get('REMEMBER_ME');
+
+    const comingFromProducts = get(props.location.state, 'fromProducts');
+
+    const [fetchingAllProducts, setFetchingAllProducts] = useState(
+        comingFromProducts || true
+    );
+    const [fetchingCart, setfetchingCart] = useState(
+        comingFromProducts || true
+    );
+
+    // console.log('fromProducts', history.location.state);
+    /*
+     ***************************************************
+     * Handler Functions
+     ***************************************************
+     */
+
+    const validateRememberMe = useCallback(() => {
+        const userId = Cookie.get('USER_NAME');
+        const rememberMe = Cookie.get('REMEMBER_ME');
+
+        if (rememberMe && userId) {
+            setUserSemiAuthenticated(userId);
+        }
+    }, [setUserSemiAuthenticated]);
 
     const isAddedToCart = (productIdX) => {
         let containsInBag = false;
@@ -41,29 +89,90 @@ const HomeController = ({ setShowDropdown, ...props }) => {
     };
 
     const goToProductsPage = (productId, productInStock) => () => {
-        if (productInStock) {
-            return props.history.push(`/products/:${productId}`);
-        }
+        // Sanity Check
+        if (isEmpty(productId) || productInStock <= 0) return;
+        getProductById(productId);
+        return props.history.push(`/products/${productId}`, {
+            selectedProduct: productByIdFetched,
+        });
     };
+
+    const addProductToCart = (productId) => () => {
+        if (!productId) return;
+        if (!rememberedUserId) return history.push('/login');
+        updateProductsInCart(rememberedUserId, productId);
+    };
+
+    const getItemsInBag = (productId) => {
+        let retVal = '';
+        productsInCart.forEach((product) => {
+            if (product.productId === productId) {
+                retVal = product.quantity;
+                return;
+            }
+        });
+        return retVal;
+    };
+
+    /*
+     ***************************************************
+     * LOADING AND PAGE POPULATION HANDLERS
+     **************************************************
+     */
+
+    const loadDataOnMount = useCallback(() => {
+        if (fetchingAllProducts && !allProductsFetched) {
+            setFetchingAllProducts(false);
+            fetchAllProducts();
+        }
+
+        if (fetchingCart && !productsInCartFetched && rememberedUserId) {
+            setfetchingCart(false);
+            fetchProductsInCart(rememberedUserId);
+        }
+    }, [
+        fetchingAllProducts,
+        allProductsFetched,
+        fetchAllProducts,
+        fetchingCart,
+        productsInCartFetched,
+        fetchProductsInCart,
+        rememberedUserId,
+    ]);
 
     /*
      * On Browser Back
      */
     window.onpopstate = (e) => {};
 
-    useEffect(() => {
-        setShowHeader(true);
+    // Only on load
 
-        fetchAllProducts();
-        fetchProductsInCart();
+    useEffect(() => {
+        if (fetchingAllProducts && allProductsFetched) {
+            return removedFetchedState();
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    // Check if we are in a Remember me session:
+    useEffect(() => {
+        validateRememberMe();
+    }, [validateRememberMe]);
+
+    useEffect(() => {
+        setShowHeader(true);
+
+        loadDataOnMount();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [loadDataOnMount]);
+
     useEffect(() => {
         isUserAuthenticated && console.log('loggedInUser', loggedInUser);
-    }, [isUserAuthenticated]);
+    }, [isUserAuthenticated, loggedInUser]);
 
-    <Loader showLoader={!allProductsFetched || !productsInCartFetched} />;
+    if (fetchingAllProducts || !allProductsFetched) {
+        return <Loader showLoader />;
+    }
 
     return (
         <>
@@ -76,6 +185,8 @@ const HomeController = ({ setShowDropdown, ...props }) => {
                 productsInCartFetched={productsInCartFetched}
                 isAddedToCart={isAddedToCart}
                 goToProductsPage={goToProductsPage}
+                addProductToCart={addProductToCart}
+                getItemsInBag={getItemsInBag}
                 {...props}
             />
         </>

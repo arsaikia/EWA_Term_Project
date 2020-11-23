@@ -5,15 +5,23 @@ import { useParams } from 'react-router-dom';
 import ProductsScreen from './ProductsScreen';
 import UserContext from '../../Context/User/userContext';
 import AppContext from '../../Context/AppContext/appContext';
+import CartContext from '../../Context/Cart/cartContext';
+import { useHistory } from 'react-router-dom';
+import Loader from '../../components/Loader';
 
-const ProductsController = ({ ...props }) => {
+const ProductsController = (props) => {
+    const history = useHistory();
     /*
      ***************************************************
      * GLOBAL STATE FROM CONTEXT API
      ***************************************************
      */
+
     const appContext = useContext(AppContext);
-    const { showHeader, setShowHeader } = appContext;
+    const { setShowHeader } = appContext;
+
+    const cartContext = useContext(CartContext);
+    const { productById, getProductById, productByIdFetched } = cartContext;
 
     const userContext = useContext(UserContext);
     const {
@@ -21,7 +29,7 @@ const ProductsController = ({ ...props }) => {
         isUserAuthenticated,
         isAuthenticationAttempted,
         authenticationError,
-        setlLoginFalse,
+        setLoginFalse,
         allRegisteredUsers,
         allRegisteredUsersFetched,
         getAllRegisteredUsers,
@@ -35,12 +43,13 @@ const ProductsController = ({ ...props }) => {
     const { productId } = useParams();
 
     useEffect(() => {
-        console.log('In Products Controller', productId);
-    }, []);
-
-    useEffect(() => {
         setShowHeader(true);
 
+        if (!productByIdFetched) {
+            getProductById(productId);
+        }
+
+        console.log('Products Controller', productId);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -49,11 +58,16 @@ const ProductsController = ({ ...props }) => {
      */
     window.onpopstate = (e) => {};
 
+    if (!productByIdFetched) {
+        return <Loader showLoader={true} />;
+    }
+
     return (
         <ProductsScreen
             isAuthenticationAttempted={isAuthenticationAttempted}
             isUserAuthenticated={isUserAuthenticated}
             authenticationError={authenticationError}
+            productById={productById}
         />
     );
 };

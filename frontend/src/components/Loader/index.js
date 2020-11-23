@@ -15,7 +15,7 @@ const Loader = ({ showLoader }) => {
                 width='100%'
                 content={
                     <FlexContainer>
-                        <div class='lds-default'>
+                        <div className='lds-default'>
                             <div></div>
                             <div></div>
                             <div></div>

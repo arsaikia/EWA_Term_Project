@@ -89,3 +89,7 @@ html,
     color: #167bff !important;
 }
 
+.form-group.required label:after {
+    content: ' *';
+    color: red;
+}

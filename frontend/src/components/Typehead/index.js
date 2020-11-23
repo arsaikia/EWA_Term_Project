@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components/macro';
 import { Form } from 'react-bootstrap';
 import { Typeahead } from 'react-bootstrap-typeahead';
@@ -13,25 +13,15 @@ const AutcompleteSearchBar = ({
     options = [
         { id: 1, name: 'Apple Pie' },
         { id: 12, name: 'Jack' },
-        { id: 11, name: 'Jill' },
-        { id: 2, name: 'Miles' },
-        { id: 33, name: 'Charles' },
-        { id: 41, name: 'Hexrbie' },
-        { id: 112, name: 'Jaack' },
-        { id: 121, name: 'Jisll' },
-        { id: 22, name: 'Mdiltes' },
-        { id: 32, name: 'Chasrles' },
-        { id: 42, name: 'Herrtbie' },
-        { id: 323, name: 'Charles' },
-        { id: 421, name: 'Hexwrrbie' },
-        { id: 11112, name: 'Jtahack' },
-        { id: 12421, name: 'Jsdisll' },
-        { id: 222, name: 'Mdisles' },
-        { id: 312, name: 'Chassrles' },
-        { id: 412, name: 'Herarbie' },
     ],
+    setSearchKey,
+    singleSelections,
+    setSingleSelections
 }) => {
-    const [singleSelections, setSingleSelections] = useState([]);
+
+    useEffect(() => {
+        singleSelections && setSearchKey(singleSelections[0]);
+    }, [singleSelections]);
 
     return (
         <>
@@ -42,6 +32,7 @@ const AutcompleteSearchBar = ({
                     id='typeahead'
                     labelKey='name'
                     onChange={setSingleSelections}
+                    onInputChange={setSearchKey}
                     options={options}
                     placeholder='Search for a product...'
                     selected={singleSelections}

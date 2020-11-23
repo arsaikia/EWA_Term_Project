@@ -1,0 +1,28 @@
+[
+    {
+        "storeId": "537a2109-095b-40c4-86a8-33447c8a8040",
+        "storeName" : "Eat Fresh Family Store",
+        "addressId":"61a0a7e3-a91b-456d-bafd-49b7917655c0"
+    },
+    {
+        "storeId": "b6a0d0f8-fcc4-4776-a918-5b93bf1bd563",
+        "storeName" : "Eat Fresh Mega Mart",
+        "addressId":"208ac97b-c382-4fea-af70-e6964711b525"
+    },
+    {
+        "storeId": "6ba1a2a3-3c7c-4f2b-a9f5-de91d5091aca",
+        "storeName" : "Eat Fresh Wholesale",
+        "addressId":"753f33e6-b0f9-4d3f-ba85-67088baf74a2"
+    },
+    {
+        "storeId": "9b7f3adf-d139-404f-9cd4-dee018d0821f",
+        "storeName" : "Eat Fresh",
+        "addressId":"79c6f298-c580-480c-8bb8-3b652317c1a0"
+    },
+    {
+        "storeId": "706ab483-b96f-4b88-81ed-66b7beca5f5a",
+        "storeName" : "Eat Fresh Deli",
+        "addressId":"25047f5e-379c-425a-8c87-b91cd77d07e3"
+    }
+    
+]

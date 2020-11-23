@@ -8,12 +8,12 @@ const BuyButton = ({
     showPointer,
     quantity,
     itemsInBag,
-    ContainsInCart = true,
+    productId,
+    ContainsInCart,
     fullLengthButton = false,
+    addProductToCart = null,
 }) => {
     const gradient = 'linear-gradient(to right,#f64f59,#fc7233)';
-    const BuyNowHandler = () => console.log('clicked on buy now!');
-
     const [currentItemQuantity, setCurrentItemQuantity] = useState(quantity);
     const quantityHandler = (val) => () =>
         val === 'ADD'
@@ -35,7 +35,12 @@ const BuyButton = ({
             style={{
                 background: !disabled ? gradient : 'grey',
             }}
-            onClick={!ContainsInCart && BuyNowHandler}>
+            onClick={
+                
+                addProductToCart &&
+                showPointer === 'pointer' &&
+                addProductToCart(productId)
+            }>
             {ContainsInCart ? (
                 <FlexContainer
                     width='100%'

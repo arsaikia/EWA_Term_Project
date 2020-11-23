@@ -1,0 +1,43 @@
+[
+    {
+        "addressId": "208ac97b-c382-4fea-af70-e6964711b525",
+        "street1" : "15 Washington Ave",
+        "street2":"Brooklyn, NY 11205",
+        "city" : "New York",
+        "zip":11205,
+        "state" : "New York"
+    },
+    {
+        "addressId": "61a0a7e3-a91b-456d-bafd-49b7917655c0",
+        "street1" : "56220 Point Rd, Big Creek, CA 93605",
+        "street2":"",
+        "city" : "Big Creek",
+        "zip":93605,
+        "state" : "California"
+    },
+    {
+        "addressId": "79c6f298-c580-480c-8bb8-3b652317c1a0",
+        "street1" : "600 Maryland Ave SW",
+        "street2":"",
+        "city" : "Maryland",
+        "zip":20002,
+        "state" : "Washington"
+    },
+    {
+        "addressId": "753f33e6-b0f9-4d3f-ba85-67088baf74a2",
+        "street1" : "7801 Hillcrest Ave",
+        "street2":"",
+        "city" : "Dallas",
+        "zip":75225,
+        "state" : "Texas"
+    },
+    {
+        "addressId": "25047f5e-379c-425a-8c87-b91cd77d07e3",
+        "street1" : "2951 SKing Drive",
+        "street2":"",
+        "city" : "Chicago",
+        "zip":60616,
+        "state" : "Illinois"
+    }
+    
+]

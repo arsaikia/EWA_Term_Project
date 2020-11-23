@@ -1,12 +1,18 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useContext } from 'react';
 import styled from 'styled-components/macro';
 import Cookie from 'js-cookie';
-import { isEmpty } from 'lodash';
+import { isEmpty, get } from 'lodash';
 import { ReactComponent as Login } from '../Images/Icons/signup.svg';
+import { ReactComponent as Logout } from '../Images/Icons/logout.svg';
 import { ReactComponent as ArrowIcon } from '../Images/Icons/arrow.svg';
 import { ReactComponent as SigninIcon } from '../Images/Icons/signin.svg';
 import { ReactComponent as RegisterIcon } from '../Images/Icons/register.svg';
 import { CSSTransition } from 'react-transition-group';
+import { useHistory } from 'react-router-dom';
+import DropdownMenu from './DropdownMenu';
+import CartContext from '../Context/Cart/cartContext';
+import UserContext from '../Context/User/userContext';
+
 import {
     Navbar,
     Nav,
@@ -45,107 +51,112 @@ const Header = ({
     showHeader,
     showDropdown,
     setShowDropdown,
-    props,
+    ...props
 }) => {
+    const history = useHistory();
+    /*
+     ***************************************************
+     * GLOBAL STATE FROM CONTEXT API
+     ***************************************************
+     */
+    const cartContext = useContext(CartContext);
+    const {
+        allProducts,
+        allProductsFetched,
+        productsInCartFetched,
+        cartCount,
+        getFilteredProducts,
+    } = cartContext;
+
+    const userContext = useContext(UserContext);
+    const { isUserAuthenticated } = userContext;
+
+    /*
+     ***************************************************
+     * LOCAL STATES
+     ***************************************************
+     */
+
+    const rememberedUser = Cookie.get('USER_ID');
     const userName = Cookie.get('USER_NAME');
+
+    const [searchButtonText, setSearchButtonText] = useState('Search');
+    const [singleSelections, setSingleSelections] = useState([]);
+
+    const [searchProducts, setSearchProducts] = useState([]);
     const [searchKey, setSearchKey] = useState('');
 
-    const DropdownMenu = (props) => {
-        const [menuHeight, setMenuHeight] = useState(null);
-        const [activeMenu, setActiveMenu] = useState('main');
-        const dropdownRef = useRef(null);
+    useEffect(() => {
+        if (!isEmpty(get(searchKey, 'id'))) {
+            setSearchButtonText('View Product');
+        } else {
+            setSearchButtonText('Search');
+        }
+    }, [searchKey]);
 
-        useEffect(() => {
-            setMenuHeight(dropdownRef.current?.firstChild.offsetHeight);
-        }, []);
+    /*
+     ***************************************************
+     * LOGOUT
+     ***************************************************
+     */
 
-        const calcHeight = (el) => {
-            const height = el.offsetHeight + 25;
-            setMenuHeight(height);
-        };
+    const logoutHandler = () => {
+        // removed All user Cookies
+        Cookie.remove('USER_NAME');
+        Cookie.remove('REMEMBER_ME');
+        Cookie.remove('USER_ID');
 
-        const DropdownItems = (props) => {
-            return (
-                <a
-                    href={props.goToScreen || '#'}
-                    className={'menu-item'}
-                    onClick={() =>
-                        props.goToMenu && setActiveMenu(props.goToMenu)
-                    }>
-                    <span className='icon-button'> {props.leftIcon}</span>
+        // Go to home
+        setShowDropdown(false);
+        return history.push('/home');
+    };
 
-                    {props.children}
+    useEffect(() => {
+        if (allProductsFetched) {
+            const searches = [];
 
-                    <span className='icon-right'> {props.rightIcon}</span>
-                </a>
-            );
-        };
+            for (const product of allProducts) {
+                searches.push({
+                    id: product.productId,
+                    name: product.productName,
+                });
+            }
 
-        return (
-            <div className='dropdown' style={{ height: menuHeight }}>
-                <CSSTransition
-                    in={activeMenu === 'main'}
-                    unmountOnExit
-                    timeout={500}
-                    classNames='menu-primary'
-                    onEnter={calcHeight}>
-                    <div className='menu'>
-                        <DropdownItems
-                            leftIcon={<SigninIcon />}
-                            goToMenu={'signIn'}>
-                            Sign In / Sign Up
-                        </DropdownItems>
-                        <DropdownItems>Account</DropdownItems>
-                        <DropdownItems>Orders</DropdownItems>
-                    </div>
-                </CSSTransition>
+            setSearchProducts(searches);
+        }
+    }, [allProductsFetched, allProducts]);
 
-                <CSSTransition
-                    in={activeMenu === 'signIn'}
-                    unmountOnExit
-                    timeout={500}
-                    classNames='menu-secondary'
-                    onEnter={calcHeight}>
-                    <div className='menu'>
-                        <DropdownItems
-                            leftIcon={<ArrowIcon />}
-                            goToMenu={'main'}
-                        />
-                        <LinkContainer
-                            to='/login'
-                            onClick={() => setShowHeader(false)}>
-                            <div>
-                                <DropdownItems leftIcon={<Login />}>
-                                    Log In
-                                </DropdownItems>
-                            </div>
-                        </LinkContainer>
-                        <LinkContainer
-                            to='/signup'
-                            onClick={() => setShowHeader(false)}>
-                            <div>
-                                <DropdownItems leftIcon={<RegisterIcon />}>
-                                    Register
-                                </DropdownItems>
-                            </div>
-                        </LinkContainer>
-                    </div>
-                </CSSTransition>
-            </div>
-        );
+    /*
+     ***************************************************
+     * User Clicks on Search
+     ***************************************************
+     */
+
+    const searchHandler = () => {
+        const pId = get(searchKey, 'id');
+        if (!pId) {
+            getFilteredProducts(searchKey);
+            return console.log(searchKey);
+        }
+        setSearchKey('');
+        setSingleSelections([]);
+        return history.push(`/products/${pId}`);
     };
 
     return (
         <>
-            <header style={{ display: !showHeader && 'None', padding: '0px' }}>
+            <header
+                style={{
+                    display: !showHeader && 'None',
+                    padding: '0px',
+                }}>
                 <Navbar
                     width='100%'
                     bg='dark'
                     variant='dark'
                     expand='md'
                     // collapseOnSelect
-                    fixed='top'
-                    fluid>
+                    fixed='top'>
                     <Container
                         fluid
                         onClick={() => {
@@ -168,26 +179,25 @@ const Header = ({
                             </FlexContainer>
                             <FlexContainer>
                                 <Form inline className='mr rounded p-1'>
-                                    {/* <StyledInput
-                                        type='text'
-                                        placeholder='Search Products'
-                                        className='mr-sm-2'
-                                        onChange={(e) =>
-                                            setSearchKey(e.target.value)
+                                    <AutcompleteSearchBar
+                                        options={searchProducts}
+                                        setSearchKey={setSearchKey}
+                                        singleSelections={singleSelections}
+                                        setSingleSelections={
+                                            setSingleSelections
                                         }
-                                    /> */}
-                                    <AutcompleteSearchBar />
+                                    />
                                     <Button
                                         className='d-none d-md-block'
                                         variant='outline-primary'
-                                        onClick={() => console.log(searchKey)}>
-                                        Search
+                                        onClick={searchHandler}>
+                                        {searchButtonText}
                                     </Button>
                                 </Form>
                             </FlexContainer>
                             <FlexContainer>
                                 <LinkContainer
-                                    to='/login'
+                                    to='/cart'
                                     onClick={() => setShowHeader(false)}>
                                     <Nav.Link>
                                         <FlexContainer
@@ -208,7 +218,12 @@ const Header = ({
                                                     }}></i>
                                             </FlexContainer>
                                             <Note
-                                                text={` ${' My Cart'}`}
+                                                text={
+                                                    productsInCartFetched
+                                                        ? cartCount
+                                                        : ` ${' My Cart'}`
+                                                }
+                                                backgroundColor='#ffff'
                                                 bold
                                                 pointer
                                             />
@@ -219,14 +234,16 @@ const Header = ({
                         </FlexContainer>
                     </Container>
                 </Navbar>
+
                 <FlexContainer
-                    padding='0px 2em 0px 2em'
+                    padding='.1em 2em .1em 2em'
                     flexDirection='row'
+                    // style={{ position: 'sticky', top: '10em' }}
                     position='fixed'
                     width='100%'
                     marginTop='70px'
                     backgroundColor='#232F3E'
-                    zIndex='10'>
+                    zIndex='1'>
                     <FlexContainer
                         flexDirection='row'
                         width='15%'
@@ -234,7 +251,7 @@ const Header = ({
                         justifyContent='flex-start'
                         alignItems='center'>
                         <i
-                            class='fas fa-map-marker-alt fa-sm'
+                            className='fas fa-map-marker-alt fa-sm'
                             style={{ color: '#ffff', marginRight: '10px' }}></i>
                         <FlexContainer flexDirection='column' padding='5px'>
                             <Note
@@ -273,7 +290,7 @@ const Header = ({
                             pointer
                         />
                         <i
-                            class='fas fa-angle-down'
+                            className='fas fa-angle-down'
                             style={{
                                 color: '#ffff',
                                 marginLeft: '10px',
@@ -282,9 +299,14 @@ const Header = ({
                     </AccountDropdown>
                 </FlexContainer>
             </header>
+            {console.log(showDropdown)}
             {showDropdown && (
                 <DropdownMenu
                     onClick={() => setShowDropdown(!showDropdown)}
+                    showDropdown={showDropdown}
+                    setShowHeader={setShowHeader}
+                    setShowDropdown={setShowDropdown}
+                    rememberedUser={rememberedUser}
                     {...props}></DropdownMenu>
             )}
         </>

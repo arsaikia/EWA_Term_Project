@@ -18,7 +18,7 @@ const LoginController = ({ ...props }) => {
         isUserAuthenticated,
         isAuthenticationAttempted,
         authenticationError,
-        setlLoginFalse,
+        setLoginFalse,
         allRegisteredUsers,
         allRegisteredUsersFetched,
         getAllRegisteredUsers,
@@ -45,7 +45,7 @@ const LoginController = ({ ...props }) => {
 
     useEffect(() => {
         setAlreadyLoggedInUser(Cookie.get('USER_NAME'));
-        setlLoginFalse();
+        setLoginFalse();
     }, []);
     /*
      * On Browser Back

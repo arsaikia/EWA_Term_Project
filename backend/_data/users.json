@@ -1,0 +1,38 @@
+[
+    {
+        "userId": "a1d7bab4-bc90-4f80-9909-9a5b56363fd4",
+        "email": "ar@sa.co",
+        "firstName": "Arunabh",
+        "lastName": "Saikia",
+        "password": "#2fxvUdcS#",
+        "userType": "ADMIN",
+        "foodPreference": "ALL"
+    },
+    {
+        "userId": "102d426e-a6c5-4c72-af6d-6995071fa3d3",
+        "email": "arsaikia@gmail.com",
+        "firstName": "Arunabh",
+        "lastName": "Saikia",
+        "password": "#2fxvUdcS#",
+        "userType": "CUSTOMER",
+        "foodPreference": "VEGAN"
+    },
+    {
+        "userId": "849f5c5b-5456-4dd6-8948-c529fff210de",
+        "email": "user@gmail.com",
+        "firstName": "Arunabh",
+        "lastName": "Saikia",
+        "password": "#2fxvUdcS#",
+        "userType": "CUSTOMER",
+        "foodPreference": "MEAT"
+    },
+    {
+        "userId": "785f0f73-ef4e-485b-b8fb-8dbb2707a4a2",
+        "email": "store@gmail.com",
+        "firstName": "Arunabh",
+        "lastName": "Saikia",
+        "password": "#2fxvUdcS#",
+        "userType": "STORE_MANAGER",
+        "foodPreference": "HEALTHY"
+    }
+]

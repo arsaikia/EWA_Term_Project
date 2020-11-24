@@ -39,6 +39,7 @@ const Users = SQL.define(
             allowNull: false,
             values: ['ALL', 'VEGAN', 'MEAT', 'HEALTHY'],
         },
+        // Should these be outside just like how other models are implemented ? 
         storeManager: {
             type: Sequelize.UUID,
             references: {

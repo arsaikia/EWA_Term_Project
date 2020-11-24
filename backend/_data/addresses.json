@@ -1,5 +1,6 @@
 [
     {
+        "userId": "",
         "addressId": "208ac97b-c382-4fea-af70-e6964711b525",
         "street1" : "15 Washington Ave",
         "street2":"Brooklyn, NY 11205",
@@ -8,6 +9,7 @@
         "state" : "New York"
     },
     {
+        "userId": "",
         "addressId": "61a0a7e3-a91b-456d-bafd-49b7917655c0",
         "street1" : "56220 Point Rd, Big Creek, CA 93605",
         "street2":"",
@@ -16,6 +18,7 @@
         "state" : "California"
     },
     {
+        "userId": "",
         "addressId": "79c6f298-c580-480c-8bb8-3b652317c1a0",
         "street1" : "600 Maryland Ave SW",
         "street2":"",
@@ -24,6 +27,7 @@
         "state" : "Washington"
     },
     {
+        "userId": "",
         "addressId": "753f33e6-b0f9-4d3f-ba85-67088baf74a2",
         "street1" : "7801 Hillcrest Ave",
         "street2":"",
@@ -32,12 +36,58 @@
         "state" : "Texas"
     },
     {
+        "userId": "",
         "addressId": "25047f5e-379c-425a-8c87-b91cd77d07e3",
         "street1" : "2951 SKing Drive",
         "street2":"",
         "city" : "Chicago",
         "zip":60616,
         "state" : "Illinois"
+    },
+    {
+        "userId": "1160c652-0a2b-465b-8af2-aa792e640397",
+        "addressId": "9200f792-7fe5-466d-897b-e0c165654180",
+        "street1" : "3001 SKing Drive",
+        "street2":"",
+        "city" : "Chicago",
+        "zip":60616,
+        "state" : "Illinois"
+    },
+    {
+        "userId": "f1877d11-66d0-432b-b879-568557ee1764",
+        "addressId": "24e0d193-1145-46bc-b226-5229779e5d60",
+        "street1" : "3055 S Emerald Avenue",
+        "street2":"",
+        "city" : "Chicago",
+        "zip":60616,
+        "state" : "Illinois"
+    },
+    {
+        "userId": "991dc80d-26ac-48be-acdb-7146ee22b31a",
+        "addressId": "5d80ef34-3f3c-4d01-8218-4571b0015a8d",
+        "street1" : "3405 SKing Drive",
+        "street2":"",
+        "city" : "Chicago",
+        "zip":60616,
+        "state" : "Illinois"
+    },
+    {
+        "userId": "1e41be06-4966-407c-8c06-c9299dc84eb7",
+        "addressId": "7c1bac59-02bd-40e0-ac4b-0db9247f5e2b",
+        "street1" : "540 Olive Ave",
+        "street2":"",
+        "city" : " Long Beach",
+        "zip":90802,
+        "state" : "California"
+    },
+    {
+        "userId": "2e9e5ee2-a29d-4cb5-963d-b6d6ce8df526",
+        "addressId": "97e13a52-0cec-48b8-a079-2aadbec25915",
+        "street1" : "520 S Front St",
+        "street2":"",
+        "city" : "Seattle",
+        "zip":98108,
+        "state" : "Washington"
     }
     
 ]

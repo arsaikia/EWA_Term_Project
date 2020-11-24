@@ -1,7 +1,7 @@
 [{
     "productId": "1d450726-dbe3-415f-878e-b9a93f5688db",
     "productName": "Apple",
-    "image": "/images/apple.png",
+    "image": "apple.png",
     "description": "Dummy",
     "subcategory": "Fruits",
     "category": "PRODUCE",
@@ -15,7 +15,7 @@
 {
     "productId": "9d4772a9-2907-4353-8cd9-770b811837d8",
     "productName": "Banana",
-    "image": "/images/banana.png",
+    "image": "banana.png",
     "description": "Dummy",
     "subcategory": "Fruits",
     "category": "PRODUCE",
@@ -29,7 +29,7 @@
 {
     "productId": "eee5b1c7-cba6-450e-be94-83799db81ee8",
     "productName": "Orange",
-    "image": "/images/orange.png",
+    "image": "orange.png",
     "description": "Dummy",
     "subcategory": "Fruits",
     "category": "PRODUCE",
@@ -43,7 +43,7 @@
 {
     "productId": "ecd2b7bd-a9c4-45a6-a780-66b3cc4530fc",
     "productName": "Kiwi",
-    "image": "/images/kiwi.png",
+    "image": "kiwi.png",
     "description": "Dummy",
     "subcategory": "Fruits",
     "category": "PRODUCE",
@@ -58,7 +58,7 @@
 {
     "productId": "d672c713-9057-4726-b39c-40e564fb5a12",
     "productName": "Grapes",
-    "image": "/images/grapes.png",
+    "image": "grapes.png",
     "description": "Dummy",
     "subcategory": "Fruits",
     "category": "PRODUCE",
@@ -72,7 +72,7 @@
 {
     "productId": "22016150-bcc9-4aa6-b07f-27b27bfe95d1",
     "productName": "Papaya",
-    "image": "/images/papaya.png",
+    "image": "papaya.png",
     "description": "Dummy",
     "subcategory": "Fruits",
     "category": "PRODUCE",
@@ -86,7 +86,7 @@
 {
     "productId": "ab7996c6-822f-4208-a289-c048a1fa57f6",
     "productName": "Black Berrys",
-    "image": "/images/blackberrys.png",
+    "image": "blackberrys.png",
     "description": "Dummy",
     "subcategory": "Fruits",
     "category": "PRODUCE",
@@ -100,7 +100,7 @@
 {
     "productId": "8570a4cf-9b71-4152-81c5-e51b4252cfcc",
     "productName": "Blue Berries",
-    "image": "/images/papaya.png",
+    "image": "papaya.png",
     "description": "Dummy",
     "subcategory": "Fruits",
     "category": "PRODUCE",
@@ -114,7 +114,7 @@
 {
     "productId": "30d5a9c0-0f3b-4413-82c8-9b66f297f2d6",
     "productName": "Cherries",
-    "image": "/images/cherries.png",
+    "image": "cherries.png",
     "description": "Dummy",
     "subcategory": "Fruits",
     "category": "PRODUCE",
@@ -128,7 +128,7 @@
 {
     "productId": "33888336-8b3d-432a-bdb3-0b46e8eaf6f7",
     "productName": "Cranberries",
-    "image": "/images/cranberries.png",
+    "image": "cranberries.png",
     "description": "Dummy",
     "subcategory": "Fruits",
     "category": "PRODUCE",
@@ -142,7 +142,7 @@
 {
     "productId": "b9a45bcf-cbf3-4195-8843-790a8487c894",
     "productName": "Guava",
-    "image": "/images/guava.png",
+    "image": "guava.png",
     "description": "Dummy",
     "subcategory": "Fruits",
     "category": "PRODUCE",
@@ -156,7 +156,7 @@
 {
     "productId": "a42940b9-c175-449c-bd44-22ea4355ae87",
     "productName": "Jackfruit",
-    "image": "/images/jackfruit.png",
+    "image": "jackfruit.png",
     "description": "Dummy",
     "subcategory": "Fruits",
     "category": "PRODUCE",
@@ -170,7 +170,7 @@
 {
     "productId": "9cfc1e2b-2100-4a3a-a537-892d4a4d3522",
     "productName": "Mango",
-    "image": "/images/mango.png",
+    "image": "mango.png",
     "description": "Dummy",
     "subcategory": "Fruits",
     "category": "PRODUCE",
@@ -184,7 +184,7 @@
 {
     "productId": "752b5774-841b-4ca4-979c-f0ffe6e07f65",
     "productName": "Peaches",
-    "image": "/images/pear.png",
+    "image": "pear.png",
     "description": "Dummy",
     "subcategory": "Fruits",
     "category": "PRODUCE",
@@ -198,7 +198,7 @@
 {
     "productId": "1b9a1cb0-e5f3-4cb1-ae78-bdaf1f0ec30b",
     "productName": "Pineapple",
-    "image": "/images/pineapple.png",
+    "image": "pineapple.png",
     "description": "Dummy",
     "subcategory": "Fruits",
     "category": "PRODUCE",
@@ -212,7 +212,7 @@
 {
     "productId": "b50e23c3-7221-4d54-b56f-7490e77064a4",
     "productName": "Watermelon",
-    "image": "/images/watermelon.png",
+    "image": "watermelon.png",
     "description": "Dummy",
     "subcategory": "Fruits",
     "category": "PRODUCE",
@@ -226,7 +226,7 @@
 {
     "productId": "0fd4184e-ee1c-4389-9607-68886bf5f940",
     "productName": "Sugar Apple",
-    "image": "/images/sugarapple.png",
+    "image": "sugarapple.png",
     "description": "Dummy",
     "subcategory": "Fruits",
     "category": "PRODUCE",
@@ -240,7 +240,7 @@
 {
     "productId": "14dbde9f-b52c-44cd-99fc-561563f4ec08",
     "productName": "Lychee",
-    "image": "/images/lychee.png",
+    "image": "lychee.png",
     "description": "Dummy",
     "subcategory": "Fruits",
     "category": "PRODUCE",
@@ -254,7 +254,7 @@
 {
     "productId": "d182c116-ad54-4cfb-8416-5c095ee07c00",
     "productName": "Mandarin",
-    "image": "/images/papaya.png",
+    "image": "papaya.png",
     "description": "Dummy",
     "subcategory": "Fruits",
     "category": "PRODUCE",
@@ -268,7 +268,7 @@
 {
     "productId": "872891a1-8fe0-4dac-97d7-1e823c8a438a",
     "productName": "Passion Fruit",
-    "image": "/images/passionfruit.png",
+    "image": "passionfruit.png",
     "description": "Dummy",
     "subcategory": "Fruits",
     "category": "PRODUCE",
@@ -282,7 +282,7 @@
 {
     "productId": "fc437e26-e5fc-45b0-af77-8c950deb1d3a",
     "productName": "Arrowroot",
-    "image": "/images/.arrowrootpng",
+    "image": ".arrowrootpng",
     "description": "Dummy",
     "subcategory": "Vegetables",
     "category": "PRODUCE",
@@ -296,7 +296,7 @@
 {
     "productId": "48dbb483-93c0-438d-9983-0ed006c0b640",
     "productName": "Artichoke",
-    "image": "/images/artichoke.png",
+    "image": "artichoke.png",
     "description": "Dummy",
     "subcategory": "Vegetables",
     "category": "PRODUCE",
@@ -310,7 +310,7 @@
 {
     "productId": "4667f230-f260-467a-8a04-f50239ff3ee8",
     "productName": "Asparagus",
-    "image": "/images/Asparagus.png",
+    "image": "Asparagus.png",
     "description": "Dummy",
     "subcategory": "Vegetables",
     "category": "PRODUCE",
@@ -324,7 +324,7 @@
 {
     "productId": "9e2a14d3-c72a-4dc5-b8b3-b7efb05212d9",
     "productName": "Beans",
-    "image": "/images/beans.png",
+    "image": "beans.png",
     "description": "Dummy",
     "subcategory": "Vegetables",
     "category": "PRODUCE",
@@ -338,7 +338,7 @@
 {
     "productId": "e95d199f-459b-4c44-9348-3afbc288faef",
     "productName": "Bitter Melon",
-    "image": "/images/bittermelon.png",
+    "image": "bittermelon.png",
     "description": "Dummy",
     "subcategory": "Vegetables",
     "category": "PRODUCE",
@@ -352,7 +352,7 @@
 {
     "productId": "7acb7309-0184-41ea-acbe-9de12e16ee1d",
     "productName": "Bok Choy",
-    "image": "/images/bokchoy.png",
+    "image": "bokchoy.png",
     "description": "Dummy",
     "subcategory": "Vegetables",
     "category": "PRODUCE",
@@ -366,7 +366,7 @@
 {
     "productId": "52c82994-112f-4fdc-be8d-af1ab6fe05e4",
     "productName": "Cabbage",
-    "image": "/images/cabbage.png",
+    "image": "cabbage.png",
     "description": "Dummy",
     "subcategory": "Vegetables",
     "category": "PRODUCE",
@@ -380,7 +380,7 @@
 {
     "productId": "6d59d156-6914-4d0d-9389-cc1f14139a77",
     "productName": "Beetroot",
-    "image": "/images/beetroot.png",
+    "image": "beetroot.png",
     "description": "Dummy",
     "subcategory": "Vegetables",
     "category": "PRODUCE",
@@ -394,7 +394,7 @@
 {
     "productId": "a8e6dfd6-8746-4b0b-91b0-2ececa2d4b99",
     "productName": "Carrot",
-    "image": "/images/carrot.png",
+    "image": "carrot.png",
     "description": "Dummy",
     "subcategory": "Vegetables",
     "category": "PRODUCE",
@@ -408,7 +408,7 @@
 {
     "productId": "b4f13b12-0b48-4e06-ba9e-354b6b716314",
     "productName": "Celery",
-    "image": "/images/celery.png",
+    "image": "celery.png",
     "description": "Dummy",
     "subcategory": "Vegetables",
     "category": "PRODUCE",
@@ -422,7 +422,7 @@
 {
     "productId": "387b1199-f9b7-4cb6-a2bc-b68d53324c4f",
     "productName": "Corn",
-    "image": "/images/corn.png",
+    "image": "corn.png",
     "description": "Dummy",
     "subcategory": "Vegetables",
     "category": "PRODUCE",
@@ -436,7 +436,7 @@
 {
     "productId": "86cd938a-da6f-46d2-846f-939d0b061e60",
     "productName": "Eggplant",
-    "image": "/images/eggplant.png",
+    "image": "eggplant.png",
     "description": "Dummy",
     "subcategory": "Vegetables",
     "category": "PRODUCE",
@@ -450,7 +450,7 @@
 {
     "productId": "b8488cca-3e59-441d-ba30-c9f4e9d83a2c",
     "productName": "Kale",
-    "image": "/images/kale.png",
+    "image": "kale.png",
     "description": "Dummy",
     "subcategory": "Vegetables",
     "category": "PRODUCE",
@@ -464,7 +464,7 @@
 {
     "productId": "90daf9d0-81ed-4a27-920f-7e87e580a3aa",
     "productName": "Lettuce",
-    "image": "/images/lettuce.png",
+    "image": "lettuce.png",
     "description": "Dummy",
     "subcategory": "Vegetables",
     "category": "PRODUCE",
@@ -478,7 +478,7 @@
 {
     "productId": "7c3bf2d0-dbec-432a-b5f0-9aa84425003f",
     "productName": "Onion",
-    "image": "/images/onion.png",
+    "image": "onion.png",
     "description": "Dummy",
     "subcategory": "Vegetables",
     "category": "PRODUCE",
@@ -492,7 +492,7 @@
 {
     "productId": "85f1ccd9-85bc-4e17-a0f6-cf5eacd4a909",
     "productName": "Peas",
-    "image": "/images/peas.png",
+    "image": "peas.png",
     "description": "Dummy",
     "subcategory": "Vegetables",
     "category": "PRODUCE",
@@ -506,7 +506,7 @@
 {
     "productId": "bbc41cef-b678-42a8-a854-00d97779d020",
     "productName": "Pepper",
-    "image": "/images/pepper.png",
+    "image": "pepper.png",
     "description": "Dummy",
     "subcategory": "Vegetables",
     "category": "PRODUCE",
@@ -520,7 +520,7 @@
 {
     "productId": "dd0a7da4-322f-480f-8844-7ff2b079f65b",
     "productName": "Potato",
-    "image": "/images/potato.png",
+    "image": "potato.png",
     "description": "Dummy",
     "subcategory": "Vegetables",
     "category": "PRODUCE",
@@ -534,7 +534,7 @@
 {
     "productId": "0a561b6a-6816-4d43-8b2b-c560d2ba40ef",
     "productName": "Pumpkin",
-    "image": "/images/pumpkin.png",
+    "image": "pumpkin.png",
     "description": "Dummy",
     "subcategory": "Vegetables",
     "category": "PRODUCE",
@@ -548,7 +548,7 @@
 {
     "productId": "a67f8a47-02de-4f75-acf2-c8e435ed36c1",
     "productName": "Tomato",
-    "image": "/images/tomato.png",
+    "image": "tomato.png",
     "description": "Dummy",
     "subcategory": "Vegetables",
     "category": "PRODUCE",
@@ -562,7 +562,7 @@
 {
     "productId": "6c4a0f43-515d-4a47-b939-cda064631a59",
     "productName": "Pork",
-    "image": "/images/pork.png",
+    "image": "pork.png",
     "description": "Dummy",
     "subcategory": "Meats",
     "category": "PRODUCE",
@@ -576,7 +576,7 @@
 {
     "productId": "b23bf02a-d64d-4f29-a0a2-5f0b7aa1661d",
     "productName": "Beef",
-    "image": "/images/beef.png",
+    "image": "beef.png",
     "description": "Dummy",
     "subcategory": "Meats",
     "category": "PRODUCE",
@@ -590,7 +590,7 @@
 {
     "productId": "10a7f044-336b-4b4e-8498-f3e16158b676",
     "productName": "Lamb",
-    "image": "/images/lamb.png",
+    "image": "lamb.png",
     "description": "Dummy",
     "subcategory": "Meats",
     "category": "PRODUCE",
@@ -604,7 +604,7 @@
 {
     "productId": "ada93b3e-0e1f-412f-b207-241b79922824",
     "productName": "Goat",
-    "image": "/images/goat.png",
+    "image": "goat.png",
     "description": "Dummy",
     "subcategory": "Meats",
     "category": "PRODUCE",
@@ -618,7 +618,7 @@
 {
     "productId": "aa3709d2-10b0-4a28-9c1f-1f83f681082f",
     "productName": "Chicken",
-    "image": "/images/chicken.png",
+    "image": "chicken.png",
     "description": "Dummy",
     "subcategory": "Meats",
     "category": "PRODUCE",
@@ -633,7 +633,7 @@
 {
     "productId": "491f7474-b8a3-4091-bf8e-d7d53aafe9db",
     "productName": "Turkey",
-    "image": "/images/turkey.png",
+    "image": "turkey.png",
     "description": "Dummy",
     "subcategory": "Meats",
     "category": "PRODUCE",
@@ -647,7 +647,7 @@
 {
     "productId": "1a649b22-966d-4498-8f3a-6eff864b444b",
     "productName": "Duck",
-    "image": "/images/duck.png",
+    "image": "duck.png",
     "description": "Dummy",
     "subcategory": "Meats",
     "category": "PRODUCE",
@@ -661,7 +661,7 @@
 {
     "productId": "2895318c-fc87-45f7-8511-e8f4bc148cc1",
     "productName": "Rabbit",
-    "image": "/images/rabbit.png",
+    "image": "rabbit.png",
     "description": "Dummy",
     "subcategory": "Meats",
     "category": "PRODUCE",
@@ -675,7 +675,7 @@
 {
     "productId": "85686ebe-9c15-4b0a-bccc-d15927d7447e",
     "productName": "Fish",
-    "image": "/images/fish.png",
+    "image": "fish.png",
     "description": "Dummy",
     "subcategory": "Meats",
     "category": "PRODUCE",
@@ -689,7 +689,7 @@
 {
     "productId": "aefb6dac-fd18-4be9-b374-1cb919f19cd3",
     "productName": "Ham",
-    "image": "/images/ham.png",
+    "image": "ham.png",
     "description": "Dummy",
     "subcategory": "Meats",
     "category": "PRODUCE",
@@ -703,7 +703,7 @@
 {
     "productId": "95e90ee4-07c9-44f7-812e-29e2a5fd3686",
     "productName": "Milk Vitamin D",
-    "image": "/images/MilkVitaminD.png",
+    "image": "MilkVitaminD.png",
     "description": "Dummy",
     "subcategory": "Milk",
     "category": "DAIRY_AND_EGGS",
@@ -717,7 +717,7 @@
 {
     "productId": "aef9341e-f61d-4aae-a940-2ac51d7ecfc9",
     "productName": "Skimmed Milk",
-    "image": "/images/skimmedMilk.png",
+    "image": "skimmedMilk.png",
     "description": "Dummy",
     "subcategory": "Milk",
     "category": "DAIRY_AND_EGGS",
@@ -731,7 +731,7 @@
 {
     "productId": "fbcdbfe6-73e5-4240-8f34-a13b7c3ed4b9",
     "productName": "Silk Almond Milk",
-    "image": "/images/SilkAlmond.png",
+    "image": "SilkAlmond.png",
     "description": "Dummy",
     "subcategory": "Milk",
     "category": "DAIRY_AND_EGGS",
@@ -745,7 +745,7 @@
 {
     "productId": "2d6f8d4a-7a59-4d17-9f06-21c661e7ce6f",
     "productName": "Silk Almond Chocolate Milk",
-    "image": "/images/SilkAlmondChocolateMilk.png",
+    "image": "SilkAlmondChocolateMilk.png",
     "description": "Dummy",
     "subcategory": "Milk",
     "category": "DAIRY_AND_EGGS",
@@ -759,7 +759,7 @@
 {
     "productId": "0b1649ea-74d1-4336-a4f1-f7ac93102698",
     "productName": "Milk Full Cream",
-    "image": "/images/MilkFullCream.png",
+    "image": "MilkFullCream.png",
     "description": "Dummy",
     "subcategory": "Milk",
     "category": "DAIRY_AND_EGGS",
@@ -774,7 +774,7 @@
 {
     "productId": "8255c1f7-209c-415a-becc-cee6a2240a38",
     "productName": "Plain Yogurt",
-    "image": "/images/PainYogurt.png",
+    "image": "PainYogurt.png",
     "description": "Dummy",
     "subcategory": "Yogurt",
     "category": "DAIRY_AND_EGGS",
@@ -788,7 +788,7 @@
 {
     "productId": "19ad80f0-1797-43c7-99be-7195eb2e014a",
     "productName": "Plain Greek Yogurt",
-    "image": "/images/PainGreekYogurt.png",
+    "image": "PainGreekYogurt.png",
     "description": "Dummy",
     "subcategory": "Yogurt",
     "category": "DAIRY_AND_EGGS",
@@ -802,7 +802,7 @@
 {
     "productId": "a918477c-b74e-4ab3-80a0-402b8d8504bc",
     "productName": "Blueberry Yogurt Yogurt",
-    "image": "/images/BlueberryYogurt.png",
+    "image": "BlueberryYogurt.png",
     "description": "Dummy",
     "subcategory": "Yogurt",
     "category": "DAIRY_AND_EGGS",
@@ -816,7 +816,7 @@
 {
     "productId": "5ce741a2-ded1-48cf-91e0-318aaeb6f20c",
     "productName": "Butter Milk",
-    "image": "/images/ButterMilk.png",
+    "image": "ButterMilk.png",
     "description": "Dummy",
     "subcategory": "Yogurt",
     "category": "DAIRY_AND_EGGS",
@@ -830,7 +830,7 @@
 {
     "productId": "87d0344f-1f36-41dd-977a-8274fdbe5774",
     "productName": "eggs",
-    "image": "/images/eggs.png",
+    "image": "eggs.png",
     "description": "Dummy",
     "subcategory": "Eggs",
     "category": "DAIRY_AND_EGGS",
@@ -844,7 +844,7 @@
 {
     "productId": "e2d4c4e3-dde4-4363-9b3d-c8ed74d60d26",
     "productName": "Blue Cheese",
-    "image": "/images/BlueCheese.png",
+    "image": "BlueCheese.png",
     "description": "Dummy",
     "subcategory": "Cheese",
     "category": "DAIRY_AND_EGGS",
@@ -858,7 +858,7 @@
 {
     "productId": "8ad26994-edea-4cb9-8be2-18321fc70739",
     "productName": "Cheddar Shreds",
-    "image": "/images/CheddarShreds.png",
+    "image": "CheddarShreds.png",
     "description": "Dummy",
     "subcategory": "Cheese",
     "category": "DAIRY_AND_EGGS",
@@ -872,7 +872,7 @@
 {
     "productId": "25d7753a-bb2a-44d9-8577-7ab579085462",
     "productName": "Mozzarella",
-    "image": "/images/Mozzarella.png",
+    "image": "Mozzarella.png",
     "description": "Dummy",
     "subcategory": "Cheese",
     "category": "DAIRY_AND_EGGS",
@@ -886,7 +886,7 @@
 {
     "productId": "cb0ad151-feee-411d-b1ce-aacd84960be6",
     "productName": "Parmesan",
-    "image": "/images/Parmesan.png",
+    "image": "Parmesan.png",
     "description": "Dummy",
     "subcategory": "Cheese",
     "category": "DAIRY_AND_EGGS",
@@ -900,7 +900,7 @@
 {
     "productId": "10720f0b-00c3-4c1d-9ca2-5a954b8dde52",
     "productName": "Sliced Cheese",
-    "image": "/images/SlicedCheese.png",
+    "image": "SlicedCheese.png",
     "description": "Dummy",
     "subcategory": "Cheese",
     "category": "DAIRY_AND_EGGS",
@@ -914,7 +914,7 @@
 {
     "productId": "c8aa1833-cbea-4d76-ba39-43c0c1346362",
     "productName": "Butter",
-    "image": "/images/Butter.png",
+    "image": "Butter.png",
     "description": "Dummy",
     "subcategory": "Cheese",
     "category": "DAIRY_AND_EGGS",
@@ -929,7 +929,7 @@
 {
     "productId": "b03c2380-5f46-4767-8245-13f9e1736830",
     "productName": "Garden Vegetable Cream Cheese Spread",
-    "image": "/images/gardenVegetableCreamCheeseSpread.png",
+    "image": "gardenVegetableCreamCheeseSpread.png",
     "description": "Dummy",
     "subcategory": "Spreads",
     "category": "DAIRY_AND_EGGS",
@@ -943,7 +943,7 @@
 {
     "productId": "ef3aab09-173d-4a55-9348-7e0aab76316c",
     "productName": "Peanut Butter",
-    "image": "/images/PeanutButter.png",
+    "image": "PeanutButter.png",
     "description": "Dummy",
     "subcategory": "Spreads",
     "category": "DAIRY_AND_EGGS",
@@ -958,7 +958,7 @@
 {
     "productId": "320beacd-65d0-4ab4-b38f-1a2784533975",
     "productName": "Sour Cream",
-    "image": "/images/SourCream.png",
+    "image": "SourCream.png",
     "description": "Dummy",
     "subcategory": "Cream",
     "category": "DAIRY_AND_EGGS",
@@ -972,7 +972,7 @@
 {
     "productId": "3b76467c-8c5c-41d0-ac60-ba5692ca263a",
     "productName": "Whipped Cream",
-    "image": "/images/WhippedCream.png",
+    "image": "WhippedCream.png",
     "description": "Dummy",
     "subcategory": "Cream",
     "category": "DAIRY_AND_EGGS",
@@ -986,7 +986,7 @@
 {
     "productId": "ee831533-bc2e-4d1b-a2ae-469ff56d112c",
     "productName": "Aquafina",
-    "image": "/images/Aquafina.png",
+    "image": "Aquafina.png",
     "description": "Dummy",
     "subcategory": "Water",
     "category": "BEVERAGES",
@@ -1000,7 +1000,7 @@
 {
     "productId": "ea18ab89-3b52-412f-bd8f-ba879b64d5fe",
     "productName": "Dasani",
-    "image": "/images/Dasani.png",
+    "image": "Dasani.png",
     "description": "Dummy",
     "subcategory": "Water",
     "category": "BEVERAGES",
@@ -1014,7 +1014,7 @@
 {
     "productId": "a0646f1f-5410-4d66-b932-c0b5964f320e",
     "productName": "Fiji",
-    "image": "/images/fiji.png",
+    "image": "fiji.png",
     "description": "Dummy",
     "subcategory": "Water",
     "category": "BEVERAGES",
@@ -1028,7 +1028,7 @@
 {
     "productId": "030a811b-1837-485c-8269-cc4b8df77bec",
     "productName": "CocaCola",
-    "image": "/images/cocacola.png",
+    "image": "cocacola.png",
     "description": "Dummy",
     "subcategory": "CocaCola",
     "category": "BEVERAGES",
@@ -1042,7 +1042,7 @@
 {
     "productId": "8346fc50-ff21-4590-a65e-dae346b6e92c",
     "productName": "CocaCola zero sugar",
-    "image": "/images/coke0.png",
+    "image": "coke0.png",
     "description": "Dummy",
     "subcategory": "CocaCola",
     "category": "BEVERAGES",
@@ -1056,7 +1056,7 @@
 {
     "productId": "31ce0eab-88b6-4eb2-b189-5ff28b8c799f",
     "productName": "CocaCola 600 ml",
-    "image": "/images/cokeplastic.png",
+    "image": "cokeplastic.png",
     "description": "Dummy",
     "subcategory": "CocaCola",
     "category": "BEVERAGES",
@@ -1070,7 +1070,7 @@
 {
     "productId": "61e34f61-4f89-4158-9ab0-796795b3cadc",
     "productName": "Diet CocaCola",
-    "image": "/images/dietcoke.png",
+    "image": "dietcoke.png",
     "description": "Dummy",
     "subcategory": "CocaCola",
     "category": "BEVERAGES",
@@ -1084,7 +1084,7 @@
 {
     "productId": "e968a626-5296-4c16-8c6a-d7b399a1b98a",
     "productName": "7 Up",
-    "image": "/images/7upcan.png",
+    "image": "7upcan.png",
     "description": "Dummy",
     "subcategory": "CocaCola",
     "category": "BEVERAGES",
@@ -1098,7 +1098,7 @@
 {
     "productId": "1358b28d-05dd-4c6c-8cb7-08c7d0596245",
     "productName": "Fanta",
-    "image": "/images/fanta.png",
+    "image": "fanta.png",
     "description": "Dummy",
     "subcategory": "CocaCola",
     "category": "BEVERAGES",
@@ -1112,7 +1112,7 @@
 {
     "productId": "01cff4d1-b8a8-4d92-928c-bdc32845b0e3",
     "productName": "Mountain dew",
-    "image": "/images/mountaindewplastic.png",
+    "image": "mountaindewplastic.png",
     "description": "Dummy",
     "subcategory": "CocaCola",
     "category": "BEVERAGES",
@@ -1126,7 +1126,7 @@
 {
     "productId": "fe1d0d6e-6dd4-4d93-8214-be8c1e8fd776",
     "productName": "Pepsi can",
-    "image": "/images/pepsican.png",
+    "image": "pepsican.png",
     "description": "Dummy",
     "subcategory": "CocaCola",
     "category": "BEVERAGES",
@@ -1140,7 +1140,7 @@
 {
     "productId": "bcf4c07b-8498-4574-aef0-9994361d7330",
     "productName": "Pepsi party pack",
-    "image": "/images/pepsiplastic.png",
+    "image": "pepsiplastic.png",
     "description": "Dummy",
     "subcategory": "CocaCola",
     "category": "BEVERAGES",
@@ -1154,7 +1154,7 @@
 {
     "productId": "8f428504-6efd-46d8-b600-956d78ea5040",
     "productName": "Sprite",
-    "image": "/images/spritecan.png",
+    "image": "spritecan.png",
     "description": "Dummy",
     "subcategory": "CocaCola",
     "category": "BEVERAGES",
@@ -1168,7 +1168,7 @@
 {
     "productId": "4884691c-e49c-4550-b6e9-d6050888f8fe",
     "productName": "Sprite party pack",
-    "image": "/images/spriteplastic.png",
+    "image": "spriteplastic.png",
     "description": "Dummy",
     "subcategory": "CocaCola",
     "category": "BEVERAGES",
@@ -1182,7 +1182,7 @@
 {
     "productId": "830213f8-8340-4386-aa70-29aca6257317",
     "productName": "Dr Pepper",
-    "image": "/images/drpeppercan.png",
+    "image": "drpeppercan.png",
     "description": "Dummy",
     "subcategory": "Energy_Drinks",
     "category": "BEVERAGES",
@@ -1194,9 +1194,9 @@
     "quantityType": "NUMBERS"
 },
 {
-    "productId": "",
+    "productId": "30b97197-7e4d-40a2-8528-81cec3ac76f7",
     "productName": "Monster",
-    "image": "/images/monster.png",
+    "image": "monster.png",
     "description": "Dummy",
     "subcategory": "Energy_Drinks",
     "category": "BEVERAGES",
@@ -1210,7 +1210,7 @@
 {
     "productId": "2d259c96-1a3a-4349-ba3d-66ae2832f7c5",
     "productName": "Monster Ultra",
-    "image": "/images/monsterultra.png",
+    "image": "monsterultra.png",
     "description": "Dummy",
     "subcategory": "Energy_Drinks",
     "category": "BEVERAGES",
@@ -1224,7 +1224,7 @@
 {
     "productId": "45f305d1-4000-40d9-9354-b579bd174ae5",
     "productName": "Red Bull",
-    "image": "/images/redbull.png",
+    "image": "redbull.png",
     "description": "Dummy",
     "subcategory": "Energy_Drinks",
     "category": "BEVERAGES",
@@ -1239,7 +1239,7 @@
 {
     "productId": "3f578fa4-d3d0-4242-9aec-1cdceffbcbf0",
     "productName": "Red Bull sugar free",
-    "image": "/images/redbullsugarfree.png",
+    "image": "redbullsugarfree.png",
     "description": "Dummy",
     "subcategory": "Energy_Drinks",
     "category": "BEVERAGES",
@@ -1267,7 +1267,7 @@
 {
     "productId": "960a8620-f0e4-4555-9f32-c69c9482601f",
     "productName": "Froot",
-    "image": "/images/frooti.png",
+    "image": "frooti.png",
     "description": "Dummy",
     "subcategory": "Fruit_Beverages",
     "category": "BEVERAGES",
@@ -1281,7 +1281,7 @@
 {
     "productId": "ed2c3b5b-273c-49fb-935b-2912e2bfd9e0",
     "productName": "Loux lemon juice Drink",
-    "image": "/images/loux.png",
+    "image": "loux.png",
     "description": "Dummy",
     "subcategory": "Fruit_Beverages",
     "category": "BEVERAGES",
@@ -1296,7 +1296,7 @@
 {
     "productId": "3b22508c-4e99-4ee6-bef2-6f54850a7753",
     "productName": "Minute maid Pineapple & Orange",
-    "image": "/images/minutemaidpineorange.png",
+    "image": "minutemaidpineorange.png",
     "description": "Dummy",
     "subcategory": "Fruit_Beverages",
     "category": "BEVERAGES",
@@ -1310,7 +1310,7 @@
 {
     "productId": "825f92cf-57da-4ae7-967b-41ab455dbbb4",
     "productName": "Tang",
-    "image": "/images/tang.png",
+    "image": "tang.png",
     "description": "Dummy",
     "subcategory": "Fruit_Beverages",
     "category": "BEVERAGES",
@@ -1324,7 +1324,7 @@
 {
     "productId": "ec71cb63-9c62-4586-b198-669bf15de4d8",
     "productName": "Tropicana Orange",
-    "image": "/images/tropicanaorange.png",
+    "image": "tropicanaorange.png",
     "description": "Dummy",
     "subcategory": "Fruit_Beverages",
     "category": "BEVERAGES",
@@ -1339,7 +1339,7 @@
 {
     "productId": "c763231d-3668-48ca-8932-4cf49b3069a0",
     "productName": "Lipton",
-    "image": "/images/lipton.png",
+    "image": "lipton.png",
     "description": "Dummy",
     "subcategory": "Tea_Beverages",
     "category": "BEVERAGES",
@@ -1353,7 +1353,7 @@
 {
     "productId": "1da46522-ac69-4580-b2bf-5b7e762f1c9f",
     "productName": "Nestea original",
-    "image": "/images/nesteabox.png",
+    "image": "nesteabox.png",
     "description": "Dummy",
     "subcategory": "Tea_Beverages",
     "category": "BEVERAGES",
@@ -1368,7 +1368,7 @@
 {
     "productId": "f8287077-7c0e-4e00-8038-ee30ebc4fb48",
     "productName": "Nestea Lemon",
-    "image": "/images/nestealemon.png",
+    "image": "nestealemon.png",
     "description": "Dummy",
     "subcategory": "Tea_Beverages",
     "category": "BEVERAGES",
@@ -1383,7 +1383,7 @@
 {
     "productId": "529b1e7c-ebad-4e4b-afe6-455cec3f874e",
     "productName": "Nestea Limone",
-    "image": "/images/nestealime.png",
+    "image": "nestealime.png",
     "description": "Dummy",
     "subcategory": "Tea_Beverages",
     "category": "BEVERAGES",
@@ -1397,7 +1397,7 @@
 {
     "productId": "4cc4515f-a3e5-4d53-9306-1b10d13bf345",
     "productName": "Nestea Lemon bottle",
-    "image": "/images/nestealimeplastic.png",
+    "image": "nestealimeplastic.png",
     "description": "Dummy",
     "subcategory": "Tea_Beverages",
     "category": "BEVERAGES",
@@ -1411,7 +1411,7 @@
 {
     "productId": "8fed1dac-5d61-4443-aba4-8bd6be92e113",
     "productName": "Nestea peach",
-    "image": "/images/nesteapeach.png",
+    "image": "nesteapeach.png",
     "description": "Dummy",
     "subcategory": "Tea_Beverages",
     "category": "BEVERAGES",
@@ -1425,7 +1425,7 @@
 {
     "productId": "0d286dd2-695d-437f-9f2d-54a6f3f49682",
     "productName": "BrookFarm Coffee&Cream icecream",
-    "image": "/images/icecream.png",
+    "image": "icecream.png",
     "description": "Dummy",
     "subcategory": "Frozen_Desserts",
     "category": "FROZEN",
@@ -1440,7 +1440,7 @@
 {
     "productId": "4d2b62a7-a87b-40d4-a2ff-34dff8da938a",
     "productName": "Vimal Arabian Delight icecream",
-    "image": "/images/arabiandelight.png",
+    "image": "arabiandelight.png",
     "description": "Dummy",
     "subcategory": "Frozen_Desserts",
     "category": "FROZEN",
@@ -1454,7 +1454,7 @@
 {
     "productId": "e5a5e788-ef6f-4f89-9b5f-248f2ff95777",
     "productName": "Nestle Aloma icecream",
-    "image": "/images/aloma.png",
+    "image": "aloma.png",
     "description": "Dummy",
     "subcategory": "Frozen_Desserts",
     "category": "FROZEN",
@@ -1468,7 +1468,7 @@
 {
     "productId": "8923f9ae-e0af-4129-81d3-8bfb0ce133dc",
     "productName": " Butter pecan icecream",
-    "image": "/images/butterpecan.png",
+    "image": "butterpecan.png",
     "description": "Dummy",
     "subcategory": "Frozen_Desserts",
     "category": "FROZEN",
@@ -1482,7 +1482,7 @@
 {
     "productId": "fd5a6b05-aff0-4004-b78f-153ec68f5752",
     "productName": "Gelato Chocolate",
-    "image": "/images/gelato.png",
+    "image": "gelato.png",
     "description": "Dummy",
     "subcategory": "Frozen_Desserts",
     "category": "FROZEN",
@@ -1494,9 +1494,9 @@
     "quantityType": "NUMBERS"
 },
 {
-    "productId": "",
+    "productId": "b1c6cb4d-4cdd-47b7-8cfb-3c89ee3246dd",
     "productName": "Strawberry icecream",
-    "image": "/images/haagendazs.png",
+    "image": "haagendazs.png",
     "description": "Dummy",
     "subcategory": "Frozen_Desserts",
     "category": "FROZEN",
@@ -1510,7 +1510,7 @@
 {
     "productId": "47eac5aa-12f8-4a96-b38b-5ac511690eb9",
     "productName": "milka cornetto icecream",
-    "image": "/images/milka.png",
+    "image": "milka.png",
     "description": "Dummy",
     "subcategory": "Frozen_Desserts",
     "category": "FROZEN",
@@ -1524,7 +1524,7 @@
 {
     "productId": "a0615747-6205-433a-9e58-dec5fa6355b4",
     "productName": "Vanilla icecream",
-    "image": "/images/vanilla.png",
+    "image": "vanilla.png",
     "description": "Dummy",
     "subcategory": "Frozen_Desserts",
     "category": "FROZEN",
@@ -1538,7 +1538,7 @@
 {
     "productId": "6d2bf2db-aa29-4f31-9a58-4b389773fbf9",
     "productName": "Frozen Beans",
-    "image": "/images/beansf.png",
+    "image": "beansf.png",
     "description": "Dummy",
     "subcategory": "Frozen_Vegetables",
     "category": "FROZEN",
@@ -1552,7 +1552,7 @@
 {
     "productId": "2fc8c2b8-9a91-45aa-b224-1e1b92a9dce1",
     "productName": "Organic Mixed Vegetables",
-    "image": "/images/orgmixedveg.png",
+    "image": "orgmixedveg.png",
     "description": "Dummy",
     "subcategory": "Frozen_Vegetables",
     "category": "FROZEN",
@@ -1566,7 +1566,7 @@
 {
     "productId": "eab6fd3c-4ff2-49a6-84b0-7122fe058f1e",
     "productName": "Frozen peas",
-    "image": "/images/peasf.png",
+    "image": "peasf.png",
     "description": "Dummy",
     "subcategory": "Frozen_Vegetables",
     "category": "FROZEN",
@@ -1580,7 +1580,7 @@
 {
     "productId": "7d3c3272-a4e2-41a7-993c-247aefb0aa71",
     "productName": "Frozen Spinach",
-    "image": "/images/spinachf.png",
+    "image": "spinachf.png",
     "description": "Dummy",
     "subcategory": "Frozen_Vegetables",
     "category": "FROZEN",
@@ -1594,7 +1594,7 @@
 {
     "productId": "9750ba76-fa61-4156-b7e5-5844f9feff79",
     "productName": "Steam Fresh",
-    "image": "/images/steamfresh.png",
+    "image": "steamfresh.png",
     "description": "Dummy",
     "subcategory": "Frozen_Vegetables",
     "category": "FROZEN",
@@ -1608,7 +1608,7 @@
 {
     "productId": "b37442c8-902d-4c09-8a3a-2f16b9d65acf",
     "productName": "Royal mix of Vegetables",
-    "image": "/images/royalmix.png",
+    "image": "royalmix.png",
     "description": "Dummy",
     "subcategory": "Frozen_Vegetables",
     "category": "FROZEN",
@@ -1622,7 +1622,7 @@
 {
     "productId": "f4ac532e-5dc7-4a8e-bc02-013c1a98fc60",
     "productName": "Digiorno Italian Pizza",
-    "image": "/images/digiornoitalianpizza.png",
+    "image": "digiornoitalianpizza.png",
     "description": "Dummy",
     "subcategory": "Frozen_Food",
     "category": "FROZEN",
@@ -1636,7 +1636,7 @@
 {
     "productId": "991e59a8-bfb4-4a5a-bdc1-7a0916fb42ca",
     "productName": "Digiorno Rising Crust Pizza",
-    "image": "/images/digiornorc.png",
+    "image": "digiornorc.png",
     "description": "Dummy",
     "subcategory": "Frozen_Food",
     "category": "FROZEN",
@@ -1650,7 +1650,7 @@
 {
     "productId": "71987d95-60dc-4c57-acc0-34075f87e71b",
     "productName": "Digiorno Traditional Crust Pizza",
-    "image": "/images/digiornotc.png",
+    "image": "digiornotc.png",
     "description": "Dummy",
     "subcategory": "Frozen_Food",
     "category": "FROZEN",
@@ -1664,7 +1664,7 @@
 {
     "productId": "cd69f486-d568-4450-a1e2-f45b56e7db1e",
     "productName": "Fish Burger",
-    "image": "/images/fishburger.png",
+    "image": "fishburger.png",
     "description": "Dummy",
     "subcategory": "Frozen_Food",
     "category": "FROZEN",
@@ -1679,7 +1679,7 @@
 {
     "productId": "0c4ae4fe-33d5-43f6-927e-b714f3b2396d",
     "productName": "Food Truch Bites",
-    "image": "/images/foodtruch.png",
+    "image": "foodtruch.png",
     "description": "Dummy",
     "subcategory": "Frozen_Food",
     "category": "FROZEN",
@@ -1693,7 +1693,7 @@
 {
     "productId": "11dc8526-8c56-4487-881f-7e9c59254dd8",
     "productName": "Crispy French Fries",
-    "image": "/images/frenchfires.png",
+    "image": "frenchfires.png",
     "description": "Dummy",
     "subcategory": "Frozen_Food",
     "category": "FROZEN",
@@ -1706,7 +1706,7 @@
 {
     "productId": "28af2de4-d71d-4a3a-ad08-050455fc4241",
     "productName": "Hot pockets Sausage& Pepperoni Pizza",
-    "image": "/images/hotpocketspizza.png",
+    "image": "hotpocketspizza.png",
     "description": "Dummy",
     "subcategory": "Frozen_Food",
     "category": "FROZEN",
@@ -1720,7 +1720,7 @@
 {
     "productId": "195f7f07-ae66-4e2b-b914-35da0acf211c",
     "productName": "Lean Pockets Pepperoni Pizza",
-    "image": "/images/leanpockets.png",
+    "image": "leanpockets.png",
     "description": "Dummy",
     "subcategory": "Frozen_Food",
     "category": "FROZEN",
@@ -1734,7 +1734,7 @@
 {
     "productId": "fdee02ab-af54-4d5f-961c-c5fa233cba0a",
     "productName": "Spinach & Ricotta Ravioli",
-    "image": "/images/ravioli.png",
+    "image": "ravioli.png",
     "description": "Dummy",
     "subcategory": "Frozen_Food",
     "category": "FROZEN",
@@ -1749,7 +1749,7 @@
 {
     "productId": "4e0b80fa-241c-4e96-b16d-4983fa149b18",
     "productName": "Ristorante Pizza Hawai",
-    "image": "/images/ristorantepizza.png",
+    "image": "ristorantepizza.png",
     "description": "Dummy",
     "subcategory": "Frozen_Food",
     "category": "FROZEN",
@@ -1763,7 +1763,7 @@
 {
     "productId": "87db586b-9a73-4f42-aa54-3efd8dfa2cab",
     "productName": "cheetos",
-    "image": "/images/cheetos.png",
+    "image": "cheetos.png",
     "description": "Dummy",
     "subcategory": "chips",
     "category": "SNACKS",
@@ -1777,7 +1777,7 @@
 {
     "productId": "f3858387-80dd-4e82-a37e-033d34417a50",
     "productName": "Lays classic",
-    "image": "/images/classic.png",
+    "image": "classic.png",
     "description": "Dummy",
     "subcategory": "chips",
     "category": "SNACKS",
@@ -1792,7 +1792,7 @@
 {
     "productId": "0d37e9db-caa8-46c9-9df6-8e085a566d4e",
     "productName": "Doritos",
-    "image": "/images/doritos.png",
+    "image": "doritos.png",
     "description": "Dummy",
     "subcategory": "chips",
     "category": "SNACKS",
@@ -1806,7 +1806,7 @@
 {
     "productId": "f25c157c-dab9-4a8c-bad8-b376653cba9d",
     "productName": "Lays Gusto Bacon",
-    "image": "/images/laysgusto.png",
+    "image": "laysgusto.png",
     "description": "Dummy",
     "subcategory": "chips",
     "category": "SNACKS",
@@ -1820,7 +1820,7 @@
 {
     "productId": "f27b816b-f6db-465f-9609-0350dfd319bf",
     "productName": "Lays Wavy",
-    "image": "/images/layswavy.png",
+    "image": "layswavy.png",
     "description": "Dummy",
     "subcategory": "chips",
     "category": "SNACKS",
@@ -1834,7 +1834,7 @@
 {
     "productId": "91c4ebd5-f1ca-4630-afa2-f2bc9ebaf72e",
     "productName": "Pringles paprika",
-    "image": "/images/pringles.png",
+    "image": "pringles.png",
     "description": "Dummy",
     "subcategory": "chips",
     "category": "SNACKS",
@@ -1848,7 +1848,7 @@
 {
     "productId": "188f3654-afca-4bd4-964f-2a0a8fdc27f4",
     "productName": "Brazil Nuts unsalted",
-    "image": "/images/brazilnuts.png",
+    "image": "brazilnuts.png",
     "description": "Dummy",
     "subcategory": "Nuts",
     "category": "SNACKS",
@@ -1862,7 +1862,7 @@
 {
     "productId": "fc0e9bca-9f70-430d-bc48-351a2f165f51",
     "productName": "Cashew nuts",
-    "image": "/images/cashew.png",
+    "image": "cashew.png",
     "description": "Dummy",
     "subcategory": "Nuts",
     "category": "SNACKS",
@@ -1876,7 +1876,7 @@
 {
     "productId": "e0bb0cfc-b90b-43cb-8d0d-a33bbb51c61d",
     "productName": "Pistachios",
-    "image": "/images/pista.png",
+    "image": "pista.png",
     "description": "Dummy",
     "subcategory": "Nuts",
     "category": "SNACKS",
@@ -1890,7 +1890,7 @@
 {
     "productId": "0d2fe50a-0804-4c4f-9ec8-c153abe74b5b",
     "productName": "Sunflower kernels",
-    "image": "/images/sunflower.png",
+    "image": "sunflower.png",
     "description": "Dummy",
     "subcategory": "Nuts",
     "category": "SNACKS",
@@ -1904,7 +1904,7 @@
 {
     "productId": "4f7b33be-49e1-4969-95f8-f11cd0670dcb",
     "productName": "Walnuts",
-    "image": "/images/walnut.png",
+    "image": "walnut.png",
     "description": "Dummy",
     "subcategory": "Nuts",
     "category": "SNACKS",
@@ -1918,7 +1918,7 @@
 {
     "productId": "6346f71b-a77a-45f8-b144-ecd2f73cafb7",
     "productName": "Trail mixes",
-    "image": "/images/trail.png",
+    "image": "trail.png",
     "description": "Dummy",
     "subcategory": "Nuts",
     "category": "SNACKS",
@@ -1932,7 +1932,7 @@
 {
     "productId": "4d747504-a5aa-4d28-a613-6915bdae5e97",
     "productName": "tuc",
-    "image": "/images/tuc.png",
+    "image": "tuc.png",
     "description": "Dummy",
     "subcategory": "Cookies",
     "category": "SNACKS",
@@ -1947,7 +1947,7 @@
 {
     "productId": "be01e209-c21a-48f7-b506-81065138f11a",
     "productName": "Oreo",
-    "image": "/images/oreo.png",
+    "image": "oreo.png",
     "description": "Dummy",
     "subcategory": "Cookies",
     "category": "SNACKS",
@@ -1961,7 +1961,7 @@
 {
     "productId": "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0",
     "productName": "Chips Ahoy",
-    "image": "/images/chipsahoy.png",
+    "image": "chipsahoy.png",
     "description": "Dummy",
     "subcategory": "Cookies",
     "category": "SNACKS",
@@ -1976,7 +1976,7 @@
 {
     "productId": "467fd71b-0f96-4d46-8ba3-5f60ecb38aeb",
     "productName": "Bourbon",
-    "image": "/images/bourbon.png",
+    "image": "bourbon.png",
     "description": "Dummy",
     "subcategory": "Cookies",
     "category": "SNACKS",
@@ -1990,7 +1990,7 @@
 {
     "productId": "01cc8113-b28e-4cc2-9ce0-97328af6be65",
     "productName": "Cheez-It",
-    "image": "/images/cheez.png",
+    "image": "cheez.png",
     "description": "Dummy",
     "subcategory": "Cookies",
     "category": "SNACKS",
@@ -2004,7 +2004,7 @@
 {
     "productId": "754f1fe2-2018-405f-bdc2-1b59ef38d363",
     "productName": "Ferrero Collection",
-    "image": "/images/ferrero.png",
+    "image": "ferrero.png",
     "description": "Dummy",
     "subcategory": "Chocolates",
     "category": "SNACKS",
@@ -2018,7 +2018,7 @@
 {
     "productId": "dd70a21f-4298-4fa9-8e5d-5197a982fe06",
     "productName": "KitKat",
-    "image": "/images/kitkat.png",
+    "image": "kitkat.png",
     "description": "Dummy",
     "subcategory": "Chocolates",
     "category": "SNACKS",
@@ -2032,7 +2032,7 @@
 {
     "productId": "0b00b3f2-4f09-4987-8c0a-d99567c87c28",
     "productName": "Lindt",
-    "image": "/images/lindt.png",
+    "image": "lindt.png",
     "description": "Dummy",
     "subcategory": "Chocolates",
     "category": "SNACKS",
@@ -2046,7 +2046,7 @@
 {
     "productId": "25e3d28f-75eb-47d3-8782-78640ccfe651",
     "productName": "M & M",
-    "image": "/images/m&m.png",
+    "image": "m&m.png",
     "description": "Dummy",
     "subcategory": "Chocolates",
     "category": "SNACKS",
@@ -2060,7 +2060,7 @@
 {
     "productId": "2c575347-7712-413a-9181-a85b04175137",
     "productName": "Mars",
-    "image": "/images/mars.png",
+    "image": "mars.png",
     "description": "Dummy",
     "subcategory": "Chocolates",
     "category": "SNACKS",
@@ -2075,7 +2075,7 @@
 {
     "productId": "cbf39707-9e08-4b4a-98a7-4e0b5968d115",
     "productName": "Snickers",
-    "image": "/images/snickers.png",
+    "image": "snickers.png",
     "description": "Dummy",
     "subcategory": "Chocolates",
     "category": "SNACKS",
@@ -2089,7 +2089,7 @@
 {
     "productId": "ad054302-3bd1-42fb-8fec-a56f8b56ddb8",
     "productName": "Twix",
-    "image": "/images/twix.png",
+    "image": "twix.png",
     "description": "Dummy",
     "subcategory": "Chocolates",
     "category": "SNACKS",

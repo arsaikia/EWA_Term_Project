@@ -26,7 +26,7 @@ const getTransactions = asyncHandler(async (req, res, next) => {
 const getTransaction = asyncHandler(async (req, res, next) => {
     const transaction = await Transactions.findAll({
         where: {
-            transactionId: req.params.id,
+            userId: req.params.id,
         },
     });
 

@@ -1,7 +1,6 @@
 import { Sequelize } from 'sequelize';
 import { SQL } from '../config/db.js';
 import { v4 as uuid } from 'uuid';
-import Address from './Address.js';
 import Products from './Product.js';
 import Transactions from './Transactions.js';
 
@@ -29,9 +28,9 @@ Orders.belongsTo(Transactions, {
         name: 'transactionId',
     },
 });
-Orders.belongsTo(Address, {
+Orders.belongsTo(Products, {
     foreignKey: {
-        name: 'addressId',
+        name: 'productsId',
     },
 });
 

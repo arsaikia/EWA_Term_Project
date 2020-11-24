@@ -18,7 +18,7 @@ const Transactions = SQL.define(
             defaultValue: uuid(),
         },
         purchaseDate: {
-            type: Sequelize.STRING,
+            type: Sequelize.DATE,
             allowNull: false,
         },
         totalPrice: {
@@ -26,11 +26,11 @@ const Transactions = SQL.define(
             allowNull: false,
         },
         deliveryForcast: {
-            type: Sequelize.STRING,
+            type: Sequelize.DATE,
             allowNull: false,
         },
         deliveryActual: {
-            type: Sequelize.STRING,
+            type: Sequelize.DATE,
             allowNull: false,
         },
         deliveryMethod: {

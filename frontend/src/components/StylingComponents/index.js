@@ -93,7 +93,7 @@ const FlexContainer = styled(Container)`
 
 const FadeInContainer = styled(FlexContainer)`
     animation: ${(props) =>
-        props.fadeIn && `fadeInAnimation ease ${props.duration}ms`};
+        props.fadeIn && `fadeInAnimation ease all ${props.duration}ms`};
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
 

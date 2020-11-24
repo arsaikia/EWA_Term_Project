@@ -1,12 +1,16 @@
 import React, { Component, useState } from 'react';
 import styled from 'styled-components/macro';
 import { Row, Col } from 'react-bootstrap';
+import { Description } from '../../components/Texts';
 import {
     Container,
     FlexContainer,
     Spacing,
     FadeInContainer,
 } from '../../components/StylingComponents/index';
+
+import AnimatedHamburger from '../../components/AnimatedHamburger';
+
 import { Popup } from '../../components/Popup/index';
 import FRUIT from '../../Images/products/fruit_orange.png';
 import CAKE from '../../Images/products/food_cake.png';
@@ -16,6 +20,8 @@ import { v4 as uuid } from 'uuid';
 
 import { ItemCard } from '../../components/Cards';
 
+import { LeftNav } from './LeftNav';
+
 const GridFlexContainer = styled(FlexContainer)`
     @media screen and (max-width: 1000px) {
         justify-content: 'center';
@@ -23,24 +29,24 @@ const GridFlexContainer = styled(FlexContainer)`
     }
 `;
 
-const CollapsingContainer = styled(Container)`
-    cursor: pointer;
-    flex-direction: column;
-    width: 100%;
-    /* height: 100%; */
-    position: relative;
-    transition: padding-bottom 500ms ease-in-out, 500ms;
-    -webkit-transition: padding-bottom 500ms ease-in-out, 500ms;
+// const CollapsingContainer = styled(Container)`
+//     cursor: pointer;
+//     flex-direction: column;
+//     width: 100%;
+//     /* height: 100%; */
+//     position: relative;
+//     transition: display 500ms ease-in-out;
+//     -webkit-transition: display 500ms ease-in-out;
 
-    &:hover {
-        padding-bottom: 100%;
-        height: 18%;
-    }
-`;
+//     &:hover {
+//         display: none;
+//     }
+// `;
 
 // const ExpandingContainer = styled(Container)`
 //     cursor: pointer;
 //     flex-direction: column;
+//     height: 200px;
 //     width: 100%;
 //     position: relative;
 //     transition: height 500ms ease-in-out, 500ms background-color ease-in-out;
@@ -53,23 +59,23 @@ const CollapsingContainer = styled(Container)`
 //     }
 // `;
 
-const SideBar = styled(FadeInContainer)`
-    width: 30%;
-    min-width: 350px;
-    background-color: white;
-    /* background-color: rgba(10, 25, 47, 0.9); */
-    box-shadow: 2px 2px 10px 2px grey;
-    /* box-shadow: 0px 10px 40px rgb(10, 25, 47); */
-    border-radius: 8px;
+// const SideBar = styled(FadeInContainer)`
+//     width: 30%;
+//     min-width: 350px;
+//     background-color: white;
+//     /* background-color: rgba(10, 25, 47, 0.9); */
+//     box-shadow: 2px 2px 10px 2px grey;
+//     /* box-shadow: 0px 10px 40px rgb(10, 25, 47); */
+//     border-radius: 8px;
 
-    @media screen and (max-width: 1010px) {
-        min-width: 300px;
-        min-width: 30%;
-    }
-    @media screen and (max-width: 768px) {
-        min-width: 150px;
-    }
-`;
+//     @media screen and (max-width: 1010px) {
+//         min-width: 300px;
+//         min-width: 30%;
+//     }
+//     @media screen and (max-width: 768px) {
+//         min-width: 150px;
+//     }
+// `;
 
 const HomeScreen = ({
     setShowDropdown,
@@ -82,17 +88,26 @@ const HomeScreen = ({
     goToProductsPage,
     addProductToCart,
     getItemsInBag,
+    getFilteredProducts,
     ...props
 }) => {
+    const [showSidebar, setShowSidebar] = useState(false);
+    const showSidebarHandler = () => {
+        setShowSidebar(true);
+    };
     return (
         <FadeInContainer
             flexDirection='row'
             width='100%'
             minHeight='96vh'
-            padding='8rem 2rem 0rem 2rem'
+            padding='6rem 2rem 0rem 2rem'
             onClick={() => setShowDropdown(false)}
             fadeIn
             duration={500}>
+            <AnimatedHamburger
+                isMenuOpen={showSidebar}
+                setShowSidebar={setShowSidebar}
+            />
             {/* <Popup
                 showPopup={!allProductsFetched || !productsInCartFetched}
                 handlePopup={() => console.log('Clicked on popup')}
@@ -121,36 +136,18 @@ const HomeScreen = ({
                 flexDirection='row'
                 width='100%'
                 height='100%'
+                justifyContent={showSidebar ? 'space-between' : 'flex-end'}
                 onClick={() => setShowDropdown(false)}>
-                <SideBar
-                    position='relative'
-                    marginTop={'2.4%'}
-                    height='100vh'
-                    flexDirection='column'
-                    justifyContent='space-between'
-                    padding='2%'>
-                    <CollapsingContainer
-                        position='relative'
-                        width='100%'
-                        height='18%'
-                        backgroundColor='khaki'
-                        overflow='hidden'>
-                        <Container
-                            position='absolute'
-                            height='100%'
-                            backgroundColor='mediumturquoise'
-                            overflow='hidden'
-                        />
-                        <Container
-                            position='absolute'
-                            height='100%'
-                            backgroundColor='rgb(34,49,68)'
-                            overflow='hidden'
-                        />
-                    </CollapsingContainer>
-                </SideBar>
+                {
+                    <LeftNav
+                        showSidebar={showSidebar}
+                        showSidebarHandler={showSidebarHandler}
+                        getFilteredProducts={getFilteredProducts}
+                    />
+                }
+
                 <GridFlexContainer
-                    minWidth='70%'
+                    minWidth={showSidebar ? '70%' : '100%'}
                     display='flex'
                     flexDirection='row'
                     flexWrap='wrap'

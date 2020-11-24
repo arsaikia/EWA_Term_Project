@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Cookie from 'js-cookie';
-import { get, pick } from 'lodash';
+import { get, isEmpty, pick } from 'lodash';
 import React, { useReducer } from 'react';
 import { v4 as uuid } from 'uuid';
 
@@ -58,7 +58,6 @@ const CartState = (props) => {
     };
 
     const getProductById = async (productId) => {
-
         const response = await API.GET({ url: `products/${productId}` });
         const product = get(get(response, 'data'), 'data')[0] || [];
 
@@ -69,13 +68,27 @@ const CartState = (props) => {
     };
 
     // FILTER_PRODUCTS
-    const getFilteredProducts = async (searchKey) => {
+    const getFilteredProducts = async (searchKey, filterBy) => {
+        if (!isEmpty(filterBy)) {
+            if (filterBy === 'CATEGORY') {
+                const produces = state.originalProducts.filter(
+                    (product) => product.category === searchKey
+                );
+
+                dispatch({
+                    payload: produces,
+                    type: FILTER_PRODUCTS,
+                });
+            }
+
+            return;
+        }
+
         const response = await API.GET({
             url: `products/matches/${searchKey}`,
         });
         const products = get(get(response, 'data'), 'data') || [];
-        
-        console.log(`response Matching ${searchKey} :`, products);
+
         dispatch({
             payload: products,
             type: FILTER_PRODUCTS,

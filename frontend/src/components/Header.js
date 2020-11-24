@@ -31,6 +31,7 @@ import {
 } from './StylingComponents';
 import { Note } from './Texts';
 import AutcompleteSearchBar from './Typehead';
+import AnimatedHamburger from './AnimatedHamburger';
 
 const AccountDropdown = styled(FlexContainer)`
     transition: 300ms;
@@ -177,6 +178,7 @@ const Header = ({
                                     </Navbar.Brand>
                                 </LinkContainer>
                             </FlexContainer>
+
                             <FlexContainer>
                                 <Form inline className='mr rounded p-1'>
                                     <AutcompleteSearchBar

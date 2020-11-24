@@ -39,7 +39,7 @@ const HomeController = ({ setShowDropdown, ...props }) => {
         productsInCart,
         productsInCartFetched,
         getProductById,
-        productById,
+        getFilteredProducts,
         removedFetchedState,
         productByIdFetched,
     } = cartContext;
@@ -187,6 +187,7 @@ const HomeController = ({ setShowDropdown, ...props }) => {
                 goToProductsPage={goToProductsPage}
                 addProductToCart={addProductToCart}
                 getItemsInBag={getItemsInBag}
+                getFilteredProducts={getFilteredProducts}
                 {...props}
             />
         </>

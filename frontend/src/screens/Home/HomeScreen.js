@@ -9,6 +9,8 @@ import {
     FadeInContainer,
 } from '../../components/StylingComponents/index';
 
+import GoogleApiWrapper from '../../components/GoogleMap';
+
 import AnimatedHamburger from '../../components/AnimatedHamburger';
 
 import { Popup } from '../../components/Popup/index';
@@ -77,6 +79,12 @@ const GridFlexContainer = styled(FlexContainer)`
 //     }
 // `;
 
+const location = {
+    address: '2901 S king Drive, Chicago, illinois.',
+    lat: 41.8415372,
+    lng: -87.6164438,
+};
+
 const HomeScreen = ({
     setShowDropdown,
     updateProductsInCart,
@@ -91,94 +99,76 @@ const HomeScreen = ({
     getFilteredProducts,
     ...props
 }) => {
+    const [showPopup, setShowPopup] = useState(!false);
     const [showSidebar, setShowSidebar] = useState(false);
     const showSidebarHandler = () => {
         setShowSidebar(true);
     };
     return (
-        <FadeInContainer
-            flexDirection='row'
-            width='100%'
-            minHeight='96vh'
-            padding='6rem 2rem 0rem 2rem'
-            onClick={() => setShowDropdown(false)}
-            fadeIn
-            duration={500}>
-            <AnimatedHamburger
-                isMenuOpen={showSidebar}
-                setShowSidebar={setShowSidebar}
-            />
-            {/* <Popup
-                showPopup={!allProductsFetched || !productsInCartFetched}
-                handlePopup={() => console.log('Clicked on popup')}
-                content={
-                    <Container>
-                        <label>Enter Zip Code:</label>
-                        <input
-                            type='email'
-                            className='form-control'
-                            placeholder='Enter your zipcode'
-                            onChange={(e) => setZipCode(e.target.value)}
-                        />
-                        <Spacing space='20px' mobileSpace='10px' />
-                        <button
-                            color='#ffff'
-                            type='submit'
-                            className='btn btn-success btn-lg btn-block'
-                            onClick={() => setShowPopup(false)}>
-                            Use This Location
-                        </button>
-                    </Container>
-                }
-            /> */}
-
-            <FlexContainer
+        <>
+            <FadeInContainer
                 flexDirection='row'
                 width='100%'
-                height='100%'
-                justifyContent={showSidebar ? 'space-between' : 'flex-end'}
-                onClick={() => setShowDropdown(false)}>
-                {
-                    <LeftNav
-                        showSidebar={showSidebar}
-                        showSidebarHandler={showSidebarHandler}
-                        getFilteredProducts={getFilteredProducts}
-                    />
-                }
+                minHeight='96vh'
+                padding='6rem 2rem 0rem 2rem'
+                onClick={() => setShowDropdown(false)}
+                fadeIn
+                duration={500}>
+                <AnimatedHamburger
+                    isMenuOpen={showSidebar}
+                    setShowSidebar={setShowSidebar}
+                />
 
-                <GridFlexContainer
-                    minWidth={showSidebar ? '70%' : '100%'}
-                    display='flex'
+                <FlexContainer
                     flexDirection='row'
-                    flexWrap='wrap'
-                    justifyContent='space-between'
-                    alignItems='center'>
-                    {allProducts.map((product) => {
-                        return (
-                            <FlexContainer margin='3%' key={product.productId}>
-                                <ItemCard
-                                    productId={product.productId}
-                                    productImage={product.image}
-                                    isVeg={product.isVeg}
-                                    discount={product.discount}
-                                    productName={product.productName}
-                                    quantity={product.countInStock}
-                                    price={product.price}
-                                    inCartItems={productsInCart}
-                                    isAddedToCart={isAddedToCart(
-                                        product.productId
-                                    )}
-                                    goToProductsPage={goToProductsPage}
-                                    addProductToCart={addProductToCart}
-                                    getItemsInBag={getItemsInBag}
-                                    {...props}
-                                />
-                            </FlexContainer>
-                        );
-                    })}
-                </GridFlexContainer>
-            </FlexContainer>
-        </FadeInContainer>
+                    width='100%'
+                    height='100%'
+                    justifyContent={showSidebar ? 'space-between' : 'flex-end'}
+                    onClick={() => setShowDropdown(false)}>
+                    {
+                        <LeftNav
+                            showSidebar={showSidebar}
+                            showSidebarHandler={showSidebarHandler}
+                            getFilteredProducts={getFilteredProducts}
+                        />
+                    }
+
+                    <GridFlexContainer
+                        minWidth={showSidebar ? '70%' : '100%'}
+                        display='flex'
+                        flexDirection='row'
+                        flexWrap='wrap'
+                        justifyContent='space-between'
+                        alignItems='center'>
+                        {allProducts.map((product) => {
+                            return (
+                                <FlexContainer
+                                    margin='3%'
+                                    key={product.productId}>
+                                    <ItemCard
+                                        productId={product.productId}
+                                        productImage={product.image}
+                                        isVeg={product.isVeg}
+                                        discount={product.discount}
+                                        productName={product.productName}
+                                        quantity={product.countInStock}
+                                        price={product.price}
+                                        inCartItems={productsInCart}
+                                        isAddedToCart={isAddedToCart(
+                                            product.productId
+                                        )}
+                                        goToProductsPage={goToProductsPage}
+                                        addProductToCart={addProductToCart}
+                                        getItemsInBag={getItemsInBag}
+                                        {...props}
+                                    />
+                                </FlexContainer>
+                            );
+                        })}
+                    </GridFlexContainer>
+                </FlexContainer>
+            </FadeInContainer>
+        </>
     );
 };
 

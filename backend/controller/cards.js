@@ -3,7 +3,7 @@ import asyncHandler from '../middleware/async.js';
 import ErrorResponse from '../middleware/error.js';
 
 /*
- * @desc     Get card with id
+ * @desc     Get card with user id
  * @route    GET /api/v1/cards/:id
  * @access   Public
  */
@@ -11,15 +11,15 @@ import ErrorResponse from '../middleware/error.js';
 const getCard = asyncHandler(async (req, res, next) => {
     const card = await Cards.findAll({
         where: {
-            cardId: req.params.id,
+            userId: req.params.id,
         },
     });
 
     if (!card || card.length == 0) {
-        console.log(`Card Not Found with id ${req.params.id}`);
+        console.log(`Card Not Found with user id ${req.params.id}`);
         return res.status(404).json({
             success: false,
-            error: `Card Not Found with id '${req.params.id}'`,
+            error: `Card Not Found with user id '${req.params.id}'`,
         });
         // return next(
         // 	new ErrorResponse(`User not found with ID of: ${req.params.id}`, 404)
@@ -31,13 +31,14 @@ const getCard = asyncHandler(async (req, res, next) => {
 
 /*
  * @desc     Create card in Db
- * @route    GET /api/v1/cards/
+ * @route    GET /api/v1/cards/:id
  * @access   Public
  */
 
 const createCard = asyncHandler(async (req, res, next) => {
     // Validate Body is not empty
-    if (!req.body.userId || !req.body.cardNumbaer) {
+    console.log('req.body', req.body);
+    if (!req.params.id || !req.body.cardNumber) {
         return next(
             res.status(400).send({
                 message: 'Content can not be empty!',
@@ -46,10 +47,15 @@ const createCard = asyncHandler(async (req, res, next) => {
     }
 
     const card = await Cards.create({
-        cardNumbaer: req.body.cardNumbaer,
+        userId: req.params.id,
+        cardNumber: req.body.cardNumber,
+        cardName: req.body.cardName,
+        cardNumber: req.body.cardNumber,
+        expiryDate: req.body.expiryDate,
+        cvv: req.body.cvv,
     });
 
-    //I should be validating user itself right ? 
+    //I should be validating user itself right ?
     if (!card || card.length == 0) {
         console.log(`Card Not Found with id ${res}`);
         return res.status(500).json({
@@ -65,5 +71,3 @@ const createCard = asyncHandler(async (req, res, next) => {
 });
 
 export { getCard, createCard };
-
-

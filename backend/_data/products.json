@@ -282,7 +282,7 @@
 {
     "productId": "fc437e26-e5fc-45b0-af77-8c950deb1d3a",
     "productName": "Arrowroot",
-    "image": ".arrowrootpng",
+    "image": "arrowroot.png",
     "description": "Dummy",
     "subcategory": "Vegetables",
     "category": "PRODUCE",
@@ -1253,7 +1253,7 @@
 {
     "productId": "1830bb98-e4ac-4187-8329-ef049dd5a86e",
     "productName": "Red Bull zero",
-    "image": "images/redbullzero.png",
+    "image": "redbullzero.png",
     "description": "Dummy",
     "subcategory": "Energy_Drinks",
     "category": "BEVERAGES",

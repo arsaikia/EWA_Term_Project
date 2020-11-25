@@ -48,6 +48,43 @@ const getUser = asyncHandler(async (req, res, next) => {
 });
 
 /*
+ * @desc     POST user preferred store with id
+ * @route    POST /api/v1/users/store/:id
+ * @access   Public
+ */
+
+const setUserPreferredStore = asyncHandler(async (req, res, next) => {
+    const user = await Users.findAll({
+        where: {
+            storePrefered: req.body.storeId,
+        },
+    });
+
+    if (user.length > 0)
+        return next(res.status(200).json({ success: true, data: {} }));
+
+    try {
+        const updatePreferredStore = await Users.update(
+            { storePrefered: req.body.storeId },
+            { where: { userId: req.params.id } }
+        );
+        res.status(200).json({ success: true, data: updatePreferredStore });
+    } catch (error) {
+        console.log(
+            `Error Encountered while updating cart items for cart : ${req.body.storeId}`
+                .red.underline
+        );
+        return res.status(404).json({
+            success: false,
+            error: `User Not Found with id '${req.params.id}'`,
+        });
+    }
+
+    console.log(req.params.id);
+    return next(res.status(200).json({ success: true, data: user }));
+});
+
+/*
  * @desc     Validate user login id
  * @route    POST /api/v1/users//login
  * @access   Public
@@ -113,4 +150,4 @@ const createUser = asyncHandler(async (req, res, next) => {
     res.status(200).json({ success: true, data: user });
 });
 
-export { AuthenticateUser, getUsers, getUser, createUser };
+export { AuthenticateUser, getUsers, getUser, createUser, setUserPreferredStore };

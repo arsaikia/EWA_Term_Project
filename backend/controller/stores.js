@@ -1,15 +1,22 @@
 import Stores from '../models/Store.js';
 import asyncHandler from '../middleware/async.js';
 import ErrorResponse from '../middleware/error.js';
+import Addresses from '../models/Address.js';
 
 /*
- * @desc     Get All Products
- * @route    GET /api/v1/products
+ * @desc     Get All stores
+ * @route    GET /api/v1/stores
  * @access   Public
  */
 
 const getStores = asyncHandler(async (req, res, next) => {
-    const stores = await Stores.findAll();
+    const stores = await Stores.findAll({
+        include: [
+            {
+                model: Addresses,
+            },
+        ],
+    });
 
     if (!stores) {
         return next(new ErrorResponse(`No Store found!`, 404));

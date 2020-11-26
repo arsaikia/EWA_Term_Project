@@ -165,7 +165,6 @@ const SignupController = ({ showHeader, setShowHeader, ...props }) => {
     };
 
     const validatePassword = (val = '') => {
-        console.log('equal', password, rePassword);
         if (val === 'repassword') {
             if (password !== rePassword) {
                 return setError({

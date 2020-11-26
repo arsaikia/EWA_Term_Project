@@ -43,7 +43,7 @@ Orders.beforeCreate((orders, _) => {
 });
 
 SQL.query('SET FOREIGN_KEY_CHECKS = 0', { raw: true }).then(() => {
-    Orders.sync()
+    Orders.sync() //  { force: true }
         .then(() => {
             console.log(`Orders created`.cyan.bold);
         })

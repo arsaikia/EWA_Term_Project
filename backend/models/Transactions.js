@@ -2,7 +2,7 @@ import { Sequelize } from 'sequelize';
 import { SQL } from '../config/db.js';
 import { v4 as uuid } from 'uuid';
 import Address from './Address.js';
-import Products from './Product.js';
+import Cards from './Cards.js';
 import Users from './User.js';
 import Stores from '../models/Store.js';
 
@@ -62,8 +62,15 @@ Transactions.belongsTo(Address, {
     },
 });
 Transactions.belongsTo(Stores, {
+    allowNull: true,
     foreignKey: {
         name: 'storeId',
+    },
+});
+Transactions.belongsTo(Cards, {
+    allowNull: false,
+    foreignKey: {
+        name: 'cardId',
     },
 });
 
@@ -74,7 +81,7 @@ Transactions.beforeCreate((transactions, _) => {
 });
 
 SQL.query('SET FOREIGN_KEY_CHECKS = 0', { raw: true }).then(() => {
-    Transactions.sync()
+    Transactions.sync() //  { force: true }
         .then(() => {
             console.log(`Transactions created`.cyan.bold);
         })

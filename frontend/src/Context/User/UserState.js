@@ -32,7 +32,6 @@ const UserState = (props) => {
      *   AUTHENTICATE_USER
      */
     const authenticateUser = async (email, password, rememberMe) => {
-
         try {
             const response = await API.POST({
                 url: 'users/login',
@@ -45,6 +44,7 @@ const UserState = (props) => {
             if (success) {
                 Cookie.set('USER_NAME', get(user[0], 'firstName', ''));
                 Cookie.set('USER_ID', get(user[0], 'userId', ''));
+                Cookie.set('FOOD_PREFERENCE', get(user[0], 'foodPreference', ''));
                 Cookie.set('REMEMBER_ME', rememberMe, false);
                 return dispatch({
                     payload: user,
@@ -63,10 +63,7 @@ const UserState = (props) => {
         }
     };
 
-    const setUserSemiAuthenticated =() => {
-
-        
-    }
+    const setUserSemiAuthenticated = () => {};
 
     /*
      *   AUTHENTICATE_USER_FALSE
@@ -102,8 +99,6 @@ const UserState = (props) => {
 
         const newUser = get(get(response, 'data') || '', 'data') || '';
 
-        console.log(newUser, response.data.success);
-
         dispatch({
             payload: newUser,
             type: REGISTER_NEW_USER,
@@ -123,7 +118,7 @@ const UserState = (props) => {
                 registerUser,
                 authenticateUser,
                 setLoginFalse,
-                setUserSemiAuthenticated
+                setUserSemiAuthenticated,
             }}>
             {props.children}
         </UserContext.Provider>

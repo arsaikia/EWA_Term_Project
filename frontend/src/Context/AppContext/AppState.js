@@ -13,7 +13,9 @@ import {
     HIDE_HEADER,
     SHOW_DROPDOWN,
     HIDE_DROPDOWN,
-    GET_ALL_PRODUCTS,
+    SHOW_MAP,
+    HIDE_MAP,
+    SET_STORE,
 } from '../types';
 
 import AppContext from './appContext';
@@ -23,6 +25,8 @@ const AppState = (props) => {
     const initialState = {
         showHeader: false,
         showDropdown: false,
+        showMap: false,
+        selectedStore: {},
     };
 
     const [state, dispatch] = useReducer(AppReducer, initialState);
@@ -47,6 +51,27 @@ const AppState = (props) => {
         });
     };
 
+    /*
+     *   SHOW_MAP,
+     */
+
+    const setShowMap = (val) => {
+        dispatch({
+            type: val ? SHOW_MAP : HIDE_MAP,
+        });
+    };
+
+    /*
+     *   SET_STORE
+     */
+
+    const setStore = (store) => {
+        dispatch({
+            payload: store,
+            type: SET_STORE,
+        });
+    };
+
     return (
         <AppContext.Provider
             value={{
@@ -54,6 +79,10 @@ const AppState = (props) => {
                 setShowHeader,
                 showDropdown: state.showDropdown,
                 setShowDropdown,
+                showMap: state.showMap,
+                setShowMap,
+                selectedStore: state.selectedStore,
+                setStore,
             }}>
             {props.children}
         </AppContext.Provider>

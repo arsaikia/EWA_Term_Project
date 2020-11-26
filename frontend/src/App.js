@@ -10,8 +10,6 @@ import { Colors } from './components/Colors';
 import CartState from './Context/Cart/CartState';
 
 const App = (props) => {
-    const [showDropdown, setShowDropdown] = useState(false);
-
     return (
         <Router>
             <AppState>
@@ -20,10 +18,7 @@ const App = (props) => {
                         <MyContainer
                             backgroundColor={Colors.backgroundColor}
                             fluid>
-                            <Routes
-                                showDropdown={showDropdown}
-                                setShowDropdown={setShowDropdown}
-                            />
+                            <Routes />
                         </MyContainer>
                     </CartState>
                 </UserState>

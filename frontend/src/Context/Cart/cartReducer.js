@@ -6,6 +6,10 @@ import {
     FILTER_PRODUCTS,
     REMOVE_FETCHED_STATE,
     SET_CART_COUNT,
+    GET_USER_ADDRESSES,
+    GET_USER_CARDS,
+    CREATE_TRANSFER,
+    RESET_CREATE_TRANSFER,
 } from '../types';
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -26,6 +30,20 @@ export default (state, action) => {
                 allProductsFetched: false,
                 productsInCartFetched: false,
                 productByIdFetched: false,
+            };
+
+        case GET_USER_CARDS:
+            return {
+                ...state,
+                userCards: action.payload,
+                userCardsFetched: true,
+            };
+
+        case GET_USER_ADDRESSES:
+            return {
+                ...state,
+                userAddresses: action.payload,
+                userAddressesFetched: true,
             };
 
         case GET_PRODUCT_BY_ID:
@@ -60,6 +78,18 @@ export default (state, action) => {
                 ...state,
                 productsInCart: [...state.productsInCart, action.payload],
                 productsInCartFetched: true,
+            };
+
+        case CREATE_TRANSFER:
+            return {
+                ...state,
+                transferCreated: true,
+            };
+
+        case RESET_CREATE_TRANSFER:
+            return {
+                ...state,
+                transferCreated: false,
             };
 
         default:

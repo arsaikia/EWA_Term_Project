@@ -105,6 +105,7 @@ const CartProductItem = ({
     price,
     calculatePrice,
     deleteCartItem,
+    ...props
 }) => {
     const actualPrice = calculatePrice(price, discount);
     const imageSrc =
@@ -183,9 +184,46 @@ const CartScreen = ({
     totalPrice,
     calculatePrice,
     deleteCartItem,
+    userCards,
+    setSelectedCard,
+    selectedCard,
+    nameOnCard,
+    setNameOnCard,
+    cardNumber,
+    setCardNumber,
+    expiry,
+    setExpiry,
+    cvv,
+    setCvv,
+    nameError,
+    setNameError,
+    numberErr,
+    setNumberErr,
+    expirtErr,
+    setExpiryErr,
+    cvvErr,
+    setCvvErr,
+    getButtonText,
+    checkoutStep,
+    setCheckoutStep,
+
+    userAddresses,
+    selectedAddress,
+    setSelectedAddress,
+
+    street,
+    city,
+    zip,
+    state,
+
+    setStreet,
+    setCity,
+    setZip,
+    setState,
+    continueHandler,
     ...props
 }) => {
-    if (isEmpty(productsInCart) ||  !isUserSemiAuthenticated)
+    if (isEmpty(productsInCart) || !isUserSemiAuthenticated)
         return (
             <NoAuth
                 history={history}
@@ -238,6 +276,7 @@ const CartScreen = ({
                                     price={currentProduct.price}
                                     calculatePrice={calculatePrice}
                                     deleteCartItem={deleteCartItem}
+                                    props={props}
                                 />
                                 <Spacing space={'20px'} mobileSpace='10px' />
                                 <FlexContainer
@@ -281,7 +320,43 @@ const CartScreen = ({
                 flexDirection='column'
                 fadeIn
                 duration={'1500'}>
-                <AddressAndCards></AddressAndCards>
+                <AddressAndCards
+                    userCards={userCards}
+                    setSelectedCard={setSelectedCard}
+                    selectedCard={selectedCard}
+                    nameOnCard={nameOnCard}
+                    setNameOnCard={setNameOnCard}
+                    cardNumber={cardNumber}
+                    setCardNumber={setCardNumber}
+                    expiry={expiry}
+                    setExpiry={setExpiry}
+                    cvv={cvv}
+                    setCvv={setCvv}
+                    nameError={nameError}
+                    setNameError={setNameError}
+                    numberErr={numberErr}
+                    setNumberErr={setNameError}
+                    expirtErr={expirtErr}
+                    setExpiryErr={setExpiryErr}
+                    cvvErr={cvvErr}
+                    setCvvErr={setCvvErr}
+                    getButtonText={getButtonText}
+                    checkoutStep={checkoutStep}
+                    setCheckoutStep={setCheckoutStep}
+                    userAddresses={userAddresses}
+                    selectedAddress={selectedAddress}
+                    setSelectedAddress={setSelectedAddress}
+                    street={street}
+                    city={city}
+                    zip={zip}
+                    state={state}
+                    setStreet={setStreet}
+                    setCity={setCity}
+                    setZip={setZip}
+                    setState={setState}
+                    continueHandler={continueHandler}
+                    props={props}
+                />
             </FadeInContainer>
         </FadeInContainer>
     );

@@ -14,10 +14,22 @@ const Cards = SQL.define(
             type: Sequelize.UUID,
             defaultValue: uuid(),
         },
-        cardNumbaer: {
+        cardName: {
             type: Sequelize.STRING,
             allowNull: false,
-        }
+        },
+        cardNumber: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+        },
+        expiryDate: {
+            type: Sequelize.DATEONLY,
+            allowNull: false,
+        },
+        cvv: {
+            type: Sequelize.INTEGER,
+            allowNull: false,
+        },
     },
     {
         timestamps: false,
@@ -32,15 +44,14 @@ Cards.belongsTo(Users, {
 
 //Stores.belongsTo(Address)
 
-
 Cards.beforeCreate((cards, _) => {
     return (cards.cardId = uuid());
 });
 
-Cards.sync()
-    .then(() => {
-        console.log(`Cards created`.cyan.bold);
-    })
-    .catch((error) => console.log('ERROR', error));
+SQL.query('SET FOREIGN_KEY_CHECKS = 0', { raw: true }).then(() =>
+    Cards.sync()
+        .then(() => console.log(`Cards created`.cyan.bold))
+        .catch((error) => console.log('ERROR', error))
+);
 
 export default Cards;

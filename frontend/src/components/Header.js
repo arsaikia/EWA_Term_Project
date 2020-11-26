@@ -52,6 +52,9 @@ const Header = ({
     showHeader,
     showDropdown,
     setShowDropdown,
+    showMap,
+    setShowMap,
+    selectedStore,
     ...props
 }) => {
     const history = useHistory();
@@ -136,8 +139,7 @@ const Header = ({
     const searchHandler = () => {
         const pId = get(searchKey, 'id');
         if (!pId) {
-            getFilteredProducts(searchKey);
-            return console.log(searchKey);
+            return getFilteredProducts(searchKey, "NAME");
         }
         setSearchKey('');
         setSingleSelections([]);
@@ -241,12 +243,13 @@ const Header = ({
                     padding='.1em 2em .1em 2em'
                     flexDirection='row'
                     // style={{ position: 'sticky', top: '10em' }}
-                    position='fixed'
+                    // position='fixed'
                     width='100%'
                     marginTop='70px'
                     backgroundColor='#232F3E'
                     zIndex='1'>
                     <FlexContainer
+                        onClick={() => setShowMap(!showMap)}
                         flexDirection='row'
                         width='15%'
                         padding='1px'
@@ -257,7 +260,7 @@ const Header = ({
                             style={{ color: '#ffff', marginRight: '10px' }}></i>
                         <FlexContainer flexDirection='column' padding='5px'>
                             <Note
-                                text={'60616'}
+                                text={get(selectedStore, 'street1') || 'Set Store'}
                                 color='#ffff'
                                 bold
                                 style={{ margin: '0px' }}
@@ -301,7 +304,6 @@ const Header = ({
                     </AccountDropdown>
                 </FlexContainer>
             </header>
-            {console.log(showDropdown)}
             {showDropdown && (
                 <DropdownMenu
                     onClick={() => setShowDropdown(!showDropdown)}

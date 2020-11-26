@@ -9,16 +9,11 @@ import {
     FadeInContainer,
 } from '../../components/StylingComponents/index';
 
-import GoogleApiWrapper from '../../components/GoogleMap';
+import { Popup } from '../../components/Popup';
+
+import GoogleMapStores from '../../components/GoogleMapStores';
 
 import AnimatedHamburger from '../../components/AnimatedHamburger';
-
-import { Popup } from '../../components/Popup/index';
-import FRUIT from '../../Images/products/fruit_orange.png';
-import CAKE from '../../Images/products/food_cake.png';
-
-import Loader from '../../components/Loader';
-import { v4 as uuid } from 'uuid';
 
 import { ItemCard } from '../../components/Cards';
 
@@ -30,60 +25,6 @@ const GridFlexContainer = styled(FlexContainer)`
         align-items: 'center';
     }
 `;
-
-// const CollapsingContainer = styled(Container)`
-//     cursor: pointer;
-//     flex-direction: column;
-//     width: 100%;
-//     /* height: 100%; */
-//     position: relative;
-//     transition: display 500ms ease-in-out;
-//     -webkit-transition: display 500ms ease-in-out;
-
-//     &:hover {
-//         display: none;
-//     }
-// `;
-
-// const ExpandingContainer = styled(Container)`
-//     cursor: pointer;
-//     flex-direction: column;
-//     height: 200px;
-//     width: 100%;
-//     position: relative;
-//     transition: height 500ms ease-in-out, 500ms background-color ease-in-out;
-//     -webkit-transition: height 500ms ease-in-out,
-//         500ms background-color ease-in-out;
-
-//     &:hover {
-//         height: 100%;
-//         background-color: #3f536d;
-//     }
-// `;
-
-// const SideBar = styled(FadeInContainer)`
-//     width: 30%;
-//     min-width: 350px;
-//     background-color: white;
-//     /* background-color: rgba(10, 25, 47, 0.9); */
-//     box-shadow: 2px 2px 10px 2px grey;
-//     /* box-shadow: 0px 10px 40px rgb(10, 25, 47); */
-//     border-radius: 8px;
-
-//     @media screen and (max-width: 1010px) {
-//         min-width: 300px;
-//         min-width: 30%;
-//     }
-//     @media screen and (max-width: 768px) {
-//         min-width: 150px;
-//     }
-// `;
-
-const location = {
-    address: '2901 S king Drive, Chicago, illinois.',
-    lat: 41.8415372,
-    lng: -87.6164438,
-};
 
 const HomeScreen = ({
     setShowDropdown,
@@ -97,6 +38,9 @@ const HomeScreen = ({
     addProductToCart,
     getItemsInBag,
     getFilteredProducts,
+    showMap,
+    setShowMap,
+    setStore,
     ...props
 }) => {
     const [showPopup, setShowPopup] = useState(!false);
@@ -104,6 +48,11 @@ const HomeScreen = ({
     const showSidebarHandler = () => {
         setShowSidebar(true);
     };
+
+    if (showMap) {
+        return <GoogleMapStores setStore={setStore} setShowMap={setShowMap} />;
+    }
+
     return (
         <>
             <FadeInContainer

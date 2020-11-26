@@ -16,6 +16,10 @@ const Routes = (props) => {
         setShowHeader,
         showDropdown,
         setShowDropdown,
+        showMap,
+        setShowMap,
+        selectedStore,
+        setStore,
     } = appContext;
 
     return (
@@ -25,6 +29,9 @@ const Routes = (props) => {
                 setShowHeader={setShowHeader}
                 showDropdown={showDropdown}
                 setShowDropdown={setShowDropdown}
+                showMap={showMap}
+                setShowMap={setShowMap}
+                selectedStore={selectedStore}
                 {...props}
             />
             <main>
@@ -57,6 +64,10 @@ const Routes = (props) => {
                                 setShowHeader={setShowHeader}
                                 showHeader={showHeader}
                                 setShowDropdown={setShowDropdown}
+                                showMap={showMap}
+                                setShowMap={setShowMap}
+                                setStore={setStore}
+                                selectedStore={selectedStore}
                                 {...props}
                             />
                         )}

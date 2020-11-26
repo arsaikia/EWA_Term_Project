@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Cookie from 'js-cookie';
 import { get, isEmpty, pick } from 'lodash';
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 import { v4 as uuid } from 'uuid';
 
 import { formatDate, getRandomArbitrary } from '../../utils/Functions';
@@ -43,6 +43,8 @@ const CartState = (props) => {
         transferCreated: false,
     };
 
+    const [filters, setFilters] = useState({});
+
     const [state, dispatch] = useReducer(CartReducer, initialState);
 
     /*
@@ -52,7 +54,6 @@ const CartState = (props) => {
     const fetchAllProducts = async () => {
         const response = await API.GET({ url: 'products' });
         const products = get(get(response, 'data'), 'data') || [];
-        // console.log('From fetchAllProducts :', products);
         dispatch({
             payload: products,
             type: GET_ALL_PRODUCTS,
@@ -77,28 +78,52 @@ const CartState = (props) => {
 
     // FILTER_PRODUCTS
     const getFilteredProducts = async (searchKey, filterBy) => {
-        if (!isEmpty(filterBy)) {
-            if (filterBy === 'CATEGORY') {
-                const produces = state.originalProducts.filter(
-                    (product) => product.category === searchKey
-                );
+        let filteredProducts = state.originalProducts;
+        const newFilter = {};
+        newFilter[filterBy] = searchKey;
+        let currentFilters = { ...filters, ...newFilter };
+        setFilters(currentFilters);
 
-                dispatch({
-                    payload: produces,
-                    type: FILTER_PRODUCTS,
-                });
-            }
-
-            return;
+        // Filter By user preference
+        const userPref = get(currentFilters, 'USER_PREFERENCE');
+        if (!isEmpty(userPref) && userPref !== 'ALL') {
+            filteredProducts = filteredProducts.filter((product) => {
+                return product.foodPreference === userPref;
+            });
         }
 
-        const response = await API.GET({
-            url: `products/matches/${searchKey}`,
-        });
-        const products = get(get(response, 'data'), 'data') || [];
+        // Filter by category
+        const category = get(currentFilters, 'CATEGORY');
+        if (!isEmpty(category)) {
+            filteredProducts = filteredProducts.filter(
+                (product) => product.category === category
+            );
+        }
+
+        // For searching by name: do API call -> will fetch all products
+        const foodPref = get(currentFilters, 'NAME');
+
+        if (!isEmpty(foodPref)) {
+            filteredProducts = filteredProducts.filter((product) => {
+                const regex = new RegExp(foodPref, 'i');
+
+                return regex.test(product.productName);
+            });
+        }
+
+        // const response = await API.GET({
+        //     url: `products/matches/${searchKey}`,
+        // });
+        // const products = get(get(response, 'data'), 'data') || [];
+
+        console.log(
+            'Products After Filters',
+            currentFilters,
+            filteredProducts.length
+        );
 
         dispatch({
-            payload: products,
+            payload: filteredProducts,
             type: FILTER_PRODUCTS,
         });
     };
@@ -109,7 +134,7 @@ const CartState = (props) => {
 
         let qty = 0;
         cart.forEach((product) => (qty += product.quantity));
-        console.log(userId);
+        console.log('userId : ', userId);
 
         dispatch({
             payload: qty,

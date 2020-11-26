@@ -1,0 +1,52 @@
+[
+    {
+        "storeId": "537a2109-095b-40c4-86a8-33447c8a8040",
+        "storeName" : "Eat Fresh Family Store",
+        "street1" : "56220 Point Rd, Big Creek, CA 93605",
+        "street2":"",
+        "city" : "Big Creek",
+        "zip":93605,
+        "state" : "California",
+        "coordinates": [-119.249420, 37.203310]
+    },
+    {
+        "storeId": "b6a0d0f8-fcc4-4776-a918-5b93bf1bd563",
+        "storeName" : "Eat Fresh Mega Mart",
+        "street1" : "15 Washington Ave",
+        "street2":"Brooklyn, NY 11205",
+        "city" : "New York",
+        "zip":11205,
+        "state" : "New York",
+        "coordinates": [-74.417710, 40.505110]
+    },
+    {
+        "storeId": "6ba1a2a3-3c7c-4f2b-a9f5-de91d5091aca",
+        "storeName" : "Eat Fresh Wholesale",
+        "street1" : "7801 Hillcrest Ave",
+        "street2":"",
+        "city" : "Dallas",
+        "zip":75225,
+        "state" : "Texas",
+        "coordinates": [-96.788210, 32.858110]
+    },
+    {
+        "storeId": "9b7f3adf-d139-404f-9cd4-dee018d0821f",
+        "storeName" : "Eat Fresh",
+        "street1" : "Chicago South Loop",
+        "street2":"",
+        "city" : "Chicago",
+        "zip":60605,
+        "state" : "Illinois",
+        "coordinates": [-87.626372, 41.859078]
+    },
+    {
+        "storeId": "706ab483-b96f-4b88-81ed-66b7beca5f5a",
+        "storeName" : "Eat Fresh Deli",
+        "street1" : "2901 S King Drive",
+        "street2":"",
+        "city" : "Chicago",
+        "zip":60616,
+        "state" : "Illinois",
+        "coordinates": [-87.616240, 41.809080]
+    }
+]

@@ -34,7 +34,7 @@ Stores.beforeCreate((stores, _) => {
 });
 
 SQL.query('SET FOREIGN_KEY_CHECKS = 0', { raw: true }).then(() =>
-    Stores.sync()
+    Stores.sync() //  { force: true }
         .then(() => {
             console.log(`Stores created`.cyan.bold);
         })

@@ -79,7 +79,7 @@ const CartController = ({ ...props }) => {
     const [state, setState] = useState('');
 
     const [selectedAddressId, setSelectedAddressId] = useState('');
-    const [selectedCardId, setselectedCardId] = useState('');
+    const [selectedCardId, setSelectedCardId] = useState('');
 
     /*
      ***************************************************
@@ -115,17 +115,12 @@ const CartController = ({ ...props }) => {
                 (address) => address.addressId === selectedAddress
             );
             const addId = get(selectedAddressX[0], 'addressId');
+            const payId = get(selectedCardX[0], "cardId");
 
             setSelectedAddressId(addId);
-
+            setSelectedCardId(payId);
             setIsTransferCreating(true);
             setShowLoading(true);
-
-            return console.log(
-                'Complete Address and Payment',
-                addId,
-                selectedCardX[0]
-            );
         }
     };
 
@@ -133,11 +128,12 @@ const CartController = ({ ...props }) => {
         if (
             isTransferCreating &&
             !transferCreated &&
-            !isEmpty(selectedAddressId)
+            !isEmpty(selectedAddressId) &&
+            !isEmpty(selectedCardId)
         ) {
             setIsTransferCreating(false);
             removedFetchedState();
-            createTransfer(totalPrice, userId, selectedAddressId);
+            createTransfer(totalPrice, userId, selectedAddressId, selectedCardId);
         }
 
         if (transferCreated && !productsInCartFetched) {

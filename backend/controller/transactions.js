@@ -70,6 +70,8 @@ const createTransaction = asyncHandler(async (req, res, next) => {
         deliveryStatus: req.body.deliveryStatus,
         userId: req.body.userId,
         addressId: req.body.addressId,
+        storeId: req.body.storeId,
+        cardId: req.body.cardId,
     });
 
     if (!transaction || transaction.length == 0) {

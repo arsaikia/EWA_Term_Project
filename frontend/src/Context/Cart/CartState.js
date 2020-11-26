@@ -171,7 +171,7 @@ const CartState = (props) => {
      *CREATE_TRANSFER formatDate
      */
 
-    const createTransfer = async (totalPrice, userId, addressId) => {
+    const createTransfer = async (totalPrice, userId, addressId, cardId) => {
         const expectedDeliveryDate = formatDate(
             new Date(
                 new Date().setDate(
@@ -190,6 +190,7 @@ const CartState = (props) => {
                 userId: userId,
                 addressId: addressId,
                 storeId: null,
+                cardId: cardId,
             },
         });
 

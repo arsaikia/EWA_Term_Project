@@ -2,7 +2,7 @@ import { Sequelize } from 'sequelize';
 import { SQL } from '../config/db.js';
 import { v4 as uuid } from 'uuid';
 
-import Stores from './Store.js';
+import Address from './Address.js';
 
 const Users = SQL.define(
     'users',
@@ -39,7 +39,7 @@ const Users = SQL.define(
             allowNull: false,
             values: ['ALL', 'VEGAN', 'MEAT', 'HEALTHY'],
         },
-        // Should these be outside just like how other models are implemented ? 
+        // Should these be outside just like how other models are implemented ?
         storeManager: {
             type: Sequelize.UUID,
             references: {
@@ -66,10 +66,29 @@ Users.beforeCreate((user, _) => {
     return (user.userId = uuid());
 });
 
-Users.sync()
-    .then(() => {
-        console.log(`Users created`.cyan.bold);
-    })
-    .catch((error) => console.log('ERROR', error));
+SQL.query('SET FOREIGN_KEY_CHECKS = 0', { raw: true }).then(() => {
+    Users.sync()
+        .then(() => {
+            Address.beforeCreate((address, _) => {
+                return (address.addressId = uuid());
+            });
+            Address.belongsTo(Users, {
+                foreignKey: {
+                    name: 'userId',
+                },
+            });
+
+            SQL.query('SET FOREIGN_KEY_CHECKS = 0', { raw: true }).then(() => {
+                Address.sync()
+                    .then(() => {
+                        console.log(`Address created`.cyan.bold);
+                    })
+                    .catch((error) => console.log('ERROR', error));
+            });
+
+            console.log(`Transactions created`.cyan.bold);
+        })
+        .catch((error) => console.log('ERROR', error));
+});
 
 export default Users;

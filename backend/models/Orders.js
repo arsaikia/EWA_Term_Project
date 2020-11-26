@@ -7,7 +7,7 @@ import Transactions from './Transactions.js';
 const Orders = SQL.define(
     'orders',
     {
-        orderID: {
+        orderId: {
             allowNull: false,
             primaryKey: true,
             type: Sequelize.UUID,
@@ -16,7 +16,7 @@ const Orders = SQL.define(
         quantity: {
             type: Sequelize.FLOAT,
             allowNull: false,
-        }
+        },
     },
     {
         timestamps: false,
@@ -24,27 +24,30 @@ const Orders = SQL.define(
 );
 
 Orders.belongsTo(Transactions, {
+    allowNull: false,
     foreignKey: {
         name: 'transactionId',
     },
 });
 Orders.belongsTo(Products, {
+    allowNull: false,
     foreignKey: {
-        name: 'productsId',
+        name: 'productId',
     },
 });
 
 //Stores.belongsTo(Address)
 
-
 Orders.beforeCreate((orders, _) => {
     return (orders.orderID = uuid());
 });
 
-Orders.sync()
-    .then(() => {
-        console.log(`Orders created`.cyan.bold);
-    })
-    .catch((error) => console.log('ERROR', error));
+SQL.query('SET FOREIGN_KEY_CHECKS = 0', { raw: true }).then(() => {
+    Orders.sync()
+        .then(() => {
+            console.log(`Orders created`.cyan.bold);
+        })
+        .catch((error) => console.log('ERROR', error));
+});
 
 export default Orders;

@@ -16,7 +16,7 @@ const Stores = SQL.define(
         storeName: {
             type: Sequelize.STRING,
             allowNull: false,
-        }
+        },
     },
     {
         timestamps: false,
@@ -29,17 +29,16 @@ Stores.belongsTo(Address, {
     },
 });
 
-//Stores.belongsTo(Address)
-
-
 Stores.beforeCreate((stores, _) => {
     return (stores.storeId = uuid());
 });
 
-Stores.sync()
-    .then(() => {
-        console.log(`Stores created`.cyan.bold);
-    })
-    .catch((error) => console.log('ERROR', error));
+SQL.query('SET FOREIGN_KEY_CHECKS = 0', { raw: true }).then(() =>
+    Stores.sync()
+        .then(() => {
+            console.log(`Stores created`.cyan.bold);
+        })
+        .catch((error) => console.log('ERROR', error))
+);
 
 export default Stores;

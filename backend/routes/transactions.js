@@ -4,9 +4,10 @@ const router = express.Router();
 import {
     getTransactions,
     getTransaction,
+    createTransaction,
 } from '../controller/transactions.js';
 
-router.route('/').get(getTransactions);
+router.route('/').get(getTransactions).post(createTransaction);
 
 router.route('/:id').get(getTransaction);
 

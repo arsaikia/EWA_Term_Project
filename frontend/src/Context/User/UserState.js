@@ -39,7 +39,6 @@ const UserState = (props) => {
                 body: { email, password },
             });
 
-            console.log('In response', response);
             const user = get(get(response, 'data'), 'data');
             const success = get(get(response, 'data'), 'success');
 

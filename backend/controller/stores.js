@@ -1,7 +1,6 @@
 import Stores from '../models/Store.js';
 import asyncHandler from '../middleware/async.js';
 import ErrorResponse from '../middleware/error.js';
-import Addresses from '../models/Address.js';
 
 /*
  * @desc     Get All stores

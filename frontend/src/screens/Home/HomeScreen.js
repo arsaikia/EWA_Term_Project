@@ -50,7 +50,7 @@ const HomeScreen = ({
     };
 
     if (showMap) {
-        return <GoogleMapStores setStore={setStore} setShowMap={setShowMap} />;
+        return <GoogleMapStores setStore={setStore} setShowMap={setShowMap} getFilteredProducts={getFilteredProducts} />;
     }
 
     return (

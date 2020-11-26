@@ -128,6 +128,9 @@ const HomeController = ({
      */
 
     const loadDataOnMount = useCallback(() => {
+        if (allProductsFetched) {
+            setFetchingAllProducts(false);
+        }
         if (fetchingAllProducts && !allProductsFetched) {
             setFetchingAllProducts(false);
             fetchAllProducts();

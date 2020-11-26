@@ -58,6 +58,7 @@ const CartState = (props) => {
             payload: products,
             type: GET_ALL_PRODUCTS,
         });
+        await getFilteredProducts();
     };
 
     const removedFetchedState = () => {
@@ -81,7 +82,7 @@ const CartState = (props) => {
         let filteredProducts = state.originalProducts;
         const newFilter = {};
         newFilter[filterBy] = searchKey;
-        let currentFilters = { ...filters, ...newFilter };
+        let currentFilters = filterBy ? { ...filters, ...newFilter } : filters;
         setFilters(currentFilters);
 
         // Filter By user preference
@@ -89,6 +90,14 @@ const CartState = (props) => {
         if (!isEmpty(userPref) && userPref !== 'ALL') {
             filteredProducts = filteredProducts.filter((product) => {
                 return product.foodPreference === userPref;
+            });
+        }
+
+        // Filter By  STORE
+        const storeSelected = get(currentFilters, 'STORE');
+        if (!isEmpty(storeSelected)) {
+            filteredProducts = filteredProducts.filter((product) => {
+                return product.storeId === storeSelected;
             });
         }
 

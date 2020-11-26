@@ -36,13 +36,13 @@ const cards = JSON.parse(fs.readFileSync(`./_data/cards.json`, 'utf-8'));
 // Import into DB
 const importData = async () => {
     try {
-        await Users.bulkCreate(users);
-        await Products.bulkCreate(products);
-        await Stores.bulkCreate(stores);
+        // await Users.bulkCreate(users);
+        // await Products.bulkCreate(products);
+        // await Stores.bulkCreate(stores);
         await StoreProducts.bulkCreate(storeproducts);
-        await Carts.bulkCreate(carts);
-        await Cards.bulkCreate(cards);
-        await Address.bulkCreate(addresses);
+        // await Carts.bulkCreate(carts);
+        // await Cards.bulkCreate(cards);
+        // await Address.bulkCreate(addresses);
 
         console.log('Data Imported...'.green.inverse);
         process.exit();
@@ -54,13 +54,13 @@ const importData = async () => {
 // Delete data
 const deleteData = async () => {
     try {
-        await Users.destroy({ where: {} });
-        await Address.destroy({ where: {} });
-        await Products.destroy({ where: {} });
-        await Stores.destroy({ where: {} });
+        // await Users.destroy({ where: {} });
+        // await Address.destroy({ where: {} });
+        // await Products.destroy({ where: {} });
+        // await Stores.destroy({ where: {} });
         await StoreProducts.destroy({ where: {} });
-        await Carts.destroy({ where: {} });
-        await Cards.destroy({ where: {} });
+        // await Carts.destroy({ where: {} });
+        // await Cards.destroy({ where: {} });
 
         console.log('Data Destroyed...'.red.inverse);
         process.exit();

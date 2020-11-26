@@ -6,13 +6,14 @@ import {
     Marker,
     InfoWindow,
 } from 'react-google-maps';
+import { get } from 'lodash';
 import { Button } from 'react-bootstrap';
 import storeData from '../../utils/stores.json';
 import mapStyles from './mapStyles';
 import STORE_ICON from '../../Images/Icons/storeIcon.svg';
 import { FlexContainer, Spacing } from '../../components/StylingComponents';
 
-function Map({ setStore, setShowMap }) {
+function Map({ setStore, setShowMap, getFilteredProducts }) {
     const [selectedPark, setSelectedPark] = useState(null);
     useEffect(() => {
         const listener = (e) => {
@@ -26,6 +27,12 @@ function Map({ setStore, setShowMap }) {
             window.removeEventListener('keydown', listener);
         };
     }, []);
+
+    const buttonClickHandler = () => {
+        setStore(selectedPark);
+        getFilteredProducts(get(selectedPark, 'storeId', ''), 'STORE');
+        setShowMap(false);
+    };
 
     return (
         <GoogleMap
@@ -69,11 +76,7 @@ function Map({ setStore, setShowMap }) {
                             fleDirection='row'
                             justifyContent='center'>
                             <Button
-                                onClick={() => {
-                                    setStore(selectedPark);
-                                    // setSelectedPark(null);
-                                    setShowMap(false);
-                                }}
+                                onClick={buttonClickHandler}
                                 variant='outline-success'
                                 size='sm'>
                                 Select Store
@@ -88,7 +91,11 @@ function Map({ setStore, setShowMap }) {
 
 const MapWrapped = withScriptjs(withGoogleMap(Map));
 
-export default function GoogleMapStores({ setStore, setShowMap }) {
+export default function GoogleMapStores({
+    setStore,
+    setShowMap,
+    getFilteredProducts,
+}) {
     return (
         <div style={{ width: '100vw', height: '100vh' }}>
             <MapWrapped
@@ -98,6 +105,7 @@ export default function GoogleMapStores({ setStore, setShowMap }) {
                 mapElement={<div style={{ height: `100%` }} />}
                 setStore={setStore}
                 setShowMap={setShowMap}
+                getFilteredProducts={getFilteredProducts}
             />
         </div>
     );

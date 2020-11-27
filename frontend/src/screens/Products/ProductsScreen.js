@@ -255,7 +255,6 @@ const ShareProduct = ({ showShare, setShowShare, userId, productId }) => {
     const shareHandler = async () => {
         setShareDone(true);
 
-        console.log('shareProduct', userId, productId);
         if (!userId || !productId) return;
         return await API.POST({
             url: `shares/`,

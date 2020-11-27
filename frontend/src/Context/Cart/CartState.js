@@ -161,7 +161,7 @@ const CartState = (props) => {
             url: `carts/`,
             body: { cartId: uuid(), userId, productId, quantity: 1 },
         });
-        await fetchAllProducts();
+        // await fetchAllProducts();
         await fetchProductsInCart(userId);
     };
 

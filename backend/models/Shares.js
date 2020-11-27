@@ -23,24 +23,24 @@ const Shares = SQL.define(
     }
 );
 
-Stores.belongsTo(Users, {
+Shares.belongsTo(Users, {
     foreignKey: {
         name: 'userId',
     },
 });
 
-Stores.belongsTo(Products, {
+Shares.belongsTo(Products, {
     foreignKey: {
-        name: 'productsId',
+        name: 'productId',
     },
 });
 
 Shares.beforeCreate((shares, _) => {
-    return (shares.sharesId = uuid());
+    return (shares.shareId = uuid());
 });
 
 SQL.query('SET FOREIGN_KEY_CHECKS = 0', { raw: true }).then(() =>
-Shares.sync() //  { force: true }
+Shares.sync({ force: true }) //  { force: true }
         .then(() => {
             console.log(`Shares created`.cyan.bold);
         })

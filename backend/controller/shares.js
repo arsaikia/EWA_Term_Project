@@ -49,7 +49,7 @@ const getSharePerUser = asyncHandler(async (req, res, next) => {
 const createShare = asyncHandler(async (req, res, next) => {
     // Validate Body is not empty
     console.log('req.body', req.body);
-    if (!req.params.id || !req.body.email) {
+    if (!req.body.email) {
         return next(
             res.status(400).send({
                 message: 'Content can not be empty!',
@@ -57,11 +57,11 @@ const createShare = asyncHandler(async (req, res, next) => {
         );
     }
 
-    const sharesId = uuid().toString();
+    // const sharesId = uuid().toString();
     const share = await Shares.create({
-        sharesId: sharesId,
-        userId: req.params.id1,
-        productId: req.params.id2,
+        sharesId: req.body.sharesId,
+        userId: req.body.userId,
+        productId: req.body.productId,
         email: req.body.email,
     });
 

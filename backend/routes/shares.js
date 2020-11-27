@@ -3,11 +3,9 @@ const router = express.Router();
 
 import { getShares, getSharePerUser, createShare } from '../controller/shares.js';
 
-router.route('/').get(getShares)
+router.route('/').get(getShares).post(createShare)
 
-router.route('/:id').get(getSharePerUser) 
-
-router.route('/:id1:id2').post(createShare)
+router.route('/:id').get(getSharePerUser)
 
 // Export the router
 export { router as sharesRoute };

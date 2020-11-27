@@ -5,6 +5,7 @@ import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
 import Rating from '../../components/Rating';
 import styled from 'styled-components/macro';
 import { Popup } from '../../components/Popup';
+import API from '../../utils/Query';
 
 import { Container as FluidContainer } from 'react-bootstrap';
 
@@ -240,7 +241,7 @@ const DescriptionAndReviews = ({ description, revews }) => {
     );
 };
 
-const ShareProduct = ({ showShare, setShowShare }) => {
+const ShareProduct = ({ showShare, setShowShare, userId, productId }) => {
     const [email, setEmail] = useState('');
     const [shareDone, setShareDone] = useState(false);
 
@@ -248,8 +249,22 @@ const ShareProduct = ({ showShare, setShowShare }) => {
         showShare && setShareDone(false);
     }, [showShare]);
 
-    const shareHandler = () => {
+    /*
+     *SHARE_PRODUCT
+     */
+    const shareHandler = async () => {
         setShareDone(true);
+
+        console.log('shareProduct', userId, productId);
+        if (!userId || !productId) return;
+        return await API.POST({
+            url: `shares/`,
+            body: {
+                email,
+                userId,
+                productId,
+            },
+        });
     };
 
     return (
@@ -313,7 +328,7 @@ const reviews = [
     },
 ];
 
-const ProductsScreen = ({ productById, showShare, setShowShare }) => {
+const ProductsScreen = ({ productById, showShare, setShowShare, userId }) => {
     const imageSrc =
         require(`../../Images/products/${productById.image.toLowerCase()}`)
             .default || 'apple';
@@ -329,7 +344,10 @@ const ProductsScreen = ({ productById, showShare, setShowShare }) => {
         <FluidContainer sm fluid>
             <ShareProduct
                 showShare={showShare}
-                setShowShare={setShowShare}></ShareProduct>
+                setShowShare={setShowShare}
+                productId={productById.productId}
+                userId={userId}
+            />
             <OuterContainer
                 minHeight='100vh'
                 margin='6em 8em 1em 8em'

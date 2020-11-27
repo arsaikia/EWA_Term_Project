@@ -16,10 +16,10 @@ const ProductsController = (props) => {
      * GLOBAL STATE FROM CONTEXT API
      ***************************************************
      */
-
+    const userId = Cookie.get('USER_ID');
     const appContext = useContext(AppContext);
     const { setShowHeader } = appContext;
-    
+
     const cartContext = useContext(CartContext);
     const { productById, getProductById, productByIdFetched } = cartContext;
 
@@ -39,7 +39,7 @@ const ProductsController = (props) => {
     /********************************************
      * Local States
      ********************************************/
-    const [showShare, setShowShare] = useState(false)
+    const [showShare, setShowShare] = useState(false);
     const { productId } = useParams();
 
     useEffect(() => {
@@ -69,6 +69,7 @@ const ProductsController = (props) => {
             productById={productById}
             showShare={showShare}
             setShowShare={setShowShare}
+            userId={userId}
         />
     );
 };

@@ -1,6 +1,9 @@
 import Shares from '../models/Shares.js';
 import asyncHandler from '../middleware/async.js';
 import ErrorResponse from '../middleware/error.js';
+import { v4 as uuid } from 'uuid';
+import lodash from 'lodash';
+const { get, isEmpty } = lodash;
 
 /*
  * @desc     Get All shares
@@ -57,9 +60,9 @@ const createShare = asyncHandler(async (req, res, next) => {
         );
     }
 
-    // const sharesId = uuid().toString();
+    const shareId = !isEmpty(get(req.body, 'shareId')) || uuid().toString();
     const share = await Shares.create({
-        sharesId: req.body.sharesId,
+        shareId,
         userId: req.body.userId,
         productId: req.body.productId,
         email: req.body.email,
@@ -80,4 +83,3 @@ const createShare = asyncHandler(async (req, res, next) => {
 });
 
 export { getShares, getSharePerUser, createShare };
-

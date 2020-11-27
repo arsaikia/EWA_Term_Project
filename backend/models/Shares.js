@@ -40,7 +40,7 @@ Shares.beforeCreate((shares, _) => {
 });
 
 SQL.query('SET FOREIGN_KEY_CHECKS = 0', { raw: true }).then(() =>
-Shares.sync({ force: true }) //  { force: true }
+    Shares.sync() //  { force: true }
         .then(() => {
             console.log(`Shares created`.cyan.bold);
         })

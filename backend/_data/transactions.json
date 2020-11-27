@@ -1,0 +1,774 @@
+[
+    {
+        "transactionId": "745c300b-1be8-436a-afca-c29e447dd21b",
+        "purchaseDate": "2020-11-25",
+        "totalPrice":12.57,
+        "deliveryForcast": "2020-12-05",
+        "deliveryActual": null,
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "1160c652-0a2b-465b-8af2-aa792e640397",
+        "addressId": "9200f792-7fe5-466d-897b-e0c165654180",
+        "storeId": null,
+        "cardId": "eea3672b-4d63-4451-8854-d45396ba3f25"
+  
+    },
+    {
+        "transactionId": "2b06f155-1df3-4276-8293-30e68a4bef66",
+        "purchaseDate": "2020-11-25",
+        "totalPrice":31.11,
+        "deliveryForcast": "2020-12-05",
+        "deliveryActual": null,
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "991dc80d-26ac-48be-acdb-7146ee22b31a",
+        "addressId": "5d80ef34-3f3c-4d01-8218-4571b0015a8d",
+        "storeId": null,
+        "cardId": "1b77cbbc-b850-417a-9e47-693e7b38bdc8"
+  
+    },
+    {
+        "transactionId": "29bba362-43de-4393-a990-845c4f916524",
+        "purchaseDate": "2020-11-25",
+        "totalPrice":6.87,
+        "deliveryForcast": "2020-12-05",
+        "deliveryActual": null,
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "1e41be06-4966-407c-8c06-c9299dc84eb7",
+        "addressId": "7c1bac59-02bd-40e0-ac4b-0db9247f5e2b",
+        "storeId": null,
+        "cardId": "64cc7777-e2b3-4e5e-9e3d-df8d7a9609f2"
+  
+    },
+    {
+        "transactionId": "ccff4539-b31f-4df4-9a7f-706a5d97433e",
+        "purchaseDate": "2020-11-25",
+        "totalPrice":6.57,
+        "deliveryForcast": "2020-12-05",
+        "deliveryActual": null,
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "f1877d11-66d0-432b-b879-568557ee1764",
+        "addressId": "24e0d193-1145-46bc-b226-5229779e5d60",
+        "storeId":null,
+        "cardId": "7a0a82be-068d-40d8-9143-0ad123356abb"
+  
+    },
+    {
+        "transactionId": "c89f080b-be4d-415d-b042-28df7a274fe9",
+        "purchaseDate": "2020-11-25",
+        "totalPrice":12.97,
+        "deliveryForcast": "2020-12-05",
+        "deliveryActual": null,
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "1160c652-0a2b-465b-8af2-aa792e640397",
+        "addressId": "9200f792-7fe5-466d-897b-e0c165654180",
+        "storeId": null,
+        "cardId": "eea3672b-4d63-4451-8854-d45396ba3f25"
+  
+    },
+    {
+        "transactionId": "95282a9a-1176-47ef-8483-1a067c5182e6",
+        "purchaseDate": "2020-11-25",
+        "totalPrice":7.92,
+        "deliveryForcast": "2020-12-05",
+        "deliveryActual": null,
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "2e9e5ee2-a29d-4cb5-963d-b6d6ce8df526",
+        "addressId": "97e13a52-0cec-48b8-a079-2aadbec25915",
+        "storeId": null,
+        "cardId": "d3cc7825-c0f5-43bf-b151-e4d309eb706e"
+  
+    },
+    {
+        "transactionId": "3d7118a5-9e9f-46dc-ac2d-aa07fa8f41d2",
+        "purchaseDate": "2020-11-25",
+        "totalPrice":10.44,
+        "deliveryForcast": "2020-12-05",
+        "deliveryActual": null,
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "2e9e5ee2-a29d-4cb5-963d-b6d6ce8df526",
+        "addressId": "97e13a52-0cec-48b8-a079-2aadbec25915",
+        "storeId": null,
+        "cardId": "d3cc7825-c0f5-43bf-b151-e4d309eb706e"
+  
+    },
+    {
+        "transactionId": "9cae9ced-2630-47da-afff-6a1266369ce4",
+        "purchaseDate": "2020-11-25",
+        "totalPrice":30.17,
+        "deliveryForcast": "2020-12-05",
+        "deliveryActual": null,
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "1160c652-0a2b-465b-8af2-aa792e640397",
+        "addressId": "9200f792-7fe5-466d-897b-e0c165654180",
+        "storeId": null,
+        "cardId":"eea3672b-4d63-4451-8854-d45396ba3f25" 
+  
+    },
+    {
+        "transactionId": "600dc37d-64b9-456a-b132-95ba85dc0a64",
+        "purchaseDate": "2020-11-25",
+        "totalPrice":49.36,
+        "deliveryForcast": "2020-12-05",
+        "deliveryActual": null,
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "f1877d11-66d0-432b-b879-568557ee1764",
+        "addressId": "24e0d193-1145-46bc-b226-5229779e5d60",
+        "storeId": null,
+        "cardId": "7a0a82be-068d-40d8-9143-0ad123356abb"
+  
+    },
+    {
+        "transactionId": "4b791bfd-94c0-4a6f-b3e5-6866cd74c148",
+        "purchaseDate": "2020-11-24",
+        "totalPrice":7.01,
+        "deliveryForcast": "2020-12-03",
+        "deliveryActual": null,
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "1160c652-0a2b-465b-8af2-aa792e640397",
+        "addressId": "9200f792-7fe5-466d-897b-e0c165654180",
+        "storeId": null,
+        "cardId": "eea3672b-4d63-4451-8854-d45396ba3f25"
+  
+    },
+    {
+        "transactionId": "ad654b9d-2a35-41ac-ba03-22ac603fa515",
+        "purchaseDate": "2020-11-24",
+        "totalPrice":9.14,
+        "deliveryForcast": "2020-12-04",
+        "deliveryActual": null,
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "1e41be06-4966-407c-8c06-c9299dc84eb7",
+        "addressId": "7c1bac59-02bd-40e0-ac4b-0db9247f5e2b",
+        "storeId": null,
+        "cardId": "64cc7777-e2b3-4e5e-9e3d-df8d7a9609f2"
+  
+    },
+    {
+        "transactionId": "53e6c110-390c-4b0d-aec6-48f635ebba0a",
+        "purchaseDate": "2020-11-24",
+        "totalPrice":70.72,
+        "deliveryForcast": "2020-12-04",
+        "deliveryActual": null,
+        "deliveryMethod": "STORE",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "991dc80d-26ac-48be-acdb-7146ee22b31a",
+        "addressId": null,
+        "storeId": "6ba1a2a3-3c7c-4f2b-a9f5-de91d5091aca",
+        "cardId": "1b77cbbc-b850-417a-9e47-693e7b38bdc8"
+  
+    },
+    {
+        "transactionId": "8a9784b6-0463-408f-8feb-5b999e0fdc35",
+        "purchaseDate": "2020-11-24",
+        "totalPrice":36.15,
+        "deliveryForcast": "2020-12-03",
+        "deliveryActual": null,
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "1160c652-0a2b-465b-8af2-aa792e640397",
+        "addressId": "9200f792-7fe5-466d-897b-e0c165654180",
+        "storeId": null,
+        "cardId": "eea3672b-4d63-4451-8854-d45396ba3f25"
+  
+    },
+    {
+        "transactionId": "3be33c7c-848f-4bca-a052-a34ae791b598",
+        "purchaseDate": "2020-11-24",
+        "totalPrice":33.27,
+        "deliveryForcast": "2020-12-03",
+        "deliveryActual": null,
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "1160c652-0a2b-465b-8af2-aa792e640397",
+        "addressId": "9200f792-7fe5-466d-897b-e0c165654180",
+        "storeId": null,
+        "cardId": "eea3672b-4d63-4451-8854-d45396ba3f25"
+    },
+    {
+        "transactionId": "badc22f5-2ef6-420f-b781-5ca86c925859",
+        "purchaseDate": "2020-11-24",
+        "totalPrice":8.38,
+        "deliveryForcast": "2020-12-03",
+        "deliveryActual": null,
+        "deliveryMethod": "STORE",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "f1877d11-66d0-432b-b879-568557ee1764",
+        "addressId": null,
+        "storeId": "b6a0d0f8-fcc4-4776-a918-5b93bf1bd563",
+        "cardId": "7a0a82be-068d-40d8-9143-0ad123356abb"
+  
+    },
+    {
+        "transactionId": "2dba8c9d-7f6e-4c13-9fd4-11effd69fcd2",
+        "purchaseDate": "2020-11-24",
+        "totalPrice":17.55,
+        "deliveryForcast": "2020-12-03",
+        "deliveryActual": null,
+        "deliveryMethod": "STORE",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "1160c652-0a2b-465b-8af2-aa792e640397",
+        "addressId": null,
+        "storeId": "b6a0d0f8-fcc4-4776-a918-5b93bf1bd563",
+        "cardId": "eea3672b-4d63-4451-8854-d45396ba3f25"
+  
+    },
+    {
+        "transactionId": "128292fc-db6f-4cc3-a8b7-b66963d1dceb",
+        "purchaseDate": "2020-11-24",
+        "totalPrice":2.54,
+        "deliveryForcast": "2020-12-03",
+        "deliveryActual": null,
+        "deliveryMethod": "STORE",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "991dc80d-26ac-48be-acdb-7146ee22b31a",
+        "addressId": null,
+        "storeId": "6ba1a2a3-3c7c-4f2b-a9f5-de91d5091aca",
+        "cardId": "1b77cbbc-b850-417a-9e47-693e7b38bdc8"
+  
+    },
+    {
+        "transactionId": "4a87637a-1b36-4cdf-9987-fb0e19f76f72",
+        "purchaseDate": "2020-11-24",
+        "totalPrice":6.38,
+        "deliveryForcast": "2020-12-03",
+        "deliveryActual": null,
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "1e41be06-4966-407c-8c06-c9299dc84eb7",
+        "addressId": "7c1bac59-02bd-40e0-ac4b-0db9247f5e2b",
+        "storeId": null,
+        "cardId": "64cc7777-e2b3-4e5e-9e3d-df8d7a9609f2"
+  
+    },
+    {
+        "transactionId": "3882de25-0a06-4c3c-ba53-fe9ad842ded4",
+        "purchaseDate": "2020-11-24",
+        "totalPrice":6.57,
+        "deliveryForcast": "2020-12-03",
+        "deliveryActual": null,
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "2e9e5ee2-a29d-4cb5-963d-b6d6ce8df526",
+        "addressId": "97e13a52-0cec-48b8-a079-2aadbec25915",
+        "storeId": null,
+        "cardId": "d3cc7825-c0f5-43bf-b151-e4d309eb706e"
+  
+    },
+    {
+        "transactionId": "69163c38-1ce9-4e9b-9fb4-389c6959f590",
+        "purchaseDate": "2020-11-24",
+        "totalPrice":8.78,
+        "deliveryForcast": "2020-12-03",
+        "deliveryActual": null,
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "1160c652-0a2b-465b-8af2-aa792e640397",
+        "addressId": "9200f792-7fe5-466d-897b-e0c165654180",
+        "storeId": null,
+        "cardId": "eea3672b-4d63-4451-8854-d45396ba3f25"
+  
+    },
+    {
+        "transactionId": "54eb0972-c7ff-41c3-b22b-df9355d62c88",
+        "purchaseDate": "2020-11-23",
+        "totalPrice":10.11,
+        "deliveryForcast": "2020-12-07",
+        "deliveryActual": null,
+        "deliveryMethod": "STORE",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "1e41be06-4966-407c-8c06-c9299dc84eb7",
+        "addressId": null,
+        "storeId": "6ba1a2a3-3c7c-4f2b-a9f5-de91d5091aca",
+        "cardId": "64cc7777-e2b3-4e5e-9e3d-df8d7a9609f2"
+  
+    },
+    {
+        "transactionId": "7bab7a6b-d8b1-4b5b-b990-d693e376c515",
+        "purchaseDate": "2020-11-23",
+        "totalPrice":10.44,
+        "deliveryForcast": "2020-12-07",
+        "deliveryActual": null,
+        "deliveryMethod": "STORE",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "991dc80d-26ac-48be-acdb-7146ee22b31a",
+        "addressId": null,
+        "storeId": "6ba1a2a3-3c7c-4f2b-a9f5-de91d5091aca",
+        "cardId": "1b77cbbc-b850-417a-9e47-693e7b38bdc8"
+  
+    },
+    {
+        "transactionId": "6154f629-0719-44ae-b48a-041233cb1881",
+        "purchaseDate": "2020-11-23",
+        "totalPrice":30.17,
+        "deliveryForcast": "2020-12-07",
+        "deliveryActual": null,
+        "deliveryMethod": "STORE",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "1e41be06-4966-407c-8c06-c9299dc84eb7",
+        "addressId": null,
+        "storeId": "6ba1a2a3-3c7c-4f2b-a9f5-de91d5091aca",
+        "cardId": "64cc7777-e2b3-4e5e-9e3d-df8d7a9609f2"
+  
+    },
+    {
+        "transactionId": "e3135cdf-4045-4687-8427-c8e1da88b2ce",
+        "purchaseDate": "2020-11-23",
+        "totalPrice":12.3,
+        "deliveryForcast": "2020-12-07",
+        "deliveryActual": null,
+        "deliveryMethod": "STORE",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "f1877d11-66d0-432b-b879-568557ee1764",
+        "addressId": null,
+        "storeId": "6ba1a2a3-3c7c-4f2b-a9f5-de91d5091aca",
+        "cardId": "7a0a82be-068d-40d8-9143-0ad123356abb"
+  
+    },
+    {
+        "transactionId": "145ff383-3733-4e88-bba4-a1f368bad4a8",
+        "purchaseDate": "2020-11-23",
+        "totalPrice":11,
+        "deliveryForcast": "2020-12-07",
+        "deliveryActual": null,
+        "deliveryMethod": "STORE",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "2e9e5ee2-a29d-4cb5-963d-b6d6ce8df526",
+        "addressId": null,
+        "storeId": "6ba1a2a3-3c7c-4f2b-a9f5-de91d5091aca",
+        "cardId": "d3cc7825-c0f5-43bf-b151-e4d309eb706e"
+  
+    },
+    {
+        "transactionId": "589c94bc-e54c-4849-8e9a-bc4c6ab3e63a",
+        "purchaseDate": "2020-11-23",
+        "totalPrice":13,
+        "deliveryForcast": "2020-12-07",
+        "deliveryActual": null,
+        "deliveryMethod": "STORE",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "1e41be06-4966-407c-8c06-c9299dc84eb7",
+        "addressId": null,
+        "storeId": "6ba1a2a3-3c7c-4f2b-a9f5-de91d5091aca",
+        "cardId": "64cc7777-e2b3-4e5e-9e3d-df8d7a9609f2"
+  
+    },
+    {
+        "transactionId": "dd7eac3d-d0ba-4bb0-8567-212fbb069dbe",
+        "purchaseDate": "2020-11-232020-11-23",
+        "totalPrice":15,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": null,
+        "deliveryMethod": "STORE",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "2e9e5ee2-a29d-4cb5-963d-b6d6ce8df526",
+        "addressId": null,
+        "storeId": "b6a0d0f8-fcc4-4776-a918-5b93bf1bd563",
+        "cardId": "d3cc7825-c0f5-43bf-b151-e4d309eb706e"
+  
+    },
+    {
+        "transactionId": "439a7d82-f3b2-4410-83c3-6bf18fe46a51",
+        "purchaseDate": "2020-11-23",
+        "totalPrice":17.5,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": null,
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "1160c652-0a2b-465b-8af2-aa792e640397",
+        "addressId": "9200f792-7fe5-466d-897b-e0c165654180",
+        "storeId": null,
+        "cardId": "eea3672b-4d63-4451-8854-d45396ba3f25"
+  
+    },
+    {
+        "transactionId": "924a0fdf-8cc6-4766-be89-ff6764e92b86",
+        "purchaseDate": "2020-11-23",
+        "totalPrice":17,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": null,
+        "deliveryMethod": "STORE",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "991dc80d-26ac-48be-acdb-7146ee22b31a",
+        "addressId": null,
+        "storeId": "6ba1a2a3-3c7c-4f2b-a9f5-de91d5091aca",
+        "cardId": "1b77cbbc-b850-417a-9e47-693e7b38bdc8"
+  
+    },
+    {
+        "transactionId": "0b768f58-cc85-4219-9bdc-c00b786d277c",
+        "purchaseDate": "2020-11-23",
+        "totalPrice":28,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": null,
+        "deliveryMethod": "STORE",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "f1877d11-66d0-432b-b879-568557ee1764",
+        "addressId": null,
+        "storeId": "b6a0d0f8-fcc4-4776-a918-5b93bf1bd563",
+        "cardId": "7a0a82be-068d-40d8-9143-0ad123356abb"
+  
+    },
+    {
+        "transactionId": "3586e8b8-3936-4f2c-aaa8-9c72326d198a",
+        "purchaseDate": "2020-11-23",
+        "totalPrice":43,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": null,
+        "deliveryMethod": "STORE",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "991dc80d-26ac-48be-acdb-7146ee22b31a",
+        "addressId": null,
+        "storeId": "b6a0d0f8-fcc4-4776-a918-5b93bf1bd563",
+        "cardId": "1b77cbbc-b850-417a-9e47-693e7b38bdc8"
+  
+    },
+    {
+        "transactionId": "3090ce2f-f5e3-4281-9cf2-f694e7b306b2",
+        "purchaseDate": "2020-11-23",
+        "totalPrice":32,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": null,
+        "deliveryMethod": "STORE",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "1e41be06-4966-407c-8c06-c9299dc84eb7",
+        "addressId": null,
+        "storeId": "537a2109-095b-40c4-86a8-33447c8a8040",
+        "cardId": "64cc7777-e2b3-4e5e-9e3d-df8d7a9609f2"
+  
+    },
+    {
+        "transactionId": "782f0ae1-a0b5-4670-a67c-b2465ac0778e",
+        "purchaseDate": "2020-11-23",
+        "totalPrice":12,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": null,
+        "deliveryMethod": "STORE",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "1160c652-0a2b-465b-8af2-aa792e640397",
+        "addressId": null,
+        "storeId": "b6a0d0f8-fcc4-4776-a918-5b93bf1bd563",
+        "cardId": "eea3672b-4d63-4451-8854-d45396ba3f25"
+  
+    },
+    {
+        "transactionId": "0248b73a-1e4c-435c-b981-c111ee5a0bb4",
+        "purchaseDate": "2020-11-23",
+        "totalPrice":16,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": null,
+        "deliveryMethod": "STORE",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "f1877d11-66d0-432b-b879-568557ee1764",
+        "addressId": null,
+        "storeId": "537a2109-095b-40c4-86a8-33447c8a8040",
+        "cardId": "7a0a82be-068d-40d8-9143-0ad123356abb"
+  
+    },
+    {
+        "transactionId": "a16b4804-c9e7-4c0f-86c4-37339fd0cadf",
+        "purchaseDate": "2020-11-23",
+        "totalPrice":19,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": null,
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "2e9e5ee2-a29d-4cb5-963d-b6d6ce8df526",
+        "addressId": "97e13a52-0cec-48b8-a079-2aadbec25915",
+        "storeId": null,
+        "cardId": "d3cc7825-c0f5-43bf-b151-e4d309eb706e"
+  
+    },
+    {
+        "transactionId": "729f744e-d44a-487b-8f99-b4e22ed69d57",
+        "purchaseDate": "2020-11-23",
+        "totalPrice":21,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": null,
+        "deliveryMethod": "STORE",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "2e9e5ee2-a29d-4cb5-963d-b6d6ce8df526",
+        "addressId": null,
+        "storeId": "6ba1a2a3-3c7c-4f2b-a9f5-de91d5091aca",
+        "cardId": "d3cc7825-c0f5-43bf-b151-e4d309eb706e"
+  
+    },
+    {
+        "transactionId": "e98f2d1f-e20c-4cc9-95b1-add7c0bb1488",
+        "purchaseDate": "2020-11-22",
+        "totalPrice":18,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": null,
+        "deliveryMethod": "STORE",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "1160c652-0a2b-465b-8af2-aa792e640397",
+        "addressId": null,
+        "storeId": "537a2109-095b-40c4-86a8-33447c8a8040",
+        "cardId": "eea3672b-4d63-4451-8854-d45396ba3f25"
+  
+    },
+    {
+        "transactionId": "00cf6c1c-d9c9-488c-ad03-8b0ab81d7d6e",
+        "purchaseDate": "2020-11-22",
+        "totalPrice":12,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": null,
+        "deliveryMethod": "STORE",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "1160c652-0a2b-465b-8af2-aa792e640397",
+        "addressId": null,
+        "storeId": "537a2109-095b-40c4-86a8-33447c8a8040",
+        "cardId": "eea3672b-4d63-4451-8854-d45396ba3f25"
+  
+    },
+    {
+        "transactionId": "48c165f3-b3a3-4ed8-877e-c5f531c157a7",
+        "purchaseDate": "2020-11-22",
+        "totalPrice":19,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": null,
+        "deliveryMethod": "STORE",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "f1877d11-66d0-432b-b879-568557ee1764",
+        "addressId": null,
+        "storeId": "6ba1a2a3-3c7c-4f2b-a9f5-de91d5091aca",
+        "cardId": "7a0a82be-068d-40d8-9143-0ad123356abb"
+  
+    },
+    {
+        "transactionId": "67d46648-c8fc-4216-8602-bd12168c051b",
+        "purchaseDate": "2020-11-22",
+        "totalPrice":16,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": null,
+        "deliveryMethod": "STORE",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "1160c652-0a2b-465b-8af2-aa792e640397",
+        "addressId": null,
+        "storeId": "9b7f3adf-d139-404f-9cd4-dee018d0821f",
+        "cardId": "eea3672b-4d63-4451-8854-d45396ba3f25"
+  
+    },
+    {
+        "transactionId": "c4b560a4-466b-4b80-a7d4-28be74ea5bd2",
+        "purchaseDate": "2020-11-22",
+        "totalPrice":19,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": null,
+        "deliveryMethod": "STORE",
+        "deliveryStatus": "IN_PROGRESS",
+        "userId": "1e41be06-4966-407c-8c06-c9299dc84eb7",
+        "addressId": null,
+        "storeId": "6ba1a2a3-3c7c-4f2b-a9f5-de91d5091aca",
+        "cardId": "64cc7777-e2b3-4e5e-9e3d-df8d7a9609f2"
+  
+    },
+    {
+        "transactionId": "afcb48ad-f66b-4cb2-bbb7-eb8585348c62",
+        "purchaseDate": "2020-11-22",
+        "totalPrice":11,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": "2020-11-27",
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "DELIVERED",
+        "userId": "2e9e5ee2-a29d-4cb5-963d-b6d6ce8df526",
+        "addressId": "97e13a52-0cec-48b8-a079-2aadbec25915",
+        "storeId": null,
+        "cardId": "d3cc7825-c0f5-43bf-b151-e4d309eb706e"
+  
+    },
+    {
+        "transactionId": "e20f1190-2e55-4a7e-a136-d30b44f28927",
+        "purchaseDate": "2020-11-22",
+        "totalPrice":12,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": "2020-11-27",
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "DELIVERED",
+        "userId": "2e9e5ee2-a29d-4cb5-963d-b6d6ce8df526",
+        "addressId": "97e13a52-0cec-48b8-a079-2aadbec25915",
+        "storeId": null,
+        "cardId": "d3cc7825-c0f5-43bf-b151-e4d309eb706e"
+  
+    },
+    {
+        "transactionId": "cdec3cdf-b985-455c-b6ee-98fc65b54d5c",
+        "purchaseDate": "2020-11-22",
+        "totalPrice":13,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": "2020-11-27",
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "DELIVERED",
+        "userId": "1160c652-0a2b-465b-8af2-aa792e640397",
+        "addressId": "9200f792-7fe5-466d-897b-e0c165654180",
+        "storeId": null,
+        "cardId": "eea3672b-4d63-4451-8854-d45396ba3f25"
+  
+    },
+    {
+        "transactionId": "4a7eed58-1d36-42c5-91f0-671e7d8784ca",
+        "purchaseDate": "2020-11-22",
+        "totalPrice":15,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": "2020-11-27",
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "DELIVERED",
+        "userId": "991dc80d-26ac-48be-acdb-7146ee22b31a",
+        "addressId": "5d80ef34-3f3c-4d01-8218-4571b0015a8d",
+        "storeId": null,
+        "cardId": "1b77cbbc-b850-417a-9e47-693e7b38bdc8"
+  
+    },
+    {
+        "transactionId": "437d94c6-3363-4c1f-8336-ba892316c1d2",
+        "purchaseDate": "2020-11-22",
+        "totalPrice":16,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": "2020-11-27",
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "DELIVERED",
+        "userId": "1e41be06-4966-407c-8c06-c9299dc84eb7",
+        "addressId": "7c1bac59-02bd-40e0-ac4b-0db9247f5e2b",
+        "storeId": null,
+        "cardId": "64cc7777-e2b3-4e5e-9e3d-df8d7a9609f2"
+  
+    },
+    {
+        "transactionId": "ac16a0d6-debc-412b-ac4e-c3338d71f1e4",
+        "purchaseDate": "2020-11-22",
+        "totalPrice":19,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": "2020-11-26",
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "DELIVERED",
+        "userId": "2e9e5ee2-a29d-4cb5-963d-b6d6ce8df526",
+        "addressId": "97e13a52-0cec-48b8-a079-2aadbec25915",
+        "storeId": null,
+        "cardId": "d3cc7825-c0f5-43bf-b151-e4d309eb706e"
+  
+    },
+    {
+        "transactionId": "15e05b16-5604-4397-810d-302423bf223c",
+        "purchaseDate": "2020-11-22",
+        "totalPrice":15,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": "2020-11-26",
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "DELIVERED",
+        "userId": "1e41be06-4966-407c-8c06-c9299dc84eb7",
+        "addressId": "7c1bac59-02bd-40e0-ac4b-0db9247f5e2b",
+        "storeId": null,
+        "cardId": "64cc7777-e2b3-4e5e-9e3d-df8d7a9609f2"
+  
+    },
+    {
+        "transactionId": "9971a848-ebeb-40c4-8553-09c05eb4777c",
+        "purchaseDate": "2020-11-22",
+        "totalPrice":19,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": "2020-11-27",
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "DELIVERED",
+        "userId": "991dc80d-26ac-48be-acdb-7146ee22b31a",
+        "addressId": "5d80ef34-3f3c-4d01-8218-4571b0015a8d",
+        "storeId": null,
+        "cardId": "1b77cbbc-b850-417a-9e47-693e7b38bdc8"
+  
+    },
+    {
+        "transactionId": "9a043d7e-d15f-4b98-9e8a-e67f8ce49809",
+        "purchaseDate": "2020-11-22",
+        "totalPrice":16,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": "2020-11-27",
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "DELIVERED",
+        "userId": "2e9e5ee2-a29d-4cb5-963d-b6d6ce8df526",
+        "addressId": "97e13a52-0cec-48b8-a079-2aadbec25915",
+        "storeId": null,
+        "cardId": "d3cc7825-c0f5-43bf-b151-e4d309eb706e"
+  
+    },
+    {
+        "transactionId": "d98a8566-9945-4143-9e90-88f90a075039",
+        "purchaseDate": "2020-11-22",
+        "totalPrice":15,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": "2020-11-27",
+        "deliveryMethod": "STORE",
+        "deliveryStatus": "DELIVERED",
+        "userId": "1160c652-0a2b-465b-8af2-aa792e640397",
+        "addressId": null,
+        "storeId": "537a2109-095b-40c4-86a8-33447c8a8040",
+        "cardId": "eea3672b-4d63-4451-8854-d45396ba3f25"
+  
+    },
+    {
+        "transactionId": "136b753d-b5d1-4a22-879d-9b68de1e1448",
+        "purchaseDate": "2020-11-22",
+        "totalPrice":12,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": "2020-11-27",
+        "deliveryMethod": "STORE",
+        "deliveryStatus": "DELIVERED",
+        "userId": "f1877d11-66d0-432b-b879-568557ee1764",
+        "addressId": null,
+        "storeId": "6ba1a2a3-3c7c-4f2b-a9f5-de91d5091aca",
+        "cardId": "7a0a82be-068d-40d8-9143-0ad123356abb"
+  
+    },
+    {
+        "transactionId": "09b1bb64-2adb-4ab4-9a27-92ecc9b31941",
+        "purchaseDate": "2020-11-22",
+        "totalPrice":19,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": "2020-11-27",
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "DELIVERED",
+        "userId": "2e9e5ee2-a29d-4cb5-963d-b6d6ce8df526",
+        "addressId": "97e13a52-0cec-48b8-a079-2aadbec25915",
+        "storeId": null,
+        "cardId": "d3cc7825-c0f5-43bf-b151-e4d309eb706e"
+  
+    },
+    {
+        "transactionId": "b68fec2f-a2c2-4c58-b8c8-98324c246e1a",
+        "purchaseDate": "2020-11-22",
+        "totalPrice":12,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": "2020-11-26",
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "DELIVERED",
+        "userId": "f1877d11-66d0-432b-b879-568557ee1764",
+        "addressId": "24e0d193-1145-46bc-b226-5229779e5d60",
+        "storeId": null,
+        "cardId": "7a0a82be-068d-40d8-9143-0ad123356abb"
+  
+    },
+    {
+        "transactionId": "4daa58bb-3494-45ef-800c-84bd76d690c4",
+        "purchaseDate": "2020-11-22",
+        "totalPrice":13,
+        "deliveryForcast": "2020-12-02",
+        "deliveryActual": "2020-11-25",
+        "deliveryMethod": "HOME",
+        "deliveryStatus": "DELIVERED",
+        "userId": "1160c652-0a2b-465b-8af2-aa792e640397",
+        "addressId": "9200f792-7fe5-466d-897b-e0c165654180",
+        "storeId": null,
+        "cardId": "eea3672b-4d63-4451-8854-d45396ba3f25"
+  
+    }
+    
+    
+    
+]

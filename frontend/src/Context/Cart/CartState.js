@@ -41,6 +41,7 @@ const CartState = (props) => {
         userAddresses: [],
         userAddressesFetched: false,
         transferCreated: false,
+        lastTransfer: {},
     };
 
     const [filters, setFilters] = useState({});
@@ -228,11 +229,14 @@ const CartState = (props) => {
             },
         });
 
+        const transaction = get(get(response, 'data'), 'data');
+        console.log('transaction', response, transaction);
+
         dispatch({
+            payload: transaction,
             type: CREATE_TRANSFER,
         });
 
-        const success = get(get(response, 'data'), 'success');
     };
 
     const clearTransferStatus = () => {
@@ -240,6 +244,8 @@ const CartState = (props) => {
             type: RESET_CREATE_TRANSFER,
         });
     };
+
+
 
     return (
         <CartContext.Provider
@@ -269,6 +275,7 @@ const CartState = (props) => {
                 userAddresses: state.userAddresses,
                 userAddressesFetched: state.userAddressesFetched,
                 transferCreated: state.transferCreated,
+                lastTransfer: state.lastTransfer,
             }}>
             {props.children}
         </CartContext.Provider>

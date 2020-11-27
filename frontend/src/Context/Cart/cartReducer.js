@@ -83,12 +83,14 @@ export default (state, action) => {
         case CREATE_TRANSFER:
             return {
                 ...state,
+                lastTransfer: action.payload,
                 transferCreated: true,
             };
 
         case RESET_CREATE_TRANSFER:
             return {
                 ...state,
+                lastTransfer: {},
                 transferCreated: false,
             };
 

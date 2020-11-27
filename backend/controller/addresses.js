@@ -31,6 +31,18 @@ const getAddresses = asyncHandler(async (req, res, next) => {
     return next(res.status(200).json({ success: true, data: addresses }));
 });
 
+
+/*
+ * @desc     Get addresses with address id
+ * @route    GET /api/v1/addresses/address/:id
+ * @access   Public
+ */
+const getAddressWithId = () => {
+    
+}
+
+
+
 /*
  * @desc     Create card in Db
  * @route    GET /api/v1/cards/:id

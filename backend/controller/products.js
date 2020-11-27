@@ -1,6 +1,6 @@
 import { SQL } from '../config/db.js';
 import Products from '../models/Product.js';
-import StoreProducts from '../models/StoreProduct.js';
+import Review from '../models/Review.js';
 import Sequelize from 'sequelize';
 import asyncHandler from '../middleware/async.js';
 import ErrorResponse from '../middleware/error.js';
@@ -20,15 +20,6 @@ const getProducts = asyncHandler(async (req, res, next) => {
     );
     products.forEach((product) => allProducts.push(product));
 
-    // const products = await Products.findAll({
-    //     include: [
-    //         {
-    //             model: StoreProducts,
-    //             on: {}
-    //         },
-    //     ],
-    // });
-
     if (!allProducts) {
         return next(new ErrorResponse(`No Product found!`, 404));
     }
@@ -42,7 +33,7 @@ const getProducts = asyncHandler(async (req, res, next) => {
  */
 
 const getProduct = asyncHandler(async (req, res, next) => {
-    const product = await Products.findAll({
+    let product = await Products.findAll({
         where: {
             productId: req.params.id,
         },
@@ -50,15 +41,19 @@ const getProduct = asyncHandler(async (req, res, next) => {
 
     if (!product || product.length == 0) {
         console.log(`Product Not Found with id ${req.params.id}`);
-        return res.status(404).json({
-            success: false,
-            error: `Product Not Found with id '${req.params.id}'`,
-        });
-        // return next(
-        // 	new ErrorResponse(`User not found with ID of: ${req.params.id}`, 404)
-        // );
+        return next(
+            res.status(404).json({
+                success: false,
+                error: `Product Not Found with id '${req.params.id}'`,
+            })
+        );
     }
-    console.log(req.params.id);
+
+    const reviews = await Review.find({ productId: req.params.id });
+    let allReviews = [...reviews];
+
+    product = [...product, { reviews: allReviews }];
+
     return next(res.status(200).json({ success: true, data: product }));
 });
 

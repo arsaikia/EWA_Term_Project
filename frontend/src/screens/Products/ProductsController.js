@@ -19,7 +19,7 @@ const ProductsController = (props) => {
 
     const appContext = useContext(AppContext);
     const { setShowHeader } = appContext;
-
+    
     const cartContext = useContext(CartContext);
     const { productById, getProductById, productByIdFetched } = cartContext;
 
@@ -39,7 +39,7 @@ const ProductsController = (props) => {
     /********************************************
      * Local States
      ********************************************/
-
+    const [showShare, setShowShare] = useState(false)
     const { productId } = useParams();
 
     useEffect(() => {
@@ -67,6 +67,8 @@ const ProductsController = (props) => {
             isUserAuthenticated={isUserAuthenticated}
             authenticationError={authenticationError}
             productById={productById}
+            showShare={showShare}
+            setShowShare={setShowShare}
         />
     );
 };

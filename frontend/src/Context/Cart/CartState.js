@@ -19,6 +19,7 @@ import {
     GET_USER_CARDS,
     CREATE_TRANSFER,
     RESET_CREATE_TRANSFER,
+    SHARE_PRODUCT,
 } from '../types';
 
 import CartContext from './cartContext';
@@ -161,7 +162,7 @@ const CartState = (props) => {
             url: `carts/`,
             body: { cartId: uuid(), userId, productId, quantity: 1 },
         });
-        await fetchAllProducts();
+        // await fetchAllProducts();
         await fetchProductsInCart(userId);
     };
 
@@ -238,6 +239,25 @@ const CartState = (props) => {
     const clearTransferStatus = () => {
         dispatch({
             type: RESET_CREATE_TRANSFER,
+        });
+    };
+
+    /*
+     *SHARE_PRODUCT
+     */
+    const shareProduct = async (email, userId, productId) => {
+        const addresses = await API.POST({
+            url: `shares/`,
+            body: {
+                email,
+                userId,
+                productId,
+            },
+        });
+        const allAddresses = get(get(addresses, 'data'), 'data');
+        dispatch({
+            payload: allAddresses,
+            type: GET_USER_ADDRESSES,
         });
     };
 

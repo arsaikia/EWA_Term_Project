@@ -3,8 +3,6 @@ import Users from '../models/user.js';
 import asyncHandler from '../middleware/async.js';
 import ErrorResponse from '../middleware/error.js';
 
-import orders from '../_data/orders.json';
-
 /*
  * @desc     Get addresses with user id
  * @route    GET /api/v1/addresses/:id
@@ -38,9 +36,7 @@ const getAddresses = asyncHandler(async (req, res, next) => {
  * @route    GET /api/v1/addresses/address/:id
  * @access   Public
  */
-const getAddressWithId = async (req, res, next) => {
-    res.status(200).send({ success: true, data: orders });
-};
+const getAddressWithId = async (req, res, next) => {};
 
 /*
  * @desc     Create card in Db

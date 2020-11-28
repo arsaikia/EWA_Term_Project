@@ -52,14 +52,16 @@ const CartState = (props) => {
      *   Get All Products
      */
 
-    const fetchAllProducts = async () => {
-        const response = await API.GET({ url: 'products' });
+    const fetchAllProducts = async (
+        storeId = '706ab483-b96f-4b88-81ed-66b7beca5f5a'
+    ) => {
+        const response = await API.GET({ url: `products/store/${storeId}` });
         const products = get(get(response, 'data'), 'data') || [];
         dispatch({
             payload: products,
             type: GET_ALL_PRODUCTS,
         });
-        await getFilteredProducts();
+        // await getFilteredProducts();
     };
 
     const removedFetchedState = () => {
@@ -181,6 +183,7 @@ const CartState = (props) => {
      *GET_USER_CARDS
      */
     const getUserCards = async (id) => {
+        console.log('I am here', id);
         const cards = await API.GET({
             url: `cards/${id}`,
         });

@@ -4,26 +4,36 @@ import Review from '../models/Review.js';
 import Sequelize from 'sequelize';
 import asyncHandler from '../middleware/async.js';
 import ErrorResponse from '../middleware/error.js';
+import lodash from 'lodash';
+const { get, isEmpty } = lodash;
 
 /*
 
  * @desc     Get All Products
- * @route    GET /api/v1/products
+ * @route    GET /api/v1/products/store
  * @access   Public
  */
 
 const getProducts = asyncHandler(async (req, res, next) => {
     let allProducts = [];
-    let products = await SQL.query(
-        'SELECT DISTINCT P.productId, P.productName, P.image, P.description, P.category, P.subcategory, P.price, P.discount, P.isVeg, P.countInStock, P.foodPreference, P.quantityType, SP.storeId from products P join storeproducts SP on P.productId = SP.productId;',
-        { raw: true }
-    );
-    products.forEach((product) => allProducts.push(product));
+    const storeId = !isEmpty(req.params.id)
+        ? req.params.id
+        : `706ab483-b96f-4b88-81ed-66b7beca5f5a`;
+    const query = `SELECT * from products P inner join storeproducts SP on P.productId = SP.productId and storeId = '${storeId}';`;
+
+    let products = await SQL.query(query, { raw: true });
+    const existing = {};
+    products.forEach((product) => {
+        if (!existing[product.productName]) {
+            existing[product.productName] = true;
+            allProducts.push(product);
+        }
+    });
 
     if (!allProducts) {
         return next(new ErrorResponse(`No Product found!`, 404));
     }
-    res.status(200).json({ success: true, data: products[0] });
+    res.status(200).json({ success: true, data: allProducts[0] });
 });
 
 /*
@@ -52,7 +62,7 @@ const getProduct = asyncHandler(async (req, res, next) => {
     const reviews = await Review.find({ productId: req.params.id });
     let allReviews = [...reviews];
 
-    product = {product, reviews};
+    product = { product, reviews };
     // product.push(...allReviews)
 
     return next(res.status(200).json({ success: true, data: product }));

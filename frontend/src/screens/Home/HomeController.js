@@ -211,6 +211,7 @@ const HomeController = ({
                 goToProductsPage={goToProductsPage}
                 addProductToCart={addProductToCart}
                 getItemsInBag={getItemsInBag}
+                fetchAllProducts={fetchAllProducts}
                 getFilteredProducts={getFilteredProducts}
                 showMap={showMap}
                 setShowMap={setShowMap}

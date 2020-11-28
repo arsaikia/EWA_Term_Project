@@ -13,7 +13,7 @@ import mapStyles from './mapStyles';
 import STORE_ICON from '../../Images/Icons/storeIcon.svg';
 import { FlexContainer, Spacing } from '../../components/StylingComponents';
 
-function Map({ setStore, setShowMap, getFilteredProducts }) {
+function Map({ setStore, setShowMap, fetchAllProducts }) {
     const [selectedPark, setSelectedPark] = useState(null);
     useEffect(() => {
         const listener = (e) => {
@@ -27,10 +27,10 @@ function Map({ setStore, setShowMap, getFilteredProducts }) {
             window.removeEventListener('keydown', listener);
         };
     }, []);
-
     const buttonClickHandler = () => {
         setStore(selectedPark);
-        getFilteredProducts(get(selectedPark, 'storeId', ''), 'STORE');
+
+        fetchAllProducts(get(selectedPark, 'storeId', ''));
         setShowMap(false);
     };
 
@@ -94,7 +94,7 @@ const MapWrapped = withScriptjs(withGoogleMap(Map));
 export default function GoogleMapStores({
     setStore,
     setShowMap,
-    getFilteredProducts,
+    fetchAllProducts,
 }) {
     return (
         <div style={{ width: '100vw', height: '100vh' }}>
@@ -105,7 +105,7 @@ export default function GoogleMapStores({
                 mapElement={<div style={{ height: `100%` }} />}
                 setStore={setStore}
                 setShowMap={setShowMap}
-                getFilteredProducts={getFilteredProducts}
+                fetchAllProducts={fetchAllProducts}
             />
         </div>
     );

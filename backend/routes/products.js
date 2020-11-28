@@ -7,7 +7,7 @@ import {
     getFilteredProducts,
 } from '../controller/products.js';
 
-router.route('/').get(getProducts);
+router.route('/store/:id').get(getProducts);
 
 router.route('/:id').get(getProduct);
 

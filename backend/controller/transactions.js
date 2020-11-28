@@ -34,18 +34,6 @@ const getTransactions = asyncHandler(async (req, res, next) => {
 const getTransaction = asyncHandler(async (req, res, next) => {
     const query = `SELECT DISTINCT * FROM transactions T INNER JOIN orders O INNER JOIN products P ON T.transactionId = O.transactionId  and O.productId=P.productId where T.userId='${req.params.id}'  order by T.purchaseDate desc;`;
     const transaction = await SQL.query(query, { raw: true });
-
-    // await Transactions.findAll({
-    //     include: [
-    //         {
-    //             model: Orders,
-    //         },
-    //     ],
-    //     where: {
-    //         userId: req.params.id,
-    //     },
-    // });
-
     if (!transaction || transaction.length == 0) {
         console.log(`Transaction Not Found with id ${req.params.id}`);
         return res.status(404).json({
@@ -63,19 +51,25 @@ const getTransaction = asyncHandler(async (req, res, next) => {
  * @access   Public
  */
 
-const updateOrderStatus = asyncHandler(async (req, res, next) => {
+const updateTransactionStatus = asyncHandler(async (req, res, next) => {
+    console.log(`From here!!`.red.bold.underline);
+    if (!req.params.id || !req.body.deliveryStatus) {
+        return res.status(404).json({
+            success: false,
+            error: `Transaction Id and delivery status is mandatory '${req.params.id}'`,
+        });
+    }
     const updateTransaction = await Transactions.update(
         { deliveryStatus: req.body.deliveryStatus },
-        { where: { transactionId: req.body.transactionId } }
+        { where: { transactionId: req.params.id } }
     );
-    if (!transaction || transaction.length == 0) {
+    if (!updateTransaction || updateTransaction.length == 0) {
         console.log(`Transaction Not Found with id ${req.params.id}`);
         return res.status(404).json({
             success: false,
             error: `Transaction Not Found with id '${req.params.id}'`,
         });
     }
-    console.log(req.params.id);
     return next(
         res.status(200).json({ success: true, data: updateTransaction })
     );
@@ -164,5 +158,5 @@ export {
     getTransactions,
     getTransaction,
     createTransaction,
-    updateOrderStatus,
+    updateTransactionStatus,
 };

@@ -56,8 +56,10 @@ const CartController = ({ ...props }) => {
     const [showLoading, setShowLoading] = useState(false);
 
     const [totalPrice, setTotalPrice] = useState(0);
-    const [fetchingAddress, setFetchingAddress] = useState(true);
-    const [fetchingCards, setFetchingCards] = useState(true);
+    const [fetchingAddress, setFetchingAddress] = useState(
+        !userAddressesFetched
+    );
+    const [fetchingCards, setFetchingCards] = useState(!userCardsFetched);
 
     const [selectedCard, setSelectedCard] = useState('');
     const [nameOnCard, setNameOnCard] = useState('');
@@ -260,7 +262,15 @@ const CartController = ({ ...props }) => {
         }
     }, [selectedAddress, userAddresses]);
 
-    console.log('showLoading', showLoading, fetchingCards);
+    console.log(
+        'showLoading',
+        fetchingCards,
+        fetchingAddress,
+        !productsInCartFetched,
+        !userCardsFetched,
+        !userAddressesFetched,
+        showLoading
+    );
     if (
         fetchingCards ||
         fetchingAddress ||

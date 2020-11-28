@@ -5,6 +5,7 @@ import { Container as MyContainer } from './components/StylingComponents';
 import React, { useState } from 'react';
 import UserState from './Context/User/UserState';
 import AppState from './Context/AppContext/AppState';
+import TransactionState from './Context/Transaction/TransactionState';
 import Routes from './Routes';
 import { Colors } from './components/Colors';
 import CartState from './Context/Cart/CartState';
@@ -15,11 +16,13 @@ const App = (props) => {
             <AppState>
                 <UserState>
                     <CartState>
-                        <MyContainer
-                            backgroundColor={Colors.backgroundColor}
-                            fluid>
-                            <Routes />
-                        </MyContainer>
+                        <TransactionState>
+                            <MyContainer
+                                backgroundColor={Colors.backgroundColor}
+                                fluid>
+                                <Routes />
+                            </MyContainer>
+                        </TransactionState>
                     </CartState>
                 </UserState>
             </AppState>

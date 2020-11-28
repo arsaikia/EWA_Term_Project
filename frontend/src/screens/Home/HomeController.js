@@ -48,6 +48,8 @@ const HomeController = ({
         getFilteredProducts,
         removedFetchedState,
         productByIdFetched,
+        transferCreated,
+        clearTransferStatus,
     } = cartContext;
 
     /*
@@ -172,6 +174,7 @@ const HomeController = ({
         if (fetchingAllProducts && allProductsFetched) {
             return removedFetchedState();
         }
+        if (transferCreated) clearTransferStatus();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 

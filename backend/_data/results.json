@@ -1,0 +1,620 @@
+[
+    {
+      "ProductA": [
+        "0d37e9db-caa8-46c9-9df6-8e085a566d4e"
+      ],
+      "ProductB": [
+        "31ce0eab-88b6-4eb2-b189-5ff28b8c799f"
+      ]
+    },
+    {
+      "ProductA": [
+        "31ce0eab-88b6-4eb2-b189-5ff28b8c799f"
+      ],
+      "ProductB": [
+        "0d37e9db-caa8-46c9-9df6-8e085a566d4e"
+      ]
+    },
+    {
+      "ProductA": [
+        "4667f230-f260-467a-8a04-f50239ff3ee8"
+      ],
+      "ProductB": [
+        "85686ebe-9c15-4b0a-bccc-d15927d7447e"
+      ]
+    },
+    {
+      "ProductA": [
+        "85686ebe-9c15-4b0a-bccc-d15927d7447e"
+      ],
+      "ProductB": [
+        "4667f230-f260-467a-8a04-f50239ff3ee8"
+      ]
+    },
+    {
+      "ProductA": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363"
+      ],
+      "ProductB": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb"
+      ]
+    },
+    {
+      "ProductA": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb"
+      ],
+      "ProductB": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363"
+      ]
+    },
+    {
+      "ProductA": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb"
+      ],
+      "ProductB": [
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ]
+    },
+    {
+      "ProductA": [
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ],
+      "ProductB": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb"
+      ]
+    },
+    {
+      "ProductA": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb"
+      ],
+      "ProductB": [
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ]
+    },
+    {
+      "ProductA": [
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ],
+      "ProductB": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb"
+      ]
+    },
+    {
+      "ProductA": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363"
+      ],
+      "ProductB": [
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ]
+    },
+    {
+      "ProductA": [
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ],
+      "ProductB": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363"
+      ]
+    },
+    {
+      "ProductA": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363"
+      ],
+      "ProductB": [
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ]
+    },
+    {
+      "ProductA": [
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ],
+      "ProductB": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363"
+      ]
+    },
+    {
+      "ProductA": [
+        "7c3bf2d0-dbec-432a-b5f0-9aa84425003f"
+      ],
+      "ProductB": [
+        "a67f8a47-02de-4f75-acf2-c8e435ed36c1"
+      ]
+    },
+    {
+      "ProductA": [
+        "a67f8a47-02de-4f75-acf2-c8e435ed36c1"
+      ],
+      "ProductB": [
+        "7c3bf2d0-dbec-432a-b5f0-9aa84425003f"
+      ]
+    },
+    {
+      "ProductA": [
+        "8255c1f7-209c-415a-becc-cee6a2240a38"
+      ],
+      "ProductB": [
+        "aa3709d2-10b0-4a28-9c1f-1f83f681082f"
+      ]
+    },
+    {
+      "ProductA": [
+        "aa3709d2-10b0-4a28-9c1f-1f83f681082f"
+      ],
+      "ProductB": [
+        "8255c1f7-209c-415a-becc-cee6a2240a38"
+      ]
+    },
+    {
+      "ProductA": [
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ],
+      "ProductB": [
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ]
+    },
+    {
+      "ProductA": [
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ],
+      "ProductB": [
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ]
+    },
+    {
+      "ProductA": [
+        "9e2a14d3-c72a-4dc5-b8b3-b7efb05212d9"
+      ],
+      "ProductB": [
+        "aa3709d2-10b0-4a28-9c1f-1f83f681082f"
+      ]
+    },
+    {
+      "ProductA": [
+        "aa3709d2-10b0-4a28-9c1f-1f83f681082f"
+      ],
+      "ProductB": [
+        "9e2a14d3-c72a-4dc5-b8b3-b7efb05212d9"
+      ]
+    },
+    {
+      "ProductA": [
+        "fbcdbfe6-73e5-4240-8f34-a13b7c3ed4b9"
+      ],
+      "ProductB": [
+        "9e2a14d3-c72a-4dc5-b8b3-b7efb05212d9"
+      ]
+    },
+    {
+      "ProductA": [
+        "9e2a14d3-c72a-4dc5-b8b3-b7efb05212d9"
+      ],
+      "ProductB": [
+        "fbcdbfe6-73e5-4240-8f34-a13b7c3ed4b9"
+      ]
+    },
+    {
+      "ProductA": [
+        "fbcdbfe6-73e5-4240-8f34-a13b7c3ed4b9"
+      ],
+      "ProductB": [
+        "aa3709d2-10b0-4a28-9c1f-1f83f681082f"
+      ]
+    },
+    {
+      "ProductA": [
+        "aa3709d2-10b0-4a28-9c1f-1f83f681082f"
+      ],
+      "ProductB": [
+        "fbcdbfe6-73e5-4240-8f34-a13b7c3ed4b9"
+      ]
+    },
+    {
+      "ProductA": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363",
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb"
+      ],
+      "ProductB": [
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ]
+    },
+    {
+      "ProductA": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363",
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ],
+      "ProductB": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb"
+      ]
+    },
+    {
+      "ProductA": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb",
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ],
+      "ProductB": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363"
+      ]
+    },
+    {
+      "ProductA": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363"
+      ],
+      "ProductB": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb",
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ]
+    },
+    {
+      "ProductA": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb"
+      ],
+      "ProductB": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363",
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ]
+    },
+    {
+      "ProductA": [
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ],
+      "ProductB": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363",
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb"
+      ]
+    },
+    {
+      "ProductA": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363",
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb"
+      ],
+      "ProductB": [
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ]
+    },
+    {
+      "ProductA": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363",
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ],
+      "ProductB": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb"
+      ]
+    },
+    {
+      "ProductA": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb",
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ],
+      "ProductB": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363"
+      ]
+    },
+    {
+      "ProductA": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363"
+      ],
+      "ProductB": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb",
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ]
+    },
+    {
+      "ProductA": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb"
+      ],
+      "ProductB": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363",
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ]
+    },
+    {
+      "ProductA": [
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ],
+      "ProductB": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363",
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb"
+      ]
+    },
+    {
+      "ProductA": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb",
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ],
+      "ProductB": [
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ]
+    },
+    {
+      "ProductA": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb",
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ],
+      "ProductB": [
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ]
+    },
+    {
+      "ProductA": [
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686",
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ],
+      "ProductB": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb"
+      ]
+    },
+    {
+      "ProductA": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb"
+      ],
+      "ProductB": [
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686",
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ]
+    },
+    {
+      "ProductA": [
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ],
+      "ProductB": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb",
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ]
+    },
+    {
+      "ProductA": [
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ],
+      "ProductB": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb",
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ]
+    },
+    {
+      "ProductA": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363",
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ],
+      "ProductB": [
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ]
+    },
+    {
+      "ProductA": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363",
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ],
+      "ProductB": [
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ]
+    },
+    {
+      "ProductA": [
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686",
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ],
+      "ProductB": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363"
+      ]
+    },
+    {
+      "ProductA": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363"
+      ],
+      "ProductB": [
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686",
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ]
+    },
+    {
+      "ProductA": [
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ],
+      "ProductB": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363",
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ]
+    },
+    {
+      "ProductA": [
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ],
+      "ProductB": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363",
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ]
+    },
+    {
+      "ProductA": [
+        "fbcdbfe6-73e5-4240-8f34-a13b7c3ed4b9",
+        "9e2a14d3-c72a-4dc5-b8b3-b7efb05212d9"
+      ],
+      "ProductB": [
+        "aa3709d2-10b0-4a28-9c1f-1f83f681082f"
+      ]
+    },
+    {
+      "ProductA": [
+        "fbcdbfe6-73e5-4240-8f34-a13b7c3ed4b9",
+        "aa3709d2-10b0-4a28-9c1f-1f83f681082f"
+      ],
+      "ProductB": [
+        "9e2a14d3-c72a-4dc5-b8b3-b7efb05212d9"
+      ]
+    },
+    {
+      "ProductA": [
+        "9e2a14d3-c72a-4dc5-b8b3-b7efb05212d9",
+        "aa3709d2-10b0-4a28-9c1f-1f83f681082f"
+      ],
+      "ProductB": [
+        "fbcdbfe6-73e5-4240-8f34-a13b7c3ed4b9"
+      ]
+    },
+    {
+      "ProductA": [
+        "fbcdbfe6-73e5-4240-8f34-a13b7c3ed4b9"
+      ],
+      "ProductB": [
+        "9e2a14d3-c72a-4dc5-b8b3-b7efb05212d9",
+        "aa3709d2-10b0-4a28-9c1f-1f83f681082f"
+      ]
+    },
+    {
+      "ProductA": [
+        "9e2a14d3-c72a-4dc5-b8b3-b7efb05212d9"
+      ],
+      "ProductB": [
+        "fbcdbfe6-73e5-4240-8f34-a13b7c3ed4b9",
+        "aa3709d2-10b0-4a28-9c1f-1f83f681082f"
+      ]
+    },
+    {
+      "ProductA": [
+        "aa3709d2-10b0-4a28-9c1f-1f83f681082f"
+      ],
+      "ProductB": [
+        "fbcdbfe6-73e5-4240-8f34-a13b7c3ed4b9",
+        "9e2a14d3-c72a-4dc5-b8b3-b7efb05212d9"
+      ]
+    },
+    {
+      "ProductA": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363",
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb",
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ],
+      "ProductB": [
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ]
+    },
+    {
+      "ProductA": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363",
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb",
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ],
+      "ProductB": [
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ]
+    },
+    {
+      "ProductA": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363",
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686",
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ],
+      "ProductB": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb"
+      ]
+    },
+    {
+      "ProductA": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb",
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686",
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ],
+      "ProductB": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363"
+      ]
+    },
+    {
+      "ProductA": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363",
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb"
+      ],
+      "ProductB": [
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686",
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ]
+    },
+    {
+      "ProductA": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363",
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ],
+      "ProductB": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb",
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ]
+    },
+    {
+      "ProductA": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363",
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ],
+      "ProductB": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb",
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ]
+    },
+    {
+      "ProductA": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb",
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ],
+      "ProductB": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363",
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ]
+    },
+    {
+      "ProductA": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb",
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ],
+      "ProductB": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363",
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ]
+    },
+    {
+      "ProductA": [
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686",
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ],
+      "ProductB": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363",
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb"
+      ]
+    },
+    {
+      "ProductA": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363"
+      ],
+      "ProductB": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb",
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686",
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ]
+    },
+    {
+      "ProductA": [
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb"
+      ],
+      "ProductB": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363",
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686",
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ]
+    },
+    {
+      "ProductA": [
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ],
+      "ProductB": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363",
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb",
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ]
+    },
+    {
+      "ProductA": [
+        "fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"
+      ],
+      "ProductB": [
+        "754f1fe2-2018-405f-bdc2-1b59ef38d363",
+        "4f7b33be-49e1-4969-95f8-f11cd0670dcb",
+        "95e90ee4-07c9-44f7-812e-29e2a5fd3686"
+      ]
+    }
+  ]

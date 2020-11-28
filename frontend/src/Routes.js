@@ -8,6 +8,8 @@ import Products from './screens/Products';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Cart from './screens/Cart';
+import Accounts from './screens/Accounts';
+import OrderConfirmed from './screens/RedirectScreens/OrderConfirmed';
 
 const Routes = (props) => {
     const appContext = useContext(AppContext);
@@ -82,8 +84,26 @@ const Routes = (props) => {
                         />
                     </Route>
 
+                    <Route path={'/orderConfirmed'}>
+                        <OrderConfirmed
+                            setShowHeader={setShowHeader}
+                            setShowDropdown={setShowDropdown}
+                            showHeader={showHeader}
+                            props={props}
+                        />
+                    </Route>
+
                     <Route path={'/cart'}>
                         <Cart
+                            setShowHeader={setShowHeader}
+                            setShowDropdown={setShowDropdown}
+                            showHeader={showHeader}
+                            props={props}
+                        />
+                    </Route>
+
+                    <Route path={'/accounts'}>
+                        <Accounts
                             setShowHeader={setShowHeader}
                             setShowDropdown={setShowDropdown}
                             showHeader={showHeader}

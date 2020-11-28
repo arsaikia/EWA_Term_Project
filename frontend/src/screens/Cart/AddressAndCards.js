@@ -128,19 +128,21 @@ const Payment = ({
                     />
                 </FlexContainer>
                 <Spacing height='10px' />
-                {userCards.map((card) => (
-                    <ExistingCard
-                        key={card.cardId}
-                        cardId={card.cardId}
-                        cardName={card.cardName}
-                        cardNumber={card.cardNumber}
-                        cvv={card.cvv}
-                        expiryDate={card.expiryDate}
-                        userId={card.userId}
-                        selectedCard={selectedCard}
-                        setSelectedCard={setSelectedCard}
-                    />
-                ))}
+                {userCards &&
+                    userCards.length > 0 &&
+                    userCards.map((card) => (
+                        <ExistingCard
+                            key={card.cardId}
+                            cardId={card.cardId}
+                            cardName={card.cardName}
+                            cardNumber={card.cardNumber}
+                            cvv={card.cvv}
+                            expiryDate={card.expiryDate}
+                            userId={card.userId}
+                            selectedCard={selectedCard}
+                            setSelectedCard={setSelectedCard}
+                        />
+                    ))}
             </ExpandingContainer>
             <Spacing height='50px' mobileHeight='30px' />
             <FlexContainer
@@ -306,18 +308,20 @@ const Address = ({
                     />
                 </FlexContainer>
                 <Spacing height='10px' />
-                {userAddresses.map((address) => (
-                    <ExistingAddress
-                        key={address.addressId}
-                        addressId={address.addressId}
-                        street1={address.street1}
-                        city={address.city}
-                        zip={address.zip}
-                        state={address.state}
-                        selectedAddress={selectedAddress}
-                        setSelectedAddress={setSelectedAddress}
-                    />
-                ))}
+                {userAddresses &&
+                    userAddresses.length > 0 &&
+                    userAddresses.map((address) => (
+                        <ExistingAddress
+                            key={address.addressId}
+                            addressId={address.addressId}
+                            street1={address.street1}
+                            city={address.city}
+                            zip={address.zip}
+                            state={address.state}
+                            selectedAddress={selectedAddress}
+                            setSelectedAddress={setSelectedAddress}
+                        />
+                    ))}
             </ExpandingContainer>
             <Spacing height='50px' mobileHeight='30px' />
 

@@ -72,6 +72,7 @@ const CartState = (props) => {
         const response = await API.GET({ url: `products/${productId}` });
         const product = get(get(response, 'data'), 'data')[0] || [];
 
+        console.log("product",product)
         dispatch({
             payload: product,
             type: GET_PRODUCT_BY_ID,

@@ -1,83 +1,112 @@
 [
-    {
-        "userId": "a1d7bab4-bc90-4f80-9909-9a5b56363fd4",
-        "email": "ar@sa.co",
-        "firstName": "Arunabh",
-        "lastName": "Saikia",
-        "password": "#2fxvUdcS#",
-        "userType": "ADMIN",
-        "foodPreference": "ALL"
-    },
-    {
-        "userId": "102d426e-a6c5-4c72-af6d-6995071fa3d3",
-        "email": "arsaikia@gmail.com",
-        "firstName": "Arunabh",
-        "lastName": "Saikia",
-        "password": "#2fxvUdcS#",
-        "userType": "CUSTOMER",
-        "foodPreference": "VEGAN"
-    },
-    {
-        "userId": "849f5c5b-5456-4dd6-8948-c529fff210de",
-        "email": "user@gmail.com",
-        "firstName": "Arunabh",
-        "lastName": "Saikia",
-        "password": "#2fxvUdcS#",
-        "userType": "CUSTOMER",
-        "foodPreference": "MEAT"
-    },
-    {
-        "userId": "785f0f73-ef4e-485b-b8fb-8dbb2707a4a2",
-        "email": "store@gmail.com",
-        "firstName": "Arunabh",
-        "lastName": "Saikia",
-        "password": "#2fxvUdcS#",
-        "userType": "STORE_MANAGER",
-        "foodPreference": "HEALTHY"
-    },
-    {
-        "userId": "1160c652-0a2b-465b-8af2-aa792e640397",
-        "email": "lkjh@gmail.com",
-        "firstName": "Joe",
-        "lastName": "Biden",
-        "password": "#2fxvUdcS#",
-        "userType": "CUSTOMER",
-        "foodPreference": "HEALTHY"
-    },
-    {
-        "userId": "f1877d11-66d0-432b-b879-568557ee1764",
-        "email": "ufhv@gmail.com",
-        "firstName": "Donald",
-        "lastName": "Trump",
-        "password": "#2fxvUdcS#",
-        "userType": "CUSTOMER",
-        "foodPreference": "ALL"
-    },
-    {
-        "userId": "991dc80d-26ac-48be-acdb-7146ee22b31a",
-        "email": "asdf@gmail.com",
-        "firstName": "Kanye",
-        "lastName": "West",
-        "password": "#2fxvUdcS#",
-        "userType": "CUSTOMER",
-        "foodPreference": "VEGAN"
-    },
-    {
-        "userId": "1e41be06-4966-407c-8c06-c9299dc84eb7",
-        "email": "qwerty@gmail.com",
-        "firstName": "Pit",
-        "lastName": "Bull",
-        "password": "#2fxvUdcS#",
-        "userType": "CUSTOMER",
-        "foodPreference": "MEAT"
-    },
-    {
-        "userId": "2e9e5ee2-a29d-4cb5-963d-b6d6ce8df526",
-        "email": "zxcv@gmail.com",
-        "firstName": "Lebron",
-        "lastName": "James",
-        "password": "#2fxvUdcS#",
-        "userType": "CUSTOMER",
-        "foodPreference": "ALL"
-    }
+	{
+		"userId" : "102d426e-a6c5-4c72-af6d-6995071fa3d3",
+		"email" : "arsaikia@gmail.com",
+		"firstName" : "Arunabh",
+		"lastName" : "Saikia",
+		"password" : "#2fxvUdcS#",
+		"userType" : "CUSTOMER",
+		"foodPreference" : "VEGAN",
+		"storeManager" : null,
+		"storePrefered" : null
+	},
+	{
+		"userId" : "1160c652-0a2b-465b-8af2-aa792e640397",
+		"email" : "joe@gmail.com",
+		"firstName" : "Joe",
+		"lastName" : "Biden",
+		"password" : "#2fxvUdcS#",
+		"userType" : "CUSTOMER",
+		"foodPreference" : "HEALTHY",
+		"storeManager" : null,
+		"storePrefered" : null
+	},
+	{
+		"userId" : "1e41be06-4966-407c-8c06-c9299dc84eb7",
+		"email" : "brad@gmail.com",
+		"firstName" : "Brad",
+		"lastName" : "Pit",
+		"password" : "#2fxvUdcS#",
+		"userType" : "CUSTOMER",
+		"foodPreference" : "MEAT",
+		"storeManager" : null,
+		"storePrefered" : null
+	},
+	{
+		"userId" : "2e9e5ee2-a29d-4cb5-963d-b6d6ce8df526",
+		"email" : "lebron@gmail.com",
+		"firstName" : "Lebron",
+		"lastName" : "James",
+		"password" : "#2fxvUdcS#",
+		"userType" : "CUSTOMER",
+		"foodPreference" : "ALL",
+		"storeManager" : null,
+		"storePrefered" : null
+	},
+	{
+		"userId" : "785f0f73-ef4e-485b-b8fb-8dbb2707a4a2",
+		"email" : "store@gmail.com",
+		"firstName" : "Store",
+		"lastName" : "Manager",
+		"password" : "#2fxvUdcS#",
+		"userType" : "STORE_MANAGER",
+		"foodPreference" : "HEALTHY",
+		"storeManager" : null,
+		"storePrefered" : null
+	},
+	{
+		"userId" : "849f5c5b-5456-4dd6-8948-c529fff210de",
+		"email" : "jane@gmail.com",
+		"firstName" : "Jane",
+		"lastName" : "Smith",
+		"password" : "#2fxvUdcS#",
+		"userType" : "CUSTOMER",
+		"foodPreference" : "MEAT",
+		"storeManager" : null,
+		"storePrefered" : null
+	},
+	{
+		"userId" : "991dc80d-26ac-48be-acdb-7146ee22b31a",
+		"email" : "west@gmail.com",
+		"firstName" : "Kanye",
+		"lastName" : "West",
+		"password" : "#2fxvUdcS#",
+		"userType" : "CUSTOMER",
+		"foodPreference" : "VEGAN",
+		"storeManager" : null,
+		"storePrefered" : null
+	},
+	{
+		"userId" : "a1d7bab4-bc90-4f80-9909-9a5b56363fd4",
+		"email" : "ar@sa.co",
+		"firstName" : "Arunabh",
+		"lastName" : "Saikia",
+		"password" : "#2fxvUdcS#",
+		"userType" : "ADMIN",
+		"foodPreference" : "ALL",
+		"storeManager" : null,
+		"storePrefered" : null
+	},
+	{
+		"userId" : "f1877d11-66d0-432b-b879-568557ee1761",
+		"email" : "akshayhgd.hegde@gmail.com",
+		"firstName" : "Akshay",
+		"lastName" : "Akshay",
+		"password" : "Akshay!1111",
+		"userType" : "CUSTOMER",
+		"foodPreference" : "VEGAN",
+		"storeManager" : null,
+		"storePrefered" : null
+	},
+	{
+		"userId" : "f1877d11-66d0-432b-b879-568557ee1764",
+		"email" : "donald@gmail.com",
+		"firstName" : "Donald",
+		"lastName" : "Trump",
+		"password" : "#2fxvUdcS#",
+		"userType" : "CUSTOMER",
+		"foodPreference" : "VEGAN",
+		"storeManager" : null,
+		"storePrefered" : null
+	}
 ]

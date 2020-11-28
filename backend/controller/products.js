@@ -52,7 +52,8 @@ const getProduct = asyncHandler(async (req, res, next) => {
     const reviews = await Review.find({ productId: req.params.id });
     let allReviews = [...reviews];
 
-    product = [...product, { reviews: allReviews }];
+    product = {product, reviews};
+    // product.push(...allReviews)
 
     return next(res.status(200).json({ success: true, data: product }));
 });

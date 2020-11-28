@@ -1,4 +1,4 @@
-import {GET_TRANSACTION_WITH_ID} from '../types';
+import { GET_TRANSACTION_WITH_ID, GET_REVIEW_BY_USER } from '../types';
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default (state, action) => {
@@ -8,6 +8,13 @@ export default (state, action) => {
                 ...state,
                 userTransactions: action.payload,
                 userTransactionsFetched: true,
+            };
+
+        case GET_REVIEW_BY_USER:
+            return {
+                ...state,
+                userReviews: action.payload,
+                userReviewsFetched: true,
             };
 
         default:

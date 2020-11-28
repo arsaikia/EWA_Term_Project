@@ -5,7 +5,11 @@ import React, { useReducer } from 'react';
 import { v4 as uuid } from 'uuid';
 
 import API from '../../utils/Query';
-import { GET_TRANSACTION_WITH_ID, CREATE_REVIEW } from '../types';
+import {
+    GET_TRANSACTION_WITH_ID,
+    CREATE_REVIEW,
+    GET_REVIEW_BY_USER,
+} from '../types';
 
 import TransactionContext from './transactionContext';
 import TransactionReducer from './transactionReducer';
@@ -14,6 +18,8 @@ const TransactionState = (props) => {
     const initialState = {
         userTransactions: {},
         userTransactionsFetched: false,
+        userReviews: {},
+        userReviewsFetched: false,
     };
 
     const [state, dispatch] = useReducer(TransactionReducer, initialState);
@@ -26,8 +32,6 @@ const TransactionState = (props) => {
 
         response = get(response.data, 'data');
 
-        console.log('response', response);
-
         dispatch({
             payload: response,
             type: GET_TRANSACTION_WITH_ID,
@@ -39,15 +43,24 @@ const TransactionState = (props) => {
      */
 
     const createReview = async (body) => {
-        console.log('body', body);
         let response = await API.POST({ url: `reviews/`, body });
 
         console.log(response);
+    };
 
-        // dispatch({
-        //     payload: response,
-        //     type: CREATE_REVIEW,
-        // });
+    /*
+     *GET_REVIEW_BY_USER
+     */
+
+    const getReviewByUser = async (userId) => {
+        let response = await API.GET({ url: `reviews/user/${userId}` });
+
+        response = get(response.data, 'data');
+
+        dispatch({
+            payload: response,
+            type: GET_REVIEW_BY_USER,
+        });
     };
 
     return (
@@ -55,8 +68,11 @@ const TransactionState = (props) => {
             value={{
                 getUserTransactions,
                 createReview,
+                getReviewByUser,
                 userTransactions: state.userTransactions,
                 userTransactionsFetched: state.userTransactionsFetched,
+                userReviews: state.userReviews,
+                userReviewsFetched: state.userReviewsFetched,
             }}>
             {props.children}
         </TransactionContext.Provider>

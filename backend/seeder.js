@@ -15,6 +15,8 @@ import Carts from './models/Cart.js';
 import Users from './models/User.js';
 import Cards from './models/Cards.js';
 import Shares from './models/Shares.js';
+import Transactions from './models/Transactions.js';
+import Orders from './models/Orders.js';
 
 // Connect to DB
 SQL.authenticate();
@@ -33,6 +35,10 @@ const storeproducts = JSON.parse(
 const carts = JSON.parse(fs.readFileSync(`./_data/carts.json`, 'utf-8'));
 const cards = JSON.parse(fs.readFileSync(`./_data/cards.json`, 'utf-8'));
 const shares = JSON.parse(fs.readFileSync(`./_data/shares.json`, 'utf-8'));
+const transactions = JSON.parse(
+    fs.readFileSync(`./_data/transactions.json`, 'utf-8')
+);
+const orders = JSON.parse(fs.readFileSync(`./_data/orders.json`, 'utf-8'));
 
 // Import into DB
 const importData = async () => {
@@ -41,10 +47,12 @@ const importData = async () => {
         // await Products.bulkCreate(products);
         // await Stores.bulkCreate(stores);
         // await StoreProducts.bulkCreate(storeproducts);
-        await Shares.bulkCreate(shares);
+        // await Shares.bulkCreate(shares);
         // await Carts.bulkCreate(carts);
         // await Cards.bulkCreate(cards);
         // await Address.bulkCreate(addresses);
+        await Transactions.bulkCreate(transactions);
+        await Orders.bulkCreate(orders);
 
         console.log('Data Imported...'.green.inverse);
         process.exit();
@@ -61,9 +69,11 @@ const deleteData = async () => {
         // await Products.destroy({ where: {} });
         // await Stores.destroy({ where: {} });
         // await StoreProducts.destroy({ where: {} });
-        await Shares.destroy({ where: {} });
+        // await Shares.destroy({ where: {} });
         // await Carts.destroy({ where: {} });
         // await Cards.destroy({ where: {} });
+        await Transactions.destroy({ where: {} });
+        await Orders.destroy({ where: {} });
 
         console.log('Data Destroyed...'.red.inverse);
         process.exit();

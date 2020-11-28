@@ -6,6 +6,7 @@ import { ReactComponent as ArrowIcon } from '../Images/Icons/arrow.svg';
 import { ReactComponent as SigninIcon } from '../Images/Icons/signin.svg';
 import { ReactComponent as RegisterIcon } from '../Images/Icons/register.svg';
 import { ReactComponent as AccountIcon } from '../Images/Icons/account.svg';
+import { ReactComponent as OrderIcon } from '../Images/Icons/orders.svg';
 import { CSSTransition } from 'react-transition-group';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useHistory } from 'react-router-dom';
@@ -97,7 +98,13 @@ const DropdownMenu = ({
                         </div>
                     </LinkContainer>
 
-                    <DropdownItems>Orders</DropdownItems>
+                    <LinkContainer to='/orders' onClick={HideMenu}>
+                        <div>
+                            <DropdownItems leftIcon={<OrderIcon />}>
+                                Orders
+                            </DropdownItems>
+                        </div>
+                    </LinkContainer>
 
                     {rememberedUser && (
                         <div onClick={logoutHandler}>

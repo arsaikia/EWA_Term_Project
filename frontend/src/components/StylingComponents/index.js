@@ -14,6 +14,8 @@ const Container = styled.div`
     word-break: ${(props) => props.wordBreak};
     white-space: ${(props) => props.whiteSpace};
     overflow: ${(props) => props.overflow};
+    overflow-y: ${(props) => props.overflowY};
+    overflow-x: ${(props) => props.overflowX};
     text-overflow: ${(props) => props.textOverflow};
 
     pointer-events: ${(props) => props.disabled};

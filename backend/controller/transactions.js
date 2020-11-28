@@ -32,7 +32,7 @@ const getTransactions = asyncHandler(async (req, res, next) => {
  */
 
 const getTransaction = asyncHandler(async (req, res, next) => {
-    const query = `SELECT DISTINCT * FROM transactions T INNER JOIN orders O ON T.transactionId = O.transactionId where T.userId='${req.params.id}';`;
+    const query = `SELECT DISTINCT * FROM transactions T INNER JOIN orders O INNER JOIN products P ON T.transactionId = O.transactionId  and O.productId=P.productId where T.userId='${req.params.id}'  order by T.purchaseDate desc;`;
     const transaction = await SQL.query(query, { raw: true });
 
     // await Transactions.findAll({
@@ -63,11 +63,11 @@ const getTransaction = asyncHandler(async (req, res, next) => {
  * @access   Public
  */
 
-const updateCancellation = asyncHandler(async (req, res, next) => {
+const updateOrderStatus = asyncHandler(async (req, res, next) => {
     const updateTransaction = await Transactions.update(
-        { deliveryStatus: 'CANCELLED'},
-        { where: {transactionId : req.body.transactionId}}
-    )
+        { deliveryStatus: req.body.deliveryStatus },
+        { where: { transactionId: req.body.transactionId } }
+    );
     if (!transaction || transaction.length == 0) {
         console.log(`Transaction Not Found with id ${req.params.id}`);
         return res.status(404).json({
@@ -76,7 +76,9 @@ const updateCancellation = asyncHandler(async (req, res, next) => {
         });
     }
     console.log(req.params.id);
-    return next(res.status(200).json({ success: true, data: updateTransaction }));
+    return next(
+        res.status(200).json({ success: true, data: updateTransaction })
+    );
 });
 
 /*
@@ -158,6 +160,9 @@ const createTransaction = asyncHandler(async (req, res, next) => {
     return next(res.status(200).json({ success: true, data: transaction }));
 });
 
-export { getTransactions, getTransaction, createTransaction };
-
-//
+export {
+    getTransactions,
+    getTransaction,
+    createTransaction,
+    updateOrderStatus,
+};

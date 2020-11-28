@@ -2,9 +2,9 @@ import { Sequelize } from 'sequelize';
 import { SQL } from '../config/db.js';
 import { v4 as uuid } from 'uuid';
 import Address from './Address.js';
-import Products from './Product.js';
+import Cards from './Cards.js';
 import Users from './User.js';
-import Stores from './Store.js';
+import Stores from '../models/Store.js';
 
 // I'm storing all dates as string for now. This can be changed to a date time datatype later
 const Transactions = SQL.define(
@@ -15,10 +15,9 @@ const Transactions = SQL.define(
             primaryKey: true,
             distinct: true,
             type: Sequelize.UUID,
-            defaultValue: uuid(),
         },
         purchaseDate: {
-            type: Sequelize.DATE,
+            type: Sequelize.DATEONLY,
             allowNull: false,
         },
         totalPrice: {
@@ -26,22 +25,23 @@ const Transactions = SQL.define(
             allowNull: false,
         },
         deliveryForcast: {
-            type: Sequelize.DATE,
+            type: Sequelize.DATEONLY,
             allowNull: false,
         },
         deliveryActual: {
-            type: Sequelize.DATE,
-            allowNull: false,
+            type: Sequelize.DATEONLY,
         },
         deliveryMethod: {
             type: Sequelize.STRING,
             allowNull: false,
             values: ['HOME', 'STORE'],
+            defaultValue: 'HOME',
         },
         deliveryStatus: {
             type: Sequelize.STRING,
             allowNull: false,
             values: ['DELIVERED', 'IN_PROGRESS'],
+            defaultValue: 'IN_PROGRESS',
         },
     },
     {
@@ -50,33 +50,42 @@ const Transactions = SQL.define(
 );
 
 Transactions.belongsTo(Users, {
+    allowNull: false,
     foreignKey: {
         name: 'userId',
     },
 });
 Transactions.belongsTo(Address, {
+    allowNull: false,
     foreignKey: {
         name: 'addressId',
     },
 });
 Transactions.belongsTo(Stores, {
+    allowNull: true,
     foreignKey: {
         name: 'storeId',
     },
 });
-
+Transactions.belongsTo(Cards, {
+    allowNull: false,
+    foreignKey: {
+        name: 'cardId',
+    },
+});
 
 //Stores.belongsTo(Address)
-
 
 Transactions.beforeCreate((transactions, _) => {
     return (transactions.transactionID = uuid());
 });
 
-Transactions.sync()
-    .then(() => {
-        console.log(`Transactions created`.cyan.bold);
-    })
-    .catch((error) => console.log('ERROR', error));
+SQL.query('SET FOREIGN_KEY_CHECKS = 0', { raw: true }).then(() => {
+    Transactions.sync() //  { force: true }
+        .then(() => {
+            console.log(`Transactions created`.cyan.bold);
+        })
+        .catch((error) => console.log('ERROR', error));
+});
 
 export default Transactions;

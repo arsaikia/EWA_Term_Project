@@ -34,10 +34,12 @@ const StoreProducts = SQL.define(
 Stores.belongsToMany(Products, { through: StoreProducts });
 Products.belongsToMany(Stores, { through: StoreProducts });
 
-StoreProducts.sync({ force: true })
-    .then(() => {
-        console.log(`StoreProducts created`.red.inverse.underline);
-    })
-    .catch((error) => console.log('ERROR', error));
+SQL.query('SET FOREIGN_KEY_CHECKS = 0', { raw: true }).then(() => {
+    StoreProducts.sync()
+        .then(() => {
+            console.log(`StoreProducts created`.cyan.bold);
+        })
+        .catch((error) => console.log('ERROR', error));
+});
 
 export default StoreProducts;

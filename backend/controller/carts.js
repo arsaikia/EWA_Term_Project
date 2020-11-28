@@ -27,7 +27,6 @@ const getCarts = asyncHandler(async (req, res, next) => {
     res.status(200).json({ success: true, data: cart });
 });
 
-
 /*
  * @desc     POST new cart instance
  * @route    POST /api/v1/carts/
@@ -48,7 +47,7 @@ const createCart = asyncHandler(async (req, res, next) => {
     const cart = await Carts.findAll({
         where: { productId: req.body.productId, userId: req.body.userId },
     });
-    console.log(cart)
+    console.log(cart);
 
     if (cart.length <= 0) {
         const cart = await Carts.create({

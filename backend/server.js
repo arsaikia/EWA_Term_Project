@@ -13,6 +13,8 @@ import { cartsRoute } from './routes/carts.js';
 import { transactionsRoute } from './routes/transactions.js';
 import { ordersRoute } from './routes/orders.js';
 import { cardsRoute } from './routes/cards.js';
+import { addressesRoute } from './routes/addresses.js';
+import { sharesRoute } from './routes/shares.js';
 
 dotenv.config();
 
@@ -20,10 +22,6 @@ dotenv.config();
 SQL.authenticate()
     .then(() => console.log(`DB Connected Sequalize!`.cyan.bold.underline))
     .catch((err) => console.log(`DB Not Connected Sequalize! ${err}`.red.bold));
-
-// SQL.sync({force: true})
-//     .then(() => console.log(`All Tables Dropped`.blue.bold.underline))
-//     .catch((err) => console.log(`Tables drop Failed ${err}`.red.bold.underline));
 
 const app = express();
 
@@ -41,6 +39,8 @@ app.use('/carts', cartsRoute);
 app.use('/transactions', transactionsRoute);
 app.use('/orders', ordersRoute);
 app.use('/cards', cardsRoute);
+app.use('/addresses', addressesRoute);
+app.use('/shares', sharesRoute);
 
 // Listen to the PORT
 const PORT = process.env.PORT || 5005;

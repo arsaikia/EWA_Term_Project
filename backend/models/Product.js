@@ -83,16 +83,16 @@ const Products = SQL.define(
     }
 );
 
-
-
 Products.beforeCreate((product, _) => {
     return (product.productId = uuid());
 });
 
-Products.sync()
-    .then(() => {
-        console.log('Products created'.cyan.bold);
-    })
-    .catch((error) => console.log('ERROR', error));
+SQL.query('SET FOREIGN_KEY_CHECKS = 0', { raw: true }).then(() => {
+    Products.sync()
+        .then(() => {
+            console.log(`Products created`.cyan.bold);
+        })
+        .catch((error) => console.log('ERROR', error));
+});
 
 export default Products;

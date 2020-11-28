@@ -4,13 +4,14 @@ import axios from 'axios';
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
 import Rating from '../../components/Rating';
 import styled from 'styled-components/macro';
+import { Popup } from '../../components/Popup';
+import API from '../../utils/Query';
 
 import { Container as FluidContainer } from 'react-bootstrap';
 
 import BuyButton from '../../components/BuyButton';
 
-import CAKE from '../../Images/products/food_cake.png';
-import FRUIT from '../../Images/products/blueberries.png';
+import SHARE from '../../Images/Icons/share.svg';
 
 import { Alert } from 'react-bootstrap';
 import {
@@ -96,6 +97,8 @@ const ProductDetails = ({
     priceAfterDiscount = '90.05',
     productRating = 3.5,
     totalRatings = 1250,
+    showShare,
+    setShowShare,
 }) => {
     return (
         <FlexContainer
@@ -120,6 +123,12 @@ const ProductDetails = ({
                         pointer={'showPointer'}>
                         {`${discount}% OFF`}
                     </Discount>
+                </FlexContainer>
+                <FlexContainer
+                    marginLeft={'20px'}
+                    pointer='pointer'
+                    onClick={() => setShowShare(!showShare)}>
+                    <img src={SHARE} alt='...' width='20px' />
                 </FlexContainer>
             </FlexContainer>
             <FlexContainer marginTop='2%'>
@@ -180,7 +189,6 @@ const ProductDetails = ({
                     itemsInBag={0}
                     ContainsInCart={false}
                     quantity={2}
-                    
                 />
             </FlexContainer>
         </FlexContainer>
@@ -233,9 +241,68 @@ const DescriptionAndReviews = ({ description, revews }) => {
     );
 };
 
-const description =
-    'Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores! Nobis beatae similique pariatur tenetur quae minima? Libero nam labore eaque? Saepe vitae labore obcaecati cumque aliquam nemo nam exercitationem atque aut deleniti, quibusdam repudiandae sapiente dolorum, modi magni excepturi, impedit et omnis unde recusandae id laborum? Quo obcaecati molestias consequuntur quam possimus velit dolore, blanditiis dolorum pariatur voluptatibus eligendi tempora reiciendis earum veniam, a facilis quibusdam quidem incidunt tenetur placeat excepturi, cum consectetur. Modi, vel. Voluptatum, iste veritatis facilis perferendis deleniti ducimus, temporibus beatae accusantium optio sint aperiam, esse dolorem commodi voluptatem delectus! Quas laboriosam mollitia excepturi quaerat, minima ea, incidunt laborum dolorem assumenda corporis amet laudantium recusandae quod? Voluptas, quia. Veritatis quod nulla mollitia, esse dicta quibusdam enim quas exercitationem quia ex. Impedit inventore temporibus incidunt iusto, reiciendis, dicta rerum velit ea omnis ad, magnam quod aperiam aspernatur possimus ullam officia eveniet magni explicabo exercitationem doloribus dolores! Quia saepe, esse odit temporibus veniam praesentium cumque quo recusandae quam sit nostrum ducimus rem sunt, omnis ad. Sequi iure magni, animi asperiores necessitatibus delectus reprehenderit. Consequuntur unde ipsam enim ullam voluptatem hic, autem omnis molestiae! Ex quas eos illum minima excepturi expedita soluta inventore modi!';
+const ShareProduct = ({ showShare, setShowShare, userId, productId }) => {
+    const [email, setEmail] = useState('');
+    const [shareDone, setShareDone] = useState(false);
 
+    useEffect(() => {
+        showShare && setShareDone(false);
+    }, [showShare]);
+
+    /*
+     *SHARE_PRODUCT
+     */
+    const shareHandler = async () => {
+        setShareDone(true);
+
+        if (!userId || !productId) return;
+        return await API.POST({
+            url: `shares/`,
+            body: {
+                email,
+                userId,
+                productId,
+            },
+        });
+    };
+
+    return (
+        <Popup
+            popupWidth={'120vw'}
+            popupHeight={'150vh'}
+            showPopup={showShare}
+            handlePopup={setShowShare}
+            content={
+                <Container>
+                    {!shareDone ? (
+                        <>
+                            <label>
+                                Please enter your friend's email id to share the
+                                product:
+                            </label>
+                            <input
+                                type='email'
+                                className='form-control'
+                                placeholder='emaill@address.com'
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            <Spacing space='20px' mobileSpace='10px' />
+                            <button
+                                color='#ffff'
+                                type='submit'
+                                className='btn btn-success btn-lg btn-block'
+                                onClick={shareHandler}>
+                                Share
+                            </button>
+                        </>
+                    ) : (
+                        <p>{`Product Successfully shared to ${email}. Click anywhere to close the window.`}</p>
+                    )}
+                </Container>
+            }
+        />
+    );
+};
 const reviews = [
     {
         id: 1,
@@ -260,7 +327,7 @@ const reviews = [
     },
 ];
 
-const ProductsScreen = ({ productById }) => {
+const ProductsScreen = ({ productById, showShare, setShowShare, userId }) => {
     const imageSrc =
         require(`../../Images/products/${productById.image.toLowerCase()}`)
             .default || 'apple';
@@ -274,6 +341,12 @@ const ProductsScreen = ({ productById }) => {
 
     return (
         <FluidContainer sm fluid>
+            <ShareProduct
+                showShare={showShare}
+                setShowShare={setShowShare}
+                productId={productById.productId}
+                userId={userId}
+            />
             <OuterContainer
                 minHeight='100vh'
                 margin='6em 8em 1em 8em'
@@ -297,6 +370,8 @@ const ProductsScreen = ({ productById }) => {
                                     totalRatings={
                                         productById.totalRatings || 1210
                                     }
+                                    showShare={showShare}
+                                    setShowShare={setShowShare}
                                 />
                             </Col>
                         </Row>

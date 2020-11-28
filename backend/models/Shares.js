@@ -1,22 +1,20 @@
 import { Sequelize } from 'sequelize';
 import { SQL } from '../config/db.js';
 import { v4 as uuid } from 'uuid';
-
-import Users from './User.js';
 import Products from './Product.js';
+import Users from './User.js';
 
-const Cart = SQL.define(
-    'cart',
+const Shares = SQL.define(
+    'shares',
     {
-        cartId: {
+        shareId: {
             allowNull: false,
             primaryKey: true,
             type: Sequelize.UUID,
             defaultValue: uuid(),
         },
-
-        quantity: {
-            type: Sequelize.INTEGER,
+        email: {
+            type: Sequelize.STRING,
             allowNull: false,
         },
     },
@@ -25,28 +23,28 @@ const Cart = SQL.define(
     }
 );
 
-Cart.belongsTo(Users, {
+Shares.belongsTo(Users, {
     foreignKey: {
         name: 'userId',
     },
 });
 
-Cart.belongsTo(Products, {
+Shares.belongsTo(Products, {
     foreignKey: {
         name: 'productId',
     },
 });
 
-Cart.beforeCreate((cart, _) => {
-    return (cart.cartId = uuid());
+Shares.beforeCreate((shares, _) => {
+    return (shares.shareId = uuid());
 });
 
-SQL.query('SET FOREIGN_KEY_CHECKS = 0', { raw: true }).then(() => {
-    Cart.sync()
+SQL.query('SET FOREIGN_KEY_CHECKS = 0', { raw: true }).then(() =>
+    Shares.sync() //  { force: true }
         .then(() => {
-            console.log(`Cart created`.cyan.bold);
+            console.log(`Shares created`.cyan.bold);
         })
-        .catch((error) => console.log('ERROR', error));
-});
+        .catch((error) => console.log('ERROR', error))
+);
 
-export default Cart;
+export default Shares;

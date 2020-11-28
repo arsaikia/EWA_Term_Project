@@ -8,8 +8,8 @@ import { FlexContainer } from '../StylingComponents/index';
 const CircledX = () => null;
 
 const PopupOuterContainer = styled.div`
-    width: 100vw;
-    height: 100%;
+    width: ${props => props.width? props.width : '110vw'};
+    height: ${props => props.height? props.height : '110vw'};
     overflow: hidden;
     z-index: 100;
     position: fixed;
@@ -157,13 +157,15 @@ const CenterAlign = styled.div`
     align-items: center;
 `;
 
-const Popup = ({ content = null, showPopup = false, handlePopup = null }) => {
+const Popup = ({ content = null, showPopup = false, handlePopup = null, popupHeight, popupWidth }) => {
     return (
         <>
             {showPopup ? (
                 <>
                     <CenterAlign>
                         <PopupOuterContainer
+                            popupWidth={popupWidth}
+                            popupHeight={popupHeight}
                             onClick={
                                 handlePopup ? () => handlePopup(false) : null
                             }

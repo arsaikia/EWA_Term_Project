@@ -1,13 +1,20 @@
 import express from 'express';
 const router = express.Router();
 
-import { getUsers, getUser, createUser, AuthenticateUser } from '../controller/users.js';
+import {
+    getUsers,
+    getUser,
+    createUser,
+    AuthenticateUser,
+    setUserPreferredStore,
+} from '../controller/users.js';
 
 router.route('/').get(getUsers).post(createUser);
 
 router.route('/:id').get(getUser);
 
 router.route('/login').post(AuthenticateUser);
+router.route('/store/:id').post(setUserPreferredStore);
 
 // Export the router
 export { router as usersRoute };

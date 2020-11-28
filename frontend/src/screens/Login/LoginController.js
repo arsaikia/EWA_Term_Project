@@ -54,7 +54,6 @@ const LoginController = ({ ...props }) => {
         Cookie.set('USER_NAME', alreadyLoggedInUser);
     };
 
-    console.log('rememberMe', rememberMe);
 
     return (
         <LoginScreen

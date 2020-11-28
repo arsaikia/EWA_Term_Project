@@ -3,6 +3,9 @@ import {
     HIDE_HEADER,
     SHOW_DROPDOWN,
     HIDE_DROPDOWN,
+    SHOW_MAP,
+    HIDE_MAP,
+    SET_STORE,
 } from '../types';
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -31,6 +34,24 @@ export default (state, action) => {
             return {
                 ...state,
                 showDropdown: false,
+            };
+
+        case SHOW_MAP:
+            return {
+                ...state,
+                showMap: true,
+            };
+
+        case HIDE_MAP:
+            return {
+                ...state,
+                showMap: false,
+            };
+
+        case SET_STORE:
+            return {
+                ...state,
+                selectedStore: action.payload || {},
             };
 
         default:

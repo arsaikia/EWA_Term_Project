@@ -13,6 +13,8 @@ import Stores from './models/Store.js';
 import StoreProducts from './models/StoreProduct.js';
 import Carts from './models/Cart.js';
 import Users from './models/User.js';
+import Cards from './models/Cards.js';
+import Shares from './models/Shares.js';
 
 // Connect to DB
 SQL.authenticate();
@@ -29,16 +31,20 @@ const storeproducts = JSON.parse(
     fs.readFileSync(`./_data/storeproducts.json`, 'utf-8')
 );
 const carts = JSON.parse(fs.readFileSync(`./_data/carts.json`, 'utf-8'));
+const cards = JSON.parse(fs.readFileSync(`./_data/cards.json`, 'utf-8'));
+const shares = JSON.parse(fs.readFileSync(`./_data/shares.json`, 'utf-8'));
 
 // Import into DB
 const importData = async () => {
     try {
-        await Users.bulkCreate(users);
-        await Products.bulkCreate(products);
-        await Address.bulkCreate(addresses);
-        await Stores.bulkCreate(stores);
-        await StoreProducts.bulkCreate(storeproducts);
-        await Carts.bulkCreate(carts);
+        // await Users.bulkCreate(users);
+        // await Products.bulkCreate(products);
+        // await Stores.bulkCreate(stores);
+        // await StoreProducts.bulkCreate(storeproducts);
+        await Shares.bulkCreate(shares);
+        // await Carts.bulkCreate(carts);
+        // await Cards.bulkCreate(cards);
+        // await Address.bulkCreate(addresses);
 
         console.log('Data Imported...'.green.inverse);
         process.exit();
@@ -50,12 +56,14 @@ const importData = async () => {
 // Delete data
 const deleteData = async () => {
     try {
-        await Users.destroy({ where: {} });
-        await Products.destroy({ where: {} });
-        await Address.destroy({ where: {} });
-        await Stores.destroy({ where: {} });
-        await StoreProducts.destroy({ where: {} });
-        await Carts.destroy({ where: {} });
+        // await Users.destroy({ where: {} });
+        // await Address.destroy({ where: {} });
+        // await Products.destroy({ where: {} });
+        // await Stores.destroy({ where: {} });
+        // await StoreProducts.destroy({ where: {} });
+        await Shares.destroy({ where: {} });
+        // await Carts.destroy({ where: {} });
+        // await Cards.destroy({ where: {} });
 
         console.log('Data Destroyed...'.red.inverse);
         process.exit();

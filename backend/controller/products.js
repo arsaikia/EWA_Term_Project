@@ -1,5 +1,6 @@
 import { SQL } from '../config/db.js';
 import Products from '../models/Product.js';
+import StoreProducts from '../models/StoreProduct.js';
 import Sequelize from 'sequelize';
 import asyncHandler from '../middleware/async.js';
 import ErrorResponse from '../middleware/error.js';
@@ -12,12 +13,26 @@ import ErrorResponse from '../middleware/error.js';
  */
 
 const getProducts = asyncHandler(async (req, res, next) => {
-    const products = await Products.findAll();
+    let allProducts = [];
+    let products = await SQL.query(
+        'SELECT DISTINCT P.productId, P.productName, P.image, P.description, P.category, P.subcategory, P.price, P.discount, P.isVeg, P.countInStock, P.foodPreference, P.quantityType, SP.storeId from products P join storeproducts SP on P.productId = SP.productId;',
+        { raw: true }
+    );
+    products.forEach((product) => allProducts.push(product));
 
-    if (!products) {
+    // const products = await Products.findAll({
+    //     include: [
+    //         {
+    //             model: StoreProducts,
+    //             on: {}
+    //         },
+    //     ],
+    // });
+
+    if (!allProducts) {
         return next(new ErrorResponse(`No Product found!`, 404));
     }
-    res.status(200).json({ success: true, data: products });
+    res.status(200).json({ success: true, data: products[0] });
 });
 
 /*

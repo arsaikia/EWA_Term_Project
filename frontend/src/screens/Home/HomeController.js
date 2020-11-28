@@ -12,7 +12,13 @@ import Loader from '../../components/Loader';
 import UserContext from '../../Context/User/userContext';
 import { useHistory } from 'react-router-dom';
 
-const HomeController = ({ setShowDropdown, ...props }) => {
+const HomeController = ({
+    setShowDropdown,
+    showMap,
+    setShowMap,
+    setStore,
+    ...props
+}) => {
     const history = useHistory();
     /*
      ***************************************************
@@ -50,7 +56,9 @@ const HomeController = ({ setShowDropdown, ...props }) => {
      ***************************************************
      */
     const rememberedUserId = Cookie.get('USER_ID');
+    const rememberedFoodPreference = Cookie.get('FOOD_PREFERENCE');
     const rememberMe = Cookie.get('REMEMBER_ME');
+    const [foodPreferenceFetched, setFoodPreferenceFetched] = useState(false);
 
     const comingFromProducts = get(props.location.state, 'fromProducts');
 
@@ -61,7 +69,6 @@ const HomeController = ({ setShowDropdown, ...props }) => {
         comingFromProducts || true
     );
 
-    // console.log('fromProducts', history.location.state);
     /*
      ***************************************************
      * Handler Functions
@@ -121,6 +128,9 @@ const HomeController = ({ setShowDropdown, ...props }) => {
      */
 
     const loadDataOnMount = useCallback(() => {
+        if (allProductsFetched) {
+            setFetchingAllProducts(false);
+        }
         if (fetchingAllProducts && !allProductsFetched) {
             setFetchingAllProducts(false);
             fetchAllProducts();
@@ -130,6 +140,14 @@ const HomeController = ({ setShowDropdown, ...props }) => {
             setfetchingCart(false);
             fetchProductsInCart(rememberedUserId);
         }
+        if (
+            allProductsFetched &&
+            !foodPreferenceFetched &&
+            rememberedFoodPreference
+        ) {
+            setFoodPreferenceFetched(true);
+            getFilteredProducts(rememberedFoodPreference, 'USER_PREFERENCE');
+        }
     }, [
         fetchingAllProducts,
         allProductsFetched,
@@ -138,6 +156,9 @@ const HomeController = ({ setShowDropdown, ...props }) => {
         productsInCartFetched,
         fetchProductsInCart,
         rememberedUserId,
+        foodPreferenceFetched,
+        rememberedFoodPreference,
+        getFilteredProducts,
     ]);
 
     /*
@@ -188,6 +209,9 @@ const HomeController = ({ setShowDropdown, ...props }) => {
                 addProductToCart={addProductToCart}
                 getItemsInBag={getItemsInBag}
                 getFilteredProducts={getFilteredProducts}
+                showMap={showMap}
+                setShowMap={setShowMap}
+                setStore={setStore}
                 {...props}
             />
         </>

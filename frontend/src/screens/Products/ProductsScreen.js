@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { get } from 'lodash';
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
 import Rating from '../../components/Rating';
 import styled from 'styled-components/macro';
@@ -209,30 +210,30 @@ const RelatedProducts = () => {
     );
 };
 
-const DescriptionAndReviews = ({ description, revews }) => {
+const DescriptionAndReviews = ({ description, reviews }) => {
+    const noReview = reviews.length <= 0;
     return (
-        <FlexContainer
-            backgroundColor='khaki'
-            // justifyContent='center'
-            // alignItems='center'
-            padding='2%'
-            minHeight='150px'>
+        <FlexContainer padding='2%' minHeight='150px'>
             <FlexContainer flexDirection='column'>
                 <HeaderTwo text={<p>Product Description</p>} />
                 <Description text={<p>{description}</p>} />
                 <Spacing space='80px' mobileSpace='80px' />
                 <Container height='2px' width='100%' backgroundColor='black' />
                 <Spacing space='80px' mobileSpace='80px' />
-                <HeaderTwo text={<p>Reviews:</p>} />
+                <HeaderTwo
+                    text={
+                        <p>{noReview ? 'No reviews available!' : `Reviews:`}</p>
+                    }
+                />
                 <Spacing space='10px' mobileSpace='10px' />
 
                 {reviews.map((review) => (
-                    <FlexContainer flexDirection='column' key={review.id}>
+                    <FlexContainer flexDirection='column' key={review._id}>
                         <Rating
-                            value={review.rating}
-                            reviewerName={review.reviewerName}
+                            value={review.reviewRating}
+                            reviewerName={review.userName}
                         />
-                        <Description text={<p>{review.text}</p>} />
+                        <Description text={<p>{review.reviewText}</p>} />
                         <Spacing space='30px' mobileSpace='30px' />
                     </FlexContainer>
                 ))}
@@ -303,31 +304,38 @@ const ShareProduct = ({ showShare, setShowShare, userId, productId }) => {
         />
     );
 };
-const reviews = [
-    {
-        id: 1,
-        reviewerName: 'Arunabh saikia',
-        text:
-            'amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!amconsectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!ameet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!',
-        rating: 3.5,
-    },
-    {
-        id: 2,
-        reviewerName: 'John Smith',
-        text:
-            'amet consectetur adipisicing elit. Eligendi quaerat consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!ame eum dignissimos maxime, recusandae consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!ame asperiores!',
-        rating: 4,
-    },
-    {
-        id: 3,
-        reviewerName: 'Jane Smith',
-        text:
-            'amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!ame consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!ame recusandae asperiores!',
-        rating: 3,
-    },
-];
 
-const ProductsScreen = ({ productById, showShare, setShowShare, userId }) => {
+// const reviews = [
+//     {
+//         id: 1,
+//         reviewerName: 'Arunabh saikia',
+//         text:
+//             'amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!amconsectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!ameet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!',
+//         rating: 3.5,
+//     },
+//     {
+//         id: 2,
+//         reviewerName: 'John Smith',
+//         text:
+//             'amet consectetur adipisicing elit. Eligendi quaerat consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!ame eum dignissimos maxime, recusandae consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!ame asperiores!',
+//         rating: 4,
+//     },
+//     {
+//         id: 3,
+//         reviewerName: 'Jane Smith',
+//         text:
+//             'amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!ame consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!ame recusandae asperiores!',
+//         rating: 3,
+//     },
+// ];
+
+const ProductsScreen = ({
+    productById,
+    showShare,
+    setShowShare,
+    userId,
+    totalReview,
+}) => {
     const imageSrc =
         require(`../../Images/products/${productById.image.toLowerCase()}`)
             .default || 'apple';
@@ -366,10 +374,8 @@ const ProductsScreen = ({ productById, showShare, setShowShare, userId }) => {
                                     inStock={productById.countInStock > 0}
                                     productPrice={productById.price}
                                     priceAfterDiscount={productPrice}
-                                    productRating={productById.rating || 3.5}
-                                    totalRatings={
-                                        productById.totalRatings || 1210
-                                    }
+                                    productRating={totalReview.rating}
+                                    totalRatings={totalReview.count}
                                     showShare={showShare}
                                     setShowShare={setShowShare}
                                 />
@@ -388,7 +394,7 @@ const ProductsScreen = ({ productById, showShare, setShowShare, userId }) => {
                         <Col>
                             <DescriptionAndReviews
                                 description={productById.description}
-                                reviews={productById.reviews || reviews}
+                                reviews={productById.reviews}
                             />
                         </Col>
                     </Row>

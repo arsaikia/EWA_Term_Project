@@ -46,11 +46,14 @@ const Transactions = SQL.define(
         cancelReason: {
             type: Sequelize.STRING,
             allowNull: true,
-            values: ['Product not required anymore', 
-                    'Cheaper alternative available for lower price', 
-                    'Bad review from friends / relatives',
-                    'other..'],
-            defaultValue: null,
+            values: [
+                'Product not required anymore',
+                'Cheaper alternative available for lower price',
+                'Bad review from friends / relatives',
+                'other..',
+                'NA',
+            ],
+            defaultValue: 'NA',
         },
     },
     {

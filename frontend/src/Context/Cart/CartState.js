@@ -70,11 +70,15 @@ const CartState = (props) => {
 
     const getProductById = async (productId) => {
         const response = await API.GET({ url: `products/${productId}` });
-        const product = get(get(response, 'data'), 'data')[0] || [];
+        const product = get(get(response, 'data'), 'data');
+        const productDetails = get(get(product, 'product', []), '0', {});
+        const reviews = get(product, 'reviews', []);
 
-        console.log("product",product)
+        const withReviews = { ...productDetails, reviews };
+
+        // console.log('withReviews', withReviews);
         dispatch({
-            payload: product,
+            payload: withReviews,
             type: GET_PRODUCT_BY_ID,
         });
     };
@@ -237,7 +241,6 @@ const CartState = (props) => {
             payload: transaction,
             type: CREATE_TRANSFER,
         });
-
     };
 
     const clearTransferStatus = () => {
@@ -245,8 +248,6 @@ const CartState = (props) => {
             type: RESET_CREATE_TRANSFER,
         });
     };
-
-
 
     return (
         <CartContext.Provider

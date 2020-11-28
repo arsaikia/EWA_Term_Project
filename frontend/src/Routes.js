@@ -9,6 +9,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Cart from './screens/Cart';
 import Accounts from './screens/Accounts';
+import Orders from './screens/Orders';
 import OrderConfirmed from './screens/RedirectScreens/OrderConfirmed';
 
 const Routes = (props) => {
@@ -104,6 +105,15 @@ const Routes = (props) => {
 
                     <Route path={'/accounts'}>
                         <Accounts
+                            setShowHeader={setShowHeader}
+                            setShowDropdown={setShowDropdown}
+                            showHeader={showHeader}
+                            props={props}
+                        />
+                    </Route>
+
+                    <Route path={'/orders'}>
+                        <Orders
                             setShowHeader={setShowHeader}
                             setShowDropdown={setShowDropdown}
                             showHeader={showHeader}

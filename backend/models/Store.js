@@ -17,6 +17,10 @@ const Stores = SQL.define(
             type: Sequelize.STRING,
             allowNull: false,
         },
+        storeInfo: {
+            type: Sequelize.STRING,
+            allowNull: false,
+        },
     },
     {
         timestamps: false,

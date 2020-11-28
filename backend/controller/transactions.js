@@ -58,8 +58,30 @@ const getTransaction = asyncHandler(async (req, res, next) => {
 });
 
 /*
- * @desc     Get store with id
- * @route    GET /api/v1/transactions/:id
+ * @desc     Update transaction for cancellation
+ * @route    Post /api/v1/transactions/:id
+ * @access   Public
+ */
+
+const updateCancellation = asyncHandler(async (req, res, next) => {
+    const updateTransaction = await Transactions.update(
+        { deliveryStatus: 'CANCELLED'},
+        { where: {transactionId : req.body.transactionId}}
+    )
+    if (!transaction || transaction.length == 0) {
+        console.log(`Transaction Not Found with id ${req.params.id}`);
+        return res.status(404).json({
+            success: false,
+            error: `Transaction Not Found with id '${req.params.id}'`,
+        });
+    }
+    console.log(req.params.id);
+    return next(res.status(200).json({ success: true, data: updateTransaction }));
+});
+
+/*
+ * @desc     Create transaction with id
+ * @route    Post /api/v1/transactions/:id
  * @access   Public
  */
 
@@ -78,6 +100,7 @@ const createTransaction = asyncHandler(async (req, res, next) => {
         addressId: req.body.addressId,
         storeId: req.body.storeId,
         cardId: req.body.cardId,
+        cancelReason: req.body.cancelReason,
     });
 
     if (!transaction || transaction.length == 0) {

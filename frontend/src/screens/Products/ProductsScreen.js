@@ -196,27 +196,28 @@ const ProductDetails = ({
     );
 };
 
-const RelatedProducts = () => {
+const ProductDescription = ({ description }) => {
     return (
         <FlexContainer
+            flexDirection='column'
             backgroundColor='#ccd6f6'
-            height='15vh'
-            justifyContent='center'
+            padding='30px'
+            minHeight='15vh'
+            borderRadius='6px'
+            // justifyContent='center'
             alignItems='center'>
-            <HeaderOne
-                text={<p>Market Basket Analysis to show Related Products</p>}
-            />
+            <HeaderTwo text={<p>Product Description</p>} />
+            <Spacing space='20px' mobileSpace='20px' />
+            <Description text={<p>{description}</p>} />
         </FlexContainer>
     );
 };
 
-const DescriptionAndReviews = ({ description, reviews }) => {
+const Reviews = ({ reviews }) => {
     const noReview = reviews.length <= 0;
     return (
         <FlexContainer padding='2%' minHeight='150px'>
             <FlexContainer flexDirection='column'>
-                <HeaderTwo text={<p>Product Description</p>} />
-                <Description text={<p>{description}</p>} />
                 <Spacing space='80px' mobileSpace='80px' />
                 <Container height='2px' width='100%' backgroundColor='black' />
                 <Spacing space='80px' mobileSpace='80px' />
@@ -386,16 +387,15 @@ const ProductsScreen = ({
                     <FlexContainer height='50px' />
                     <Row>
                         <Col>
-                            <RelatedProducts></RelatedProducts>
+                            <ProductDescription
+                                description={productById.description}
+                            />
                         </Col>
                     </Row>
                     <FlexContainer height='50px' />
                     <Row>
                         <Col>
-                            <DescriptionAndReviews
-                                description={productById.description}
-                                reviews={productById.reviews}
-                            />
+                            <Reviews reviews={productById.reviews} />
                         </Col>
                     </Row>
                 </FluidContainer>

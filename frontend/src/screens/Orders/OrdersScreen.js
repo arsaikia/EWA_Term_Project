@@ -33,6 +33,8 @@ const Order = ({
         setOrderIdForReview(ut.orderId);
         setProductIdForReview(ut.productId);
     };
+
+    console.log('utut', ut);
     return (
         <FlexContainer
             minHeight='100px'

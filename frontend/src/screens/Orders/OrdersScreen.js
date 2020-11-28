@@ -68,20 +68,25 @@ const Order = ({
                 justifyContent='space-between'
                 alignItems='space-between'>
                 <FlexContainer width='60%'>
-                    <Description
-                        bold={700}
-                        text={
-                            <p>
-                                {delInProgress
-                                    ? `Delivery By: ${ut.deliveryForcast}`
-                                    : `${
-                                          delComplete
-                                              ? 'Delivered on: '
-                                              : 'Cancelled :'
-                                      }`}
-                            </p>
-                        }
-                    />
+                    {delInProgress && (
+                        <Description
+                            bold={700}
+                            text={<p>{`Expected: ${ut.deliveryForcast}`}</p>}
+                        />
+                    )}
+                    {delComplete && (
+                        <Description
+                            bold={700}
+                            text={<p>{`Delivered: ${ut.deliveryActual}`}</p>}
+                        />
+                    )}
+                    {delCanceled && (
+                        <Description
+                            bold={600}
+                            color={Colors.errorRed}
+                            text={<p>{`${ut.cancelReason}`}</p>}
+                        />
+                    )}
                 </FlexContainer>
 
                 {review && review.length > 0 && (
@@ -98,15 +103,15 @@ const Order = ({
                 alignItems='space-between'
                 paddingLeft='10px'
                 paddingRight='10px'>
-                {delInProgress && (
-                    <FlexContainer width='20%'>
+                <FlexContainer width='20%'>
+                    {delInProgress && (
                         <button type='button' class='btn btn-outline-danger sm'>
                             Cancel
                         </button>
-                    </FlexContainer>
-                )}
+                    )}
+                </FlexContainer>
                 <FlexContainer width='20%'>
-                    {review && review.length <= 0 && (
+                    {!delCanceled && review && review.length <= 0 && (
                         <button
                             type='button'
                             class='btn btn-outline-success sm'

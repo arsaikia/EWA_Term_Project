@@ -40,8 +40,17 @@ const Transactions = SQL.define(
         deliveryStatus: {
             type: Sequelize.STRING,
             allowNull: false,
-            values: ['DELIVERED', 'IN_PROGRESS'],
+            values: ['DELIVERED', 'IN_PROGRESS', 'CANCELLED'],
             defaultValue: 'IN_PROGRESS',
+        },
+        cancelReason: {
+            type: Sequelize.STRING,
+            allowNull: true,
+            values: ['Product not required anymore', 
+                    'Cheaper alternative available for lower price', 
+                    'Bad review from friends / relatives',
+                    'other..'],
+            defaultValue: null,
         },
     },
     {

@@ -26,7 +26,7 @@ const TransactionState = (props) => {
 
         response = get(response.data, 'data');
 
-        // response.forEach((x) => console.log('response', x));
+        console.log('response', response);
 
         dispatch({
             payload: response,

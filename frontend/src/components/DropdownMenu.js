@@ -5,6 +5,7 @@ import { ReactComponent as Logout } from '../Images/Icons/logout.svg';
 import { ReactComponent as ArrowIcon } from '../Images/Icons/arrow.svg';
 import { ReactComponent as SigninIcon } from '../Images/Icons/signin.svg';
 import { ReactComponent as RegisterIcon } from '../Images/Icons/register.svg';
+import { ReactComponent as AccountIcon } from '../Images/Icons/account.svg';
 import { CSSTransition } from 'react-transition-group';
 import { LinkContainer } from 'react-router-bootstrap';
 import { useHistory } from 'react-router-dom';
@@ -87,8 +88,17 @@ const DropdownMenu = ({
                         goToMenu={'signIn'}>
                         Sign In / Sign Up
                     </DropdownItems>
-                    <DropdownItems>Account</DropdownItems>
+
+                    <LinkContainer to='/accounts' onClick={HideMenu}>
+                        <div>
+                            <DropdownItems leftIcon={<AccountIcon />}>
+                                Account
+                            </DropdownItems>
+                        </div>
+                    </LinkContainer>
+
                     <DropdownItems>Orders</DropdownItems>
+
                     {rememberedUser && (
                         <div onClick={logoutHandler}>
                             <DropdownItems leftIcon={<Logout />}>

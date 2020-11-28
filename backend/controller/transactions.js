@@ -32,7 +32,7 @@ const getTransactions = asyncHandler(async (req, res, next) => {
  */
 
 const getTransaction = asyncHandler(async (req, res, next) => {
-    const query = `SELECT * FROM transactions T INNER JOIN orders O ON T.transactionId = O.transactionId where T.userId='${req.params.id}';`;
+    const query = `SELECT DISTINCT * FROM transactions T INNER JOIN orders O ON T.transactionId = O.transactionId where T.userId='${req.params.id}';`;
     const transaction = await SQL.query(query, { raw: true });
 
     // await Transactions.findAll({
@@ -54,7 +54,7 @@ const getTransaction = asyncHandler(async (req, res, next) => {
         });
     }
     console.log(req.params.id);
-    return next(res.status(200).json({ success: true, data: transaction }));
+    return next(res.status(200).json({ success: true, data: transaction[0] }));
 });
 
 /*

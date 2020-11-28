@@ -53,18 +53,23 @@ const getTransaction = asyncHandler(async (req, res, next) => {
 
 const updateTransactionStatus = asyncHandler(async (req, res, next) => {
     console.log(`From here!!`.red.bold.underline);
-    // const updateTransaction = await Transactions.update(
-    //     { deliveryStatus: req.body.deliveryStatus },
-    //     { where: { transactionId: req.params.transactionId } }
-    // );
-    // if (!transaction || transaction.length == 0) {
-    //     console.log(`Transaction Not Found with id ${req.params.id}`);
-    //     return res.status(404).json({
-    //         success: false,
-    //         error: `Transaction Not Found with id '${req.params.id}'`,
-    //     });
-    // }
-    // console.log(req.params.id);
+    if (!req.params.id || !req.body.deliveryStatus) {
+        return res.status(404).json({
+            success: false,
+            error: `Transaction Id and delivery status is mandatory '${req.params.id}'`,
+        });
+    }
+    const updateTransaction = await Transactions.update(
+        { deliveryStatus: req.body.deliveryStatus },
+        { where: { transactionId: req.params.id } }
+    );
+    if (!updateTransaction || updateTransaction.length == 0) {
+        console.log(`Transaction Not Found with id ${req.params.id}`);
+        return res.status(404).json({
+            success: false,
+            error: `Transaction Not Found with id '${req.params.id}'`,
+        });
+    }
     return next(
         res.status(200).json({ success: true, data: updateTransaction })
     );

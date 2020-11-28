@@ -30,9 +30,9 @@ const MarketBasket = SQL.define(
 
 
 SQL.query('SET FOREIGN_KEY_CHECKS = 0', { raw: true }).then(() =>
-    MarketBasket.sync() //  { force: true }
+    MarketBasket.sync({ force: true })  
         .then(() => {
-            console.log(`MarketBasket created`.cyan.bold);
+            console.log(`MarketBasket created`.bgGreen.bold.underline);
         })
         .catch((error) => console.log('ERROR', error))
 );

@@ -6,9 +6,9 @@
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon backend/server",
+    "server": "nodemon --experimental-json-modules backend/server",
     "client": "npm start --prefix frontend",
-    "start": "node ./backend/server.js",
+    "start": "node  ./backend/server.js",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {

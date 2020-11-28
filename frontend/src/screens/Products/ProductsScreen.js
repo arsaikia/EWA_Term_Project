@@ -329,7 +329,13 @@ const ShareProduct = ({ showShare, setShowShare, userId, productId }) => {
 //     },
 // ];
 
-const ProductsScreen = ({ productById, showShare, setShowShare, userId }) => {
+const ProductsScreen = ({
+    productById,
+    showShare,
+    setShowShare,
+    userId,
+    totalReview,
+}) => {
     const imageSrc =
         require(`../../Images/products/${productById.image.toLowerCase()}`)
             .default || 'apple';
@@ -368,10 +374,8 @@ const ProductsScreen = ({ productById, showShare, setShowShare, userId }) => {
                                     inStock={productById.countInStock > 0}
                                     productPrice={productById.price}
                                     priceAfterDiscount={productPrice}
-                                    productRating={productById.rating || 3.5}
-                                    totalRatings={
-                                        productById.totalRatings || 1210
-                                    }
+                                    productRating={totalReview.rating}
+                                    totalRatings={totalReview.count}
                                     showShare={showShare}
                                     setShowShare={setShowShare}
                                 />

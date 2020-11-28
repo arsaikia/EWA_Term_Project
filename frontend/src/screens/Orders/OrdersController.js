@@ -40,6 +40,9 @@ const OrdersController = ({
         userTransactions,
         userTransactionsFetched,
         createReview,
+        getReviewByUser,
+        userReviews,
+        userReviewsFetched,
     } = transactionContext;
 
     /*
@@ -59,15 +62,21 @@ const OrdersController = ({
      ***************************************************
      */
 
-    const reviewSubmitHandler = () => {
+    const reviewSubmitHandler = (
+        orderId,
+        productId,
+        reviewRating,
+        reviewText
+    ) => {
         const b = {
-            userId: 'f1877d11-66d0-432b-b879-568557ee1761',
-            orderId: '812b402f-c532-4099-8d46-8dfded6144b8',
-            userName: 'Akshay Akshay',
-            productId: '0b00b3f2-4f09-4987-8c0a-d99567c87c28',
-            reviewRating: 3.5,
-            reviewText: 'A really nice product overall!',
+            userId: Cookie.get('USER_ID'),
+            orderId,
+            userName: Cookie.get('USER_NAME'),
+            productId,
+            reviewRating,
+            reviewText,
         };
+
         createReview(b);
     };
 
@@ -77,14 +86,21 @@ const OrdersController = ({
      **************************************************
      */
 
+    const reloadDataAfterReview = () => {
+        getUserTransactions(rememberedUserId);
+        getReviewByUser(rememberedUserId);
+    };
+
     const loadData = useCallback(() => {
         if (
             isLoading &&
             !userTransactionsFetched &&
+            !userReviewsFetched &&
             !isEmpty(rememberedUserId)
         ) {
             setIsLoading(false);
             getUserTransactions(rememberedUserId);
+            getReviewByUser(rememberedUserId);
         }
     }, [
         isLoading,
@@ -92,6 +108,8 @@ const OrdersController = ({
         rememberedUserId,
         setIsLoading,
         getUserTransactions,
+        userReviewsFetched,
+        getReviewByUser,
     ]);
 
     /*
@@ -115,7 +133,9 @@ const OrdersController = ({
         <>
             <OrdersScreen
                 userTransactions={userTransactions}
+                reloadDataAfterReview={reloadDataAfterReview}
                 reviewSubmitHandler={reviewSubmitHandler}
+                userReviews={userReviews}
                 {...props}
             />
         </>

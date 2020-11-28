@@ -40,18 +40,50 @@ const ProductsController = (props) => {
      * Local States
      ********************************************/
     const [showShare, setShowShare] = useState(false);
+
+    const [totalReview, setTotalReview] = useState({
+        rating: null,
+        count: null,
+    });
+
     const { productId } = useParams();
 
     useEffect(() => {
         setShowHeader(true);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
+    function roundHalf(num) {
+        return Math.round(num * 2) / 2;
+    }
+
+    const loadData = useCallback(() => {
         if (!productByIdFetched) {
             getProductById(productId);
         }
 
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+        if (productByIdFetched && !isEmpty(productById)) {
+            let rating = 0;
+            let count = 0;
 
+            const reviews = get(productById, 'reviews', []);
+
+            reviews.length > 0 &&
+                reviews.forEach((review) => {
+                    rating += review.reviewRating;
+                    count += 1;
+                });
+
+            rating = roundHalf(rating / count);
+            setTotalReview({ rating, count });
+        }
+    }, [productByIdFetched, getProductById, productId, productById]);
+
+    useEffect(() => {
+        loadData();
+    }, [loadData]);
+
+    console.log('review', totalReview);
     /*
      * On Browser Back
      */
@@ -70,6 +102,7 @@ const ProductsController = (props) => {
             showShare={showShare}
             setShowShare={setShowShare}
             userId={userId}
+            totalReview={totalReview}
         />
     );
 };

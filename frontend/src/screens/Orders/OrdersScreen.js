@@ -12,9 +12,27 @@ import {
     Spacing,
     FadeInContainer,
 } from '../../components/StylingComponents/index';
+import { get } from 'js-cookie';
 
-const Order = ({ ut, setShowReview }) => {
-    console.log('ut', ut);
+const Order = ({
+    ut,
+    setShowReview,
+    setOrderIdForReview,
+    setProductIdForReview,
+    userReviews,
+}) => {
+    const delInProgress = ut.deliveryStatus === 'IN_PROGRESS';
+    const delCanceled = ut.deliveryStatus === 'CANCELLED';
+    const delComplete = ut.deliveryStatus === 'DELIVERED';
+    const review =
+        userReviews &&
+        userReviews.length > 0 &&
+        userReviews.filter((review) => ut.orderId === review.orderId);
+    const reviewSelectionHandler = () => {
+        setShowReview(true);
+        setOrderIdForReview(ut.orderId);
+        setProductIdForReview(ut.productId);
+    };
     return (
         <FlexContainer
             minHeight='100px'
@@ -52,13 +70,25 @@ const Order = ({ ut, setShowReview }) => {
                 <FlexContainer width='60%'>
                     <Description
                         bold={700}
-                        text={<p>{`Delivery By: ${ut.deliveryForcast}`}</p>}
+                        text={
+                            <p>
+                                {delInProgress
+                                    ? `Delivery By: ${ut.deliveryForcast}`
+                                    : `${
+                                          delComplete
+                                              ? 'Delivered on: '
+                                              : 'Cancelled :'
+                                      }`}
+                            </p>
+                        }
                     />
                 </FlexContainer>
 
-                <FlexContainer width='20%'>
-                    <Rating value={3.5} />
-                </FlexContainer>
+                {review && review.length > 0 && (
+                    <FlexContainer width='20%'>
+                        <Rating value={review[0].reviewRating} />
+                    </FlexContainer>
+                )}
             </FlexContainer>
             <Spacing height='15px' />
             <FlexContainer
@@ -68,27 +98,106 @@ const Order = ({ ut, setShowReview }) => {
                 alignItems='space-between'
                 paddingLeft='10px'
                 paddingRight='10px'>
+                {delInProgress && (
+                    <FlexContainer width='20%'>
+                        <button type='button' class='btn btn-outline-danger sm'>
+                            Cancel
+                        </button>
+                    </FlexContainer>
+                )}
                 <FlexContainer width='20%'>
-                    <button type='button' class='btn btn-outline-danger sm'>
-                        Cancel
-                    </button>
-                </FlexContainer>
-                <FlexContainer width='20%'>
-                    <button
-                        type='button'
-                        class='btn btn-outline-success sm'
-                        onClick={() => setShowReview(true)}>
-                        Review
-                    </button>
+                    {review && review.length <= 0 && (
+                        <button
+                            type='button'
+                            class='btn btn-outline-success sm'
+                            onClick={reviewSelectionHandler}>
+                            Review
+                        </button>
+                    )}
                 </FlexContainer>
             </FlexContainer>
         </FlexContainer>
     );
 };
 
-const OrdersScreen = ({ userTransactions, reviewSubmitHandler, ...props }) => {
-    const [transactId, setTransactId] = useState('');
+const ReviewContainer = ({
+    text,
+    setText,
+    rating,
+    setRating,
+    reviewSubmitHandler,
+    orderId,
+    productId,
+    setShowReview,
+    reloadDataAfterReview,
+}) => {
+    const submitReviewForProduct = async () => {
+        setShowReview(false);
+        await reviewSubmitHandler(orderId, productId, rating, text);
+        await reloadDataAfterReview();
+        return;
+    };
+    return (
+        <FadeInContainer
+            width='40%'
+            fadeIn
+            duration={1500}
+            alignItems='flex-start'
+            paddingTop='10%'>
+            <FlexContainer
+                padding='10px'
+                width='50%'
+                height='40%'
+                flexDirection='column'
+                justifyContent='flex-start'
+                alignItems='center'
+                // border='1px solid grey'
+                // borderRadius='6px'
+                // backgroundColor='rgba(19,201,177,0.42)'
+            >
+                <FormInput
+                    cancellable={false}
+                    error={false}
+                    errorMessage={'Text Cannot be Empty'}
+                    onChange={setText}
+                    title={'Review Text'}
+                    value={text}
+                    handleBlur={null}
+                    required
+                />
+                <Spacing height={'20px'} />
+                <FormInput
+                    cancellable={false}
+                    error={false}
+                    errorMessage={'Review Rating'}
+                    onChange={setRating}
+                    title={'Review Rating'}
+                    value={rating}
+                    handleBlur={null}
+                    required
+                />
+                <Spacing height={'20px'} />
+                <Spacing height={'20px'} />
+                <button
+                    type='button'
+                    class='btn btn-primary'
+                    onClick={submitReviewForProduct}>
+                    Submit Review
+                </button>
+            </FlexContainer>
+        </FadeInContainer>
+    );
+};
 
+const OrdersScreen = ({
+    userTransactions,
+    reviewSubmitHandler,
+    reloadDataAfterReview,
+    userReviews,
+    ...props
+}) => {
+    const [orderIdForReview, setOrderIdForReview] = useState('');
+    const [productIdForReview, setProductIdForReview] = useState('');
     const [showReview, setShowReview] = useState(false);
     const [text, setText] = useState('');
     const [rating, setRating] = useState(0);
@@ -114,78 +223,62 @@ const OrdersScreen = ({ userTransactions, reviewSubmitHandler, ...props }) => {
                     flexDirection='column'
                     width='50%'
                     height='80vh'
-                    overflow='hidden'>
-                    <FlexContainer justifyContent='center' alignItems='center'>
-                        <HeaderTwo
-                            text={<p>All orders:</p>}
-                            color={Colors.lightTextColor}
-                        />
-                    </FlexContainer>
+                    overflow='hidden'
+                    position='relative'>
                     <FlexContainer
+                        position='absolute'
                         width='100%'
-                        maxHeight='90%'
+                        maxHeight='98%'
                         flexDirection='column'
                         overflowY='scroll'
-                        // justifyContent='center'
                         alignItems='center'
                         paddingTop='20px'>
-                        {console.log('userTransactions', userTransactions)}
+                        <FlexContainer
+                            justifyContent='center'
+                            alignItems='center'
+                            marginBottom='10px'>
+                            <HeaderTwo
+                                text={<p>All orders:</p>}
+                                color={Colors.lightTextColor}
+                            />
+                        </FlexContainer>
                         {userTransactions.length > 0 &&
                             userTransactions.map((ut, idx) => (
                                 <FlexContainer
-                                    onClick={() =>
-                                        setTransactId(ut.transactionId)
-                                    }
                                     width='60%'
+                                    mobileWidth={'80%'}
                                     margin='20px 0px'
                                     backgroundColor='khaki'>
                                     <Order
                                         ut={ut}
-                                        setShowReview={setShowReview}></Order>
+                                        setShowReview={setShowReview}
+                                        orderIdForReview={orderIdForReview}
+                                        setOrderIdForReview={
+                                            setOrderIdForReview
+                                        }
+                                        productIdForReview={productIdForReview}
+                                        setProductIdForReview={
+                                            setProductIdForReview
+                                        }
+                                        userReviews={userReviews}
+                                    />
                                 </FlexContainer>
                             ))}
                     </FlexContainer>
                 </FlexContainer>
 
                 {showReview && (
-                    <FlexContainer width='40%'>
-                        <FlexContainer
-                            width='50%'
-                            height='80%'
-                            flexDirection='column'
-                            justifyContent='center'
-                            alignItems='center'>
-                            <FormInput
-                                cancellable={false}
-                                error={false}
-                                errorMessage={'Text Cannot be Empty'}
-                                onChange={setText}
-                                title={'Review Text'}
-                                value={text}
-                                handleBlur={null}
-                                required
-                            />
-                            <Spacing height={'20px'} />
-                            <FormInput
-                                cancellable={false}
-                                error={false}
-                                errorMessage={'Review Rating'}
-                                onChange={setRating}
-                                title={'Review Rating'}
-                                value={rating}
-                                handleBlur={null}
-                                required
-                            />
-                            <Spacing height={'20px'} />
-                            <Spacing height={'20px'} />
-                            <button
-                                type='button'
-                                class='btn btn-primary'
-                                onClick={reviewSubmitHandler}>
-                                Submit Review
-                            </button>
-                        </FlexContainer>
-                    </FlexContainer>
+                    <ReviewContainer
+                        text={text}
+                        setText={setText}
+                        rating={rating}
+                        setRating={setRating}
+                        reviewSubmitHandler={reviewSubmitHandler}
+                        orderId={orderIdForReview}
+                        productId={productIdForReview}
+                        setShowReview={setShowReview}
+                        reloadDataAfterReview={reloadDataAfterReview}
+                    />
                 )}
             </FadeInContainer>
         </>

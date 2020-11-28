@@ -32,7 +32,7 @@ const getReviews = async (req, res, next) => {
 
 /*
  * @desc     Find Review by UserId
- * @route    GET /api/v1/reviews/byuser/:id
+ * @route    GET /api/v1/reviews/user/:id
  * @access   Public
  */
 

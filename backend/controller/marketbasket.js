@@ -4,8 +4,8 @@ import asyncHandler from '../middleware/async.js';
 import ErrorResponse from '../middleware/error.js';
 import path from 'path';
 
-__dirname = path.resolve();
-// import data from '../_data/mba.json';
+
+import data from '../_data/mba.json';
 // import JSON from ''
 
 
@@ -46,11 +46,11 @@ const getProduct = asyncHandler(async (req, res, next) => {
 
 const createTable = asyncHandler(async (req, res, next) => {
     
-    const pathName = fs.readFile(path.join(__dirname, '../_data', 'mba.json'), 'utf8', (err,data) => {
-        if (err) throw err;
-        console.log(data);
-    });
-    const marketbasket = JSON.parse(fs.readFileSync(pathName));
+    // const pathName = fs.readFile(path.join(__dirname, '../_data', 'mba.json'), 'utf8', (err,data) => {
+    //     if (err) throw err;
+    //     console.log(data);
+    // });
+    const marketbasket = JSON.parse(JSON.stringify(data));
     
     try {
         await MarketBasket.bulkCreate(marketbasket);

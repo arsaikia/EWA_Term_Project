@@ -16,7 +16,6 @@ const MarketBasket = SQL.define(
         },
         productB: {
             type: Sequelize.UUID,
-            primaryKey: true,
             references: {
                 model: 'products',
                 key: 'productId',

@@ -64,21 +64,42 @@ const getTransaction = asyncHandler(async (req, res, next) => {
  */
 
 const updateOrderStatus = asyncHandler(async (req, res, next) => {
-    const updateTransaction = await Transactions.update(
-        { deliveryStatus: req.body.deliveryStatus },
-        { where: { transactionId: req.body.transactionId } }
-    );
-    if (!transaction || transaction.length == 0) {
-        console.log(`Transaction Not Found with id ${req.params.id}`);
-        return res.status(404).json({
-            success: false,
-            error: `Transaction Not Found with id '${req.params.id}'`,
-        });
+   
+    const transaction = await Transactions.findAll({
+        where: { transactionId: req.params.id },
+    });
+    console.log(cart);
+    const responseData = JSON.parse(JSON.stringify(transaction));
+    const transactionId = get(responseData[0], 'transactionId');
+    try {
+        const updateTransaction = await Transactions.update(
+            { deliveryStatus: req.body.deliveryStatus },
+            { where: { transactionId: transactionId } }
+        );
+        res.status(200).json({ success: true, data: updateTransaction });
+    } catch (error) {
+        console.log(
+            `Error Encountered while updating transactions : ${transactionId}`
+                .red.underline
+        );
     }
-    console.log(req.params.id);
-    return next(
-        res.status(200).json({ success: true, data: updateTransaction })
-    );
+   
+   
+    // const updateTransaction = await Transactions.update(
+    //     { deliveryStatus: req.body.deliveryStatus },
+    //     { where: { transactionId: req.params.id } }
+    // );
+    // if (!updateTransaction || updateTransaction.length == 0) {
+    //     console.log(`Transaction Not Found with id ${req.params.id}`);
+    //     return res.status(404).json({
+    //         success: false,
+    //         error: `Transaction Not Found with id '${req.params.id}'`,
+    //     });
+    // }
+    // console.log(req.params.id);
+    // return next(
+    //     res.status(200).json({ success: true, data: updateTransaction })
+    // );
 });
 
 /*

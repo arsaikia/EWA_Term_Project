@@ -66,6 +66,7 @@ const ItemCard = ({
     isAddedToCart,
     goToProductsPage,
     addProductToCart,
+    reduceProductsInCart,
     getItemsInBag,
     ...props
 }) => {
@@ -178,6 +179,7 @@ const ItemCard = ({
                         quantity={quantity}
                         ContainsInCart={isAddedToCart}
                         addProductToCart={addProductToCart}
+                        reduceProductsInCart={reduceProductsInCart}
                     />
                 </FlexContainer>
             </FlexContainer>

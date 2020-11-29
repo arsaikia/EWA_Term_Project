@@ -12,15 +12,30 @@ const BuyButton = ({
     ContainsInCart,
     fullLengthButton = false,
     addProductToCart = null,
+    reduceProductsInCart = null,
 }) => {
     const gradient = 'linear-gradient(to right,#f64f59,#fc7233)';
     const [currentItemQuantity, setCurrentItemQuantity] = useState(quantity);
-    const quantityHandler = (val) => () =>
-        val === 'ADD'
-            ? setCurrentItemQuantity(currentItemQuantity + 1)
-            : setCurrentItemQuantity(
-                  currentItemQuantity > 0 ? currentItemQuantity - 1 : 0
-              );
+
+    const quantityHandler = (val) => () => {
+        console.log('Clicked', val);
+        if (val === 'ADD') {
+            addProductToCart(productId);
+            setCurrentItemQuantity(currentItemQuantity + 1);
+        } else {
+            reduceProductsInCart(productId);
+            setCurrentItemQuantity(
+                currentItemQuantity > 0 ? currentItemQuantity - 1 : 0
+            );
+        }
+    };
+
+    const addInitialItem = () => {
+        !!!itemsInBag &&
+            addProductToCart &&
+            showPointer === 'pointer' &&
+            addProductToCart(productId);
+    };
 
     return (
         <FlexContainer
@@ -35,12 +50,7 @@ const BuyButton = ({
             style={{
                 background: !disabled ? gradient : 'grey',
             }}
-            onClick={
-                
-                addProductToCart &&
-                showPointer === 'pointer' &&
-                addProductToCart(productId)
-            }>
+            onClick={addInitialItem}>
             {ContainsInCart ? (
                 <FlexContainer
                     width='100%'

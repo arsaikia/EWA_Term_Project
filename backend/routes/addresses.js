@@ -1,11 +1,9 @@
 import express from 'express';
 const router = express.Router();
 
-import { getAddresses, getAddressWithId } from '../controller/addresses.js';
+import { getAddresses, createAddress } from '../controller/addresses.js';
 
-router.route('/:id').get(getAddresses);
-
-router.route('/address/:id').get(getAddressWithId);
+router.route('/:id').get(getAddresses).post(createAddress);
 
 // Export the router
 export { router as addressesRoute };

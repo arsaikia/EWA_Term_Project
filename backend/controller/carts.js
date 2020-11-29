@@ -86,6 +86,52 @@ const createCart = asyncHandler(async (req, res, next) => {
 });
 
 /*
+ * @desc     Update cart Decrement quantity
+ * @route    POST /api/v1/carts/update/:id
+ * @access   Public
+ */
+const decrementCartQuantity = asyncHandler(async (req, res, next) => {
+    // Validate Body is not empty
+    if (!req.body.userId || !req.body.productId) {
+        return next(
+            res.status(400).send({
+                message: 'Content can not be empty!',
+            })
+        );
+    }
+
+    const cart = await Carts.findAll({
+        where: { productId: req.body.productId, userId: req.body.userId },
+    });
+
+    console.log(cart);
+
+    const responseData = JSON.parse(JSON.stringify(cart));
+    const cartId = get(responseData[0], 'cartId');
+    const currentQuantity = get(responseData[0], 'quantity');
+    if (currentQuantity > 1) {
+        try {
+            const updateCart = await Carts.update(
+                { quantity: currentQuantity - 1 },
+                { where: { cartId: cartId } }
+            );
+            res.status(200).json({ success: true, data: updateCart });
+        } catch (error) {
+            console.log(
+                `Error Encountered while updating cart items for cart : ${cartId}`
+                    .red.underline
+            );
+        }
+    } else {
+        await Carts.destroy({
+            where: { cartId: cartId },
+        });
+
+        res.status(200).json({ success: true, data: {} });
+    }
+});
+
+/*
  * @desc     DELETE a cart instance
  * @route    DELETE /api/v1/carts/:id
  * @access   Public
@@ -99,4 +145,4 @@ const deleteCarts = asyncHandler(async (req, res, next) => {
     res.status(200).json({ success: true, data: {} });
 });
 
-export { getCarts, createCart, deleteCarts };
+export { getCarts, createCart, deleteCarts, decrementCartQuantity };

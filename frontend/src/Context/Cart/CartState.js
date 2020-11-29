@@ -173,6 +173,15 @@ const CartState = (props) => {
         await fetchProductsInCart(userId);
     };
 
+    const decrementProductsInCart = async (userId, productId) => {
+        await API.POST({
+            url: `carts/update/`,
+            body: {userId, productId },
+        });
+        // await fetchAllProducts();
+        await fetchProductsInCart(userId);
+    };
+
     const deleteCartItemWithId = async (cartId, userId) => {
         await API.DELETE({ url: `carts/${cartId}` });
 
@@ -266,6 +275,7 @@ const CartState = (props) => {
                 getUserAddresses,
                 createTransfer,
                 clearTransferStatus,
+                decrementProductsInCart,
                 allProducts: state.allProducts,
                 allProductsFetched: state.allProductsFetched,
                 productsInCart: state.productsInCart,

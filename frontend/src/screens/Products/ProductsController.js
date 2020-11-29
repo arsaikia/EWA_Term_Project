@@ -20,9 +20,6 @@ const ProductsController = (props) => {
     const appContext = useContext(AppContext);
     const { setShowHeader } = appContext;
 
-    const cartContext = useContext(CartContext);
-    const { productById, getProductById, productByIdFetched } = cartContext;
-
     const userContext = useContext(UserContext);
     const {
         authenticateUser,
@@ -36,9 +33,29 @@ const ProductsController = (props) => {
         registerUser,
         loggedInUser,
     } = userContext;
+
+    const cartContext = useContext(CartContext);
+    const {
+        productById,
+        fetchAllProducts,
+        fetchProductsInCart,
+        updateProductsInCart,
+        allProducts,
+        allProductsFetched,
+        productsInCart,
+        productsInCartFetched,
+        getProductById,
+        getFilteredProducts,
+        removedFetchedState,
+        productByIdFetched,
+        transferCreated,
+        clearTransferStatus,
+        decrementProductsInCart,
+    } = cartContext;
     /********************************************
      * Local States
      ********************************************/
+    const rememberedUserId = Cookie.get('USER_ID');
     const [showShare, setShowShare] = useState(false);
 
     const [totalReview, setTotalReview] = useState({
@@ -52,6 +69,42 @@ const ProductsController = (props) => {
         setShowHeader(true);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
+
+    const addProductToCart = (productId) => {
+        if (!productId) return;
+        if (!rememberedUserId) return history.push('/login');
+        updateProductsInCart(rememberedUserId, productId);
+    };
+
+
+    const reduceProductsInCart = (productId) => {
+        if (!productId) return;
+        if (!rememberedUserId) return history.push('/login');
+        decrementProductsInCart(rememberedUserId, productId);
+    };
+
+
+    const isAddedToCart = (productIdX) => {
+        let containsInBag = false;
+        productsInCart.forEach((el) => {
+            if (el.productId === productIdX) {
+                containsInBag = true;
+                return;
+            }
+        });
+        return containsInBag;
+    };
+
+    const getItemsInBag = (productId) => {
+        let retVal = '';
+        productsInCart.forEach((product) => {
+            if (product.productId === productId) {
+                retVal = product.quantity;
+                return;
+            }
+        });
+        return retVal;
+    };
 
     function roundHalf(num) {
         return Math.round(num * 2) / 2;
@@ -103,6 +156,10 @@ const ProductsController = (props) => {
             setShowShare={setShowShare}
             userId={userId}
             totalReview={totalReview}
+            getItemsInBag={getItemsInBag}
+            isAddedToCart={isAddedToCart}
+            addProductToCart={addProductToCart}
+            reduceProductsInCart={reduceProductsInCart}
         />
     );
 };

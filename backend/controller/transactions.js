@@ -52,7 +52,6 @@ const getTransaction = asyncHandler(async (req, res, next) => {
  */
 
 const updateTransactionStatus = asyncHandler(async (req, res, next) => {
-    console.log(`From here!!`.red.bold.underline);
     if (!req.params.id || !req.body.deliveryStatus) {
         return res.status(404).json({
             success: false,
@@ -60,7 +59,10 @@ const updateTransactionStatus = asyncHandler(async (req, res, next) => {
         });
     }
     const updateTransaction = await Transactions.update(
-        { deliveryStatus: req.body.deliveryStatus },
+        {
+            deliveryStatus: req.body.deliveryStatus,
+            cancelReason: req.body.cancelReason,
+        },
         { where: { transactionId: req.params.id } }
     );
     if (!updateTransaction || updateTransaction.length == 0) {

@@ -54,15 +54,6 @@ const getUser = asyncHandler(async (req, res, next) => {
  */
 
 const setUserPreferredStore = asyncHandler(async (req, res, next) => {
-    const user = await Users.findAll({
-        where: {
-            storePrefered: req.body.storeId,
-        },
-    });
-
-    if (user.length > 0)
-        return next(res.status(200).json({ success: true, data: {} }));
-
     try {
         const updatePreferredStore = await Users.update(
             { storePrefered: req.body.storeId },
@@ -150,4 +141,10 @@ const createUser = asyncHandler(async (req, res, next) => {
     res.status(200).json({ success: true, data: user });
 });
 
-export { AuthenticateUser, getUsers, getUser, createUser, setUserPreferredStore };
+export {
+    AuthenticateUser,
+    getUsers,
+    getUser,
+    createUser,
+    setUserPreferredStore,
+};

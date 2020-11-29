@@ -43,6 +43,7 @@ const OrdersController = ({
         getReviewByUser,
         userReviews,
         userReviewsFetched,
+        updateTransactionStatus,
     } = transactionContext;
 
     /*
@@ -78,6 +79,19 @@ const OrdersController = ({
         };
 
         createReview(b);
+    };
+
+    const transactionStatusUpdateHandler = async (
+        transactionId,
+        deliveryStatus,
+        cancelReason
+    ) => {
+        await updateTransactionStatus(
+            transactionId,
+            deliveryStatus,
+            cancelReason
+        );
+        await reloadDataAfterReview();
     };
 
     /*
@@ -136,6 +150,7 @@ const OrdersController = ({
                 reloadDataAfterReview={reloadDataAfterReview}
                 reviewSubmitHandler={reviewSubmitHandler}
                 userReviews={userReviews}
+                transactionStatusUpdateHandler={transactionStatusUpdateHandler}
                 {...props}
             />
         </>

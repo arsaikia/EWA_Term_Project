@@ -43,9 +43,7 @@ const TransactionState = (props) => {
      */
 
     const createReview = async (body) => {
-        let response = await API.POST({ url: `reviews/`, body });
-
-        console.log(response);
+        await API.POST({ url: `reviews/`, body });
     };
 
     /*
@@ -63,11 +61,24 @@ const TransactionState = (props) => {
         });
     };
 
+    const updateTransactionStatus = async (
+        transactionId,
+        deliveryStatus,
+        cancelReason
+    ) => {
+        console.log(transactionId, deliveryStatus, cancelReason);
+        await API.POST({
+            url: `transactions/${transactionId}`,
+            body: { deliveryStatus, cancelReason },
+        });
+    };
+
     return (
         <TransactionContext.Provider
             value={{
                 getUserTransactions,
                 createReview,
+                updateTransactionStatus,
                 getReviewByUser,
                 userTransactions: state.userTransactions,
                 userTransactionsFetched: state.userTransactionsFetched,

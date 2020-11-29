@@ -44,7 +44,10 @@ const UserState = (props) => {
             if (success) {
                 Cookie.set('USER_NAME', get(user[0], 'firstName', ''));
                 Cookie.set('USER_ID', get(user[0], 'userId', ''));
-                Cookie.set('FOOD_PREFERENCE', get(user[0], 'foodPreference', ''));
+                Cookie.set(
+                    'FOOD_PREFERENCE',
+                    get(user[0], 'foodPreference', '')
+                );
                 Cookie.set('REMEMBER_ME', rememberMe, false);
                 return dispatch({
                     payload: user,
@@ -105,6 +108,19 @@ const UserState = (props) => {
         });
     };
 
+    /*
+     *   update user store
+     */
+    const updateUserStore = async (userId, storeId) => {
+        console.log(userId, storeId);
+        await API.POST({
+            url: `users/store/${userId}`,
+            body: { storeId },
+        });
+
+        Cookie.set('USER_STORE', storeId);
+    };
+
     return (
         <UserContext.Provider
             value={{
@@ -119,6 +135,7 @@ const UserState = (props) => {
                 authenticateUser,
                 setLoginFalse,
                 setUserSemiAuthenticated,
+                updateUserStore,
             }}>
             {props.children}
         </UserContext.Provider>

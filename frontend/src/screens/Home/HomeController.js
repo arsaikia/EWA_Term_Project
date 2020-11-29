@@ -11,6 +11,7 @@ import CartContext from '../../Context/Cart/cartContext';
 import Loader from '../../components/Loader';
 import UserContext from '../../Context/User/userContext';
 import { useHistory } from 'react-router-dom';
+import storeData from '../../utils/stores.json';
 
 const HomeController = ({
     setShowDropdown,
@@ -33,6 +34,7 @@ const HomeController = ({
         isUserAuthenticated,
         loggedInUser,
         setUserSemiAuthenticated,
+        updateUserStore,
     } = userContext;
 
     const cartContext = useContext(CartContext);
@@ -50,6 +52,7 @@ const HomeController = ({
         productByIdFetched,
         transferCreated,
         clearTransferStatus,
+        decrementProductsInCart,
     } = cartContext;
 
     /*
@@ -71,6 +74,11 @@ const HomeController = ({
         comingFromProducts || true
     );
 
+    const [defaultCoordinates, setDefaultCoordinates] = useState([
+        -87.61624,
+        41.80908,
+    ]);
+    const [selectedPark, setSelectedPark] = useState(null);
     /*
      ***************************************************
      * Handler Functions
@@ -106,10 +114,16 @@ const HomeController = ({
         });
     };
 
-    const addProductToCart = (productId) => () => {
+    const addProductToCart = (productId) => {
         if (!productId) return;
         if (!rememberedUserId) return history.push('/login');
         updateProductsInCart(rememberedUserId, productId);
+    };
+
+    const reduceProductsInCart = (productId) => {
+        if (!productId) return;
+        if (!rememberedUserId) return history.push('/login');
+        decrementProductsInCart(rememberedUserId, productId);
     };
 
     const getItemsInBag = (productId) => {
@@ -128,8 +142,19 @@ const HomeController = ({
      * LOADING AND PAGE POPULATION HANDLERS
      **************************************************
      */
-
+    const prefStore = Cookie.get('USER_STORE');
     const loadDataOnMount = useCallback(() => {
+        if (prefStore) {
+            console.log('prefStore', prefStore);
+            const storeDetails = storeData.filter((store) => {
+                return store.storeId === prefStore;
+            });
+            if (storeDetails.length > 0) {
+                setStore(storeDetails[0]);
+                setSelectedPark(storeDetails[0]);
+            }
+        }
+
         if (allProductsFetched) {
             setFetchingAllProducts(false);
         }
@@ -151,6 +176,8 @@ const HomeController = ({
             getFilteredProducts(rememberedFoodPreference, 'USER_PREFERENCE');
         }
     }, [
+        isUserAuthenticated,
+        loggedInUser,
         fetchingAllProducts,
         allProductsFetched,
         fetchAllProducts,
@@ -190,10 +217,6 @@ const HomeController = ({
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [loadDataOnMount]);
 
-    useEffect(() => {
-        isUserAuthenticated && console.log('loggedInUser', loggedInUser);
-    }, [isUserAuthenticated, loggedInUser]);
-
     if (fetchingAllProducts || !allProductsFetched) {
         return <Loader showLoader />;
     }
@@ -210,12 +233,18 @@ const HomeController = ({
                 isAddedToCart={isAddedToCart}
                 goToProductsPage={goToProductsPage}
                 addProductToCart={addProductToCart}
+                reduceProductsInCart={reduceProductsInCart}
                 getItemsInBag={getItemsInBag}
                 fetchAllProducts={fetchAllProducts}
                 getFilteredProducts={getFilteredProducts}
                 showMap={showMap}
                 setShowMap={setShowMap}
                 setStore={setStore}
+                updateUserStore={updateUserStore}
+                defaultCoordinates={defaultCoordinates}
+                setDefaultCoordinates={setDefaultCoordinates}
+                selectedPark={selectedPark}
+                setSelectedPark={setSelectedPark}
                 {...props}
             />
         </>

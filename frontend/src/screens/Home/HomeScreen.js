@@ -37,6 +37,7 @@ const HomeScreen = ({
     goToProductsPage,
     addProductToCart,
     getItemsInBag,
+    fetchAllProducts,
     getFilteredProducts,
     showMap,
     setShowMap,
@@ -50,7 +51,7 @@ const HomeScreen = ({
     };
 
     if (showMap) {
-        return <GoogleMapStores setStore={setStore} setShowMap={setShowMap} getFilteredProducts={getFilteredProducts} />;
+        return <GoogleMapStores setStore={setStore} setShowMap={setShowMap} fetchAllProducts={fetchAllProducts} />;
     }
 
     return (

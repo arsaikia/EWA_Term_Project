@@ -109,8 +109,8 @@ const Index = () => {
                     </Button>
                     <Button
                         variant='outline-success'
-                        onClick={() => history.push('/accounts')}>
-                        Account
+                        onClick={() => history.push('/orders')}>
+                        Orders
                     </Button>
                 </FlexContainer>
             </FlexContainer>

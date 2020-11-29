@@ -5,12 +5,12 @@ import {
     getTransactions,
     getTransaction,
     createTransaction,
-    updateOrderStatus,
+    updateTransactionStatus,
 } from '../controller/transactions.js';
 
 router.route('/').get(getTransactions).post(createTransaction);
 
-router.route('/:id').get(getTransaction)
+router.route('/:id').get(getTransaction).post(updateTransactionStatus);
 
 router.route('/update/:id').post(updateOrderStatus);
 // Export the router

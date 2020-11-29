@@ -83,6 +83,7 @@ const Header = ({
 
     const rememberedUser = Cookie.get('USER_ID');
     const userName = Cookie.get('USER_NAME');
+    const userStore = Cookie.get('USER_STORE');
 
     const [searchButtonText, setSearchButtonText] = useState('Search');
     const [singleSelections, setSingleSelections] = useState([]);
@@ -139,7 +140,7 @@ const Header = ({
     const searchHandler = () => {
         const pId = get(searchKey, 'id');
         if (!pId) {
-            return getFilteredProducts(searchKey, "NAME");
+            return getFilteredProducts(searchKey, 'NAME');
         }
         setSearchKey('');
         setSingleSelections([]);
@@ -260,7 +261,9 @@ const Header = ({
                             style={{ color: '#ffff', marginRight: '10px' }}></i>
                         <FlexContainer flexDirection='column' padding='5px'>
                             <Note
-                                text={get(selectedStore, 'street1') || 'Set Store'}
+                                text={
+                                    get(selectedStore, 'street1') || 'Set Store'
+                                }
                                 color='#ffff'
                                 bold
                                 style={{ margin: '0px' }}

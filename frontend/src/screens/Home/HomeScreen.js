@@ -42,6 +42,11 @@ const HomeScreen = ({
     showMap,
     setShowMap,
     setStore,
+    updateUserStore,
+    defaultCoordinates,
+    setDefaultCoordinates,
+    selectedPark,
+                setSelectedPark,
     ...props
 }) => {
     const [showPopup, setShowPopup] = useState(!false);
@@ -51,7 +56,18 @@ const HomeScreen = ({
     };
 
     if (showMap) {
-        return <GoogleMapStores setStore={setStore} setShowMap={setShowMap} fetchAllProducts={fetchAllProducts} />;
+        return (
+            <GoogleMapStores
+                setStore={setStore}
+                setShowMap={setShowMap}
+                fetchAllProducts={fetchAllProducts}
+                updateUserStore={updateUserStore}
+                defaultCoordinates={defaultCoordinates}
+                setDefaultCoordinates={setDefaultCoordinates}
+                selectedPark={selectedPark}
+                setSelectedPark={setSelectedPark}
+            />
+        );
     }
 
     return (

@@ -7,14 +7,25 @@ import {
     InfoWindow,
 } from 'react-google-maps';
 import { get } from 'lodash';
+import Cookie from 'js-cookie';
 import { Button } from 'react-bootstrap';
 import storeData from '../../utils/stores.json';
 import mapStyles from './mapStyles';
 import STORE_ICON from '../../Images/Icons/storeIcon.svg';
 import { FlexContainer, Spacing } from '../../components/StylingComponents';
 
-function Map({ setStore, setShowMap, fetchAllProducts }) {
-    const [selectedPark, setSelectedPark] = useState(null);
+function Map({
+    setStore,
+    setShowMap,
+    fetchAllProducts,
+    updateUserStore,
+    defaultCoordinates,
+    setDefaultCoordinates,
+    selectedPark,
+    setSelectedPark,
+}) {
+    const uid = Cookie.get('USER_ID');
+
     useEffect(() => {
         const listener = (e) => {
             if (e.key === 'Escape') {
@@ -27,17 +38,28 @@ function Map({ setStore, setShowMap, fetchAllProducts }) {
             window.removeEventListener('keydown', listener);
         };
     }, []);
+
+    useEffect(() => {
+        if (selectedPark) {
+            setDefaultCoordinates(selectedPark.coordinates);
+        }
+    }, [selectedPark]);
+
     const buttonClickHandler = () => {
         setStore(selectedPark);
-
+        setDefaultCoordinates(selectedPark.coordinates);
+        updateUserStore(uid, selectedPark.storeId);
         fetchAllProducts(get(selectedPark, 'storeId', ''));
         setShowMap(false);
     };
 
     return (
         <GoogleMap
-            defaultZoom={10}
-            defaultCenter={{ lat: 41.80908, lng: -87.61624 }}
+            defaultZoom={4}
+            defaultCenter={{
+                lat: defaultCoordinates[1],
+                lng: defaultCoordinates[0],
+            }}
             defaultOptions={{ styles: mapStyles }}>
             {storeData.map((store) => (
                 <Marker
@@ -95,6 +117,11 @@ export default function GoogleMapStores({
     setStore,
     setShowMap,
     fetchAllProducts,
+    updateUserStore,
+    defaultCoordinates,
+    setDefaultCoordinates,
+    selectedPark,
+    setSelectedPark,
 }) {
     return (
         <div style={{ width: '100vw', height: '100vh' }}>
@@ -106,6 +133,11 @@ export default function GoogleMapStores({
                 setStore={setStore}
                 setShowMap={setShowMap}
                 fetchAllProducts={fetchAllProducts}
+                updateUserStore={updateUserStore}
+                defaultCoordinates={defaultCoordinates}
+                setDefaultCoordinates={setDefaultCoordinates}
+                selectedPark={selectedPark}
+                setSelectedPark={setSelectedPark}
             />
         </div>
     );

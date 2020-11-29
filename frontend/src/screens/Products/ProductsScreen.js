@@ -91,6 +91,8 @@ const LeftImageContainer = ({ image }) => (
 );
 
 const ProductDetails = ({
+    productId,
+    quantity,
     discount = '15',
     productName = 'Organic Sweet Corn',
     inStock = true,
@@ -100,6 +102,10 @@ const ProductDetails = ({
     totalRatings = 1250,
     showShare,
     setShowShare,
+    getItemsInBag,
+    isAddedToCart,
+    addProductToCart,
+    reduceProductsInCart,
 }) => {
     return (
         <FlexContainer
@@ -184,12 +190,15 @@ const ProductDetails = ({
 
             <FlexContainer marginTop='10%'>
                 <BuyButton
+                    productId={productId}
                     fullLengthButton={true}
-                    disabled={false}
-                    showPointer={'pointer'}
-                    itemsInBag={0}
-                    ContainsInCart={false}
-                    quantity={2}
+                    disabled={quantity <= 0}
+                    showPointer={quantity && 'pointer'}
+                    itemsInBag={getItemsInBag(productId)}
+                    ContainsInCart={isAddedToCart(productId)}
+                    quantity={quantity}
+                    addProductToCart={addProductToCart}
+                    reduceProductsInCart={reduceProductsInCart}
                 />
             </FlexContainer>
         </FlexContainer>
@@ -336,6 +345,10 @@ const ProductsScreen = ({
     setShowShare,
     userId,
     totalReview,
+    getItemsInBag,
+    isAddedToCart,
+    addProductToCart,
+    reduceProductsInCart,
 }) => {
     const imageSrc =
         require(`../../Images/products/${productById.image.toLowerCase()}`)
@@ -359,7 +372,6 @@ const ProductsScreen = ({
             <OuterContainer
                 minHeight='100vh'
                 margin='6em 8em 1em 8em'
-                // backgroundColor='khaki'
                 fadeIn
                 duration={'300'}>
                 <FluidContainer md fluid>
@@ -369,7 +381,10 @@ const ProductsScreen = ({
                                 <LeftImageContainer image={imageSrc} />
                             </Col>
                             <Col>
+                                {console.log('productById', productById)}
                                 <ProductDetails
+                                    productId={productById.productId}
+                                    quantity={productById.countInStock}
                                     discount={productById.discount}
                                     productName={productById.productName}
                                     inStock={productById.countInStock > 0}
@@ -379,6 +394,10 @@ const ProductsScreen = ({
                                     totalRatings={totalReview.count}
                                     showShare={showShare}
                                     setShowShare={setShowShare}
+                                    getItemsInBag={getItemsInBag}
+                                    isAddedToCart={isAddedToCart}
+                                    addProductToCart={addProductToCart}
+                                    reduceProductsInCart={reduceProductsInCart}
                                 />
                             </Col>
                         </Row>

@@ -36,6 +36,7 @@ const HomeScreen = ({
     isAddedToCart,
     goToProductsPage,
     addProductToCart,
+    reduceProductsInCart,
     getItemsInBag,
     fetchAllProducts,
     getFilteredProducts,
@@ -125,6 +126,7 @@ const HomeScreen = ({
                                         )}
                                         goToProductsPage={goToProductsPage}
                                         addProductToCart={addProductToCart}
+                                        reduceProductsInCart={reduceProductsInCart}
                                         getItemsInBag={getItemsInBag}
                                         {...props}
                                     />

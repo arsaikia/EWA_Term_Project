@@ -52,6 +52,7 @@ const HomeController = ({
         productByIdFetched,
         transferCreated,
         clearTransferStatus,
+        decrementProductsInCart,
     } = cartContext;
 
     /*
@@ -113,10 +114,16 @@ const HomeController = ({
         });
     };
 
-    const addProductToCart = (productId) => () => {
+    const addProductToCart = (productId) => {
         if (!productId) return;
         if (!rememberedUserId) return history.push('/login');
         updateProductsInCart(rememberedUserId, productId);
+    };
+
+    const reduceProductsInCart = (productId) => {
+        if (!productId) return;
+        if (!rememberedUserId) return history.push('/login');
+        decrementProductsInCart(rememberedUserId, productId);
     };
 
     const getItemsInBag = (productId) => {
@@ -226,6 +233,7 @@ const HomeController = ({
                 isAddedToCart={isAddedToCart}
                 goToProductsPage={goToProductsPage}
                 addProductToCart={addProductToCart}
+                reduceProductsInCart={reduceProductsInCart}
                 getItemsInBag={getItemsInBag}
                 fetchAllProducts={fetchAllProducts}
                 getFilteredProducts={getFilteredProducts}

@@ -20,6 +20,8 @@ const Order = ({
     setOrderIdForReview,
     setProductIdForReview,
     userReviews,
+    transactionStatusUpdateHandler,
+    reloadDataAfterReview,
 }) => {
     const delInProgress = ut.deliveryStatus === 'IN_PROGRESS';
     const delCanceled = ut.deliveryStatus === 'CANCELLED';
@@ -34,7 +36,16 @@ const Order = ({
         setProductIdForReview(ut.productId);
     };
 
-    console.log('utut', ut);
+    const cancelHandler = async () => {
+        await transactionStatusUpdateHandler(
+            ut.transactionId,
+            'CANCELLED',
+            'Product not required anymore'
+        );
+        await reloadDataAfterReview();
+    };
+
+    // console.log('utut', ut);
     return (
         <FlexContainer
             minHeight='100px'
@@ -107,7 +118,10 @@ const Order = ({
                 paddingRight='10px'>
                 <FlexContainer width='20%'>
                     {delInProgress && (
-                        <button type='button' class='btn btn-outline-danger sm'>
+                        <button
+                            type='button'
+                            class='btn btn-outline-danger sm'
+                            onClick={cancelHandler}>
                             Cancel
                         </button>
                     )}
@@ -201,6 +215,7 @@ const OrdersScreen = ({
     reviewSubmitHandler,
     reloadDataAfterReview,
     userReviews,
+    transactionStatusUpdateHandler,
     ...props
 }) => {
     const [orderIdForReview, setOrderIdForReview] = useState('');
@@ -268,6 +283,12 @@ const OrdersScreen = ({
                                             setProductIdForReview
                                         }
                                         userReviews={userReviews}
+                                        transactionStatusUpdateHandler={
+                                            transactionStatusUpdateHandler
+                                        }
+                                        reloadDataAfterReview={
+                                            reloadDataAfterReview
+                                        }
                                     />
                                 </FlexContainer>
                             ))}

@@ -8,6 +8,7 @@ import Loader from '../../components/Loader';
 import UserContext from '../../Context/User/userContext';
 import CartContext from '../../Context/Cart/cartContext';
 import { useHistory } from 'react-router-dom';
+import API from '../../utils/Query';
 
 const CartController = ({ ...props }) => {
     const history = useHistory();
@@ -91,6 +92,15 @@ const CartController = ({ ...props }) => {
 
     const getButtonText = (step) => {
         if (step === 'ADD_PAYMENT') {
+            if (
+                !isEmpty(nameOnCard) &&
+                !isEmpty(cardNumber) &&
+                !isEmpty(expiry) &&
+                !isEmpty(cvv) &&
+                isEmpty(selectedCard)
+            ) {
+                return 'Add Payment';
+            }
             if (isEmpty(selectedCard)) {
                 return 'Select Payment';
             }
@@ -98,6 +108,15 @@ const CartController = ({ ...props }) => {
         }
 
         if (step === 'ADD_ADDRESS') {
+            if (
+                !isEmpty(street) &&
+                !isEmpty(city) &&
+                !isEmpty(zip) &&
+                !isEmpty(state) &&
+                isEmpty(selectedAddress)
+            ) {
+                return 'Add Address';
+            }
             if (isEmpty(selectedAddress)) {
                 return 'Select Address';
             }
@@ -106,6 +125,12 @@ const CartController = ({ ...props }) => {
     };
 
     const continueHandler = (val) => {
+        if (val === 'Add Payment') {
+            return addPayment();
+        }
+        if (val === 'Add Address') {
+            return addAddress();
+        }
         if (val === 'Confirm Payment') {
             return setCheckoutStep('ADD_ADDRESS');
         }
@@ -119,11 +144,49 @@ const CartController = ({ ...props }) => {
             const addId = get(selectedAddressX[0], 'addressId');
             const payId = get(selectedCardX[0], 'cardId');
 
+            console.log('addId', addId, 'payId', payId);
             setSelectedAddressId(addId);
             setSelectedCardId(payId);
             setIsTransferCreating(true);
             setShowLoading(true);
         }
+    };
+
+    console.log('setIsTransferCreating', selectedAddress, userAddresses);
+    const addPayment = async () => {
+        const res = await API.POST({
+            url: `cards/${userId}`,
+            body: {
+                cardName: nameOnCard,
+                cardNumber,
+                expiryDate: expiry,
+                cvv,
+            },
+        });
+
+        let newCardId = get(res.data, 'data');
+        newCardId = get(newCardId, 'cardId');
+        setSelectedCard(newCardId);
+        await getUserCards(userId);
+        setCheckoutStep('ADD_ADDRESS');
+    };
+
+    const addAddress = async () => {
+        const res = await API.POST({
+            url: `addresses/${userId}`,
+            body: {
+                street1: street,
+                city: city,
+                zip: zip,
+                state: state,
+            },
+        });
+
+        let newAddressId = get(res.data, 'data');
+        newAddressId = get(newAddressId, 'addressId');
+        console.log('newAddressId', newAddressId);
+        setSelectedAddress(newAddressId);
+        await getUserAddresses(userId);
     };
 
     const initiateTransfer = useCallback(() => {
@@ -161,9 +224,9 @@ const CartController = ({ ...props }) => {
         transferCreated,
         totalPrice,
         userId,
+        selectedCardId,
         selectedAddressId,
         createTransfer,
-        clearTransferStatus,
         fetchProductsInCart,
         history,
         productsInCartFetched,

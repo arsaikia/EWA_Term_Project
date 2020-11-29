@@ -1,6 +1,7 @@
 import Cards from '../models/Cards.js';
 import asyncHandler from '../middleware/async.js';
 import ErrorResponse from '../middleware/error.js';
+import { v4 as uuid } from 'uuid';
 
 /*
  * @desc     Get card with user id
@@ -45,12 +46,12 @@ const createCard = asyncHandler(async (req, res, next) => {
             })
         );
     }
-
+    const cardId = req.body.cardId || uuid();
     const card = await Cards.create({
+        cardId: cardId,
         userId: req.params.id,
         cardNumber: req.body.cardNumber,
         cardName: req.body.cardName,
-        cardNumber: req.body.cardNumber,
         expiryDate: req.body.expiryDate,
         cvv: req.body.cvv,
     });

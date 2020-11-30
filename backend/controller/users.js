@@ -2,6 +2,7 @@ import { SQL } from '../config/db.js';
 import Users from '../models/User.js';
 import asyncHandler from '../middleware/async.js';
 import ErrorResponse from '../middleware/error.js';
+import { v4 as uuid } from 'uuid';
 
 /*
  * @desc     Get All Users
@@ -118,7 +119,9 @@ const createUser = asyncHandler(async (req, res, next) => {
         );
     }
 
+    const userId = req.body.userId || uuid();
     const user = await Users.create({
+        userId: userId,
         email: req.body.email,
         firstName: req.body.firstName,
         lastName: req.body.lastName,

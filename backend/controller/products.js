@@ -68,6 +68,34 @@ const getProduct = asyncHandler(async (req, res, next) => {
     return next(res.status(200).json({ success: true, data: product }));
 });
 
+
+/*
+ * @desc     Get all product
+ * @route    GET /api/v1/products/
+ * @access   Public
+ */
+
+const getAllMatchingProducts = asyncHandler(async (req, res, next) => {
+    let product = await Products.findAll({
+        where: {
+            productId: req.body.products,
+        },
+    });
+
+    if (!product || product.length == 0) {
+        console.log(`Product Not Found with id ${req.params.id}`);
+        return next(
+            res.status(404).json({
+                success: false,
+                error: `Product Not Found with id '${req.params.id}'`,
+            })
+        );
+    }
+
+
+    return next(res.status(200).json({ success: true, data: product }));
+});
+
 /*
  * @desc     Get product matching name
  * @route    GET /api/v1/products/matches/:id
@@ -96,4 +124,4 @@ const getFilteredProducts = asyncHandler(async (req, res, next) => {
     return next(res.status(200).json({ success: true, data: product }));
 });
 
-export { getProducts, getProduct, getFilteredProducts };
+export { getProducts, getProduct, getFilteredProducts, getAllMatchingProducts };

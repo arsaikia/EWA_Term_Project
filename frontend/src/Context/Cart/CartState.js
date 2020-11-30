@@ -19,6 +19,7 @@ import {
     GET_USER_CARDS,
     CREATE_TRANSFER,
     RESET_CREATE_TRANSFER,
+    GET_MARKET_BASKET_ANALYSIS,
 } from '../types';
 
 import CartContext from './cartContext';
@@ -42,6 +43,8 @@ const CartState = (props) => {
         userAddressesFetched: false,
         transferCreated: false,
         lastTransfer: {},
+        mba: {},
+        mbaFetched: false,
     };
 
     const [filters, setFilters] = useState({});
@@ -151,7 +154,56 @@ const CartState = (props) => {
 
         let qty = 0;
         cart.forEach((product) => (qty += product.quantity));
-        console.log('userId : ', userId);
+
+        let marketBasketTofetch = [];
+        cart.forEach((product) => {
+            let currProduct = get(product, 'product');
+            currProduct = get(currProduct, 'productId');
+            marketBasketTofetch.push(currProduct);
+        });
+
+        let mbaSuggestions = await API.POST({
+            url: `marketbasket/`,
+            // body: {
+            //     products: [
+            //         '01cc8113-b28e-4cc2-9ce0-97328af6be65',
+            //         '0a561b6a-6816-4d43-8b2b-c560d2ba40ef',
+            //         '0b1649ea-74d1-4336-a4f1-f7ac93102698',
+            //     ],
+            // },
+            body: {
+                products: marketBasketTofetch,
+            },
+        });
+        mbaSuggestions = get(get(mbaSuggestions, 'data'), 'data', []);
+
+        let mbaSuggestionsProducts = await API.POST({
+            url: `products/`,
+            body: {
+                products: mbaSuggestions,
+            },
+        });
+
+        mbaSuggestionsProducts = get(
+            get(mbaSuggestionsProducts, 'data'),
+            'data',
+            []
+        );
+
+        const allCartProducts = new Set();
+        cart.forEach((cart) => allCartProducts.add(cart.productId));
+
+        const uniqueSuggestions = [];
+        mbaSuggestionsProducts.forEach((mba) => {
+            if (!allCartProducts.has(mba.productId)) {
+                uniqueSuggestions.push(mba);
+            }
+        });
+
+        dispatch({
+            payload: uniqueSuggestions,
+            type: GET_MARKET_BASKET_ANALYSIS,
+        });
 
         dispatch({
             payload: qty,
@@ -176,7 +228,7 @@ const CartState = (props) => {
     const decrementProductsInCart = async (userId, productId) => {
         await API.POST({
             url: `carts/update/`,
-            body: {userId, productId },
+            body: { userId, productId },
         });
         // await fetchAllProducts();
         await fetchProductsInCart(userId);
@@ -291,6 +343,8 @@ const CartState = (props) => {
                 userAddressesFetched: state.userAddressesFetched,
                 transferCreated: state.transferCreated,
                 lastTransfer: state.lastTransfer,
+                mba: state.mba,
+                mbaFetched: state.mbaFetched,
             }}>
             {props.children}
         </CartContext.Provider>

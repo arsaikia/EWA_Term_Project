@@ -47,12 +47,15 @@ const CartController = ({ ...props }) => {
         userAddresses,
         userAddressesFetched,
         removedFetchedState,
-        clearTransferStatus,
+        updateProductsInCart,
+        mba,
+        mbaFetched,
     } = cartContext;
     /********************************************
      * Local States
      ********************************************/
 
+    const rememberedUserId = Cookie.get('USER_ID');
     const [isTransferCreating, setIsTransferCreating] = useState(false);
     const [showLoading, setShowLoading] = useState(false);
 
@@ -89,6 +92,12 @@ const CartController = ({ ...props }) => {
      * Handler Functions
      ***************************************************
      */
+
+    const addProductToCart = (productId) => {
+        if (!productId) return;
+        if (!rememberedUserId) return history.push('/login');
+        updateProductsInCart(rememberedUserId, productId);
+    };
 
     const getButtonText = (step) => {
         if (step === 'ADD_PAYMENT') {
@@ -340,6 +349,7 @@ const CartController = ({ ...props }) => {
         !productsInCartFetched ||
         !userCardsFetched ||
         !userAddressesFetched ||
+        !mbaFetched ||
         showLoading
     ) {
         return <Loader showLoader={true} />;
@@ -388,6 +398,8 @@ const CartController = ({ ...props }) => {
             setZip={setZip}
             setState={setState}
             continueHandler={continueHandler}
+            mba={mba}
+            addProductToCart={addProductToCart}
             props={props}
         />
     );

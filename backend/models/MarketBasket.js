@@ -10,7 +10,7 @@ const MarketBasket = SQL.define(
             type: Sequelize.UUID,
             primaryKey: true,
         },
-        
+
         productA: {
             type: Sequelize.UUID,
             references: {
@@ -31,9 +31,8 @@ const MarketBasket = SQL.define(
     }
 );
 
-
 SQL.query('SET FOREIGN_KEY_CHECKS = 0', { raw: true }).then(() =>
-    MarketBasket.sync({ force: true }) //  
+    MarketBasket.sync() //
         .then(() => {
             console.log(`MarketBasket created`.cyan.bold);
         })

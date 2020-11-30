@@ -68,7 +68,7 @@ const HomeController = ({
     const comingFromProducts = get(props.location.state, 'fromProducts');
 
     const [fetchingAllProducts, setFetchingAllProducts] = useState(
-        comingFromProducts || true
+        comingFromProducts || !allProductsFetched
     );
     const [fetchingCart, setfetchingCart] = useState(
         comingFromProducts || true

@@ -26,6 +26,8 @@ import {
     FinePrint,
 } from '../../components/Texts';
 
+import Carousel from 'react-elastic-carousel';
+
 import AddressAndCards from './AddressAndCards';
 import { isEmpty } from 'lodash';
 
@@ -174,12 +176,92 @@ const CartProductItem = ({
     );
 };
 
+const Item = ({ productId, productName, price, image, addProductToCart }) => {
+    const imageSrc =
+        require(`../../Images/products/${image.toLowerCase()}`).default ||
+        'apple';
+
+    const addToCart = () => {
+        return addProductToCart(productId);
+    };
+    return (
+        <FlexContainer
+            flexDirection='column'
+            justifyContent='space-between'
+            alignItems='center'
+            alignSelf='center'
+            height='100%'>
+            <img src={imageSrc} height={'100px'} alt='product....' />
+
+            <FlexContainer
+                flexDirection='column'
+                justifyContent='center'
+                alignItems='center'>
+                <p>{productName}</p>
+                <p>{`$${price}`}</p>
+                <FlexContainer onClick={addToCart}>
+                    <Note
+                        text={<p>Add</p>}
+                        pointer='pointer'
+                        bold={550}
+                        color={lightTextColor}
+                    />
+                </FlexContainer>
+            </FlexContainer>
+        </FlexContainer>
+    );
+};
+
+const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 550, itemsToShow: 2, itemsToScroll: 2 },
+    { width: 768, itemsToShow: 3 },
+    { width: 1200, itemsToShow: 4 },
+];
+
+const MarketBasketAnalysis = ({ mba, calculatePrice, addProductToCart }) => {
+    console.log('MARKET BASKET', mba);
+    return (
+        <FlexContainer
+            height='30%'
+            width='100%'
+            overflow='hidden'
+            justifyContent='center'
+            // backgroundColor='khaki'
+            alignItems='center'>
+            {mba.length > 0 && (
+                <Carousel
+                    breakPoints={breakPoints}
+                    // enableAutoPlay
+                    autoPlaySpeed={2000}>
+                    {mba.map((product) => (
+                        <Item
+                            key={product.productId}
+                            productId={product.productId}
+                            image={product.image}
+                            productName={product.productName}
+                            price={calculatePrice(
+                                product.price,
+                                product.discount
+                            )}
+                            discount={product.discount}
+                            addProductToCart={addProductToCart}
+                        />
+                    ))}
+                </Carousel>
+            )}
+        </FlexContainer>
+    );
+};
+
 const CartScreen = ({
     isAuthenticationAttempted,
     isUserSemiAuthenticated,
     authenticationError,
     history,
     productsInCart,
+    mba,
+    addProductToCart,
     productsInCartFetched,
     totalPrice,
     calculatePrice,
@@ -236,15 +318,16 @@ const CartScreen = ({
         <FadeInContainer
             flexDirection='row'
             width='100%'
-            minHeight='96vh'
+            minHeight='100vh'
             padding='3rem 2rem 2rem 2rem'
             justifyContent='space-between'
             fadeIn
             duration={'500'}>
             <FlexContainer
+                // backgroundColor='khaki'
                 width='70%'
                 flexDirection='column'
-                minHeight='85vh'
+                minHeight='99vh'
                 justifyContent='flex-start'
                 padding='20px'>
                 <HeaderOne
@@ -254,7 +337,13 @@ const CartScreen = ({
                 />
                 <Spacing space={'5%'} />
 
-                <FlexContainer height='80%' width='100%' flexDirection='column'>
+                <FlexContainer
+                    height='60%'
+                    width='100%'
+                    flexDirection='column'
+                    // backgroundColor='khaki'
+                    overflow='scroll'
+                    paddingBottom='20px'>
                     {/* This is One cart product */}
 
                     {productsInCart.map((product) => {
@@ -291,8 +380,15 @@ const CartScreen = ({
                     {/* This is One cart product */}
                 </FlexContainer>
 
+                {/* This is Market basket recommendation */}
+                <MarketBasketAnalysis
+                    mba={mba}
+                    calculatePrice={calculatePrice}
+                    addProductToCart={addProductToCart}
+                />
+
                 <FlexContainer
-                    height='10%'
+                    height='8%'
                     // backgroundColor='grey'
                     flexDirection='row'
                     justifyContent='space-between'>
@@ -311,8 +407,9 @@ const CartScreen = ({
                 </FlexContainer>
             </FlexContainer>
             <FadeInContainer
+                // backgroundColor='khaki'
                 width='25%'
-                height='85vh'
+                height='90vh'
                 padding='2em'
                 backgroundColor='rgba(10,25,47,0.90)'
                 boxShadow='0px 10px 40px rgb(10,25,47)'

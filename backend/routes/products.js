@@ -5,9 +5,12 @@ import {
     getProducts,
     getProduct,
     getFilteredProducts,
+    getAllMatchingProducts,
 } from '../controller/products.js';
 
 router.route('/store/:id').get(getProducts);
+
+router.route('/').post(getAllMatchingProducts);
 
 router.route('/:id').get(getProduct);
 

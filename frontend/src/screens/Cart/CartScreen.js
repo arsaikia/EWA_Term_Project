@@ -26,6 +26,8 @@ import {
     FinePrint,
 } from '../../components/Texts';
 
+import Carousel from 'react-elastic-carousel';
+
 import AddressAndCards from './AddressAndCards';
 import { isEmpty } from 'lodash';
 
@@ -174,18 +176,72 @@ const CartProductItem = ({
     );
 };
 
-const MarketBasketAnalysis = () => {
+const Item = ({ productId, productName, price, discount, image }) => {
+    const imageSrc =
+        require(`../../Images/products/${image.toLowerCase()}`).default ||
+        'apple';
     return (
         <FlexContainer
-            height='20%'
-            width='100%'
-            backgroundColor='khaki'
-            padding='1.5%'>
-            <FlexContainer backgroundColor='grey' height='100%' width='100%'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
-                provident quis quisquam ab? Molestias quis deserunt voluptas
-                dolor error dicta.
+            flexDirection='column'
+            justifyContent='space-between'
+            alignItems='center'
+            alignSelf='center'
+            height='100%'>
+            <img src={imageSrc} height={'100px'} alt='product....' />
+
+            <FlexContainer
+                flexDirection='column'
+                justifyContent='center'
+                alignItems='center'>
+                <p>{productName}</p>
+                <p>{`$${price}`}</p>
+                <Note
+                    text={<p>Add</p>}
+                    pointer='pointer'
+                    bold={550}
+                    color={lightTextColor}
+                />
             </FlexContainer>
+        </FlexContainer>
+    );
+};
+
+const breakPoints = [
+    { width: 1, itemsToShow: 1 },
+    { width: 550, itemsToShow: 2, itemsToScroll: 2 },
+    { width: 768, itemsToShow: 3 },
+    { width: 1200, itemsToShow: 4 },
+];
+
+const MarketBasketAnalysis = ({ mba, calculatePrice }) => {
+    console.log('MARKET BASKET', mba);
+    return (
+        <FlexContainer
+            height='30%'
+            width='100%'
+            overflow='hidden'
+            justifyContent='center'
+            // backgroundColor='khaki'
+            alignItems='center'>
+            <Carousel
+                breakPoints={breakPoints}
+                // enableAutoPlay
+                autoPlaySpeed={2000}>
+                {mba.length > 0 &&
+                    mba.map((product) => (
+                        <Item
+                            key={product.productId}
+                            productId={product.productId}
+                            image={product.image}
+                            productName={product.productName}
+                            price={calculatePrice(
+                                product.price,
+                                product.discount
+                            )}
+                            discount={product.discount}
+                        />
+                    ))}
+            </Carousel>
         </FlexContainer>
     );
 };
@@ -196,6 +252,7 @@ const CartScreen = ({
     authenticationError,
     history,
     productsInCart,
+    mba,
     productsInCartFetched,
     totalPrice,
     calculatePrice,
@@ -272,7 +329,7 @@ const CartScreen = ({
                 <Spacing space={'5%'} />
 
                 <FlexContainer
-                    minHeight='60%'
+                    height='60%'
                     width='100%'
                     flexDirection='column'
                     // backgroundColor='khaki'
@@ -315,10 +372,13 @@ const CartScreen = ({
                 </FlexContainer>
 
                 {/* This is Market basket recommendation */}
-                <MarketBasketAnalysis />
+                <MarketBasketAnalysis
+                    mba={mba}
+                    calculatePrice={calculatePrice}
+                />
 
                 <FlexContainer
-                    height='10%'
+                    height='8%'
                     // backgroundColor='grey'
                     flexDirection='row'
                     justifyContent='space-between'>

@@ -7,7 +7,7 @@ import {
     deleteTable,
 } from '../controller/marketbasket.js';
 
-router.route('/').get(getProduct);
+router.route('/').post(getProduct);
 
 router.route('/i').post(createTable);
 

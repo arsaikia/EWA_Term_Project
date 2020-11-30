@@ -10,6 +10,7 @@ import {
     GET_USER_CARDS,
     CREATE_TRANSFER,
     RESET_CREATE_TRANSFER,
+    GET_MARKET_BASKET_ANALYSIS,
 } from '../types';
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -29,6 +30,7 @@ export default (state, action) => {
 
                 allProductsFetched: false,
                 productsInCartFetched: false,
+                mbaFetched: false,
                 productByIdFetched: false,
             };
 
@@ -65,6 +67,13 @@ export default (state, action) => {
                 ...state,
                 productsInCart: action.payload,
                 productsInCartFetched: true,
+            };
+
+        case GET_MARKET_BASKET_ANALYSIS:
+            return {
+                ...state,
+                mba: action.payload,
+                mbaFetched: true,
             };
 
         case SET_CART_COUNT:

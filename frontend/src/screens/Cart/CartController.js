@@ -48,6 +48,8 @@ const CartController = ({ ...props }) => {
         userAddressesFetched,
         removedFetchedState,
         clearTransferStatus,
+        mba,
+        mbaFetched,
     } = cartContext;
     /********************************************
      * Local States
@@ -340,6 +342,7 @@ const CartController = ({ ...props }) => {
         !productsInCartFetched ||
         !userCardsFetched ||
         !userAddressesFetched ||
+        !mbaFetched ||
         showLoading
     ) {
         return <Loader showLoader={true} />;
@@ -388,6 +391,7 @@ const CartController = ({ ...props }) => {
             setZip={setZip}
             setState={setState}
             continueHandler={continueHandler}
+            mba={mba}
             props={props}
         />
     );

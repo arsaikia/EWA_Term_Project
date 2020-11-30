@@ -6,9 +6,13 @@ import Products from './Product.js';
 const MarketBasket = SQL.define(
     'marketbasket',
     {
-        productA: {
+        marketBasketId: {
             type: Sequelize.UUID,
             primaryKey: true,
+        },
+        
+        productA: {
+            type: Sequelize.UUID,
             references: {
                 model: 'products',
                 key: 'productId',
@@ -16,7 +20,6 @@ const MarketBasket = SQL.define(
         },
         productB: {
             type: Sequelize.UUID,
-            primaryKey: true,
             references: {
                 model: 'products',
                 key: 'productId',
@@ -30,7 +33,7 @@ const MarketBasket = SQL.define(
 
 
 SQL.query('SET FOREIGN_KEY_CHECKS = 0', { raw: true }).then(() =>
-    MarketBasket.sync() //  { force: true }
+    MarketBasket.sync({ force: true }) //  
         .then(() => {
             console.log(`MarketBasket created`.cyan.bold);
         })

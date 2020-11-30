@@ -292,7 +292,7 @@ const CartController = ({ ...props }) => {
     }, [getAllCards]);
 
     useEffect(() => {
-        if (!isEmpty(selectedCard)) {
+        if (!isEmpty(selectedCard) && !isEmpty(userCards)) {
             const selected = userCards.filter(
                 (card) => card.cardId === selectedCard
             );
@@ -309,7 +309,7 @@ const CartController = ({ ...props }) => {
     }, [selectedCard, userCards]);
 
     useEffect(() => {
-        if (!isEmpty(selectedAddress)) {
+        if (!isEmpty(selectedAddress) && !isEmpty(userAddresses)) {
             const selected = userAddresses.filter(
                 (address) => address.addressId === selectedAddress
             );

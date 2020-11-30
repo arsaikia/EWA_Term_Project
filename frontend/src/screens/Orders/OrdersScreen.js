@@ -30,6 +30,7 @@ const Order = ({
         userReviews &&
         userReviews.length > 0 &&
         userReviews.filter((review) => ut.orderId === review.orderId);
+    console.log('userReviews', review);
     const reviewSelectionHandler = () => {
         setShowReview(true);
         setOrderIdForReview(ut.orderId);
@@ -127,7 +128,7 @@ const Order = ({
                     )}
                 </FlexContainer>
                 <FlexContainer width='20%'>
-                    {!delCanceled && review && review.length <= 0 && (
+                    {!delCanceled && (!review || review.length <= 0) && (
                         <button
                             type='button'
                             class='btn btn-outline-success sm'

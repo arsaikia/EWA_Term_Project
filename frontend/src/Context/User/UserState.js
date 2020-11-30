@@ -97,7 +97,7 @@ const UserState = (props) => {
     const registerUser = async (body) => {
         const response = await API.POST({
             url: 'users',
-            body: body,
+            body: { userId: uuid(), ...body },
         });
 
         const newUser = get(get(response, 'data') || '', 'data') || '';

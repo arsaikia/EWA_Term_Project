@@ -7,13 +7,15 @@ import {
     createUser,
     AuthenticateUser,
     setUserPreferredStore,
+    updateUser,
 } from '../controller/users.js';
 
 router.route('/').get(getUsers).post(createUser);
 
-router.route('/:id').get(getUser);
+router.route('/:id').get(getUser).put(updateUser);
 
 router.route('/login').post(AuthenticateUser);
+
 router.route('/store/:id').post(setUserPreferredStore);
 
 // Export the router

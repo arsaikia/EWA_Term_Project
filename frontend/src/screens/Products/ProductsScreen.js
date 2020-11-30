@@ -252,6 +252,7 @@ const Reviews = ({ reviews }) => {
     );
 };
 
+
 const ShareProduct = ({ showShare, setShowShare, userId, productId }) => {
     const [email, setEmail] = useState('');
     const [shareDone, setShareDone] = useState(false);

@@ -176,10 +176,14 @@ const CartProductItem = ({
     );
 };
 
-const Item = ({ productId, productName, price, discount, image }) => {
+const Item = ({ productId, productName, price, image, addProductToCart }) => {
     const imageSrc =
         require(`../../Images/products/${image.toLowerCase()}`).default ||
         'apple';
+
+    const addToCart = () => {
+        return addProductToCart(productId);
+    };
     return (
         <FlexContainer
             flexDirection='column'
@@ -195,12 +199,14 @@ const Item = ({ productId, productName, price, discount, image }) => {
                 alignItems='center'>
                 <p>{productName}</p>
                 <p>{`$${price}`}</p>
-                <Note
-                    text={<p>Add</p>}
-                    pointer='pointer'
-                    bold={550}
-                    color={lightTextColor}
-                />
+                <FlexContainer onClick={addToCart}>
+                    <Note
+                        text={<p>Add</p>}
+                        pointer='pointer'
+                        bold={550}
+                        color={lightTextColor}
+                    />
+                </FlexContainer>
             </FlexContainer>
         </FlexContainer>
     );
@@ -213,7 +219,7 @@ const breakPoints = [
     { width: 1200, itemsToShow: 4 },
 ];
 
-const MarketBasketAnalysis = ({ mba, calculatePrice }) => {
+const MarketBasketAnalysis = ({ mba, calculatePrice, addProductToCart }) => {
     console.log('MARKET BASKET', mba);
     return (
         <FlexContainer
@@ -223,12 +229,12 @@ const MarketBasketAnalysis = ({ mba, calculatePrice }) => {
             justifyContent='center'
             // backgroundColor='khaki'
             alignItems='center'>
-            <Carousel
-                breakPoints={breakPoints}
-                // enableAutoPlay
-                autoPlaySpeed={2000}>
-                {mba.length > 0 &&
-                    mba.map((product) => (
+            {mba.length > 0 && (
+                <Carousel
+                    breakPoints={breakPoints}
+                    // enableAutoPlay
+                    autoPlaySpeed={2000}>
+                    {mba.map((product) => (
                         <Item
                             key={product.productId}
                             productId={product.productId}
@@ -239,9 +245,11 @@ const MarketBasketAnalysis = ({ mba, calculatePrice }) => {
                                 product.discount
                             )}
                             discount={product.discount}
+                            addProductToCart={addProductToCart}
                         />
                     ))}
-            </Carousel>
+                </Carousel>
+            )}
         </FlexContainer>
     );
 };
@@ -253,6 +261,7 @@ const CartScreen = ({
     history,
     productsInCart,
     mba,
+    addProductToCart,
     productsInCartFetched,
     totalPrice,
     calculatePrice,
@@ -375,6 +384,7 @@ const CartScreen = ({
                 <MarketBasketAnalysis
                     mba={mba}
                     calculatePrice={calculatePrice}
+                    addProductToCart={addProductToCart}
                 />
 
                 <FlexContainer

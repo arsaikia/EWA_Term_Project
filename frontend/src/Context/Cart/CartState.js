@@ -190,10 +190,18 @@ const CartState = (props) => {
             []
         );
 
-        // console.log('mbaSuggestionsProducts : ', mbaSuggestionsProducts);
+        const allCartProducts = new Set();
+        cart.forEach((cart) => allCartProducts.add(cart.productId));
+
+        const uniqueSuggestions = [];
+        mbaSuggestionsProducts.forEach((mba) => {
+            if (!allCartProducts.has(mba.productId)) {
+                uniqueSuggestions.push(mba);
+            }
+        });
 
         dispatch({
-            payload: mbaSuggestionsProducts,
+            payload: uniqueSuggestions,
             type: GET_MARKET_BASKET_ANALYSIS,
         });
 

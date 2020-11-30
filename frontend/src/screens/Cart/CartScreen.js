@@ -174,6 +174,22 @@ const CartProductItem = ({
     );
 };
 
+const MarketBasketAnalysis = () => {
+    return (
+        <FlexContainer
+            height='20%'
+            width='100%'
+            backgroundColor='khaki'
+            padding='1.5%'>
+            <FlexContainer backgroundColor='grey' height='100%' width='100%'>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe
+                provident quis quisquam ab? Molestias quis deserunt voluptas
+                dolor error dicta.
+            </FlexContainer>
+        </FlexContainer>
+    );
+};
+
 const CartScreen = ({
     isAuthenticationAttempted,
     isUserSemiAuthenticated,
@@ -236,15 +252,16 @@ const CartScreen = ({
         <FadeInContainer
             flexDirection='row'
             width='100%'
-            minHeight='96vh'
+            minHeight='100vh'
             padding='3rem 2rem 2rem 2rem'
             justifyContent='space-between'
             fadeIn
             duration={'500'}>
             <FlexContainer
+                // backgroundColor='khaki'
                 width='70%'
                 flexDirection='column'
-                minHeight='85vh'
+                minHeight='99vh'
                 justifyContent='flex-start'
                 padding='20px'>
                 <HeaderOne
@@ -254,7 +271,13 @@ const CartScreen = ({
                 />
                 <Spacing space={'5%'} />
 
-                <FlexContainer minHeight='80%' width='100%' flexDirection='column' backgroundColor='khaki'>
+                <FlexContainer
+                    minHeight='60%'
+                    width='100%'
+                    flexDirection='column'
+                    // backgroundColor='khaki'
+                    overflow='scroll'
+                    paddingBottom='20px'>
                     {/* This is One cart product */}
 
                     {productsInCart.map((product) => {
@@ -291,9 +314,12 @@ const CartScreen = ({
                     {/* This is One cart product */}
                 </FlexContainer>
 
+                {/* This is Market basket recommendation */}
+                <MarketBasketAnalysis />
+
                 <FlexContainer
                     height='10%'
-                    backgroundColor='grey'
+                    // backgroundColor='grey'
                     flexDirection='row'
                     justifyContent='space-between'>
                     <GoHomeButton history={history} />
@@ -311,8 +337,9 @@ const CartScreen = ({
                 </FlexContainer>
             </FlexContainer>
             <FadeInContainer
+                // backgroundColor='khaki'
                 width='25%'
-                height='85vh'
+                height='90vh'
                 padding='2em'
                 backgroundColor='rgba(10,25,47,0.90)'
                 boxShadow='0px 10px 40px rgb(10,25,47)'

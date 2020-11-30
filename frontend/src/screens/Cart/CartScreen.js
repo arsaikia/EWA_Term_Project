@@ -254,7 +254,7 @@ const CartScreen = ({
                 />
                 <Spacing space={'5%'} />
 
-                <FlexContainer height='80%' width='100%' flexDirection='column'>
+                <FlexContainer minHeight='80%' width='100%' flexDirection='column' backgroundColor='khaki'>
                     {/* This is One cart product */}
 
                     {productsInCart.map((product) => {
@@ -293,7 +293,7 @@ const CartScreen = ({
 
                 <FlexContainer
                     height='10%'
-                    // backgroundColor='grey'
+                    backgroundColor='grey'
                     flexDirection='row'
                     justifyContent='space-between'>
                     <GoHomeButton history={history} />

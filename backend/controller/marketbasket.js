@@ -3,8 +3,9 @@ import MarketBasket from '../models/MarketBasket.js';
 import asyncHandler from '../middleware/async.js';
 import ErrorResponse from '../middleware/error.js';
 import path from 'path';
+import {spawn} from 'child_process';
 
-import data from '../_data/mba.json';
+// import data from '../_data/mba.json';
 // import JSON from ''
 
 /////
@@ -55,17 +56,25 @@ const createTable = asyncHandler(async (req, res, next) => {
     //     if (err) throw err;
     //     console.log(data);
     // });
-    const marketbasket = JSON.parse(JSON.stringify(data));
+    
+    
+    var pythonProcess = spawn('python',["../mbaScript.py"]);
+    res.status(200); 
 
-    try {
-        await MarketBasket.bulkCreate(marketbasket);
+    pythonProcess.stdout.on('mbadata', function(mbadata) { 
+        res.send(data.toString()); 
+    } ) 
+    // const marketbasket = JSON.parse(JSON.stringify(data));
 
-        console.log('Market basket reinitialized...'.green.inverse);
-        res.status(200).json({ success: true, data: marketbasket });
-    } catch (err) {
-        console.error(err);
-        res.status(404).json({ success: false, data: {} });
-    }
+    // try {
+    //     await MarketBasket.bulkCreate(marketbasket);
+
+    //     console.log('Market basket reinitialized...'.green.inverse);
+    //     res.status(200).json({ success: true, data: marketbasket });
+    // } catch (err) {
+    //     console.error(err);
+    //     res.status(404).json({ success: false, data: {} });
+    // }
 });
 
 /*

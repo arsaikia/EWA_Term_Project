@@ -3,9 +3,11 @@ import MarketBasket from '../models/MarketBasket.js';
 import asyncHandler from '../middleware/async.js';
 import ErrorResponse from '../middleware/error.js';
 import path from 'path';
-import {spawn} from 'child_process';
+import { spawn } from 'child_process';
 
-// import data from '../_data/mba.json';
+import { PythonShell } from 'python-shell';
+
+import data from '../_data/mba.json';
 // import JSON from ''
 
 /////
@@ -56,25 +58,26 @@ const createTable = asyncHandler(async (req, res, next) => {
     //     if (err) throw err;
     //     console.log(data);
     // });
-    
-    
-    var pythonProcess = spawn('python',["../mbaScript.py"]);
-    res.status(200); 
 
-    pythonProcess.stdout.on('mbadata', function(mbadata) { 
-        res.send(data.toString()); 
-    } ) 
-    // const marketbasket = JSON.parse(JSON.stringify(data));
+    //you can use error handling to see if there are any errors
+    PythonShell.run('mbaScript.py', null, function (err) {
+        console.log(`err : ${err}`.red.bold);
+        // console.log(`results : ${results}`.green.bold);
+    });
 
-    // try {
-    //     await MarketBasket.bulkCreate(marketbasket);
+    //your code
 
-    //     console.log('Market basket reinitialized...'.green.inverse);
-    //     res.status(200).json({ success: true, data: marketbasket });
-    // } catch (err) {
-    //     console.error(err);
-    //     res.status(404).json({ success: false, data: {} });
-    // }
+    const marketbasket = JSON.parse(JSON.stringify(data));
+
+    try {
+        await MarketBasket.bulkCreate(marketbasket);
+
+        console.log('Market basket reinitialized...'.green.inverse);
+        next(res.status(200).json({ success: true, data: marketbasket }))
+    } catch (err) {
+        console.error(err);
+        next(res.status(404).json({ success: false, data: {} }))
+    }
 });
 
 /*
@@ -89,4 +92,13 @@ const deleteTable = asyncHandler(async (req, res, next) => {
     res.status(200).json({ success: true, data: {} });
 });
 
-export { getProduct, createTable, deleteTable };
+const getProducts = asyncHandler(async (req, res, next) => {
+    const users = await MarketBasket.findAll();
+
+    if (!users) {
+        return next(new ErrorResponse(`No User found!`, 404));
+    }
+    res.status(200).json({ success: true, data: users });
+});
+
+export { getProduct, createTable, deleteTable, getProducts };

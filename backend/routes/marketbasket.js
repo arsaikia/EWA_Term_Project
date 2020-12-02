@@ -5,9 +5,10 @@ import {
     getProduct,
     createTable,
     deleteTable,
+    getProducts
 } from '../controller/marketbasket.js';
 
-router.route('/').post(getProduct);
+router.route('/').get(getProducts).post(getProduct);
 
 router.route('/i').post(createTable);
 

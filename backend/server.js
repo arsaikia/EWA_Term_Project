@@ -56,11 +56,3 @@ app.listen(PORT, () => {
     return console.log(`Server sarted on PORT ${PORT}`.yellow.bold);
 });
 
-process
-  .on('unhandledRejection', (reason, p) => {
-    console.error(reason, 'Unhandled Rejection at Promise', p);
-  })
-  .on('uncaughtException', err => {
-    console.error(err, 'Uncaught Exception thrown');
-    process.exit(1);
-  });

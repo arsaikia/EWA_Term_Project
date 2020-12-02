@@ -28,18 +28,35 @@ const AccountsController = ({
     const { setShowHeader } = appContext;
 
     const userContext = useContext(UserContext);
+
     const {
         isUserAuthenticated,
         loggedInUser,
-        setUserSemiAuthenticated,
+        updateUser,
+        allRegisteredUsersFetched,
+        getAllRegisteredUsers,
+        allRegisteredUsers,
+        makeManager,
     } = userContext;
+
+    const cartContext = useContext(CartContext);
+
+    const {
+        userCards,
+        getUserCards,
+        userCardsFetched,
+        userAddresses,
+        getUserAddresses,
+        userAddressesFetched,
+        updateCard,
+    } = cartContext;
 
     const transactionContext = useContext(TransactionContext);
     const {
-        getUserTransactions,
-        userTransactions,
-        userTransactionsFetched,
-        createReview,
+        allMBAFetched,
+        allMBA,
+        getAllMBA,
+        recalculateMBA,
     } = transactionContext;
 
     /*
@@ -50,8 +67,18 @@ const AccountsController = ({
     const rememberedUserId = Cookie.get('USER_ID');
     const rememberedFoodPreference = Cookie.get('FOOD_PREFERENCE');
     const rememberMe = Cookie.get('REMEMBER_ME');
+    const userType = Cookie.get('USER_TYPE');
 
+    const [fetchingAllUsers, setFetchingAllUsers] = useState(
+        !allRegisteredUsersFetched
+    );
     const [isLoading, setIsLoading] = useState(true);
+    const [fetchingCards, setFetchingCards] = useState(!userCardsFetched);
+    const [fetchingAddress, setFetchingAddress] = useState(
+        userAddressesFetched
+    );
+
+    const [isMBAFetching, setIsMBAFetching] = useState(!allMBAFetched);
 
     /*
      ***************************************************
@@ -59,63 +86,76 @@ const AccountsController = ({
      ***************************************************
      */
 
-    const reviewSubmitHandler = () => {
-        const b = {
-            userId: 'f1877d11-66d0-432b-b879-568557ee1761',
-            orderId: '812b402f-c532-4099-8d46-8dfded6144b8',
-            userName: 'Akshay Akshay',
-            productId: '0b00b3f2-4f09-4987-8c0a-d99567c87c28',
-            reviewRating: 3.5,
-            reviewText: 'A really nice product overall!',
-        };
-        createReview(b);
-    };
-
     /*
      ***************************************************
      * LOADING AND PAGE POPULATION HANDLERS
      **************************************************
      */
 
-    const loadData = useCallback(() => {
-        if (
-            isLoading &&
-            !userTransactionsFetched &&
-            !isEmpty(rememberedUserId)
-        ) {
-            setIsLoading(false);
-            getUserTransactions(rememberedUserId);
+    const onLoad = useCallback(() => {
+        if (!allRegisteredUsersFetched && fetchingAllUsers) {
+            setFetchingAllUsers(false);
+            getAllRegisteredUsers();
+        }
+        if (!userCardsFetched && rememberedUserId && fetchingCards) {
+            setFetchingCards(false);
+            getUserCards(rememberedUserId);
+        }
+
+        if (!userAddressesFetched && rememberedUserId && fetchingAddress) {
+            setFetchingAddress(false);
+            getUserAddresses(rememberedUserId);
+        }
+
+        if (isMBAFetching && !allMBAFetched) {
+            setIsMBAFetching(false);
+            getAllMBA();
         }
     }, [
-        isLoading,
-        userTransactionsFetched,
+        userCardsFetched,
         rememberedUserId,
-        setIsLoading,
-        getUserTransactions,
+        getUserCards,
+        isMBAFetching,
+        allMBAFetched,
+        userAddressesFetched,
+        getUserAddresses,
+        getAllRegisteredUsers,
+        fetchingCards,
+        fetchingAllUsers,
+        getAllMBA,
+        allRegisteredUsersFetched,
+        fetchingAddress,
     ]);
+
+    useEffect(() => {
+        onLoad();
+    }, [onLoad]);
 
     /*
      * On Browser Back
      */
     window.onpopstate = (e) => {};
 
-    // Only on load
-
     useEffect(() => {
         setShowHeader(true);
-        loadData();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [loadData]);
-
-    if (isLoading && !userTransactionsFetched) {
-        return <Loader showLoader={true} />;
-    }
+    }, []);
 
     return (
         <>
             <AccountsScreen
-                userTransactions={userTransactions}
-                reviewSubmitHandler={reviewSubmitHandler}
+                userType={userType}
+                isUserAuthenticated={isUserAuthenticated}
+                loggedInUser={loggedInUser}
+                updateUser={updateUser}
+                userCards={userCards}
+                updateCard={updateCard}
+                userAddresses={userAddresses}
+                allRegisteredUsers={allRegisteredUsers}
+                allRegisteredUsersFetched={allRegisteredUsersFetched}
+                makeManager={makeManager}
+                allMBA={allMBA}
+                recalculateMBA={recalculateMBA}
                 {...props}
             />
         </>

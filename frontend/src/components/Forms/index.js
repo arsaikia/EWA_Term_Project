@@ -73,7 +73,9 @@ const FormInput = ({
   required = false,
   cancellable,
   icon = null,
-  handleKeyDown = null
+  focusHandler=null,
+  handleKeyDown = null,
+  textColor = Colors.lightOnDark
 }) => {
   const [active, setActive] = useState(false);
 
@@ -100,7 +102,7 @@ const FormInput = ({
                 </p>
               }
               color={
-                error ? Colors.red : active ? Colors.lightOnDark : Colors.darkGrey
+                error ? Colors.red : active ? textColor : Colors.darkGrey
               }
             />
             {icon}
@@ -109,11 +111,12 @@ const FormInput = ({
             value={value}
             onChange={(e) => onChange && onChange(e.target.value)}
             type="text"
-            color={Colors.lightOnDark}
+            color={textColor}
             placeholder={placeholder}
             onFocus={() => {
               handleHover(true);
               toggleHighlight();
+              focusHandler && focusHandler();
             }}
             onBlur={() => {
               handleHover(true);

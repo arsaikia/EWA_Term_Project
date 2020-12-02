@@ -10,8 +10,6 @@ import { PythonShell } from 'python-shell';
 import data from '../_data/mba.json';
 // import JSON from ''
 
-/////
-
 /*
  * @desc     Get productB with productId
  * @route    GET /api/v1/cards/:id
@@ -20,10 +18,12 @@ import data from '../_data/mba.json';
 
 const getProduct = asyncHandler(async (req, res, next) => {
     if (!req.body.products || req.body.products.length <= 0) {
-        return res.status(404).json({
-            success: false,
-            error: `Product to match cannot be empty`,
-        });
+        return next(
+            res.status(404).json({
+                success: false,
+                error: `Product to match cannot be empty`,
+            })
+        );
     }
 
     let product = await MarketBasket.findAll({
@@ -34,10 +34,12 @@ const getProduct = asyncHandler(async (req, res, next) => {
 
     if (!product || product.length == 0) {
         console.log(`Product Not Found with user id ${req.params.id}`);
-        return res.status(201).json({
-            success: true,
-            data: {},
-        });
+        return next(
+            res.status(201).json({
+                success: true,
+                data: {},
+            })
+        );
     }
     product = JSON.parse(JSON.stringify(product));
     const products = [];
@@ -54,18 +56,12 @@ const getProduct = asyncHandler(async (req, res, next) => {
  */
 
 const createTable = asyncHandler(async (req, res, next) => {
-    // const pathName = fs.readFile(path.join(__dirname, '../_data', 'mba.json'), 'utf8', (err,data) => {
-    //     if (err) throw err;
-    //     console.log(data);
-    // });
-
-    //you can use error handling to see if there are any errors
-    PythonShell.run('mbaScript.py', null, function (err) {
-        console.log(`err : ${err}`.red.bold);
-        // console.log(`results : ${results}`.green.bold);
-    });
-
-    //your code
+    Promise.resolve(
+        PythonShell.run('mbaScript.py', null, function (err) {
+            err && console.log(`err : ${err}`.red.bold);
+            next(res.status(404).json({ success: false, data: {} }));
+        })
+    );
 
     const marketbasket = JSON.parse(JSON.stringify(data));
 
@@ -73,10 +69,10 @@ const createTable = asyncHandler(async (req, res, next) => {
         await MarketBasket.bulkCreate(marketbasket);
 
         console.log('Market basket reinitialized...'.green.inverse);
-        next(res.status(200).json({ success: true, data: marketbasket }))
+        next(res.status(200).json({ success: true, data: marketbasket }));
     } catch (err) {
         console.error(err);
-        next(res.status(404).json({ success: false, data: {} }))
+        next(res.status(404).json({ success: false, data: {} }));
     }
 });
 
@@ -89,7 +85,7 @@ const createTable = asyncHandler(async (req, res, next) => {
 const deleteTable = asyncHandler(async (req, res, next) => {
     await MarketBasket.destroy({ where: {} });
 
-    res.status(200).json({ success: true, data: {} });
+    next(res.status(200).json({ success: true, data: {} }));
 });
 
 const getProducts = asyncHandler(async (req, res, next) => {
@@ -98,7 +94,7 @@ const getProducts = asyncHandler(async (req, res, next) => {
     if (!users) {
         return next(new ErrorResponse(`No User found!`, 404));
     }
-    res.status(200).json({ success: true, data: users });
+    next(res.status(200).json({ success: true, data: users }));
 });
 
 export { getProduct, createTable, deleteTable, getProducts };

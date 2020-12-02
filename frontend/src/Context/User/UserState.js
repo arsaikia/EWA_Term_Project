@@ -48,7 +48,9 @@ const UserState = (props) => {
                     'FOOD_PREFERENCE',
                     get(user[0], 'foodPreference', '')
                 );
+                Cookie.set('USER_TYPE', get(user[0], 'userType', ''), '');
                 Cookie.set('REMEMBER_ME', rememberMe, false);
+
                 return dispatch({
                     payload: user,
                     type: AUTHENTICATE_USER,
@@ -92,6 +94,17 @@ const UserState = (props) => {
     };
 
     /*
+     *   Make User Manager
+     */
+    const makeManager = async (userId, storeId) => {
+        await API.PUT({
+            url: `users/manager/${userId}`,
+            body: { storeManager: storeId },
+        });
+        getAllRegisteredUsers();
+    };
+
+    /*
      *   REGISTER_NEW_USER
      */
     const registerUser = async (body) => {
@@ -105,6 +118,16 @@ const UserState = (props) => {
         dispatch({
             payload: newUser,
             type: REGISTER_NEW_USER,
+        });
+    };
+    /*
+     *   updateUser
+     */
+    const updateUser = async (id, body) => {
+        console.log('updateUser', id, body);
+        await API.PUT({
+            url: `users/${id}`,
+            body,
         });
     };
 
@@ -136,6 +159,8 @@ const UserState = (props) => {
                 setLoginFalse,
                 setUserSemiAuthenticated,
                 updateUserStore,
+                updateUser,
+                makeManager,
             }}>
             {props.children}
         </UserContext.Provider>

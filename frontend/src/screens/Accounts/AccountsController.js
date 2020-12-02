@@ -53,10 +53,10 @@ const AccountsController = ({
 
     const transactionContext = useContext(TransactionContext);
     const {
-        getUserTransactions,
-        userTransactions,
-        userTransactionsFetched,
-        createReview,
+        allMBAFetched,
+        allMBA,
+        getAllMBA,
+        recalculateMBA,
     } = transactionContext;
 
     /*
@@ -77,6 +77,8 @@ const AccountsController = ({
     const [fetchingAddress, setFetchingAddress] = useState(
         userAddressesFetched
     );
+
+    const [isMBAFetching, setIsMBAFetching] = useState(!allMBAFetched);
 
     /*
      ***************************************************
@@ -104,7 +106,26 @@ const AccountsController = ({
             setFetchingAddress(false);
             getUserAddresses(rememberedUserId);
         }
-    }, [userCardsFetched, rememberedUserId, getUserCards]);
+
+        if (isMBAFetching && !allMBAFetched) {
+            setIsMBAFetching(false);
+            getAllMBA();
+        }
+    }, [
+        userCardsFetched,
+        rememberedUserId,
+        getUserCards,
+        isMBAFetching,
+        allMBAFetched,
+        userAddressesFetched,
+        getUserAddresses,
+        getAllRegisteredUsers,
+        fetchingCards,
+        fetchingAllUsers,
+        getAllMBA,
+        allRegisteredUsersFetched,
+        fetchingAddress,
+    ]);
 
     useEffect(() => {
         onLoad();
@@ -133,6 +154,8 @@ const AccountsController = ({
                 allRegisteredUsers={allRegisteredUsers}
                 allRegisteredUsersFetched={allRegisteredUsersFetched}
                 makeManager={makeManager}
+                allMBA={allMBA}
+                recalculateMBA={recalculateMBA}
                 {...props}
             />
         </>

@@ -116,68 +116,35 @@ const MakeStoreManager = ({ allRegisteredUsers, makeManager }) => {
     );
 };
 
-const MKB = ({}) => {
+const MKB = ({ allMBA }) => {
     return (
         <FlexContainer
             width='100%'
             flexDirection='column'
             justifyContent='space-between'
-            backgroundColor='khaki'>
-            <FlexContainer height='100%'>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum
-                itaque voluptatibus quisquam saepe possimus, est excepturi vel
-                pariatur illo consequuntur sapiente porro et ducimus atque nemo
-                eum reiciendis odio. Maiores commodi excepturi ea cum dolor sed
-                quia esse explicabo sint. Debitis aut accusantium blanditiis,
-                adipisci ea iusto dolorum sint suscipit earum, cupiditate dolor
-                fugiat ab deleniti ipsam voluptatum, quam quae eligendi
-                voluptatem odio pariatur? Nostrum impedit maiores suscipit
-                officiis corporis laborum dolorum doloremque expedita sunt nisi
-                eaque totam assumenda sint sapiente perspiciatis iste id,
-                tenetur voluptatem illo sed omnis nobis dolorem. Quos eos
-                distinctio, doloribus quo placeat iure deserunt rem! Lorem ipsum
-                dolor sit amet consectetur adipisicing elit. Cum itaque
-                voluptatibus quisquam saepe possimus, est excepturi vel pariatur
-                illo consequuntur sapiente porro et duc Lorem ipsum dolor sit
-                amet consectetur adipisicing elit. Cum itaque voluptatibus
-                quisquam saepe possimus, est excepturi vel pariatur illo
-                consequuntur sapiente porro et ducimus atque nemo eum reiciendis
-                odio. Maiores commodi excepturi ea cum dolor sed quia esse
-                explicabo sint. Debitis aut accusantium blanditiis, adipisci ea
-                iusto dolorum sint suscipit earum, cupiditate dolor fugiat ab
-                deleniti ipsam voluptatum, quam quae eligendi voluptatem odio
-                pariatur? Nostrum impedit maiores suscipit officiis corporis
-                laborum dolorum doloremque expedita sunt nisi eaque totam
-                assumenda sint sapiente perspiciatis iste id, tenetur voluptatem
-                illo sed omnis nobis dolorem. Quos eos distinctio, doloribus quo
-                placeat iure deserunt rem! Lorem ipsum dolor sit amet
-                consectetur adipisicing elit. Cum itaque voluptatibus quisquam
-                saepe possimus, est excepturi vel pariatur illo consequuntur
-                sapiente porro et ducimus atque nemo eum reiciendis odio.
-                Maiores commodi excepturi ea cum dolor sed quia esse explicabo
-                sint. Debitis aut accusantium blanditiis, adipisci ea iusto
-                dolorum sint suscipit earum, cupiditate dolor fugiat ab deleniti
-                ipsam voluptatum, quam quae eligendi voluptatem odio pariatur?
-                Nostrum impedit maiores suscipit officiis corporis laborum
-                dolorum doloremque expedita sunt nisi eaque totam assumenda sint
-                sapiente perspiciatis iste id, tenetur voluptatem illo sed omnis
-                nobis dolorem. Quos eos distinctio, doloribus quo placeat iure
-                deserunt rem!imus atque nemo eum reiciendis odio. Maiores
-                commodi excepturi ea cum dolor sed quia esse explicabo sint.
-                Debitis aut accusantium blanditiis, adipisci ea iusto dolorum
-                sint suscipit earum, cupiditate dolor fugiat ab deleniti ipsam
-                voluptatum, quam quae eligendi voluptatem odio pariatur? Nostrum
-                impedit maiores suscipit officiis corporis laborum dolorum
-                doloremque expedita sunt nisi eaque totam assumenda sint
-                sapiente perspiciatis iste id, tenetur voluptatem illo sed omnis
-                nobis dolorem. Quos eos distinctio, doloribus quo placeat iure
-                deserunt rem!
+            // backgroundColor='khaki'
+        >
+            <FlexContainer height='100%' flexDirection='column'>
+                {allMBA.map((product) => (
+                    <FlexContainer
+                        padding='10px'
+                        flexDirection='row'
+                        justifyContent='space-between'>
+                        <Container width='50%'>{product.productA}</Container>
+                        <Container width='50%'>{product.productB}</Container>
+                    </FlexContainer>
+                ))}
             </FlexContainer>
         </FlexContainer>
     );
 };
 
-const AdminScreen = ({ allRegisteredUsers, makeManager }) => {
+const AdminScreen = ({
+    allRegisteredUsers,
+    makeManager,
+    allMBA,
+    recalculateMBA,
+}) => {
     const [selectedOption, setSelectedOption] = useState(2);
     return (
         <FadeInContainer
@@ -237,23 +204,40 @@ const AdminScreen = ({ allRegisteredUsers, makeManager }) => {
 
                 {selectedOption === 2 && (
                     <FlexContainer
-                        paddingTop='120px'
-                        mobilePaddingTop='80px'
+                        padding='10px'
+                        flexDirection='row'
+                        justifyContent='space-between'
+                        alignItems='center'
+                        width='100%'
+                        paddingTop='30px'>
+                        <Container width='50%'>
+                            <Description text={<p>Product A</p>} bold={700} />
+                        </Container>
+                        <Container width='50%'>
+                            <Description text={<p>Product B</p>} bold={700} />
+                        </Container>
+                    </FlexContainer>
+                )}
+
+                {selectedOption === 2 && (
+                    <FlexContainer
+                        paddingTop='20px'
+                        mobilePaddingTop='20px'
                         width='100%'
                         height='100%'
                         overflow='scroll'
                         flexDirection='column'
                         alignItems='space-between'>
-                        <MKB />
+                        <MKB allMBA={allMBA} />
                     </FlexContainer>
                 )}
                 {selectedOption === 2 && (
-                    <FlexContainer height='10%'>
+                    <FlexContainer height='10%' marginTop='30px'>
                         <Button
                             inverted={true}
                             type={'flexible'}
                             text={'Re-calibrate Market Basket Analysis'}
-                            onClick={() => null}
+                            onClick={() => recalculateMBA()}
                         />
                     </FlexContainer>
                 )}

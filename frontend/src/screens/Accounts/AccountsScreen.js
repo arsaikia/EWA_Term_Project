@@ -24,6 +24,8 @@ const AccountsScreen = ({
     allRegisteredUsers,
     allRegisteredUsersFetched,
     makeManager,
+    allMBA,
+    recalculateMBA,
     ...props
 }) => {
     // const history = useHistory();
@@ -57,6 +59,8 @@ const AccountsScreen = ({
                         userType={userType}
                         allRegisteredUsers={allRegisteredUsers}
                         makeManager={makeManager}
+                        allMBA={allMBA}
+                        recalculateMBA={recalculateMBA}
                     />
                 )}
             </FadeInContainer>

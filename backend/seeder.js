@@ -30,7 +30,7 @@ const addresses = JSON.parse(
 );
 const stores = JSON.parse(fs.readFileSync(`./_data/stores.json`, 'utf-8'));
 const storeproducts = JSON.parse(
-    fs.readFileSync(`./_data/storeproducts.json`, 'utf-8')
+    fs.readFileSync(`./_data/storeproducts1.json`, 'utf-8')
 );
 const carts = JSON.parse(fs.readFileSync(`./_data/carts.json`, 'utf-8'));
 const cards = JSON.parse(fs.readFileSync(`./_data/cards.json`, 'utf-8'));
@@ -46,13 +46,13 @@ const importData = async () => {
         // await Users.bulkCreate(users);
         // await Products.bulkCreate(products);
         // await Stores.bulkCreate(stores);
-        // await StoreProducts.bulkCreate(storeproducts);
+        await StoreProducts.bulkCreate(storeproducts);
         // await Shares.bulkCreate(shares);
         // await Carts.bulkCreate(carts);
         // await Cards.bulkCreate(cards);
         // await Address.bulkCreate(addresses);
-        await Transactions.bulkCreate(transactions);
-        await Orders.bulkCreate(orders);
+        // await Transactions.bulkCreate(transactions);
+        // await Orders.bulkCreate(orders);
 
         console.log('Data Imported...'.green.inverse);
         process.exit();
@@ -68,12 +68,12 @@ const deleteData = async () => {
         // await Address.destroy({ where: {} });
         // await Products.destroy({ where: {} });
         // await Stores.destroy({ where: {} });
-        // await StoreProducts.destroy({ where: {} });
+        await StoreProducts.destroy({ where: {} });
         // await Shares.destroy({ where: {} });
         // await Carts.destroy({ where: {} });
         // await Cards.destroy({ where: {} });
-        await Transactions.destroy({ where: {} });
-        await Orders.destroy({ where: {} });
+        // await Transactions.destroy({ where: {} });
+        // await Orders.destroy({ where: {} });
 
         console.log('Data Destroyed...'.red.inverse);
         process.exit();

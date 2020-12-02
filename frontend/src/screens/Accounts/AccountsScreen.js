@@ -11,12 +11,19 @@ import {
     FadeInContainer,
 } from '../../components/StylingComponents/index';
 import CustomerScreen from './CustomerScreen';
+import AdminScreen from './AdminScreen';
 
 const AccountsScreen = ({
     userType,
     isUserAuthenticated,
     loggedInUser,
     updateUser,
+    userCards,
+    updateCard,
+    userAddresses,
+    allRegisteredUsers,
+    allRegisteredUsersFetched,
+    makeManager,
     ...props
 }) => {
     // const history = useHistory();
@@ -37,6 +44,19 @@ const AccountsScreen = ({
                         loggedInUser={loggedInUser}
                         userType={userType}
                         updateUser={updateUser}
+                        userCards={userCards}
+                        updateCard={updateCard}
+                        userAddresses={userAddresses}
+                    />
+                )}
+
+                {userType === 'ADMIN' && allRegisteredUsersFetched && (
+                    <AdminScreen
+                        isUserAuthenticated={isUserAuthenticated}
+                        loggedInUser={loggedInUser}
+                        userType={userType}
+                        allRegisteredUsers={allRegisteredUsers}
+                        makeManager={makeManager}
                     />
                 )}
             </FadeInContainer>

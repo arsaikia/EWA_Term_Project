@@ -3,6 +3,7 @@ import { FormDropdown, FormInput } from '../../components/Forms';
 import CUSTOMER from '../../Images/customer.svg';
 import ADDRESS from '../../Images/addresses.svg';
 import CARDS from '../../Images/cards.svg';
+import TICK from '../../Images/Icons/tick.svg';
 import { get, isEmpty } from 'lodash';
 import { Button } from '../../components/Button';
 import Cookie from 'js-cookie';
@@ -55,7 +56,7 @@ const AccountDetails = ({ loggedInUser, updateUser }) => {
             lname,
             foodPreference: prefX,
         };
-
+        Cookie.set('FOOD_PREFERENCE', prefX);
         await updateUser(currentUserId, body);
         setShowPopup(true);
     };
@@ -146,38 +147,174 @@ const AccountDetails = ({ loggedInUser, updateUser }) => {
     );
 };
 
-const PaymentDetails = () => {
-    const [cardId, setCardId] = useState(0);
+const PaymentDetails = ({
+    cardIdForUpdate,
+    dateField,
+    card,
+    cardId,
+    setCardId,
+    idx,
+    updateCard,
+    userId,
+}) => {
+    const [cardName, setCardName] = useState(card.cardName);
+    const [cardNum, setCardNum] = useState(card.cardNumber.toString());
+    const [expiry, setExpiry] = useState(dateField);
+    const [cvv, setCvv] = useState(card.cvv);
+    const [flipped, setflipped] = useState(false);
+
+    const updatHandler = () => {
+        setCardId(-1);
+        setflipped(false);
+
+        const body = {
+            cardName,
+            cardNumber: parseInt(cardNum),
+            cvv: cvv,
+        };
+        updateCard(cardIdForUpdate, body, userId);
+    };
+    return (
+        <FlexContainer flexDirection='row' margin='5% 0% 5% 0%'>
+            <Container onClick={() => setCardId(idx === cardId ? -1 : idx)}>
+                <PaymentCard
+                    bank='itau'
+                    type='black'
+                    brand='mastercard'
+                    number={cardNum}
+                    cvv={cvv}
+                    holderName={cardName}
+                    expiration={dateField}
+                    flipped={flipped && idx === cardId}
+                />
+            </Container>
+            {idx === cardId && (
+                <FlexContainer
+                    flexDirection='column'
+                    padding='10px 20px'
+                    width='400px'
+                    height='100%'
+                    // backgroundColor='rgba(41,215,147,0.4)'
+                    borderRadius='10px'>
+                    <FormInput
+                        textColor={Colors.lightTextColor}
+                        // cancellable={!isEmpty(cardName)}
+                        error={isEmpty(cardName)}
+                        errorMessage={'Cannot be empty'}
+                        onChange={setCardName}
+                        title={'Name'}
+                        value={cardName}
+                        handleBlur={null}
+                    />
+                    <FormInput
+                        textColor={Colors.lightTextColor}
+                        // cancellable={!isEmpty(cardNum)}
+                        error={isEmpty(cardNum)}
+                        onChange={setCardNum}
+                        title={'Number'}
+                        value={cardNum}
+                        handleBlur={null}
+                    />
+                    <FlexContainer justifyContent='space-between'>
+                        <Container width='30%'>
+                            <FormInput
+                                textColor={Colors.lightTextColor}
+                                // cancellable={'!isEmpty(fname)'}
+                                error={isEmpty(expiry)}
+                                errorMessage={'Cannot be empty'}
+                                onChange={setExpiry}
+                                title={'Expiry'}
+                                value={expiry}
+                                handleBlur={null}
+                            />
+                        </Container>
+                        {!isEmpty(cardName) &&
+                            !isEmpty(cardNum) &&
+                            !isEmpty(expiry) &&
+                            cvv && (
+                                <FlexContainer
+                                    width='10%'
+                                    pointer='pointer'
+                                    alignItems='flex-end'
+                                    onClick={updatHandler}>
+                                    <img
+                                        src={TICK}
+                                        alt={'Update..'}
+                                        height={30}
+                                    />
+                                </FlexContainer>
+                            )}
+                        <Container width='30%'>
+                            <FormInput
+                                textColor={Colors.lightTextColor}
+                                // cancellable={'!isEmpty(fname)'}
+                                error={!cvv}
+                                errorMessage={'Cannot be empty'}
+                                onChange={setCvv}
+                                title={'cvv'}
+                                value={cvv}
+                                handleBlur={null}
+                                focusHandler={() => setflipped(true)}
+                                handleBlur={() => setflipped(false)}
+                            />
+                        </Container>
+                    </FlexContainer>
+                </FlexContainer>
+            )}
+        </FlexContainer>
+    );
+};
+
+const Address = ({ address }) => {
+    console.log('address', address);
     return (
         <FlexContainer
-            width='100%'
-            overflow='scroll'
             flexDirection='column'
-            alignItems='center'>
-            {[1, 2, 3, 4, 5, 6].map((card, idx) => (
-                <FlexContainer
-                    flexDirection='row'
-                    margin='5% 0% 5% 0%'
-                    onClick={() => setCardId(idx === cardId ? -1 : idx)}>
-                    <PaymentCard
-                        bank='itau'
-                        type='black'
-                        brand='mastercard'
-                        number='4111111111111111'
-                        cvv='202'
-                        holderName='Owen Lars'
-                        expiration='12/20'
-                        flipped={false}
-                    />
-                    {idx === cardId && (
-                        <FlexContainer
-                            width='300px'
-                            height='100%'
-                            backgroundColor='khaki'
-                        />
-                    )}
-                </FlexContainer>
-            ))}
+            width='60%'
+            border='1px solid grey'
+            borderRadius='8px'
+            margin='10px'
+            padding='10px'>
+            <FormInput
+                textColor={Colors.lightTextColor}
+                // cancellable={!isEmpty(cardName)}
+                // error={isEmpty(cardName)}
+                errorMessage={'Cannot be empty'}
+                onChange={null}
+                title={'Street Address'}
+                value={address.street1}
+                handleBlur={null}
+            />
+            <FormInput
+                textColor={Colors.lightTextColor}
+                // cancellable={!isEmpty(cardName)}
+                // error={isEmpty(cardName)}
+                errorMessage={'Cannot be empty'}
+                onChange={null}
+                title={'City'}
+                value={address.city}
+                handleBlur={null}
+            />
+            <FormInput
+                textColor={Colors.lightTextColor}
+                // cancellable={!isEmpty(cardName)}
+                // error={isEmpty(cardName)}
+                errorMessage={'Cannot be empty'}
+                onChange={null}
+                title={'Zip'}
+                value={address.zip}
+                handleBlur={null}
+            />
+            <FormInput
+                textColor={Colors.lightTextColor}
+                // cancellable={!isEmpty(cardName)}
+                // error={isEmpty(cardName)}
+                errorMessage={'Cannot be empty'}
+                onChange={null}
+                title={'State'}
+                value={address.state}
+                handleBlur={null}
+            />
         </FlexContainer>
     );
 };
@@ -187,8 +324,13 @@ const CustomerScreen = ({
     isUserAuthenticated,
     loggedInUser,
     updateUser,
+    userCards,
+    updateCard,
+    userAddresses,
 }) => {
     const [selectedOption, setSelectedOption] = useState(1);
+
+    const [cardId, setCardId] = useState(-1);
 
     return (
         <FadeInContainer
@@ -251,7 +393,58 @@ const CustomerScreen = ({
                     />
                 )}
 
-                {selectedOption === 3 && <PaymentDetails />}
+                <FlexContainer
+                    width='100%'
+                    overflow='scroll'
+                    flexDirection='column'
+                    alignItems='center'
+                    paddingTop='120px'>
+                    {selectedOption === 2 &&
+                        userAddresses.map((address) => {
+                            return (
+                                <>
+                                    <Spacing
+                                        height='150px'
+                                        mobileHeight='30px'
+                                    />
+                                    <Address address={address} />
+                                </>
+                            );
+                        })}
+                </FlexContainer>
+
+                {selectedOption === 3 && (
+                    <FlexContainer
+                        width='100%'
+                        overflow='scroll'
+                        flexDirection='column'
+                        alignItems='center'>
+                        {userCards &&
+                            userCards.map((card, idx) => {
+                                {
+                                    console.log(card);
+                                    let dateField = card.expiryDate.split('-');
+                                    dateField =
+                                        dateField[1] +
+                                        '/' +
+                                        dateField[0].substring(2, 4);
+
+                                    return (
+                                        <PaymentDetails
+                                            idx={idx}
+                                            cardIdForUpdate={card.cardId}
+                                            userId={card.userId}
+                                            cardId={cardId}
+                                            setCardId={setCardId}
+                                            card={card}
+                                            dateField={dateField}
+                                            updateCard={updateCard}
+                                        />
+                                    );
+                                }
+                            })}
+                    </FlexContainer>
+                )}
 
                 {/* The Inforrmation Container */}
             </FlexContainer>

@@ -79,6 +79,35 @@ const updateUser = asyncHandler(async (req, res, next) => {
 });
 
 /*
+ * @desc     Get user with id
+ * @route    UPDATE users/manager/:id
+ * @access   Public
+ */
+
+const makeStoreManager = asyncHandler(async (req, res, next) => {
+    // Find the user to update
+    const userToUpdate = await Users.findOne({
+        where: {
+            userId: req.params.id,
+        },
+    });
+
+    if (!userToUpdate || userToUpdate.length <= 0) {
+        return res.status(404).json({
+            success: false,
+            error: `User Not Found with id '${req.params.id}'`,
+        });
+    }
+
+    const updatedUser = userToUpdate.update({
+        userType: 'STORE_MANAGER',
+        storeManager: req.body.storeManager,
+    });
+
+    return next(res.status(200).json({ success: true, data: updatedUser }));
+});
+
+/*
  * @desc     POST user preferred store with id
  * @route    POST /api/v1/users/store/:id
  * @access   Public
@@ -181,4 +210,5 @@ export {
     createUser,
     setUserPreferredStore,
     updateUser,
+    makeStoreManager,
 };

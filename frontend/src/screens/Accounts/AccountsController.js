@@ -28,11 +28,28 @@ const AccountsController = ({
     const { setShowHeader } = appContext;
 
     const userContext = useContext(UserContext);
+
     const {
         isUserAuthenticated,
         loggedInUser,
         updateUser,
+        allRegisteredUsersFetched,
+        getAllRegisteredUsers,
+        allRegisteredUsers,
+        makeManager,
     } = userContext;
+
+    const cartContext = useContext(CartContext);
+
+    const {
+        userCards,
+        getUserCards,
+        userCardsFetched,
+        userAddresses,
+        getUserAddresses,
+        userAddressesFetched,
+        updateCard,
+    } = cartContext;
 
     const transactionContext = useContext(TransactionContext);
     const {
@@ -52,7 +69,14 @@ const AccountsController = ({
     const rememberMe = Cookie.get('REMEMBER_ME');
     const userType = Cookie.get('USER_TYPE');
 
+    const [fetchingAllUsers, setFetchingAllUsers] = useState(
+        !allRegisteredUsersFetched
+    );
     const [isLoading, setIsLoading] = useState(true);
+    const [fetchingCards, setFetchingCards] = useState(!userCardsFetched);
+    const [fetchingAddress, setFetchingAddress] = useState(
+        userAddressesFetched
+    );
 
     /*
      ***************************************************
@@ -65,6 +89,26 @@ const AccountsController = ({
      * LOADING AND PAGE POPULATION HANDLERS
      **************************************************
      */
+
+    const onLoad = useCallback(() => {
+        if (!allRegisteredUsersFetched && fetchingAllUsers) {
+            setFetchingAllUsers(false);
+            getAllRegisteredUsers();
+        }
+        if (!userCardsFetched && rememberedUserId && fetchingCards) {
+            setFetchingCards(false);
+            getUserCards(rememberedUserId);
+        }
+
+        if (!userAddressesFetched && rememberedUserId && fetchingAddress) {
+            setFetchingAddress(false);
+            getUserAddresses(rememberedUserId);
+        }
+    }, [userCardsFetched, rememberedUserId, getUserCards]);
+
+    useEffect(() => {
+        onLoad();
+    }, [onLoad]);
 
     /*
      * On Browser Back
@@ -83,6 +127,12 @@ const AccountsController = ({
                 isUserAuthenticated={isUserAuthenticated}
                 loggedInUser={loggedInUser}
                 updateUser={updateUser}
+                userCards={userCards}
+                updateCard={updateCard}
+                userAddresses={userAddresses}
+                allRegisteredUsers={allRegisteredUsers}
+                allRegisteredUsersFetched={allRegisteredUsersFetched}
+                makeManager={makeManager}
                 {...props}
             />
         </>

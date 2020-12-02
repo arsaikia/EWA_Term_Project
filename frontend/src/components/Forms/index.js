@@ -73,6 +73,7 @@ const FormInput = ({
   required = false,
   cancellable,
   icon = null,
+  focusHandler=null,
   handleKeyDown = null,
   textColor = Colors.lightOnDark
 }) => {
@@ -115,6 +116,7 @@ const FormInput = ({
             onFocus={() => {
               handleHover(true);
               toggleHighlight();
+              focusHandler && focusHandler();
             }}
             onBlur={() => {
               handleHover(true);

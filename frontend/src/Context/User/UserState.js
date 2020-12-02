@@ -94,6 +94,17 @@ const UserState = (props) => {
     };
 
     /*
+     *   Make User Manager
+     */
+    const makeManager = async (userId, storeId) => {
+        await API.PUT({
+            url: `users/manager/${userId}`,
+            body: { storeManager: storeId },
+        });
+        getAllRegisteredUsers();
+    };
+
+    /*
      *   REGISTER_NEW_USER
      */
     const registerUser = async (body) => {
@@ -149,6 +160,7 @@ const UserState = (props) => {
                 setUserSemiAuthenticated,
                 updateUserStore,
                 updateUser,
+                makeManager,
             }}>
             {props.children}
         </UserContext.Provider>

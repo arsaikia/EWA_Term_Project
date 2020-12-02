@@ -241,7 +241,7 @@ const CartState = (props) => {
     };
 
     /*
-     *GET_USER_CARDS
+     * GET_USER_CARDS
      */
     const getUserCards = async (id) => {
         console.log('I am here', id);
@@ -255,6 +255,18 @@ const CartState = (props) => {
             payload: allCards,
             type: GET_USER_CARDS,
         });
+    };
+
+    /*
+     * UPDATE_CARD
+     */
+    const updateCard = async (id, body, userId) => {
+        await API.PUT({
+            url: `cards/${id}`,
+            body: body,
+        });
+
+        return getUserCards(userId);
     };
 
     /*
@@ -328,6 +340,7 @@ const CartState = (props) => {
                 createTransfer,
                 clearTransferStatus,
                 decrementProductsInCart,
+                updateCard,
                 allProducts: state.allProducts,
                 allProductsFetched: state.allProductsFetched,
                 productsInCart: state.productsInCart,

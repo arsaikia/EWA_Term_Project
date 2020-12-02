@@ -71,4 +71,42 @@ const createCard = asyncHandler(async (req, res, next) => {
     res.status(200).json({ success: true, data: card });
 });
 
-export { getCard, createCard };
+/*
+ * @desc     Create card in Db
+ * @route    GET /api/v1/cards/:id
+ * @access   Public
+ */
+
+const updateCard = asyncHandler(async (req, res, next) => {
+    // Validate Body is not empty
+    if (!req.params.id) {
+        return next(
+            res.status(400).send({
+                message: 'Card Id can not be empty!',
+            })
+        );
+    }
+    const cardToUpdate = await Cards.findOne({
+        where: {
+            cardId: req.params.id,
+        },
+    });
+
+    if (!cardToUpdate || cardToUpdate.length == 0) {
+        console.log(`Card Not Found with id ${res}`);
+        return res.status(500).json({
+            success: false,
+            error: `"Some error occurred while fetching the card.`,
+        });
+    } else {
+        const updatedCard = cardToUpdate.update({
+            cardName: req.body.cardName,
+            cardNumber: req.body.cardNumber,
+            // expiryDate: req.body.expiryDate,
+            cvv: req.body.cvv,
+        });
+
+        return next(res.status(200).json({ success: true, data: updatedCard }));
+    }
+});
+export { getCard, createCard, updateCard };

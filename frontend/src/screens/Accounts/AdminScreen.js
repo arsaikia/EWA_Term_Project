@@ -145,7 +145,7 @@ const AdminScreen = ({
     allMBA,
     recalculateMBA,
 }) => {
-    const [selectedOption, setSelectedOption] = useState(2);
+    const [selectedOption, setSelectedOption] = useState(1);
     return (
         <FadeInContainer
             flexDirection='row'

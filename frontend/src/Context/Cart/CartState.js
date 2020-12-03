@@ -20,6 +20,9 @@ import {
     CREATE_TRANSFER,
     RESET_CREATE_TRANSFER,
     GET_MARKET_BASKET_ANALYSIS,
+    GET_ALL_STORE_PRODUCTS,
+    GET_ALL_NON_STORE_PRODUCTS,
+    ADD_STORE_PRODUCT,
 } from '../types';
 
 import CartContext from './cartContext';
@@ -45,6 +48,10 @@ const CartState = (props) => {
         lastTransfer: {},
         mba: {},
         mbaFetched: false,
+        storeProducts: [],
+        storeProductsFetched: false,
+        storeNotProducts: [],
+        storeNotProductsFetched: false,
     };
 
     const [filters, setFilters] = useState({});
@@ -112,11 +119,25 @@ const CartState = (props) => {
             });
         }
 
+        if (get(currentFilters, 'SUB_CATEGORY')) {
+            currentFilters.CATEGORY = '';
+        } else {
+            currentFilters.SUB_CATEGORY = '';
+        }
+
         // Filter by category
         const category = get(currentFilters, 'CATEGORY');
         if (!isEmpty(category)) {
             filteredProducts = filteredProducts.filter(
                 (product) => product.category === category
+            );
+        }
+
+        // Filter by sub-category
+        const subcategory = get(currentFilters, 'SUB_CATEGORY');
+        if (!isEmpty(subcategory)) {
+            filteredProducts = filteredProducts.filter(
+                (product) => product.subcategory === subcategory
             );
         }
 
@@ -311,7 +332,6 @@ const CartState = (props) => {
         });
 
         const transaction = get(get(response, 'data'), 'data');
-        console.log('transaction', response, transaction);
 
         dispatch({
             payload: transaction,
@@ -323,6 +343,63 @@ const CartState = (props) => {
         dispatch({
             type: RESET_CREATE_TRANSFER,
         });
+    };
+
+    /*
+     * GET_ALL_STORE_PRODUCTS
+     */
+    const getStoreProducts = async (storeId) => {
+        const response = await API.GET({
+            url: `products/instore/${storeId}`,
+        });
+
+        let allStores = get(response.data, 'data');
+
+        dispatch({
+            payload: allStores[0],
+            type: GET_ALL_STORE_PRODUCTS,
+        });
+    };
+
+    /*
+     * GET_ALL_NON_STORE_PRODUCTS
+     */
+    const getNonStoreProducts = async (storeId) => {
+        const response = await API.GET({
+            url: `products/nonstore/${storeId}`,
+        });
+
+        let allStores = get(response.data, 'data');
+
+        dispatch({
+            payload: allStores[0],
+            type: GET_ALL_NON_STORE_PRODUCTS,
+        });
+    };
+    /*
+     * ADD_STORE_PRODUCT
+     */
+    const addStoreProduct = async (storeId, productId) => {
+        await API.POST({
+            url: `storeproducts/create/`,
+            body: { storeId, productId },
+        });
+
+        await getStoreProducts(storeId);
+        await getNonStoreProducts(storeId);
+    };
+
+    /*
+     * REMOVE_STORE_PRODUCT
+     */
+    const deleteStoreProduct = async (storeId, productId) => {
+        await API.POST({
+            url: `storeproducts/delete/`,
+            body: { storeId, productId },
+        });
+
+        await getStoreProducts(storeId);
+        await getNonStoreProducts(storeId);
     };
 
     return (
@@ -341,6 +418,10 @@ const CartState = (props) => {
                 clearTransferStatus,
                 decrementProductsInCart,
                 updateCard,
+                getStoreProducts,
+                getNonStoreProducts,
+                addStoreProduct,
+                deleteStoreProduct,
                 allProducts: state.allProducts,
                 allProductsFetched: state.allProductsFetched,
                 productsInCart: state.productsInCart,
@@ -358,6 +439,10 @@ const CartState = (props) => {
                 lastTransfer: state.lastTransfer,
                 mba: state.mba,
                 mbaFetched: state.mbaFetched,
+                storeProducts: state.storeProducts,
+                storeProductsFetched: state.storeProductsFetched,
+                storeNotProducts: state.storeNotProducts,
+                storeNotProductsFetched: state.storeNotProductsFetched,
             }}>
             {props.children}
         </CartContext.Provider>

@@ -12,6 +12,7 @@ import {
 } from '../../components/StylingComponents/index';
 import CustomerScreen from './CustomerScreen';
 import AdminScreen from './AdminScreen';
+import ManagerScreen from './ManagerScreen';
 
 const AccountsScreen = ({
     userType,
@@ -26,6 +27,12 @@ const AccountsScreen = ({
     makeManager,
     allMBA,
     recalculateMBA,
+    getStoreProducts,
+    storeProducts,
+    storeNotProducts,
+    storeId,
+    addStoreProduct,
+    removeStoreProduct,
     ...props
 }) => {
     // const history = useHistory();
@@ -49,6 +56,20 @@ const AccountsScreen = ({
                         userCards={userCards}
                         updateCard={updateCard}
                         userAddresses={userAddresses}
+                    />
+                )}
+
+                {userType === 'STORE_MANAGER' && (
+                    <ManagerScreen
+                        isUserAuthenticated={isUserAuthenticated}
+                        loggedInUser={loggedInUser}
+                        userType={userType}
+                        getStoreProducts={getStoreProducts}
+                        storeProducts={storeProducts}
+                        storeNotProducts={storeNotProducts}
+                        storeId={storeId}
+                        addStoreProduct={addStoreProduct}
+                        removeStoreProduct={removeStoreProduct}
                     />
                 )}
 

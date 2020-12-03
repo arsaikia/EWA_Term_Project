@@ -151,7 +151,6 @@ const HomeController = ({
     const prefStore = Cookie.get('USER_STORE');
     const loadDataOnMount = useCallback(() => {
         if (prefStore) {
-            console.log('prefStore', prefStore);
             const storeDetails = storeData.filter((store) => {
                 return store.storeId === prefStore;
             });
@@ -196,11 +195,10 @@ const HomeController = ({
         getFilteredProducts,
     ]);
 
-    // useEffect(() => {
-    //     rememberedFoodPreference &&
-    //         getFilteredProducts(rememberedFoodPreference, 'USER_PREFERENCE');
-    // }, [allProducts, rememberedFoodPreference, getFilteredProducts]);
-
+    useEffect(() => {
+        getFilteredProducts('', 'CATEGORY');
+        getFilteredProducts('', 'SUB_CATEGORY');
+    }, []);
     /*getFilteredProducts
      * On Browser Back
      */

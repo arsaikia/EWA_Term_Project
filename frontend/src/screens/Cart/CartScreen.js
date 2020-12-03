@@ -220,19 +220,17 @@ const breakPoints = [
 ];
 
 const MarketBasketAnalysis = ({ mba, calculatePrice, addProductToCart }) => {
-    console.log('MARKET BASKET', mba);
     return (
         <FlexContainer
             height='30%'
             width='100%'
             overflow='hidden'
             justifyContent='center'
-            // backgroundColor='khaki'
             alignItems='center'>
             {mba.length > 0 && (
                 <Carousel
                     breakPoints={breakPoints}
-                    // enableAutoPlay
+                    enableAutoPlay
                     autoPlaySpeed={2000}>
                     {mba.map((product) => (
                         <Item

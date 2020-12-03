@@ -81,8 +81,6 @@ const TransactionState = (props) => {
 
         response = get(get(response, 'data', {}), 'data', {});
 
-        console.log('response', response);
-
         dispatch({
             payload: response,
             type: GET_ALL_MARKET_BASKET,

@@ -49,6 +49,14 @@ const AccountsController = ({
         getUserAddresses,
         userAddressesFetched,
         updateCard,
+        getStoreProducts,
+        storeProductsFetched,
+        storeProducts,
+        getNonStoreProducts,
+        storeNotProducts,
+        storeNotProductsFetched,
+        addStoreProduct,
+        deleteStoreProduct,
     } = cartContext;
 
     const transactionContext = useContext(TransactionContext);
@@ -68,6 +76,7 @@ const AccountsController = ({
     const rememberedFoodPreference = Cookie.get('FOOD_PREFERENCE');
     const rememberMe = Cookie.get('REMEMBER_ME');
     const userType = Cookie.get('USER_TYPE');
+    const storeId = Cookie.get('STORE_ID');
 
     const [fetchingAllUsers, setFetchingAllUsers] = useState(
         !allRegisteredUsersFetched
@@ -79,6 +88,12 @@ const AccountsController = ({
     );
 
     const [isMBAFetching, setIsMBAFetching] = useState(!allMBAFetched);
+
+    const [isFetchingStoreProducts, setIsFetchingStoreProducts] = useState(
+        true
+    );
+
+    const [isNonStoreFetching, setIsNonStoreFetching] = useState(true);
 
     /*
      ***************************************************
@@ -111,6 +126,16 @@ const AccountsController = ({
             setIsMBAFetching(false);
             getAllMBA();
         }
+
+        if (isFetchingStoreProducts && !storeProductsFetched && storeId) {
+            setIsFetchingStoreProducts(false);
+            getStoreProducts(storeId);
+        }
+
+        if (isNonStoreFetching && !storeNotProductsFetched && storeId) {
+            setIsNonStoreFetching(false);
+            getNonStoreProducts(storeId);
+        }
     }, [
         userCardsFetched,
         rememberedUserId,
@@ -125,6 +150,9 @@ const AccountsController = ({
         getAllMBA,
         allRegisteredUsersFetched,
         fetchingAddress,
+        storeProductsFetched,
+        storeId,
+        isFetchingStoreProducts,
     ]);
 
     useEffect(() => {
@@ -156,6 +184,12 @@ const AccountsController = ({
                 makeManager={makeManager}
                 allMBA={allMBA}
                 recalculateMBA={recalculateMBA}
+                getStoreProducts={getStoreProducts}
+                storeProducts={storeProducts}
+                storeNotProducts={storeNotProducts}
+                storeId={storeId}
+                addStoreProduct={addStoreProduct}
+                removeStoreProduct={deleteStoreProduct}
                 {...props}
             />
         </>

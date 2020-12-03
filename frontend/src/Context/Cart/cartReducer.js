@@ -11,6 +11,8 @@ import {
     CREATE_TRANSFER,
     RESET_CREATE_TRANSFER,
     GET_MARKET_BASKET_ANALYSIS,
+    GET_ALL_STORE_PRODUCTS,
+    GET_ALL_NON_STORE_PRODUCTS
 } from '../types';
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -22,6 +24,20 @@ export default (state, action) => {
                 originalProducts: action.payload,
                 allProducts: action.payload,
                 allProductsFetched: true,
+            };
+
+        case GET_ALL_STORE_PRODUCTS:
+            return {
+                ...state,
+                storeProducts: action.payload,
+                storeProductsFetched: true,
+            };
+
+        case GET_ALL_NON_STORE_PRODUCTS:
+            return {
+                ...state,
+                storeNotProducts: action.payload,
+                storeNotProductsFetched: true,
             };
 
         case REMOVE_FETCHED_STATE:

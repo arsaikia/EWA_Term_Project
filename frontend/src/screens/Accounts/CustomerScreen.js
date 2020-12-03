@@ -34,14 +34,10 @@ const FoodPreferenceOptions = [
 const AccountDetails = ({ loggedInUser, updateUser }) => {
     const [showPopup, setShowPopup] = useState(false);
     const currentUserId = Cookie.get('USER_ID');
-    const [email, setEmail] = useState(
-        get(loggedInUser, 'email', 'arsaikia@gmail.com')
-    );
-    const [fname, setFname] = useState(
-        get(loggedInUser, 'firstName', 'Arunabh')
-    );
-    const [lname, setLname] = useState(get(loggedInUser, 'lastName', 'Saikia'));
-    let foodPrefX = get(loggedInUser, 'foodPreference', 'ALL');
+    const [email, setEmail] = useState(get(loggedInUser, 'email', ''));
+    const [fname, setFname] = useState(get(loggedInUser, 'firstName', ''));
+    const [lname, setLname] = useState(get(loggedInUser, 'lastName', ''));
+    let foodPrefX = get(loggedInUser, 'foodPreference', '');
     foodPrefX = FoodPreferenceOptions.filter(
         (pref) => pref.label === foodPrefX
     );

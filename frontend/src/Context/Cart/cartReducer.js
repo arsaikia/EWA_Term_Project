@@ -27,6 +27,7 @@ export default (state, action) => {
         case REMOVE_FETCHED_STATE:
             return {
                 ...state,
+                allProducts: {},
 
                 allProductsFetched: false,
                 productsInCartFetched: false,

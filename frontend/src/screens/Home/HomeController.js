@@ -63,7 +63,9 @@ const HomeController = ({
     const rememberedUserId = Cookie.get('USER_ID');
     const rememberedFoodPreference = Cookie.get('FOOD_PREFERENCE');
     const rememberMe = Cookie.get('REMEMBER_ME');
-    const [foodPreferenceFetched, setFoodPreferenceFetched] = useState(false);
+    const [foodPreferenceFetched, setFoodPreferenceFetched] = useState(
+        allProductsFetched
+    );
 
     const comingFromProducts = get(props.location.state, 'fromProducts');
 
@@ -84,6 +86,10 @@ const HomeController = ({
      * Handler Functions
      ***************************************************
      */
+
+    useEffect(() => {
+        setFoodPreferenceFetched(allProductsFetched);
+    }, [allProductsFetched]);
 
     const validateRememberMe = useCallback(() => {
         const userId = Cookie.get('USER_NAME');
@@ -190,7 +196,12 @@ const HomeController = ({
         getFilteredProducts,
     ]);
 
-    /*
+    // useEffect(() => {
+    //     rememberedFoodPreference &&
+    //         getFilteredProducts(rememberedFoodPreference, 'USER_PREFERENCE');
+    // }, [allProducts, rememberedFoodPreference, getFilteredProducts]);
+
+    /*getFilteredProducts
      * On Browser Back
      */
     window.onpopstate = (e) => {};

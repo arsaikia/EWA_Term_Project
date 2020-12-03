@@ -14,6 +14,8 @@ import mapStyles from './mapStyles';
 import STORE_ICON from '../../Images/Icons/storeIcon.svg';
 import { FlexContainer, Spacing } from '../../components/StylingComponents';
 
+import { useHistory } from 'react-router-dom';
+
 function Map({
     setStore,
     setShowMap,
@@ -24,6 +26,8 @@ function Map({
     selectedPark,
     setSelectedPark,
 }) {
+    const history = useHistory();
+
     const uid = Cookie.get('USER_ID');
 
     useEffect(() => {
@@ -45,12 +49,15 @@ function Map({
         }
     }, [selectedPark]);
 
-    const buttonClickHandler = () => {
+    const buttonClickHandler = async () => {
         setStore(selectedPark);
         setDefaultCoordinates(selectedPark.coordinates);
-        updateUserStore(uid, selectedPark.storeId);
-        fetchAllProducts(get(selectedPark, 'storeId', ''));
+        await updateUserStore(uid, selectedPark.storeId);
+        await fetchAllProducts(get(selectedPark, 'storeId', ''));
+
         setShowMap(false);
+
+        history.push('home');
     };
 
     return (

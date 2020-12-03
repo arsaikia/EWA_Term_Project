@@ -308,6 +308,7 @@ const Address = ({
                     />
                 </FlexContainer>
                 <Spacing height='10px' />
+
                 {userAddresses &&
                     userAddresses.length > 0 &&
                     userAddresses.map((address) => (
@@ -322,6 +323,20 @@ const Address = ({
                             setSelectedAddress={setSelectedAddress}
                         />
                     ))}
+
+                <FlexContainer
+                    width='100%'
+                    flexDirection='row'
+                    justifyContent='center'
+                    alignSelf='center'
+                    alignItems='center'>
+                    <Description
+                        text={<p>Select an existing Address</p>}
+                        color={lightOnDark}
+                        pointer={'pointer'}
+                    />
+                    
+                </FlexContainer>
             </ExpandingContainer>
             <Spacing height='50px' mobileHeight='30px' />
 

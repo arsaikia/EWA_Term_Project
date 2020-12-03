@@ -32,21 +32,22 @@ const StoreProducts = ({ getStoreProducts, storeProducts }) => {
 
     return (
         <FlexContainer flexDirection='column'>
-            {storeProducts.map((sp) => {
-                return (
-                    <Container
-                        width='100%'
-                        border={`1px solid ${Colors.lightTextColor}`}
-                        margin='5px 0px'
-                        borderRadius='6px'>
-                        <FlexContainer
-                            padding='5px'
-                            backgroundColor={'##fbfbfb'}>
-                            <Description text={sp.productName} bold={550} />
-                        </FlexContainer>
-                    </Container>
-                );
-            })}
+            {storeProducts.length > 0 &&
+                storeProducts.map((sp) => {
+                    return (
+                        <Container
+                            width='100%'
+                            border={`1px solid ${Colors.lightTextColor}`}
+                            margin='5px 0px'
+                            borderRadius='6px'>
+                            <FlexContainer
+                                padding='5px'
+                                backgroundColor={'##fbfbfb'}>
+                                <Description text={sp.productName} bold={550} />
+                            </FlexContainer>
+                        </Container>
+                    );
+                })}
         </FlexContainer>
     );
 };
@@ -59,32 +60,36 @@ const NonStoreProducts = ({ storeNotProducts, storeId, addStoreProduct }) => {
 
     return (
         <FlexContainer flexDirection='column'>
-            {storeNotProducts.map((snp) => {
-                return (
-                    <Container
-                        width='100%'
-                        border={`1px solid ${Colors.lightTextColor}`}
-                        margin='5px 0px'
-                        borderRadius='6px'>
-                        <FlexContainer
-                            padding='5px'
-                            backgroundColor={'##fbfbfb'}
-                            flexDirection='row'
-                            justifyContent='space-between'
-                            alignItems='center'>
-                            <Description text={snp.productName} bold={550} />
-                            <button
-                                onClick={() =>
-                                    addProductToStoreHandler(snp.productId)
-                                }
-                                type='button'
-                                class='btn btn-outline-success'>
-                                Add to store
-                            </button>
-                        </FlexContainer>
-                    </Container>
-                );
-            })}
+            {storeNotProducts.length > 0 &&
+                storeNotProducts.map((snp) => {
+                    return (
+                        <Container
+                            width='100%'
+                            border={`1px solid ${Colors.lightTextColor}`}
+                            margin='5px 0px'
+                            borderRadius='6px'>
+                            <FlexContainer
+                                padding='5px'
+                                backgroundColor={'##fbfbfb'}
+                                flexDirection='row'
+                                justifyContent='space-between'
+                                alignItems='center'>
+                                <Description
+                                    text={snp.productName}
+                                    bold={550}
+                                />
+                                <button
+                                    onClick={() =>
+                                        addProductToStoreHandler(snp.productId)
+                                    }
+                                    type='button'
+                                    class='btn btn-outline-success'>
+                                    Add to store
+                                </button>
+                            </FlexContainer>
+                        </Container>
+                    );
+                })}
         </FlexContainer>
     );
 };
@@ -101,32 +106,38 @@ const NonStoreProductsRemove = ({
 
     return (
         <FlexContainer flexDirection='column'>
-            {storeProducts.map((snp) => {
-                return (
-                    <Container
-                        width='100%'
-                        border={`1px solid ${Colors.lightTextColor}`}
-                        margin='5px 0px'
-                        borderRadius='6px'>
-                        <FlexContainer
-                            padding='5px'
-                            // backgroundColor={'#a0e08f'}
-                            flexDirection='row'
-                            justifyContent='space-between'
-                            alignItems='center'>
-                            <Description text={snp.productName} bold={550} />
-                            <button
-                                onClick={() =>
-                                    removeProductToStoreHandler(snp.productId)
-                                }
-                                type='button'
-                                class='btn btn-outline-danger'>
-                                Remove from store
-                            </button>
-                        </FlexContainer>
-                    </Container>
-                );
-            })}
+            {storeProducts.length > 0 &&
+                storeProducts.map((snp) => {
+                    return (
+                        <Container
+                            width='100%'
+                            border={`1px solid ${Colors.lightTextColor}`}
+                            margin='5px 0px'
+                            borderRadius='6px'>
+                            <FlexContainer
+                                padding='5px'
+                                // backgroundColor={'#a0e08f'}
+                                flexDirection='row'
+                                justifyContent='space-between'
+                                alignItems='center'>
+                                <Description
+                                    text={snp.productName}
+                                    bold={550}
+                                />
+                                <button
+                                    onClick={() =>
+                                        removeProductToStoreHandler(
+                                            snp.productId
+                                        )
+                                    }
+                                    type='button'
+                                    class='btn btn-outline-danger'>
+                                    Remove from store
+                                </button>
+                            </FlexContainer>
+                        </Container>
+                    );
+                })}
         </FlexContainer>
     );
 };

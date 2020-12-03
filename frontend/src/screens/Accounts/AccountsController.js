@@ -54,7 +54,9 @@ const AccountsController = ({
         storeProducts,
         getNonStoreProducts,
         storeNotProducts,
-        storeNotProductsFetched
+        storeNotProductsFetched,
+        addStoreProduct,
+        deleteStoreProduct,
     } = cartContext;
 
     const transactionContext = useContext(TransactionContext);
@@ -150,7 +152,7 @@ const AccountsController = ({
         fetchingAddress,
         storeProductsFetched,
         storeId,
-        isFetchingStoreProducts
+        isFetchingStoreProducts,
     ]);
 
     useEffect(() => {
@@ -186,6 +188,8 @@ const AccountsController = ({
                 storeProducts={storeProducts}
                 storeNotProducts={storeNotProducts}
                 storeId={storeId}
+                addStoreProduct={addStoreProduct}
+                removeStoreProduct={deleteStoreProduct}
                 {...props}
             />
         </>

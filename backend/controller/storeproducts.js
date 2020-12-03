@@ -7,13 +7,12 @@ import { v4 as uuid } from 'uuid';
 
 /*
  * @desc     Post Create row in storeproducts
- * @route    GET /api/v1/storeproducts/create/
+ * @route    POST /api/v1/storeproducts/create/
  * @access   Public
  */
 
 const createStoreProduct = asyncHandler(async (req, res, next) => {
     // Validate Body is not empty
-    console.log('req.body', req.body);
     if (!req.body.storeId || !req.body.productId) {
         return next(
             res.status(400).send({

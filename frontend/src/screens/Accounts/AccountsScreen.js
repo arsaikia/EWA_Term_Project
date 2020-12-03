@@ -31,6 +31,8 @@ const AccountsScreen = ({
     storeProducts,
     storeNotProducts,
     storeId,
+    addStoreProduct,
+    removeStoreProduct,
     ...props
 }) => {
     // const history = useHistory();
@@ -66,6 +68,8 @@ const AccountsScreen = ({
                         storeProducts={storeProducts}
                         storeNotProducts={storeNotProducts}
                         storeId={storeId}
+                        addStoreProduct={addStoreProduct}
+                        removeStoreProduct={removeStoreProduct}
                     />
                 )}
 

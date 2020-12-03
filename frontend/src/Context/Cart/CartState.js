@@ -21,7 +21,8 @@ import {
     RESET_CREATE_TRANSFER,
     GET_MARKET_BASKET_ANALYSIS,
     GET_ALL_STORE_PRODUCTS,
-    GET_ALL_NON_STORE_PRODUCTS
+    GET_ALL_NON_STORE_PRODUCTS,
+    ADD_STORE_PRODUCT,
 } from '../types';
 
 import CartContext from './cartContext';
@@ -375,6 +376,31 @@ const CartState = (props) => {
             type: GET_ALL_NON_STORE_PRODUCTS,
         });
     };
+    /*
+     * ADD_STORE_PRODUCT
+     */
+    const addStoreProduct = async (storeId, productId) => {
+        await API.POST({
+            url: `storeproducts/create/`,
+            body: { storeId, productId },
+        });
+
+        await getStoreProducts(storeId);
+        await getNonStoreProducts(storeId);
+    };
+
+    /*
+     * REMOVE_STORE_PRODUCT
+     */
+    const deleteStoreProduct = async (storeId, productId) => {
+        await API.POST({
+            url: `storeproducts/delete/`,
+            body: { storeId, productId },
+        });
+
+        await getStoreProducts(storeId);
+        await getNonStoreProducts(storeId);
+    };
 
     return (
         <CartContext.Provider
@@ -394,6 +420,8 @@ const CartState = (props) => {
                 updateCard,
                 getStoreProducts,
                 getNonStoreProducts,
+                addStoreProduct,
+                deleteStoreProduct,
                 allProducts: state.allProducts,
                 allProductsFetched: state.allProductsFetched,
                 productsInCart: state.productsInCart,
@@ -414,7 +442,7 @@ const CartState = (props) => {
                 storeProducts: state.storeProducts,
                 storeProductsFetched: state.storeProductsFetched,
                 storeNotProducts: state.storeNotProducts,
-                storeNotProductsFetched: state.storeNotProductsFetched
+                storeNotProductsFetched: state.storeNotProductsFetched,
             }}>
             {props.children}
         </CartContext.Provider>

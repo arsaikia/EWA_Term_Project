@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { FormDropdown, FormInput } from '../../components/Forms';
-import ADMIN from '../../Images/admin.svg';
+import MANAGER from '../../Images/manager.svg';
 import TICK from '../../Images/Icons/tick.svg';
 import { get, isEmpty } from 'lodash';
 import { Button } from '../../components/Button';
@@ -51,8 +51,11 @@ const StoreProducts = ({ getStoreProducts, storeProducts }) => {
     );
 };
 
-const NonStoreProducts = ({ storeNotProducts }) => {
-    // console.log('storeProductsXXXX', storeNotProducts);
+const NonStoreProducts = ({ storeNotProducts, storeId, addStoreProduct }) => {
+    const addProductToStoreHandler = (productId) => {
+        // console.log('addStoreProduct', storeId, productId);
+        return addStoreProduct(storeId, productId);
+    };
 
     return (
         <FlexContainer flexDirection='column'>
@@ -71,9 +74,54 @@ const NonStoreProducts = ({ storeNotProducts }) => {
                             alignItems='center'>
                             <Description text={snp.productName} bold={550} />
                             <button
+                                onClick={() =>
+                                    addProductToStoreHandler(snp.productId)
+                                }
                                 type='button'
                                 class='btn btn-outline-success'>
                                 Add to store
+                            </button>
+                        </FlexContainer>
+                    </Container>
+                );
+            })}
+        </FlexContainer>
+    );
+};
+
+const NonStoreProductsRemove = ({
+    storeProducts,
+    storeId,
+    removeStoreProduct,
+}) => {
+    const removeProductToStoreHandler = (productId) => {
+        // console.log('removeStoreProduct', storeId, productId);
+        return removeStoreProduct(storeId, productId);
+    };
+
+    return (
+        <FlexContainer flexDirection='column'>
+            {storeProducts.map((snp) => {
+                return (
+                    <Container
+                        width='100%'
+                        border={`1px solid ${Colors.lightTextColor}`}
+                        margin='5px 0px'
+                        borderRadius='6px'>
+                        <FlexContainer
+                            padding='5px'
+                            // backgroundColor={'#a0e08f'}
+                            flexDirection='row'
+                            justifyContent='space-between'
+                            alignItems='center'>
+                            <Description text={snp.productName} bold={550} />
+                            <button
+                                onClick={() =>
+                                    removeProductToStoreHandler(snp.productId)
+                                }
+                                type='button'
+                                class='btn btn-outline-danger'>
+                                Remove from store
                             </button>
                         </FlexContainer>
                     </Container>
@@ -88,6 +136,8 @@ const ManagerScreen = ({
     storeProducts,
     storeNotProducts,
     storeId,
+    addStoreProduct,
+    removeStoreProduct,
 }) => {
     const [selectedOption, setSelectedOption] = useState(1);
 
@@ -109,7 +159,7 @@ const ManagerScreen = ({
             fadeIn
             duration={1200}
             style={{
-                backgroundImage: `url(${ADMIN})`,
+                backgroundImage: `url(${MANAGER})`,
                 backgroundPosition: 'right',
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: '60%',
@@ -148,9 +198,25 @@ const ManagerScreen = ({
                 </FlexContainer>
 
                 {/* The Inforrmation Container */}
+
+                {
+                    <FlexContainer height='10%' marginTop='30px'>
+                        <HeaderTwo
+                            color={Colors.lightTextColor}
+                            text={
+                                <p>
+                                    {selectedOption === 2
+                                        ? `Products not in store`
+                                        : 'Products currently in store'}
+                                </p>
+                            }
+                        />
+                    </FlexContainer>
+                }
+
                 {selectedOption === 1 && (
                     <FlexContainer
-                        paddingTop='120px'
+                        paddingTop='40px'
                         mobilePaddingTop='80px'
                         width='100%'
                         overflow='scroll'
@@ -164,14 +230,6 @@ const ManagerScreen = ({
                 )}
 
                 {selectedOption === 2 && (
-                    <FlexContainer height='10%' marginTop='30px'>
-                        <HeaderTwo
-                            color={Colors.lightTextColor}
-                            text={<p>Products Not in store:</p>}
-                        />
-                    </FlexContainer>
-                )}
-                {selectedOption === 2 && (
                     <FlexContainer
                         paddingTop='20px'
                         mobilePaddingTop='20px'
@@ -180,7 +238,28 @@ const ManagerScreen = ({
                         overflow='scroll'
                         flexDirection='column'
                         alignItems='space-between'>
-                        <NonStoreProducts storeNotProducts={storeNotProducts} />
+                        <NonStoreProducts
+                            storeNotProducts={storeNotProducts}
+                            storeId={storeId}
+                            addStoreProduct={addStoreProduct}
+                        />
+                    </FlexContainer>
+                )}
+
+                {selectedOption === 3 && (
+                    <FlexContainer
+                        paddingTop='20px'
+                        mobilePaddingTop='20px'
+                        width='100%'
+                        height='100%'
+                        overflow='scroll'
+                        flexDirection='column'
+                        alignItems='space-between'>
+                        <NonStoreProductsRemove
+                            storeProducts={storeProducts}
+                            storeId={storeId}
+                            removeStoreProduct={removeStoreProduct}
+                        />
                     </FlexContainer>
                 )}
 

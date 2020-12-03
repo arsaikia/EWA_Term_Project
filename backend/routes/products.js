@@ -6,9 +6,15 @@ import {
     getProduct,
     getFilteredProducts,
     getAllMatchingProducts,
+    getProductsPerStore,
+    getProductsNotInStore
 } from '../controller/products.js';
 
 router.route('/store/:id').get(getProducts);
+
+router.route('/instore/:id').get(getProductsPerStore);
+
+router.route('/nonstore/:id').get(getProductsNotInStore);
 
 router.route('/').post(getAllMatchingProducts);
 

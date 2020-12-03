@@ -44,9 +44,9 @@ const orders = JSON.parse(fs.readFileSync(`./_data/orders.json`, 'utf-8'));
 const importData = async () => {
     try {
         // await Users.bulkCreate(users);
-        // await Products.bulkCreate(products);
+        await Products.bulkCreate(products);
         // await Stores.bulkCreate(stores);
-        await StoreProducts.bulkCreate(storeproducts);
+        // await StoreProducts.bulkCreate(storeproducts);
         // await Shares.bulkCreate(shares);
         // await Carts.bulkCreate(carts);
         // await Cards.bulkCreate(cards);

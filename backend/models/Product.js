@@ -88,7 +88,7 @@ Products.beforeCreate((product, _) => {
 });
 
 SQL.query('SET FOREIGN_KEY_CHECKS = 0', { raw: true }).then(() => {
-    Products.sync()
+    Products.sync({})
         .then(() => {
             console.log(`Products created`.cyan.bold);
         })

@@ -58,13 +58,13 @@ const CartState = (props) => {
     const fetchAllProducts = async (
         storeId = '706ab483-b96f-4b88-81ed-66b7beca5f5a'
     ) => {
+        await removedFetchedState();
         const response = await API.GET({ url: `products/store/${storeId}` });
         const products = get(get(response, 'data'), 'data') || [];
         dispatch({
             payload: products,
             type: GET_ALL_PRODUCTS,
         });
-        // await getFilteredProducts();
     };
 
     const removedFetchedState = () => {

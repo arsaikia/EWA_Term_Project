@@ -1,0 +1,8 @@
+
+
+* {
+    -ms-overflow-style: scroll !important;
+}
+::-webkit-scrollbar {
+    display: default !important;
+}

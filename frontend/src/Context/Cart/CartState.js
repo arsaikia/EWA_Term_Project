@@ -96,6 +96,7 @@ const CartState = (props) => {
         let currentFilters = filterBy ? { ...filters, ...newFilter } : filters;
         setFilters(currentFilters);
 
+
         // Filter By user preference
         const userPref = get(currentFilters, 'USER_PREFERENCE');
         if (!isEmpty(userPref) && userPref !== 'ALL') {
@@ -103,6 +104,8 @@ const CartState = (props) => {
                 return product.foodPreference === userPref;
             });
         }
+
+        
 
         // Filter By  STORE
         const storeSelected = get(currentFilters, 'STORE');
@@ -112,11 +115,27 @@ const CartState = (props) => {
             });
         }
 
+
+
+        if (get(currentFilters, 'SUB_CATEGORY')) {
+            currentFilters.CATEGORY = '';
+        } else {
+            currentFilters.SUB_CATEGORY = '';
+        }
+
         // Filter by category
         const category = get(currentFilters, 'CATEGORY');
         if (!isEmpty(category)) {
             filteredProducts = filteredProducts.filter(
                 (product) => product.category === category
+            );
+        }
+
+        // Filter by sub-category
+        const subcategory = get(currentFilters, 'SUB_CATEGORY');
+        if (!isEmpty(subcategory)) {
+            filteredProducts = filteredProducts.filter(
+                (product) => product.subcategory === subcategory
             );
         }
 

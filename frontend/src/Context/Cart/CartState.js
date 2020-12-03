@@ -105,7 +105,6 @@ const CartState = (props) => {
             });
         }
 
-        
 
         // Filter By  STORE
         const storeSelected = get(currentFilters, 'STORE');

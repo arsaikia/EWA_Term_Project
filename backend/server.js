@@ -17,6 +17,7 @@ import { addressesRoute } from './routes/addresses.js';
 import { sharesRoute } from './routes/shares.js';
 import { reviewRouter } from './routes/reviews.js';
 import { marketbasketRoute } from './routes/marketbasket.js';
+import { storeproductsRoute } from './routes/storeproducts.js';
 
 dotenv.config();
 
@@ -48,6 +49,7 @@ app.use('/addresses', addressesRoute);
 app.use('/shares', sharesRoute);
 app.use('/reviews', reviewRouter);
 app.use('/marketbasket', marketbasketRoute);
+app.use('/storeproducts', storeproductsRoute);
 
 // Listen to the PORT
 const PORT = process.env.PORT || 5005;

@@ -124,4 +124,32 @@ const getFilteredProducts = asyncHandler(async (req, res, next) => {
     return next(res.status(200).json({ success: true, data: product }));
 });
 
-export { getProducts, getProduct, getFilteredProducts, getAllMatchingProducts };
+const getProductsPerStore = asyncHandler(async (req, res, next) => {
+    const query = `select * from products P join storeproducts SP on P.productId = SP.productId where SP.storeId='${req.params.id}'`;
+    const productsInStore = await SQL.query(query, { raw: true });
+    if (!productsInStore || productsInStore.length == 0) {
+        console.log(`Products Not Found with StoreId ${req.params.id}`);
+        return res.status(404).json({
+            success: false,
+            error: `Products Not Found with StoreId '${req.params.id}'`,
+        });
+    }
+    console.log(req.params.id);
+    return next(res.status(200).json({ success: true, data: productsInStore }));
+});
+
+const getProductsNotInStore = asyncHandler(async (req, res, next) => {
+    const query = `Select * from products PP where PP.productId not in (select P.productId from products P join storeproducts SP on P.productId = SP.productId where SP.storeId='${req.params.id}')`;
+    const productsNotInStore = await SQL.query(query, { raw: true });
+    if (!productsNotInStore || productsNotInStore.length == 0) {
+        console.log(`All products are Found with StoreId ${req.params.id}`);
+        return res.status(404).json({
+            success: false,
+            error: `All products are Found with StoreId '${req.params.id}'`,
+        });
+    }
+    console.log(req.params.id);
+    return next(res.status(200).json({ success: true, data: productsNotInStore }));
+});
+
+export { getProducts, getProduct, getFilteredProducts, getAllMatchingProducts, getProductsPerStore, getProductsNotInStore };

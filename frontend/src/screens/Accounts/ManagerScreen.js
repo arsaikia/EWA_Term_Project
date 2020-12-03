@@ -291,7 +291,7 @@ const ManagerScreen = ({
                     )}
                 </Container>
 
-                {console.log(storeData)}
+                {/* {console.log(storeData)} */}
 
                 {/* The Inforrmation Container */}
             </FlexContainer>

@@ -20,6 +20,8 @@ import {
     CREATE_TRANSFER,
     RESET_CREATE_TRANSFER,
     GET_MARKET_BASKET_ANALYSIS,
+    GET_ALL_STORE_PRODUCTS,
+    GET_ALL_NON_STORE_PRODUCTS
 } from '../types';
 
 import CartContext from './cartContext';
@@ -45,6 +47,10 @@ const CartState = (props) => {
         lastTransfer: {},
         mba: {},
         mbaFetched: false,
+        storeProducts: [],
+        storeProductsFetched: false,
+        storeNotProducts: [],
+        storeNotProductsFetched: false,
     };
 
     const [filters, setFilters] = useState({});
@@ -96,7 +102,6 @@ const CartState = (props) => {
         let currentFilters = filterBy ? { ...filters, ...newFilter } : filters;
         setFilters(currentFilters);
 
-
         // Filter By user preference
         const userPref = get(currentFilters, 'USER_PREFERENCE');
         if (!isEmpty(userPref) && userPref !== 'ALL') {
@@ -105,7 +110,6 @@ const CartState = (props) => {
             });
         }
 
-
         // Filter By  STORE
         const storeSelected = get(currentFilters, 'STORE');
         if (!isEmpty(storeSelected)) {
@@ -113,8 +117,6 @@ const CartState = (props) => {
                 return product.storeId === storeSelected;
             });
         }
-
-
 
         if (get(currentFilters, 'SUB_CATEGORY')) {
             currentFilters.CATEGORY = '';
@@ -329,7 +331,6 @@ const CartState = (props) => {
         });
 
         const transaction = get(get(response, 'data'), 'data');
-        console.log('transaction', response, transaction);
 
         dispatch({
             payload: transaction,
@@ -340,6 +341,38 @@ const CartState = (props) => {
     const clearTransferStatus = () => {
         dispatch({
             type: RESET_CREATE_TRANSFER,
+        });
+    };
+
+    /*
+     * GET_ALL_STORE_PRODUCTS
+     */
+    const getStoreProducts = async (storeId) => {
+        const response = await API.GET({
+            url: `products/instore/${storeId}`,
+        });
+
+        let allStores = get(response.data, 'data');
+
+        dispatch({
+            payload: allStores[0],
+            type: GET_ALL_STORE_PRODUCTS,
+        });
+    };
+
+    /*
+     * GET_ALL_NON_STORE_PRODUCTS
+     */
+    const getNonStoreProducts = async (storeId) => {
+        const response = await API.GET({
+            url: `products/nonstore/${storeId}`,
+        });
+
+        let allStores = get(response.data, 'data');
+
+        dispatch({
+            payload: allStores[0],
+            type: GET_ALL_NON_STORE_PRODUCTS,
         });
     };
 
@@ -359,6 +392,8 @@ const CartState = (props) => {
                 clearTransferStatus,
                 decrementProductsInCart,
                 updateCard,
+                getStoreProducts,
+                getNonStoreProducts,
                 allProducts: state.allProducts,
                 allProductsFetched: state.allProductsFetched,
                 productsInCart: state.productsInCart,
@@ -376,6 +411,10 @@ const CartState = (props) => {
                 lastTransfer: state.lastTransfer,
                 mba: state.mba,
                 mbaFetched: state.mbaFetched,
+                storeProducts: state.storeProducts,
+                storeProductsFetched: state.storeProductsFetched,
+                storeNotProducts: state.storeNotProducts,
+                storeNotProductsFetched: state.storeNotProductsFetched
             }}>
             {props.children}
         </CartContext.Provider>

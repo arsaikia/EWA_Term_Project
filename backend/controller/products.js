@@ -68,7 +68,6 @@ const getProduct = asyncHandler(async (req, res, next) => {
     return next(res.status(200).json({ success: true, data: product }));
 });
 
-
 /*
  * @desc     Get all product
  * @route    GET /api/v1/products/
@@ -91,7 +90,6 @@ const getAllMatchingProducts = asyncHandler(async (req, res, next) => {
             })
         );
     }
-
 
     return next(res.status(200).json({ success: true, data: product }));
 });
@@ -135,7 +133,9 @@ const getProductsPerStore = asyncHandler(async (req, res, next) => {
         });
     }
     console.log(req.params.id);
-    return next(res.status(200).json({ success: true, data: productsInStore }));
+    return next(
+        res.status(200).json({ success: true, data: productsInStore[0] })
+    );
 });
 
 const getProductsNotInStore = asyncHandler(async (req, res, next) => {
@@ -149,7 +149,16 @@ const getProductsNotInStore = asyncHandler(async (req, res, next) => {
         });
     }
     console.log(req.params.id);
-    return next(res.status(200).json({ success: true, data: productsNotInStore }));
+    return next(
+        res.status(200).json({ success: true, data: productsNotInStore })
+    );
 });
 
-export { getProducts, getProduct, getFilteredProducts, getAllMatchingProducts, getProductsPerStore, getProductsNotInStore };
+export {
+    getProducts,
+    getProduct,
+    getFilteredProducts,
+    getAllMatchingProducts,
+    getProductsPerStore,
+    getProductsNotInStore,
+};

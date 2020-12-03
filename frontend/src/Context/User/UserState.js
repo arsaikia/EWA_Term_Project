@@ -11,6 +11,7 @@ import {
     AUTHENTICATE_USER,
     AUTHENTICATION_ERROR,
     AUTHENTICATE_USER_FALSE,
+    
 } from '../types';
 
 import UserContext from './userContext';
@@ -50,6 +51,7 @@ const UserState = (props) => {
                 );
                 Cookie.set('USER_TYPE', get(user[0], 'userType', ''), '');
                 Cookie.set('REMEMBER_ME', rememberMe, false);
+                Cookie.set('STORE_ID', get(user[0], 'storeManager', ''), '');
 
                 return dispatch({
                     payload: user,

@@ -18,6 +18,7 @@ import { sharesRoute } from './routes/shares.js';
 import { reviewRouter } from './routes/reviews.js';
 import { marketbasketRoute } from './routes/marketbasket.js';
 import { storeproductsRoute } from './routes/storeproducts.js';
+import { dealsRoute } from './routes/deals.js';
 
 dotenv.config();
 
@@ -50,6 +51,7 @@ app.use('/shares', sharesRoute);
 app.use('/reviews', reviewRouter);
 app.use('/marketbasket', marketbasketRoute);
 app.use('/storeproducts', storeproductsRoute);
+app.use('/deals', dealsRoute);
 
 // Listen to the PORT
 const PORT = process.env.PORT || 5005;

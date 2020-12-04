@@ -234,7 +234,7 @@ const CartController = ({ ...props }) => {
                 userId,
                 selectedAddressId,
                 selectedCardId,
-                selectedStore
+                selectedStore,
             });
         }
     }, [
@@ -331,7 +331,7 @@ const CartController = ({ ...props }) => {
     }, [getAllCards]);
 
     useEffect(() => {
-        Cookie.set('STORE_ID', selectedStore);
+        !isEmpty(selectedStore) && Cookie.set('STORE_ID', selectedStore);
     }, [selectedStore]);
 
     useEffect(() => {

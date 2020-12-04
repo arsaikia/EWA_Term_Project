@@ -1,7 +1,13 @@
 import React, { Component, useState, useRef } from 'react';
 import styled from 'styled-components/macro';
 import { Row, Col } from 'react-bootstrap';
-import { Description } from '../../components/Texts';
+import {
+    Description,
+    HeaderThree,
+    Note,
+    HeaderOne,
+    HeaderTwo,
+} from '../../components/Texts';
 import Carousel from 'react-elastic-carousel';
 import SHOW from '../../Images/Icons/show.svg';
 import HIDE from '../../Images/Icons/hide.svg';
@@ -22,6 +28,18 @@ import { ItemCard } from '../../components/Cards';
 
 import { LeftNav } from './LeftNav';
 
+import { useHistory } from 'react-router-dom';
+
+const StyledImage = styled.img`
+    width: ${(props) => props.width};
+    cursor: pointer;
+
+    @media (max-width: 1150px) {
+        width: ${(props) => props.mobileWidth};
+        height: ${(props) => props.mobileWidth};
+    }
+`;
+
 const GridFlexContainer = styled(FlexContainer)`
     @media screen and (max-width: 1000px) {
         justify-content: 'center';
@@ -36,19 +54,86 @@ const breakPoints = [
     { width: 1200, itemsToShow: 1 },
 ];
 
-const CaoruselHome = () => {
-    const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 123, 221];
+const SingleTweetDeal = ({ productId, productName, tweet, imageSrc }) => {
+    const image =
+        require(`../../Images/products/${imageSrc.toLowerCase()}`).default ||
+        'apple';
+
+    const history = useHistory();
+
+    return (
+        <FlexContainer
+            height='100%'
+            width='100%'
+            minHeight='150px'
+            cursor='pointer'>
+            <FlexContainer
+                width='100%'
+                backgroundColor='rgba(98,105,119, 0.20)'
+                flexDirection='row'
+                justifyContent='space-between'
+                alignItems='center'
+                borderRadius='4px'
+                padding='20px'
+                cursor='pointer'>
+                <Container width='70%'>
+                    <HeaderThree
+                        text={<p>{tweet}</p>}
+                        fontStyle={'italic'}
+                        cursor='pointer'
+                    />
+                </Container>
+                <FlexContainer
+                    width='140px'
+                    // backgroundColor='white'
+                    cursor='pointer'
+                    height='140px'
+                    alignItems='center'
+                    justifyContent='center'
+                    borderRadius='75px'
+                    overflow='hidden'
+                    onClick={() => history.push(`/products/${productId}`)}>
+                    <StyledImage
+                        src={image}
+                        alt='...'
+                        responsive
+                        height='100%'
+                        mobileWidth='80%'
+                        style={{
+                            position: 'absolute',
+                            overflow: 'hidden',
+                        }}
+                    />
+
+                    {/* <Note text={productName} /> */}
+                </FlexContainer>
+                <FlexContainer
+                    width='100px'
+                    backgroundColor='khaki'
+                    alignItems='center'
+                    justifyContent='center'
+                    borderRadius='15%'></FlexContainer>
+            </FlexContainer>
+        </FlexContainer>
+    );
+};
+
+const CaoruselHome = ({ tweetDeals }) => {
+    console.log('tweetDeals', tweetDeals);
+
+    // require('../../Images/products/apple.png').default;
+
     const itemsPerPage = 1;
     const carouselRef = useRef(null);
     let resetTimeout;
-    const totalPages = Math.ceil(items.length / itemsPerPage);
+    const totalPages = Math.ceil(tweetDeals.length / itemsPerPage);
 
     return (
         <Carousel
             ref={carouselRef}
             breakPoints={breakPoints}
             enableAutoPlay
-            autoPlaySpeed={2000}
+            autoPlaySpeed={5000}
             onNextEnd={({ index }) => {
                 clearTimeout(resetTimeout);
                 if (index + 1 === totalPages) {
@@ -57,50 +142,14 @@ const CaoruselHome = () => {
                     }, 1500); // same time
                 }
             }}>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 123, 221].map(() => (
-                <FlexContainer height='100%' width='100%'>
-                    <FlexContainer width='100%' backgroundColor='khaki'>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Eveniet nulla laborum doloribus numquam accusamus.
-                        Iusto, vel! Architecto numquam omnis obcaecati, quod
-                        beatae id nihil unde inventore adipisci velit?
-                        Accusantium sint commodi, tempora quisquam sed numquam
-                        praesentium autem expedita, consectetur vero itaque
-                        reiciendis repellat! Quisquam perspiciatis omnis
-                        suscipit sed sequi mollitia quam laborum nulla commodi
-                        sapiente quia quidem, sint ipsum ipsam deserunt? Maxime
-                        consequuntur voluptatum est velit optio atque quae
-                        voluptas quo quia deleniti itaque accusantium, suscipit
-                        odio ipsum distinctio quibusdam expedita natus dolorem
-                        sint impedit? Laudantium magni consequatur architecto
-                        officia ab, quidem corporis et velit voluptate
-                        voluptates eligendi illo excepturi? deserunt? Maxime
-                        consequuntur voluptatum est velit optio atque quae
-                        voluptas quo quia deleniti itaque accusantium, suscipit
-                        odio ipsum distinctio quibusdam expedita natus dolorem
-                        sint impedit? Laudantium magni consequatur architecto
-                        officia ab, quidem corporis et velit voluptate
-                        voluptates eligendi illo excepturi? deserunt? Maxime
-                        consequuntur voluptatum est velit optio atque quae
-                        voluptas quo quia deleniti itaque accusantium, suscipit
-                        odio ipsum distinctio quibusdam expedita natus dolorem
-                        sint impedit? Laudantium magni consequatur architecto
-                        officia ab, quidem corporis et velit voluptate
-                        voluptates eligendi illo excepturi?deserunt? Maxime
-                        consequuntur voluptatum est velit optio atque quae
-                        voluptas quo quia deleniti itaque accusantium, suscipit
-                        odio ipsum distinctio quibusdam expedita natus dolorem
-                        sint impedit? Laudantium magni consequatur architecto
-                        officia ab, quidem corporis et velit voluptate
-                        voluptates eligendi illo excepturi?deserunt? Maxime
-                        consequuntur voluptatum est velit optio atque quae
-                        voluptas quo quia deleniti itaque accusantium, suscipit
-                        odio ipsum distinctio quibusdam expedita natus dolorem
-                        sint impedit? Laudantium magni consequatur architecto
-                        officia ab, quidem corporis et velit voluptate
-                        voluptates eligendi illo excepturi?
-                    </FlexContainer>
-                </FlexContainer>
+            {tweetDeals.map((tweet) => (
+                <SingleTweetDeal
+                    key={tweet.productId}
+                    productId={tweet.productId}
+                    productName={tweet.productName}
+                    tweet={tweet.tweet}
+                    imageSrc={tweet.image}
+                />
             ))}
         </Carousel>
     );
@@ -128,6 +177,7 @@ const HomeScreen = ({
     setDefaultCoordinates,
     selectedPark,
     setSelectedPark,
+    tweetDeals,
     ...props
 }) => {
     const [showPopup, setShowPopup] = useState(!false);
@@ -170,7 +220,7 @@ const HomeScreen = ({
                     // overflow='scroll'
                 >
                     <FlexContainer height='50%' mobileHeight='30%' margin='1%'>
-                        <CaoruselHome />
+                        <CaoruselHome tweetDeals={tweetDeals} />
                     </FlexContainer>
 
                     <Container

@@ -61,7 +61,7 @@ const StyledHeaderTwo = styled.div`
 const StyledHeaderThree = styled.div`
     p {
         font-family: roboto;
-        font-style: normal;
+        font-style: ${props => props.fontStyle || 'normal'};
         font-weight: ${(props) => (props.bold ? 700 : 600)};
         font-size: 20px;
         line-height: 27px;
@@ -235,9 +235,9 @@ const HeaderTwo = ({
     );
 };
 
-const HeaderThree = ({ text, color = 'black', bold = false, pointer }) => {
+const HeaderThree = ({ text, color = 'black', bold = false, pointer, fontStyle }) => {
     return (
-        <StyledHeaderThree bold={bold} color={color} pointer={pointer}>
+        <StyledHeaderThree bold={bold} color={color} pointer={pointer} fontStyle={fontStyle}>
             {text}
         </StyledHeaderThree>
     );

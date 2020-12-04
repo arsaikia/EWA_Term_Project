@@ -24,6 +24,11 @@ const OrdersController = ({
      * GLOBAL STATE FROM CONTEXT API
      ***************************************************
      */
+    const cartContext = useContext(CartContext);
+    const { updateProductsInCart, allProductsFetched } = cartContext;
+
+
+
     const appContext = useContext(AppContext);
     const { setShowHeader } = appContext;
 
@@ -151,6 +156,7 @@ const OrdersController = ({
                 reviewSubmitHandler={reviewSubmitHandler}
                 userReviews={userReviews}
                 transactionStatusUpdateHandler={transactionStatusUpdateHandler}
+                updateProductsInCart={updateProductsInCart}
                 {...props}
             />
         </>

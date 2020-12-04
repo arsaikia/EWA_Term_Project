@@ -252,7 +252,6 @@ const Reviews = ({ reviews }) => {
     );
 };
 
-
 const ShareProduct = ({ showShare, setShowShare, userId, productId }) => {
     const [email, setEmail] = useState('');
     const [shareDone, setShareDone] = useState(false);
@@ -315,30 +314,6 @@ const ShareProduct = ({ showShare, setShowShare, userId, productId }) => {
         />
     );
 };
-
-// const reviews = [
-//     {
-//         id: 1,
-//         reviewerName: 'Arunabh saikia',
-//         text:
-//             'amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!amconsectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!ameet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!',
-//         rating: 3.5,
-//     },
-//     {
-//         id: 2,
-//         reviewerName: 'John Smith',
-//         text:
-//             'amet consectetur adipisicing elit. Eligendi quaerat consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!ame eum dignissimos maxime, recusandae consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!ame asperiores!',
-//         rating: 4,
-//     },
-//     {
-//         id: 3,
-//         reviewerName: 'Jane Smith',
-//         text:
-//             'amet consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!ame consectetur adipisicing elit. Eligendi quaerat eum dignissimos maxime, recusandae asperiores!ame recusandae asperiores!',
-//         rating: 3,
-//     },
-// ];
 
 const ProductsScreen = ({
     productById,

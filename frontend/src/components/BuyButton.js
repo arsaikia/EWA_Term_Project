@@ -18,7 +18,6 @@ const BuyButton = ({
     const [currentItemQuantity, setCurrentItemQuantity] = useState(quantity);
 
     const quantityHandler = (val) => () => {
-        console.log('Clicked', val);
         if (val === 'ADD') {
             addProductToCart(productId);
             setCurrentItemQuantity(currentItemQuantity + 1);

@@ -53,6 +53,10 @@ const HomeController = ({
         transferCreated,
         clearTransferStatus,
         decrementProductsInCart,
+        getAllTweetDeals,
+        tweetDeals,
+        selectedStore,
+        tweetDealsFetched,
     } = cartContext;
 
     /*
@@ -81,11 +85,24 @@ const HomeController = ({
         41.80908,
     ]);
     const [selectedPark, setSelectedPark] = useState(null);
+
+    const [loadingTweets, setLoadingTweets] = useState(!tweetDealsFetched);
     /*
      ***************************************************
      * Handler Functions
      ***************************************************
      */
+
+    const [selectedStreId, setSelectedStreId] = useState(Cookie.get('USER_ID'));
+
+    useEffect(() => {
+        if (!isEmpty(selectedStreId)) {
+            let store = storeData.filter((st) => st.storeId === selectedStreId);
+            store = store.length > 0 && store[0];
+            console.log('store', store);
+            setStore(store);
+        }
+    }, [selectedStreId]);
 
     useEffect(() => {
         setFoodPreferenceFetched(allProductsFetched);
@@ -180,6 +197,11 @@ const HomeController = ({
             setFoodPreferenceFetched(true);
             getFilteredProducts(rememberedFoodPreference, 'USER_PREFERENCE');
         }
+
+        if (loadingTweets && !tweetDealsFetched) {
+            setLoadingTweets(false);
+            getAllTweetDeals();
+        }
     }, [
         isUserAuthenticated,
         loggedInUser,
@@ -193,6 +215,7 @@ const HomeController = ({
         foodPreferenceFetched,
         rememberedFoodPreference,
         getFilteredProducts,
+        tweetDealsFetched,
     ]);
 
     useEffect(() => {
@@ -226,7 +249,12 @@ const HomeController = ({
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [loadDataOnMount]);
 
-    if (fetchingAllProducts || !allProductsFetched) {
+    if (
+        fetchingAllProducts ||
+        !allProductsFetched ||
+        loadingTweets ||
+        !tweetDealsFetched
+    ) {
         return <Loader showLoader />;
     }
 
@@ -254,6 +282,7 @@ const HomeController = ({
                 setDefaultCoordinates={setDefaultCoordinates}
                 selectedPark={selectedPark}
                 setSelectedPark={setSelectedPark}
+                tweetDeals={tweetDeals}
                 {...props}
             />
         </>

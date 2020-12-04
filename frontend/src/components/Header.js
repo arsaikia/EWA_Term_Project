@@ -70,6 +70,10 @@ const Header = ({
         productsInCartFetched,
         cartCount,
         getFilteredProducts,
+        fetchDiscountDeals,
+        discountDealsFetched,
+        discountDeals,
+        fetchRatingsDeals,
     } = cartContext;
 
     const userContext = useContext(UserContext);
@@ -274,11 +278,28 @@ const Header = ({
                         flexDirection='row'
                         width='70%'
                         alignItems='center'>
-                        <Note text={'Popular Deals'} color='#ffff' bold />
-                        <MyContainer width='2em' />
+                        <FlexContainer
+                            width='150px'
+                            onClick={() => fetchDiscountDeals(userStore)}>
+                            <Note text={'Popular Deals'} color='#ffff' bold />
+                        </FlexContainer>
+
+                        {/* <FlexContainer
+                            width='150px'
+                            onClick={() => fetchDiscountDeals(userStore)}>
+                            <Note text={'Buy Again'} color='#ffff' bold />
+                        </FlexContainer> */}
+
+                        <FlexContainer
+                            width='150px'
+                            onClick={() => fetchRatingsDeals()}>
+                            <Note text={'Best Seller'} color='#ffff' bold />
+                        </FlexContainer>
+
+                        {/* <MyContainer width='2em' />
                         <Note text={'Buy Again'} color='#ffff' bold />
                         <MyContainer width='2em' />
-                        <Note text={'Best Seller'} color='#ffff' bold />
+                        <Note text={'Best Seller'} color='#ffff' bold /> */}
                     </FlexContainer>
                     <AccountDropdown
                         onClick={() => setShowDropdown(!showDropdown)}

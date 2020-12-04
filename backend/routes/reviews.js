@@ -5,10 +5,9 @@ import {
     createReview,
     getReviews,
     getReviewsByUser,
-    getTopReviews,
 } from '../controller/reviews.js';
 
-router.route('/').get(getTopReviews).post(createReview);
+router.route('/').post(createReview);
 
 router.route('/:id').get(getReviews);
 

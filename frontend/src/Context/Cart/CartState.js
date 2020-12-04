@@ -23,6 +23,9 @@ import {
     GET_ALL_STORE_PRODUCTS,
     GET_ALL_NON_STORE_PRODUCTS,
     ADD_STORE_PRODUCT,
+    GET_ALL_TWEET_DEALS,
+    GET_ALL_DISCOUNT_DEALS,
+    GET_ALL_RATINGS_DEALS,
 } from '../types';
 
 import CartContext from './cartContext';
@@ -52,6 +55,10 @@ const CartState = (props) => {
         storeProductsFetched: false,
         storeNotProducts: [],
         storeNotProductsFetched: false,
+        tweetDeals: [],
+        tweetDealsFetched: false,
+        discountDeals: [],
+        discountDealsFetched: false,
     };
 
     const [filters, setFilters] = useState({});
@@ -77,6 +84,36 @@ const CartState = (props) => {
     const removedFetchedState = () => {
         dispatch({
             type: REMOVE_FETCHED_STATE,
+        });
+    };
+
+    /*
+     *   Get All GET_ALL_DISCOUNT_DEALS
+     */
+
+    const fetchDiscountDeals = async (
+        storeId = '706ab483-b96f-4b88-81ed-66b7beca5f5a'
+    ) => {
+        // await removedFetchedState();
+        const response = await API.POST({ url: `deals/best/${storeId}` });
+        const products = get(get(response, 'data'), 'data') || [];
+        dispatch({
+            payload: products,
+            type: GET_ALL_DISCOUNT_DEALS,
+        });
+    };
+
+    /*
+     *   Get All GET_ALL_RATINGS_DEALS
+     */
+
+    const fetchRatingsDeals = async () => {
+        // await removedFetchedState();
+        const response = await API.GET({ url: `deals/reviews` });
+        const products = get(get(response, 'data'), 'data') || [];
+        dispatch({
+            payload: products,
+            type: GET_ALL_RATINGS_DEALS,
         });
     };
 
@@ -157,11 +194,11 @@ const CartState = (props) => {
         // });
         // const products = get(get(response, 'data'), 'data') || [];
 
-        console.log(
-            'Products After Filters',
-            currentFilters,
-            filteredProducts.length
-        );
+        // console.log(
+        //     'Products After Filters',
+        //     currentFilters,
+        //     filteredProducts.length
+        // );
 
         dispatch({
             payload: filteredProducts,
@@ -408,6 +445,24 @@ const CartState = (props) => {
         await getNonStoreProducts(storeId);
     };
 
+    /*
+     * GET_ALL_TWEET_DEALS
+     */
+
+    const getAllTweetDeals = async () => {
+        const response = await API.GET({
+            url: `deals/tweet/`,
+        });
+
+        const allTweet = get(get(response, 'data', {}), 'data', '');
+        // console.log('allTweet', allTweet);
+        dispatch({
+            payload: allTweet,
+            type: GET_ALL_TWEET_DEALS,
+        });
+        ///GET_ALL_TWEET_DEALS
+    };
+
     return (
         <CartContext.Provider
             value={{
@@ -428,6 +483,9 @@ const CartState = (props) => {
                 getNonStoreProducts,
                 addStoreProduct,
                 deleteStoreProduct,
+                getAllTweetDeals,
+                fetchDiscountDeals,
+                fetchRatingsDeals,
                 allProducts: state.allProducts,
                 allProductsFetched: state.allProductsFetched,
                 productsInCart: state.productsInCart,
@@ -449,6 +507,10 @@ const CartState = (props) => {
                 storeProductsFetched: state.storeProductsFetched,
                 storeNotProducts: state.storeNotProducts,
                 storeNotProductsFetched: state.storeNotProductsFetched,
+                tweetDeals: state.tweetDeals,
+                tweetDealsFetched: state.tweetDealsFetched,
+                discountDealsFetched: state.discountDealsFetched,
+                discountDeals: state.discountDeals,
             }}>
             {props.children}
         </CartContext.Provider>

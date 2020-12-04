@@ -55,6 +55,7 @@ const HomeController = ({
         decrementProductsInCart,
         getAllTweetDeals,
         tweetDeals,
+        selectedStore,
         tweetDealsFetched,
     } = cartContext;
 
@@ -91,6 +92,17 @@ const HomeController = ({
      * Handler Functions
      ***************************************************
      */
+
+    const [selectedStreId, setSelectedStreId] = useState(Cookie.get('USER_ID'));
+
+    useEffect(() => {
+        if (!isEmpty(selectedStreId)) {
+            let store = storeData.filter((st) => st.storeId === selectedStreId);
+            store = store.length > 0 && store[0];
+            console.log('store', store);
+            setStore(store);
+        }
+    }, [selectedStreId]);
 
     useEffect(() => {
         setFoodPreferenceFetched(allProductsFetched);

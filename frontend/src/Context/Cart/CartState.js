@@ -24,6 +24,8 @@ import {
     GET_ALL_NON_STORE_PRODUCTS,
     ADD_STORE_PRODUCT,
     GET_ALL_TWEET_DEALS,
+    GET_ALL_DISCOUNT_DEALS,
+    GET_ALL_RATINGS_DEALS,
 } from '../types';
 
 import CartContext from './cartContext';
@@ -55,6 +57,8 @@ const CartState = (props) => {
         storeNotProductsFetched: false,
         tweetDeals: [],
         tweetDealsFetched: false,
+        discountDeals: [],
+        discountDealsFetched: false,
     };
 
     const [filters, setFilters] = useState({});
@@ -80,6 +84,36 @@ const CartState = (props) => {
     const removedFetchedState = () => {
         dispatch({
             type: REMOVE_FETCHED_STATE,
+        });
+    };
+
+    /*
+     *   Get All GET_ALL_DISCOUNT_DEALS
+     */
+
+    const fetchDiscountDeals = async (
+        storeId = '706ab483-b96f-4b88-81ed-66b7beca5f5a'
+    ) => {
+        // await removedFetchedState();
+        const response = await API.POST({ url: `deals/best/${storeId}` });
+        const products = get(get(response, 'data'), 'data') || [];
+        dispatch({
+            payload: products,
+            type: GET_ALL_DISCOUNT_DEALS,
+        });
+    };
+
+    /*
+     *   Get All GET_ALL_RATINGS_DEALS
+     */
+
+    const fetchRatingsDeals = async () => {
+        // await removedFetchedState();
+        const response = await API.GET({ url: `deals/reviews` });
+        const products = get(get(response, 'data'), 'data') || [];
+        dispatch({
+            payload: products,
+            type: GET_ALL_RATINGS_DEALS,
         });
     };
 
@@ -450,6 +484,8 @@ const CartState = (props) => {
                 addStoreProduct,
                 deleteStoreProduct,
                 getAllTweetDeals,
+                fetchDiscountDeals,
+                fetchRatingsDeals,
                 allProducts: state.allProducts,
                 allProductsFetched: state.allProductsFetched,
                 productsInCart: state.productsInCart,
@@ -473,6 +509,8 @@ const CartState = (props) => {
                 storeNotProductsFetched: state.storeNotProductsFetched,
                 tweetDeals: state.tweetDeals,
                 tweetDealsFetched: state.tweetDealsFetched,
+                discountDealsFetched: state.discountDealsFetched,
+                discountDeals: state.discountDeals,
             }}>
             {props.children}
         </CartContext.Provider>

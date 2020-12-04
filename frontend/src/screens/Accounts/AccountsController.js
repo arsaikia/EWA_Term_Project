@@ -57,6 +57,7 @@ const AccountsController = ({
         storeNotProductsFetched,
         addStoreProduct,
         deleteStoreProduct,
+        updateProductsInCart
     } = cartContext;
 
     const transactionContext = useContext(TransactionContext);
@@ -190,6 +191,7 @@ const AccountsController = ({
                 storeId={storeId}
                 addStoreProduct={addStoreProduct}
                 removeStoreProduct={deleteStoreProduct}
+                updateProductsInCart={updateProductsInCart}
                 {...props}
             />
         </>

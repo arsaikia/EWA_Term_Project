@@ -323,6 +323,7 @@ const CustomerScreen = ({
     userCards,
     updateCard,
     userAddresses,
+    updateProductsInCart
 }) => {
     const [selectedOption, setSelectedOption] = useState(1);
 

@@ -13,7 +13,9 @@ import {
     GET_MARKET_BASKET_ANALYSIS,
     GET_ALL_STORE_PRODUCTS,
     GET_ALL_NON_STORE_PRODUCTS,
-    GET_ALL_TWEET_DEALS
+    GET_ALL_TWEET_DEALS,
+    GET_ALL_DISCOUNT_DEALS,
+    GET_ALL_RATINGS_DEALS,
 } from '../types';
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -32,6 +34,23 @@ export default (state, action) => {
                 ...state,
                 storeProducts: action.payload,
                 storeProductsFetched: true,
+            };
+
+        case GET_ALL_DISCOUNT_DEALS:
+            return {
+                ...state,
+                allProducts: action.payload,
+                discountDealsFetched: true,
+                storeProductsFetched: true,
+                allProductsFetched: true,
+            };
+
+        case GET_ALL_RATINGS_DEALS:
+            return {
+                ...state,
+                allProducts: action.payload,
+                storeProductsFetched: true,
+                allProductsFetched: true,
             };
 
         case GET_ALL_NON_STORE_PRODUCTS:

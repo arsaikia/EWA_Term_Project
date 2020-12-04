@@ -5,6 +5,7 @@ import { HeaderTwo, Description, HeaderThree } from '../../components/Texts';
 import { Colors } from '../../components/Colors';
 import ORDERS from '../../Images/orders.svg';
 import Rating from '../../components/Rating';
+import Cookie from 'js-cookie';
 
 import {
     Container,
@@ -22,6 +23,7 @@ const Order = ({
     userReviews,
     transactionStatusUpdateHandler,
     reloadDataAfterReview,
+    updateProductsInCart,
 }) => {
     const delInProgress = ut.deliveryStatus === 'IN_PROGRESS';
     const delCanceled = ut.deliveryStatus === 'CANCELLED';
@@ -30,7 +32,7 @@ const Order = ({
         userReviews &&
         userReviews.length > 0 &&
         userReviews.filter((review) => ut.orderId === review.orderId);
-    console.log('userReviews', review);
+
     const reviewSelectionHandler = () => {
         setShowReview(true);
         setOrderIdForReview(ut.orderId);
@@ -46,7 +48,7 @@ const Order = ({
         await reloadDataAfterReview();
     };
 
-    // console.log('utut', ut);
+    console.log('utut', ut);
     return (
         <FlexContainer
             minHeight='100px'
@@ -109,6 +111,44 @@ const Order = ({
                     </FlexContainer>
                 )}
             </FlexContainer>
+
+            <Spacing height='15px' />
+            <FlexContainer
+                width='100%'
+                flexDirection='row'
+                justifyContent='space-between'
+                alignItems='space-between'
+                // paddingLeft='10px'
+                paddingRight='10px'>
+                <FlexContainer width='60%'>
+                    {delInProgress && (
+                        <Description
+                            bold={500}
+                            text={
+                                <p>{`Order Type: ${
+                                    ut.deliveryMethod === 'STORE'
+                                        ? 'Store Pickup'
+                                        : 'Home Delivery'
+                                }`}</p>
+                            }
+                        />
+                    )}
+                </FlexContainer>
+                <FlexContainer width='20%'>
+                    <button
+                        type='button'
+                        class='btn btn-outline-success sm'
+                        onClick={() =>
+                            updateProductsInCart(
+                                Cookie.get('USER_ID'),
+                                ut.productId
+                            )
+                        }>
+                        Reorder
+                    </button>
+                </FlexContainer>
+            </FlexContainer>
+
             <Spacing height='15px' />
             <FlexContainer
                 width='100%'
@@ -217,6 +257,7 @@ const OrdersScreen = ({
     reloadDataAfterReview,
     userReviews,
     transactionStatusUpdateHandler,
+    updateProductsInCart,
     ...props
 }) => {
     const [orderIdForReview, setOrderIdForReview] = useState('');
@@ -289,6 +330,9 @@ const OrdersScreen = ({
                                         }
                                         reloadDataAfterReview={
                                             reloadDataAfterReview
+                                        }
+                                        updateProductsInCart={
+                                            updateProductsInCart
                                         }
                                     />
                                 </FlexContainer>

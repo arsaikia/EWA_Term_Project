@@ -155,16 +155,17 @@ const CaoruselHome = ({ tweetDeals }) => {
                     }, 1500); // same time
                 }
             }}>
-            {tweetDeals.map((tweet, idx) => (
-                <SingleTweetDeal
-                    key={idx}
-                    productId={tweet.productId}
-                    productName={tweet.productName}
-                    tweet={tweet.tweet}
-                    imageSrc={tweet.image}
-                    goToProducts={goToProducts}
-                />
-            ))}
+            {tweetDeals.length > 0 &&
+                tweetDeals.map((tweet, idx) => (
+                    <SingleTweetDeal
+                        key={idx}
+                        productId={tweet.productId}
+                        productName={tweet.productName}
+                        tweet={tweet.tweet}
+                        imageSrc={tweet.image}
+                        goToProducts={goToProducts}
+                    />
+                ))}
         </Carousel>
     );
 };

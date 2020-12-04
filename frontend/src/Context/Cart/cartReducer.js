@@ -16,6 +16,7 @@ import {
     GET_ALL_TWEET_DEALS,
     GET_ALL_DISCOUNT_DEALS,
     GET_ALL_RATINGS_DEALS,
+    REMOVE_PRODUCTS_STATE
 } from '../types';
 
 // eslint-disable-next-line import/no-anonymous-default-export
@@ -70,6 +71,14 @@ export default (state, action) => {
                 mbaFetched: false,
                 productByIdFetched: false,
             };
+
+            
+        case REMOVE_PRODUCTS_STATE:
+            return {
+                ...state,
+                productByIdFetched: false,
+            };
+
 
         case GET_USER_CARDS:
             return {

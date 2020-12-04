@@ -18,6 +18,7 @@ import {
     FadeInContainer,
 } from '../../components/StylingComponents/index';
 
+import { isEmpty } from 'lodash';
 import { Popup } from '../../components/Popup';
 
 import GoogleMapStores from '../../components/GoogleMapStores';
@@ -54,7 +55,13 @@ const breakPoints = [
     { width: 1200, itemsToShow: 1 },
 ];
 
-const SingleTweetDeal = ({ productId, productName, tweet, imageSrc }) => {
+const SingleTweetDeal = ({
+    productId,
+    productName,
+    tweet,
+    imageSrc,
+    goToProducts,
+}) => {
     const image =
         require(`../../Images/products/${imageSrc.toLowerCase()}`).default ||
         'apple';
@@ -92,7 +99,10 @@ const SingleTweetDeal = ({ productId, productName, tweet, imageSrc }) => {
                     justifyContent='center'
                     borderRadius='75px'
                     overflow='hidden'
-                    onClick={() => history.push(`/products/${productId}`)}>
+                    onClick={() => {
+                        // console.log('productId', productId);
+                        goToProducts(productId);
+                    }}>
                     <StyledImage
                         src={image}
                         alt='...'
@@ -119,9 +129,12 @@ const SingleTweetDeal = ({ productId, productName, tweet, imageSrc }) => {
 };
 
 const CaoruselHome = ({ tweetDeals }) => {
-    console.log('tweetDeals', tweetDeals);
+    // console.log('tweetDeals', tweetDeals);
 
-    // require('../../Images/products/apple.png').default;
+    const history = useHistory();
+    const goToProducts = (pId) => {
+        history.push(`/products/${pId}`);
+    };
 
     const itemsPerPage = 1;
     const carouselRef = useRef(null);
@@ -138,17 +151,18 @@ const CaoruselHome = ({ tweetDeals }) => {
                 clearTimeout(resetTimeout);
                 if (index + 1 === totalPages) {
                     resetTimeout = setTimeout(() => {
-                        carouselRef.current.goTo(0);
+                        !isEmpty(carouselRef) && carouselRef.current.goTo(0);
                     }, 1500); // same time
                 }
             }}>
-            {tweetDeals.map((tweet) => (
+            {tweetDeals.map((tweet, idx) => (
                 <SingleTweetDeal
-                    key={tweet.productId}
+                    key={idx}
                     productId={tweet.productId}
                     productName={tweet.productName}
                     tweet={tweet.tweet}
                     imageSrc={tweet.image}
+                    goToProducts={goToProducts}
                 />
             ))}
         </Carousel>

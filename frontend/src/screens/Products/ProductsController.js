@@ -50,6 +50,7 @@ const ProductsController = (props) => {
         productByIdFetched,
         transferCreated,
         clearTransferStatus,
+        removeProuctsFetched,
         decrementProductsInCart,
     } = cartContext;
     /********************************************
@@ -58,12 +59,16 @@ const ProductsController = (props) => {
     const rememberedUserId = Cookie.get('USER_ID');
     const [showShare, setShowShare] = useState(false);
 
+    const [productsfetching, setProductsfetching] = useState(true);
+
     const [totalReview, setTotalReview] = useState({
         rating: null,
         count: null,
     });
 
     const { productId } = useParams();
+
+    console.log('XXXXXXXXXXXXXXXXXXXXXXXXXXXXX', productId);
 
     useEffect(() => {
         setShowHeader(true);
@@ -76,13 +81,11 @@ const ProductsController = (props) => {
         updateProductsInCart(rememberedUserId, productId);
     };
 
-
     const reduceProductsInCart = (productId) => {
         if (!productId) return;
         if (!rememberedUserId) return history.push('/login');
         decrementProductsInCart(rememberedUserId, productId);
     };
-
 
     const isAddedToCart = (productIdX) => {
         let containsInBag = false;
@@ -111,7 +114,8 @@ const ProductsController = (props) => {
     }
 
     const loadData = useCallback(() => {
-        if (!productByIdFetched) {
+        if (!productByIdFetched && productsfetching) {
+            setProductsfetching(false);
             getProductById(productId);
         }
 
@@ -142,7 +146,7 @@ const ProductsController = (props) => {
      */
     window.onpopstate = (e) => {};
 
-    if (!productByIdFetched) {
+    if (!productByIdFetched || productsfetching) {
         return <Loader showLoader={true} />;
     }
 

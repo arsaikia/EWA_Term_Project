@@ -119,9 +119,9 @@ const CartState = (props) => {
             });
         }
 
-        if (get(currentFilters, 'SUB_CATEGORY')) {
+        if (filterBy === 'SUB_CATEGORY') {
             currentFilters.CATEGORY = '';
-        } else {
+        } else if (filterBy === 'CATEGORY') {
             currentFilters.SUB_CATEGORY = '';
         }
 
@@ -308,7 +308,13 @@ const CartState = (props) => {
      *CREATE_TRANSFER formatDate
      */
 
-    const createTransfer = async (totalPrice, userId, addressId, cardId) => {
+    const createTransfer = async (
+        totalPrice,
+        userId,
+        addressId,
+        cardId,
+        storeId
+    ) => {
         const expectedDeliveryDate = formatDate(
             new Date(
                 new Date().setDate(
@@ -323,10 +329,10 @@ const CartState = (props) => {
                 purchaseDate: formatDate(new Date()),
                 totalPrice: totalPrice,
                 deliveryForcast: expectedDeliveryDate,
-                deliveryMethod: 'HOME',
+                deliveryMethod: !isEmpty(storeId) ? 'STORE' : 'HOME',
                 userId: userId,
-                addressId: addressId,
-                storeId: null,
+                addressId: isEmpty(storeId) ? addressId : null,
+                storeId: storeId !== '' ? storeId : null,
                 cardId: cardId,
             },
         });

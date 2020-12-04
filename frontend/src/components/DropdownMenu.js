@@ -53,7 +53,7 @@ const DropdownMenu = ({
         Cookie.remove('USER_NAME');
         Cookie.remove('REMEMBER_ME');
         Cookie.remove('USER_ID');
-        Cookie.remove('USER_STORE');
+        Cookie.remove('STORE_ID');
         Cookie.remove('FOOD_PREFERENCE');
 
         // Go to home

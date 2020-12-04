@@ -8,6 +8,7 @@ import Loader from '../../components/Loader';
 import UserContext from '../../Context/User/userContext';
 import CartContext from '../../Context/Cart/cartContext';
 import { useHistory } from 'react-router-dom';
+import storeData from '../../utils/stores.json';
 import API from '../../utils/Query';
 
 const CartController = ({ ...props }) => {
@@ -87,6 +88,11 @@ const CartController = ({ ...props }) => {
     const [selectedAddressId, setSelectedAddressId] = useState('');
     const [selectedCardId, setSelectedCardId] = useState('');
 
+    const [allStores, setAllStores] = useState([]);
+    const [allStoresCalculated, setAllStoresCalculated] = useState(false);
+
+    const [selectedStore, setSelectedStore] = useState(); // Cookie.get('STORE_ID')
+
     /*
      ***************************************************
      * Handler Functions
@@ -122,11 +128,11 @@ const CartController = ({ ...props }) => {
                 !isEmpty(city) &&
                 !isEmpty(zip) &&
                 !isEmpty(state) &&
-                isEmpty(selectedAddress)
+                (isEmpty(selectedAddress) || !isEmpty(selectedStore))
             ) {
                 return 'Add Address';
             }
-            if (isEmpty(selectedAddress)) {
+            if (isEmpty(selectedAddress) && isEmpty(selectedStore)) {
                 return 'Select Address';
             }
             return 'Checkout';
@@ -150,10 +156,13 @@ const CartController = ({ ...props }) => {
             const selectedAddressX = userAddresses.filter(
                 (address) => address.addressId === selectedAddress
             );
-            const addId = get(selectedAddressX[0], 'addressId');
-            const payId = get(selectedCardX[0], 'cardId');
+            const addId =
+                selectedAddressX.length > 0 &&
+                get(selectedAddressX[0], 'addressId');
+            const payId =
+                selectedCardX.length > 0 && get(selectedCardX[0], 'cardId');
 
-            console.log('addId', addId, 'payId', payId);
+            // console.log('addId', addId, 'payId', payId);
             setSelectedAddressId(addId);
             setSelectedCardId(payId);
             setIsTransferCreating(true);
@@ -161,7 +170,6 @@ const CartController = ({ ...props }) => {
         }
     };
 
-    console.log('setIsTransferCreating', selectedAddress, userAddresses);
     const addPayment = async () => {
         const res = await API.POST({
             url: `cards/${userId}`,
@@ -193,7 +201,6 @@ const CartController = ({ ...props }) => {
 
         let newAddressId = get(res.data, 'data');
         newAddressId = get(newAddressId, 'addressId');
-        console.log('newAddressId', newAddressId);
         setSelectedAddress(newAddressId);
         await getUserAddresses(userId);
     };
@@ -202,7 +209,7 @@ const CartController = ({ ...props }) => {
         if (
             isTransferCreating &&
             !transferCreated &&
-            !isEmpty(selectedAddressId) &&
+            (!isEmpty(selectedAddressId) || !isEmpty(selectedStore)) &&
             !isEmpty(selectedCardId)
         ) {
             setIsTransferCreating(false);
@@ -211,7 +218,8 @@ const CartController = ({ ...props }) => {
                 totalPrice,
                 userId,
                 selectedAddressId,
-                selectedCardId
+                selectedCardId,
+                selectedStore
             );
         }
 
@@ -226,6 +234,7 @@ const CartController = ({ ...props }) => {
                 userId,
                 selectedAddressId,
                 selectedCardId,
+                selectedStore
             });
         }
     }, [
@@ -261,6 +270,27 @@ const CartController = ({ ...props }) => {
     useEffect(() => {
         userId && isEmpty(productsInCart) && fetchProductsInCart(userId);
     }, []);
+
+    const findAllStores = useCallback(() => {
+        if (!allStoresCalculated && isEmpty(allStores)) {
+            setAllStoresCalculated(true);
+            let stores = [];
+
+            storeData &&
+                storeData.forEach((store) => {
+                    stores.push({
+                        storeId: store.storeId,
+                        storeName: store.street1,
+                    });
+                });
+            setAllStores(stores);
+            // console.log('storeData', stores);
+        }
+    }, []);
+
+    useEffect(() => {
+        findAllStores();
+    }, [findAllStores]);
 
     useEffect(() => {
         if (productsInCartFetched && !isEmpty(productsInCart)) {
@@ -301,6 +331,10 @@ const CartController = ({ ...props }) => {
     }, [getAllCards]);
 
     useEffect(() => {
+        Cookie.set('STORE_ID', selectedStore);
+    }, [selectedStore]);
+
+    useEffect(() => {
         if (!isEmpty(selectedCard) && !isEmpty(userCards)) {
             const selected = userCards.filter(
                 (card) => card.cardId === selectedCard
@@ -334,15 +368,6 @@ const CartController = ({ ...props }) => {
         }
     }, [selectedAddress, userAddresses]);
 
-    console.log(
-        'showLoading',
-        fetchingCards,
-        fetchingAddress,
-        !productsInCartFetched,
-        !userCardsFetched,
-        !userAddressesFetched,
-        showLoading
-    );
     if (
         fetchingCards ||
         fetchingAddress ||
@@ -350,7 +375,8 @@ const CartController = ({ ...props }) => {
         !userCardsFetched ||
         !userAddressesFetched ||
         !mbaFetched ||
-        showLoading
+        showLoading ||
+        !allStoresCalculated
     ) {
         return <Loader showLoader={true} />;
     }
@@ -400,6 +426,9 @@ const CartController = ({ ...props }) => {
             continueHandler={continueHandler}
             mba={mba}
             addProductToCart={addProductToCart}
+            allStores={allStores}
+            selectedStore={selectedStore}
+            setSelectedStore={setSelectedStore}
             props={props}
         />
     );

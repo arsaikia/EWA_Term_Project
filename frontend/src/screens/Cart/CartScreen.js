@@ -301,6 +301,11 @@ const CartScreen = ({
     setZip,
     setState,
     continueHandler,
+
+    allStores,
+
+    selectedStore,
+    setSelectedStore,
     ...props
 }) => {
     if (isEmpty(productsInCart) || !isUserSemiAuthenticated)
@@ -450,6 +455,9 @@ const CartScreen = ({
                     setZip={setZip}
                     setState={setState}
                     continueHandler={continueHandler}
+                    allStores={allStores}
+                    selectedStore={selectedStore}
+                    setSelectedStore={setSelectedStore}
                     props={props}
                 />
             </FadeInContainer>

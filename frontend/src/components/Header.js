@@ -83,7 +83,7 @@ const Header = ({
 
     const rememberedUser = Cookie.get('USER_ID');
     const userName = Cookie.get('USER_NAME');
-    const userStore = Cookie.get('USER_STORE');
+    const userStore = Cookie.get('STORE_ID');
 
     const [searchButtonText, setSearchButtonText] = useState('Search');
     const [singleSelections, setSingleSelections] = useState([]);

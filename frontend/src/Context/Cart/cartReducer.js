@@ -61,6 +61,7 @@ export default (state, action) => {
                 storeNotProductsFetched: true,
             };
 
+            
         case REMOVE_FETCHED_STATE:
             return {
                 ...state,

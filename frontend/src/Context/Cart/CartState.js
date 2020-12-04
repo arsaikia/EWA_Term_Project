@@ -26,6 +26,7 @@ import {
     GET_ALL_TWEET_DEALS,
     GET_ALL_DISCOUNT_DEALS,
     GET_ALL_RATINGS_DEALS,
+    REMOVE_PRODUCTS_STATE,
 } from '../types';
 
 import CartContext from './cartContext';
@@ -463,6 +464,12 @@ const CartState = (props) => {
         ///GET_ALL_TWEET_DEALS
     };
 
+    const removeProuctsFetched = () => {
+        dispatch({
+            type: REMOVE_PRODUCTS_STATE,
+        });
+    };
+
     return (
         <CartContext.Provider
             value={{
@@ -486,6 +493,7 @@ const CartState = (props) => {
                 getAllTweetDeals,
                 fetchDiscountDeals,
                 fetchRatingsDeals,
+                removeProuctsFetched,
                 allProducts: state.allProducts,
                 allProductsFetched: state.allProductsFetched,
                 productsInCart: state.productsInCart,

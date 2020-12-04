@@ -57,6 +57,7 @@ const HomeController = ({
         tweetDeals,
         selectedStore,
         tweetDealsFetched,
+        removeProuctsFetched,
     } = cartContext;
 
     /*
@@ -165,6 +166,11 @@ const HomeController = ({
      * LOADING AND PAGE POPULATION HANDLERS
      **************************************************
      */
+
+    useEffect(() => {
+        removeProuctsFetched();
+    }, []);
+
     const prefStore = Cookie.get('STORE_ID');
     const loadDataOnMount = useCallback(() => {
         if (prefStore) {

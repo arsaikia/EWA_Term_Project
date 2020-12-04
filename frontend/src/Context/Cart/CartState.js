@@ -23,6 +23,7 @@ import {
     GET_ALL_STORE_PRODUCTS,
     GET_ALL_NON_STORE_PRODUCTS,
     ADD_STORE_PRODUCT,
+    GET_ALL_TWEET_DEALS,
 } from '../types';
 
 import CartContext from './cartContext';
@@ -52,6 +53,8 @@ const CartState = (props) => {
         storeProductsFetched: false,
         storeNotProducts: [],
         storeNotProductsFetched: false,
+        tweetDeals: [],
+        tweetDealsFetched: false,
     };
 
     const [filters, setFilters] = useState({});
@@ -157,11 +160,11 @@ const CartState = (props) => {
         // });
         // const products = get(get(response, 'data'), 'data') || [];
 
-        console.log(
-            'Products After Filters',
-            currentFilters,
-            filteredProducts.length
-        );
+        // console.log(
+        //     'Products After Filters',
+        //     currentFilters,
+        //     filteredProducts.length
+        // );
 
         dispatch({
             payload: filteredProducts,
@@ -408,6 +411,24 @@ const CartState = (props) => {
         await getNonStoreProducts(storeId);
     };
 
+    /*
+     * GET_ALL_TWEET_DEALS
+     */
+
+    const getAllTweetDeals = async () => {
+        const response = await API.GET({
+            url: `deals/tweet/`,
+        });
+
+        const allTweet = get(get(response, 'data', {}), 'data', '');
+        // console.log('allTweet', allTweet);
+        dispatch({
+            payload: allTweet,
+            type: GET_ALL_TWEET_DEALS,
+        });
+        ///GET_ALL_TWEET_DEALS
+    };
+
     return (
         <CartContext.Provider
             value={{
@@ -428,6 +449,7 @@ const CartState = (props) => {
                 getNonStoreProducts,
                 addStoreProduct,
                 deleteStoreProduct,
+                getAllTweetDeals,
                 allProducts: state.allProducts,
                 allProductsFetched: state.allProductsFetched,
                 productsInCart: state.productsInCart,
@@ -449,6 +471,8 @@ const CartState = (props) => {
                 storeProductsFetched: state.storeProductsFetched,
                 storeNotProducts: state.storeNotProducts,
                 storeNotProductsFetched: state.storeNotProductsFetched,
+                tweetDeals: state.tweetDeals,
+                tweetDealsFetched: state.tweetDealsFetched,
             }}>
             {props.children}
         </CartContext.Provider>

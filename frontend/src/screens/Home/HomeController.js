@@ -53,6 +53,9 @@ const HomeController = ({
         transferCreated,
         clearTransferStatus,
         decrementProductsInCart,
+        getAllTweetDeals,
+        tweetDeals,
+        tweetDealsFetched,
     } = cartContext;
 
     /*
@@ -81,6 +84,8 @@ const HomeController = ({
         41.80908,
     ]);
     const [selectedPark, setSelectedPark] = useState(null);
+
+    const [loadingTweets, setLoadingTweets] = useState(!tweetDealsFetched);
     /*
      ***************************************************
      * Handler Functions
@@ -180,6 +185,11 @@ const HomeController = ({
             setFoodPreferenceFetched(true);
             getFilteredProducts(rememberedFoodPreference, 'USER_PREFERENCE');
         }
+
+        if (loadingTweets && !tweetDealsFetched) {
+            setLoadingTweets(false);
+            getAllTweetDeals();
+        }
     }, [
         isUserAuthenticated,
         loggedInUser,
@@ -193,6 +203,7 @@ const HomeController = ({
         foodPreferenceFetched,
         rememberedFoodPreference,
         getFilteredProducts,
+        tweetDealsFetched,
     ]);
 
     useEffect(() => {
@@ -226,7 +237,12 @@ const HomeController = ({
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [loadDataOnMount]);
 
-    if (fetchingAllProducts || !allProductsFetched) {
+    if (
+        fetchingAllProducts ||
+        !allProductsFetched ||
+        loadingTweets ||
+        !tweetDealsFetched
+    ) {
         return <Loader showLoader />;
     }
 
@@ -254,6 +270,7 @@ const HomeController = ({
                 setDefaultCoordinates={setDefaultCoordinates}
                 selectedPark={selectedPark}
                 setSelectedPark={setSelectedPark}
+                tweetDeals={tweetDeals}
                 {...props}
             />
         </>

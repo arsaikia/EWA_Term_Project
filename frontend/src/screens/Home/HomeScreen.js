@@ -36,7 +36,25 @@ const breakPoints = [
     { width: 1200, itemsToShow: 1 },
 ];
 
-const CaoruselHome = () => {
+const SingleTweetDeal = ({ productId, productName, tweet }) => {
+    return (
+        <FlexContainer height='100%' width='100%' minHeight='150px'>
+            <FlexContainer
+                width='100%'
+                backgroundColor='rgb(98,105,119)'
+                flexDirection='row'
+                justifyContent='space-between'
+                alignItems='center'
+                padding='20px'>
+                {tweet}
+            </FlexContainer>
+        </FlexContainer>
+    );
+};
+
+const CaoruselHome = ({ tweetDeals }) => {
+    // console.log('tweetDeals', tweetDeals);
+
     const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 123, 221];
     const itemsPerPage = 1;
     const carouselRef = useRef(null);
@@ -57,50 +75,13 @@ const CaoruselHome = () => {
                     }, 1500); // same time
                 }
             }}>
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 12, 123, 221].map(() => (
-                <FlexContainer height='100%' width='100%'>
-                    <FlexContainer width='100%' backgroundColor='khaki'>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Eveniet nulla laborum doloribus numquam accusamus.
-                        Iusto, vel! Architecto numquam omnis obcaecati, quod
-                        beatae id nihil unde inventore adipisci velit?
-                        Accusantium sint commodi, tempora quisquam sed numquam
-                        praesentium autem expedita, consectetur vero itaque
-                        reiciendis repellat! Quisquam perspiciatis omnis
-                        suscipit sed sequi mollitia quam laborum nulla commodi
-                        sapiente quia quidem, sint ipsum ipsam deserunt? Maxime
-                        consequuntur voluptatum est velit optio atque quae
-                        voluptas quo quia deleniti itaque accusantium, suscipit
-                        odio ipsum distinctio quibusdam expedita natus dolorem
-                        sint impedit? Laudantium magni consequatur architecto
-                        officia ab, quidem corporis et velit voluptate
-                        voluptates eligendi illo excepturi? deserunt? Maxime
-                        consequuntur voluptatum est velit optio atque quae
-                        voluptas quo quia deleniti itaque accusantium, suscipit
-                        odio ipsum distinctio quibusdam expedita natus dolorem
-                        sint impedit? Laudantium magni consequatur architecto
-                        officia ab, quidem corporis et velit voluptate
-                        voluptates eligendi illo excepturi? deserunt? Maxime
-                        consequuntur voluptatum est velit optio atque quae
-                        voluptas quo quia deleniti itaque accusantium, suscipit
-                        odio ipsum distinctio quibusdam expedita natus dolorem
-                        sint impedit? Laudantium magni consequatur architecto
-                        officia ab, quidem corporis et velit voluptate
-                        voluptates eligendi illo excepturi?deserunt? Maxime
-                        consequuntur voluptatum est velit optio atque quae
-                        voluptas quo quia deleniti itaque accusantium, suscipit
-                        odio ipsum distinctio quibusdam expedita natus dolorem
-                        sint impedit? Laudantium magni consequatur architecto
-                        officia ab, quidem corporis et velit voluptate
-                        voluptates eligendi illo excepturi?deserunt? Maxime
-                        consequuntur voluptatum est velit optio atque quae
-                        voluptas quo quia deleniti itaque accusantium, suscipit
-                        odio ipsum distinctio quibusdam expedita natus dolorem
-                        sint impedit? Laudantium magni consequatur architecto
-                        officia ab, quidem corporis et velit voluptate
-                        voluptates eligendi illo excepturi?
-                    </FlexContainer>
-                </FlexContainer>
+            {tweetDeals.map((tweet) => (
+                <SingleTweetDeal
+                    key={tweet.productId}
+                    productId={tweet.productId}
+                    productName={tweet.productName}
+                    tweet={tweet.tweet}
+                />
             ))}
         </Carousel>
     );
@@ -128,6 +109,7 @@ const HomeScreen = ({
     setDefaultCoordinates,
     selectedPark,
     setSelectedPark,
+    tweetDeals,
     ...props
 }) => {
     const [showPopup, setShowPopup] = useState(!false);
@@ -170,7 +152,7 @@ const HomeScreen = ({
                     // overflow='scroll'
                 >
                     <FlexContainer height='50%' mobileHeight='30%' margin='1%'>
-                        <CaoruselHome />
+                        <CaoruselHome tweetDeals={tweetDeals} />
                     </FlexContainer>
 
                     <Container

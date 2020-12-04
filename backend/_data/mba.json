@@ -1,1 +1,478 @@
-[{"marketBasketId":"ce5f1343-00a0-4575-9905-0c6bebe8f53e","productA":"030a811b-1837-485c-8269-cc4b8df77bec","productB":"0d286dd2-695d-437f-9f2d-54a6f3f49682"},{"marketBasketId":"4a998623-609f-4439-bf81-b20b6b9fe5d1","productA":"0d286dd2-695d-437f-9f2d-54a6f3f49682","productB":"030a811b-1837-485c-8269-cc4b8df77bec"},{"marketBasketId":"33c4650c-dcdd-40d5-93bc-c4dfb952b965","productA":"030a811b-1837-485c-8269-cc4b8df77bec","productB":"10720f0b-00c3-4c1d-9ca2-5a954b8dde52"},{"marketBasketId":"706a524f-2b05-4146-8b9c-974f4836a404","productA":"10720f0b-00c3-4c1d-9ca2-5a954b8dde52","productB":"030a811b-1837-485c-8269-cc4b8df77bec"},{"marketBasketId":"a23eb28e-a098-49ea-992c-fdf86d6441a7","productA":"030a811b-1837-485c-8269-cc4b8df77bec","productB":"10a7f044-336b-4b4e-8498-f3e16158b676"},{"marketBasketId":"ecdcebb5-203b-45a6-acac-6d1b5059def3","productA":"10a7f044-336b-4b4e-8498-f3e16158b676","productB":"030a811b-1837-485c-8269-cc4b8df77bec"},{"marketBasketId":"482cf983-751f-4f2f-973e-65d50a1f9696","productA":"0d286dd2-695d-437f-9f2d-54a6f3f49682","productB":"95e90ee4-07c9-44f7-812e-29e2a5fd3686"},{"marketBasketId":"4ed15a09-8119-48ac-a7cb-aec2be43d677","productA":"95e90ee4-07c9-44f7-812e-29e2a5fd3686","productB":"0d286dd2-695d-437f-9f2d-54a6f3f49682"},{"marketBasketId":"7ec0b178-72d6-4a38-a1e2-ee445361656f","productA":"31ce0eab-88b6-4eb2-b189-5ff28b8c799f","productB":"0d37e9db-caa8-46c9-9df6-8e085a566d4e"},{"marketBasketId":"10827c25-8d9a-48c1-a631-481707cd0265","productA":"0d37e9db-caa8-46c9-9df6-8e085a566d4e","productB":"31ce0eab-88b6-4eb2-b189-5ff28b8c799f"},{"marketBasketId":"28680721-3063-48bc-9a9f-4091ffc808d1","productA":"f4ac532e-5dc7-4a8e-bc02-013c1a98fc60","productB":"0d37e9db-caa8-46c9-9df6-8e085a566d4e"},{"marketBasketId":"ff3e778d-a9bd-48cd-a28d-efab7bed8bee","productA":"0d37e9db-caa8-46c9-9df6-8e085a566d4e","productB":"f4ac532e-5dc7-4a8e-bc02-013c1a98fc60"},{"marketBasketId":"61c528aa-98d7-4773-90e9-9132a0b43447","productA":"47eac5aa-12f8-4a96-b38b-5ac511690eb9","productB":"10720f0b-00c3-4c1d-9ca2-5a954b8dde52"},{"marketBasketId":"42aa94ae-c857-45a1-b6f1-7f98af970556","productA":"10720f0b-00c3-4c1d-9ca2-5a954b8dde52","productB":"47eac5aa-12f8-4a96-b38b-5ac511690eb9"},{"marketBasketId":"55eb2213-6c81-4769-8f9e-67705fd43bda","productA":"4d747504-a5aa-4d28-a613-6915bdae5e97","productB":"10720f0b-00c3-4c1d-9ca2-5a954b8dde52"},{"marketBasketId":"5048d1e2-65c3-4e17-aeee-1b548bb93337","productA":"10720f0b-00c3-4c1d-9ca2-5a954b8dde52","productB":"4d747504-a5aa-4d28-a613-6915bdae5e97"},{"marketBasketId":"84316ed2-352a-432d-88eb-0f8dcad53b10","productA":"10a7f044-336b-4b4e-8498-f3e16158b676","productB":"6c4a0f43-515d-4a47-b939-cda064631a59"},{"marketBasketId":"534e5252-899d-4d7f-adca-4c07d24c69b5","productA":"6c4a0f43-515d-4a47-b939-cda064631a59","productB":"10a7f044-336b-4b4e-8498-f3e16158b676"},{"marketBasketId":"8a678e5b-0826-4d2f-aeb7-d8a84c071668","productA":"19ad80f0-1797-43c7-99be-7195eb2e014a","productB":"4667f230-f260-467a-8a04-f50239ff3ee8"},{"marketBasketId":"24e7335e-9eb2-441a-9f00-05a32ace1800","productA":"4667f230-f260-467a-8a04-f50239ff3ee8","productB":"19ad80f0-1797-43c7-99be-7195eb2e014a"},{"marketBasketId":"8edf1128-b102-4c32-978f-ac065d377ba3","productA":"eee5b1c7-cba6-450e-be94-83799db81ee8","productB":"1d450726-dbe3-415f-878e-b9a93f5688db"},{"marketBasketId":"25bd0f72-da35-489d-b840-85172041da4f","productA":"1d450726-dbe3-415f-878e-b9a93f5688db","productB":"eee5b1c7-cba6-450e-be94-83799db81ee8"},{"marketBasketId":"c1a5b77a-5b43-4dde-ae28-c822733a87c9","productA":"25d7753a-bb2a-44d9-8577-7ab579085462","productB":"fdee02ab-af54-4d5f-961c-c5fa233cba0a"},{"marketBasketId":"09834099-3c24-41e0-a9d1-e5ad2dbed723","productA":"fdee02ab-af54-4d5f-961c-c5fa233cba0a","productB":"25d7753a-bb2a-44d9-8577-7ab579085462"},{"marketBasketId":"94d8fb82-9258-4276-9f16-c2bc0598454f","productA":"31ce0eab-88b6-4eb2-b189-5ff28b8c799f","productB":"f3858387-80dd-4e82-a37e-033d34417a50"},{"marketBasketId":"2896af5f-b1a2-4eb8-a4f8-6208c6f3fbc5","productA":"f3858387-80dd-4e82-a37e-033d34417a50","productB":"31ce0eab-88b6-4eb2-b189-5ff28b8c799f"},{"marketBasketId":"47fb5695-41ad-4170-9dcc-8241ac1aebd7","productA":"f4ac532e-5dc7-4a8e-bc02-013c1a98fc60","productB":"31ce0eab-88b6-4eb2-b189-5ff28b8c799f"},{"marketBasketId":"aa02de60-f2e4-410a-aab9-30c30caee3c6","productA":"31ce0eab-88b6-4eb2-b189-5ff28b8c799f","productB":"f4ac532e-5dc7-4a8e-bc02-013c1a98fc60"},{"marketBasketId":"bf290ec7-a9e4-42ae-a43a-02e711f886ee","productA":"f27b816b-f6db-465f-9609-0350dfd319bf","productB":"320beacd-65d0-4ab4-b38f-1a2784533975"},{"marketBasketId":"4458fe66-c9a5-4a4e-b7eb-59c24181b983","productA":"320beacd-65d0-4ab4-b38f-1a2784533975","productB":"f27b816b-f6db-465f-9609-0350dfd319bf"},{"marketBasketId":"85538f5d-2e90-41d5-9a0f-b0b5a4e013e1","productA":"3b76467c-8c5c-41d0-ac60-ba5692ca263a","productB":"4667f230-f260-467a-8a04-f50239ff3ee8"},{"marketBasketId":"d6607319-2b22-4c0a-b56e-d26aa6aaf523","productA":"4667f230-f260-467a-8a04-f50239ff3ee8","productB":"3b76467c-8c5c-41d0-ac60-ba5692ca263a"},{"marketBasketId":"9afefc5c-8f7b-44c8-99ff-ba3f512fd1f6","productA":"48dbb483-93c0-438d-9983-0ed006c0b640","productB":"4667f230-f260-467a-8a04-f50239ff3ee8"},{"marketBasketId":"a279669e-d3d7-4cf0-97cc-ce98f613db1c","productA":"4667f230-f260-467a-8a04-f50239ff3ee8","productB":"48dbb483-93c0-438d-9983-0ed006c0b640"},{"marketBasketId":"c7b23f96-67a8-42cf-8651-b823d9fb83f3","productA":"85686ebe-9c15-4b0a-bccc-d15927d7447e","productB":"4667f230-f260-467a-8a04-f50239ff3ee8"},{"marketBasketId":"e4cb8a0d-adbf-44ff-9c5c-a1b164f76751","productA":"4667f230-f260-467a-8a04-f50239ff3ee8","productB":"85686ebe-9c15-4b0a-bccc-d15927d7447e"},{"marketBasketId":"671f6455-6737-4efb-8099-88210682e828","productA":"4d747504-a5aa-4d28-a613-6915bdae5e97","productB":"47eac5aa-12f8-4a96-b38b-5ac511690eb9"},{"marketBasketId":"4e7f1c07-41e4-414a-985e-3c7fb806b33e","productA":"47eac5aa-12f8-4a96-b38b-5ac511690eb9","productB":"4d747504-a5aa-4d28-a613-6915bdae5e97"},{"marketBasketId":"b6dd821c-0149-4295-99d6-f8246dc1b7dd","productA":"4f7b33be-49e1-4969-95f8-f11cd0670dcb","productB":"754f1fe2-2018-405f-bdc2-1b59ef38d363"},{"marketBasketId":"903133bc-880f-403e-9fc9-a5849f9d8954","productA":"754f1fe2-2018-405f-bdc2-1b59ef38d363","productB":"4f7b33be-49e1-4969-95f8-f11cd0670dcb"},{"marketBasketId":"e6c551fc-bce5-4900-9f94-8a43792dce00","productA":"4f7b33be-49e1-4969-95f8-f11cd0670dcb","productB":"95e90ee4-07c9-44f7-812e-29e2a5fd3686"},{"marketBasketId":"8dd8c18e-0358-4ed1-99f9-400f9d7b2499","productA":"95e90ee4-07c9-44f7-812e-29e2a5fd3686","productB":"4f7b33be-49e1-4969-95f8-f11cd0670dcb"},{"marketBasketId":"b8bd97dc-f68d-4716-96b8-5a276ebd5354","productA":"4f7b33be-49e1-4969-95f8-f11cd0670dcb","productB":"fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"},{"marketBasketId":"1bbd182e-0670-46b7-88b8-537b12f20b57","productA":"fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0","productB":"4f7b33be-49e1-4969-95f8-f11cd0670dcb"},{"marketBasketId":"7e89ff8d-8734-4ebb-9f33-c29cdda202dc","productA":"754f1fe2-2018-405f-bdc2-1b59ef38d363","productB":"95e90ee4-07c9-44f7-812e-29e2a5fd3686"},{"marketBasketId":"1d72ea4e-51dc-4da2-a352-46cb030cd8e6","productA":"95e90ee4-07c9-44f7-812e-29e2a5fd3686","productB":"754f1fe2-2018-405f-bdc2-1b59ef38d363"},{"marketBasketId":"d0e341a9-85d2-444c-88b2-0d2a1947e22e","productA":"754f1fe2-2018-405f-bdc2-1b59ef38d363","productB":"fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"},{"marketBasketId":"189aca99-68a7-4609-ab79-8980086cad10","productA":"fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0","productB":"754f1fe2-2018-405f-bdc2-1b59ef38d363"},{"marketBasketId":"44b78f3a-15f7-47c3-803b-9de3c5ece563","productA":"a67f8a47-02de-4f75-acf2-c8e435ed36c1","productB":"7c3bf2d0-dbec-432a-b5f0-9aa84425003f"},{"marketBasketId":"e4f80d61-eb13-4fd0-a2ff-d5e7541399fe","productA":"7c3bf2d0-dbec-432a-b5f0-9aa84425003f","productB":"a67f8a47-02de-4f75-acf2-c8e435ed36c1"},{"marketBasketId":"cd30a5ed-7580-41c9-af3a-e1dcf31f9cb5","productA":"8255c1f7-209c-415a-becc-cee6a2240a38","productB":"9d4772a9-2907-4353-8cd9-770b811837d8"},{"marketBasketId":"d6c3e4b2-fe29-4983-981a-37f4b8b51152","productA":"9d4772a9-2907-4353-8cd9-770b811837d8","productB":"8255c1f7-209c-415a-becc-cee6a2240a38"},{"marketBasketId":"94d33baa-55c4-4250-bf6b-739c21691adf","productA":"8255c1f7-209c-415a-becc-cee6a2240a38","productB":"aa3709d2-10b0-4a28-9c1f-1f83f681082f"},{"marketBasketId":"1f54217f-c9df-4b24-adea-af35e617084a","productA":"aa3709d2-10b0-4a28-9c1f-1f83f681082f","productB":"8255c1f7-209c-415a-becc-cee6a2240a38"},{"marketBasketId":"ba982d9d-b2fc-4621-851c-a5bc62d8073b","productA":"85686ebe-9c15-4b0a-bccc-d15927d7447e","productB":"fbcdbfe6-73e5-4240-8f34-a13b7c3ed4b9"},{"marketBasketId":"729194aa-819d-47e0-87aa-8a194546866b","productA":"fbcdbfe6-73e5-4240-8f34-a13b7c3ed4b9","productB":"85686ebe-9c15-4b0a-bccc-d15927d7447e"},{"marketBasketId":"aae9aa16-0308-4d1f-ad33-5c2ea1faec45","productA":"95e90ee4-07c9-44f7-812e-29e2a5fd3686","productB":"87d0344f-1f36-41dd-977a-8274fdbe5774"},{"marketBasketId":"c3183e6a-43f4-4fdf-b1bc-1ec00d268360","productA":"87d0344f-1f36-41dd-977a-8274fdbe5774","productB":"95e90ee4-07c9-44f7-812e-29e2a5fd3686"},{"marketBasketId":"8e37743b-6558-4e60-a8ed-d2efcf3376cc","productA":"95e90ee4-07c9-44f7-812e-29e2a5fd3686","productB":"9d4772a9-2907-4353-8cd9-770b811837d8"},{"marketBasketId":"915ec0b4-7111-4c04-bf5b-6165242c0950","productA":"9d4772a9-2907-4353-8cd9-770b811837d8","productB":"95e90ee4-07c9-44f7-812e-29e2a5fd3686"},{"marketBasketId":"a0832fbd-56ce-4eb4-88f2-1c051758d3f4","productA":"95e90ee4-07c9-44f7-812e-29e2a5fd3686","productB":"fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0"},{"marketBasketId":"61ac40db-b2e5-4ebf-905b-434dd5f45bc0","productA":"fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0","productB":"95e90ee4-07c9-44f7-812e-29e2a5fd3686"},{"marketBasketId":"df50dbae-41af-49f9-965b-f2ffaf25b0ec","productA":"aa3709d2-10b0-4a28-9c1f-1f83f681082f","productB":"9e2a14d3-c72a-4dc5-b8b3-b7efb05212d9"},{"marketBasketId":"da402c6f-4ab1-4681-941b-9e184a520716","productA":"9e2a14d3-c72a-4dc5-b8b3-b7efb05212d9","productB":"aa3709d2-10b0-4a28-9c1f-1f83f681082f"},{"marketBasketId":"00c7a186-4a63-4933-ba5d-ecc2c1904773","productA":"fbcdbfe6-73e5-4240-8f34-a13b7c3ed4b9","productB":"9e2a14d3-c72a-4dc5-b8b3-b7efb05212d9"},{"marketBasketId":"cf80fcc7-447d-42a3-b6ff-e5da044e64ab","productA":"9e2a14d3-c72a-4dc5-b8b3-b7efb05212d9","productB":"fbcdbfe6-73e5-4240-8f34-a13b7c3ed4b9"},{"marketBasketId":"258940a3-ec79-40af-9a71-45ff9d9cda67","productA":"fbcdbfe6-73e5-4240-8f34-a13b7c3ed4b9","productB":"aa3709d2-10b0-4a28-9c1f-1f83f681082f"},{"marketBasketId":"a589e486-bc84-4aa1-b92d-66687fed7f7e","productA":"aa3709d2-10b0-4a28-9c1f-1f83f681082f","productB":"fbcdbfe6-73e5-4240-8f34-a13b7c3ed4b9"}]
+[
+    {
+       "marketBasketId":"76fd4129-0abf-49f5-9816-d4070f3e369b",
+       "productA":"030a811b-1837-485c-8269-cc4b8df77bec",
+       "productB":"0d286dd2-695d-437f-9f2d-54a6f3f49682",
+       "productNameA":"CocaCola",
+       "productNameB":"BrookFarm Coffee&Cream icecream"
+    },
+    {
+       "marketBasketId":"77abb966-7ca2-4ec4-b5c4-afa03a2b516c",
+       "productA":"95e90ee4-07c9-44f7-812e-29e2a5fd3686",
+       "productB":"0d286dd2-695d-437f-9f2d-54a6f3f49682",
+       "productNameA":"Milk Vitamin D",
+       "productNameB":"BrookFarm Coffee&Cream icecream"
+    },
+    {
+       "marketBasketId":"8a7d0134-f84d-4eaf-9b0b-d4e8d169924e",
+       "productA":"030a811b-1837-485c-8269-cc4b8df77bec",
+       "productB":"10720f0b-00c3-4c1d-9ca2-5a954b8dde52",
+       "productNameA":"CocaCola",
+       "productNameB":"Sliced Cheese"
+    },
+    {
+       "marketBasketId":"75a3bd61-8073-45b3-b62b-6818fe62babb",
+       "productA":"47eac5aa-12f8-4a96-b38b-5ac511690eb9",
+       "productB":"10720f0b-00c3-4c1d-9ca2-5a954b8dde52",
+       "productNameA":"milka cornetto icecream",
+       "productNameB":"Sliced Cheese"
+    },
+    {
+       "marketBasketId":"3d99dee7-3352-4bef-bf5f-1b9220b5bd0c",
+       "productA":"4d747504-a5aa-4d28-a613-6915bdae5e97",
+       "productB":"10720f0b-00c3-4c1d-9ca2-5a954b8dde52",
+       "productNameA":"tuc",
+       "productNameB":"Sliced Cheese"
+    },
+    {
+       "marketBasketId":"5689daa7-56f6-413a-8ea9-f7793aaee076",
+       "productA":"030a811b-1837-485c-8269-cc4b8df77bec",
+       "productB":"10a7f044-336b-4b4e-8498-f3e16158b676",
+       "productNameA":"CocaCola",
+       "productNameB":"Lamb"
+    },
+    {
+       "marketBasketId":"59efa311-49ce-4c02-88ec-1801559e6de9",
+       "productA":"6c4a0f43-515d-4a47-b939-cda064631a59",
+       "productB":"10a7f044-336b-4b4e-8498-f3e16158b676",
+       "productNameA":"Pork",
+       "productNameB":"Lamb"
+    },
+    {
+       "marketBasketId":"0d5cba5d-50f7-452c-9c3c-d63bd4534ecc",
+       "productA":"0d286dd2-695d-437f-9f2d-54a6f3f49682",
+       "productB":"030a811b-1837-485c-8269-cc4b8df77bec",
+       "productNameA":"BrookFarm Coffee&Cream icecream",
+       "productNameB":"CocaCola"
+    },
+    {
+       "marketBasketId":"8e047695-0b52-45eb-a29c-e8d23650fdbf",
+       "productA":"10720f0b-00c3-4c1d-9ca2-5a954b8dde52",
+       "productB":"030a811b-1837-485c-8269-cc4b8df77bec",
+       "productNameA":"Sliced Cheese",
+       "productNameB":"CocaCola"
+    },
+    {
+       "marketBasketId":"d973d027-1c4f-48a4-9c0a-14eb03d77cef",
+       "productA":"10a7f044-336b-4b4e-8498-f3e16158b676",
+       "productB":"030a811b-1837-485c-8269-cc4b8df77bec",
+       "productNameA":"Lamb",
+       "productNameB":"CocaCola"
+    },
+    {
+       "marketBasketId":"4b298d5a-c294-44ea-8c71-0bd6ff6db317",
+       "productA":"0d286dd2-695d-437f-9f2d-54a6f3f49682",
+       "productB":"95e90ee4-07c9-44f7-812e-29e2a5fd3686",
+       "productNameA":"BrookFarm Coffee&Cream icecream",
+       "productNameB":"Milk Vitamin D"
+    },
+    {
+       "marketBasketId":"95fe357d-7ade-4d58-8001-57af48486112",
+       "productA":"4f7b33be-49e1-4969-95f8-f11cd0670dcb",
+       "productB":"95e90ee4-07c9-44f7-812e-29e2a5fd3686",
+       "productNameA":"Walnuts",
+       "productNameB":"Milk Vitamin D"
+    },
+    {
+       "marketBasketId":"6c459610-712c-4764-a9f8-24ca4ba7c0ce",
+       "productA":"754f1fe2-2018-405f-bdc2-1b59ef38d363",
+       "productB":"95e90ee4-07c9-44f7-812e-29e2a5fd3686",
+       "productNameA":"Ferrero Collection",
+       "productNameB":"Milk Vitamin D"
+    },
+    {
+       "marketBasketId":"f3f454f5-cafe-4b20-b913-1b36e9d301e3",
+       "productA":"fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0",
+       "productB":"95e90ee4-07c9-44f7-812e-29e2a5fd3686",
+       "productNameA":"Chips Ahoy",
+       "productNameB":"Milk Vitamin D"
+    },
+    {
+       "marketBasketId":"956fc28b-1f50-4cf6-b365-5b20961d3d06",
+       "productA":"9d4772a9-2907-4353-8cd9-770b811837d8",
+       "productB":"95e90ee4-07c9-44f7-812e-29e2a5fd3686",
+       "productNameA":"Banana",
+       "productNameB":"Milk Vitamin D"
+    },
+    {
+       "marketBasketId":"6124aa31-eaee-482f-ae20-2600c3a93b06",
+       "productA":"87d0344f-1f36-41dd-977a-8274fdbe5774",
+       "productB":"95e90ee4-07c9-44f7-812e-29e2a5fd3686",
+       "productNameA":"eggs",
+       "productNameB":"Milk Vitamin D"
+    },
+    {
+       "marketBasketId":"a869eb01-ba81-41d3-8200-3ccdc0c0b305",
+       "productA":"10720f0b-00c3-4c1d-9ca2-5a954b8dde52",
+       "productB":"47eac5aa-12f8-4a96-b38b-5ac511690eb9",
+       "productNameA":"Sliced Cheese",
+       "productNameB":"milka cornetto icecream"
+    },
+    {
+       "marketBasketId":"b0ad7074-f649-49d8-93cd-f4ce96d0c802",
+       "productA":"4d747504-a5aa-4d28-a613-6915bdae5e97",
+       "productB":"47eac5aa-12f8-4a96-b38b-5ac511690eb9",
+       "productNameA":"tuc",
+       "productNameB":"milka cornetto icecream"
+    },
+    {
+       "marketBasketId":"e845e59f-0aea-424f-b5ff-797484bc5c13",
+       "productA":"10720f0b-00c3-4c1d-9ca2-5a954b8dde52",
+       "productB":"4d747504-a5aa-4d28-a613-6915bdae5e97",
+       "productNameA":"Sliced Cheese",
+       "productNameB":"tuc"
+    },
+    {
+       "marketBasketId":"a0808f20-4b1c-4996-ad02-70d788e1a5a3",
+       "productA":"47eac5aa-12f8-4a96-b38b-5ac511690eb9",
+       "productB":"4d747504-a5aa-4d28-a613-6915bdae5e97",
+       "productNameA":"milka cornetto icecream",
+       "productNameB":"tuc"
+    },
+    {
+       "marketBasketId":"f5b2a8fa-3a7d-410e-ab45-e02ff47ebcc4",
+       "productA":"10a7f044-336b-4b4e-8498-f3e16158b676",
+       "productB":"6c4a0f43-515d-4a47-b939-cda064631a59",
+       "productNameA":"Lamb",
+       "productNameB":"Pork"
+    },
+    {
+       "marketBasketId":"22c5378e-1c2d-4b94-9717-c233d7a56dd4",
+       "productA":"95e90ee4-07c9-44f7-812e-29e2a5fd3686",
+       "productB":"4f7b33be-49e1-4969-95f8-f11cd0670dcb",
+       "productNameA":"Milk Vitamin D",
+       "productNameB":"Walnuts"
+    },
+    {
+       "marketBasketId":"86e0b319-77ed-499c-86c5-c6c4835539ac",
+       "productA":"754f1fe2-2018-405f-bdc2-1b59ef38d363",
+       "productB":"4f7b33be-49e1-4969-95f8-f11cd0670dcb",
+       "productNameA":"Ferrero Collection",
+       "productNameB":"Walnuts"
+    },
+    {
+       "marketBasketId":"ab413dba-06d0-4017-91db-0a573157a6c0",
+       "productA":"fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0",
+       "productB":"4f7b33be-49e1-4969-95f8-f11cd0670dcb",
+       "productNameA":"Chips Ahoy",
+       "productNameB":"Walnuts"
+    },
+    {
+       "marketBasketId":"cfb3ed74-8c66-409c-b4a3-d8de1aad090f",
+       "productA":"95e90ee4-07c9-44f7-812e-29e2a5fd3686",
+       "productB":"754f1fe2-2018-405f-bdc2-1b59ef38d363",
+       "productNameA":"Milk Vitamin D",
+       "productNameB":"Ferrero Collection"
+    },
+    {
+       "marketBasketId":"fb602c68-f560-46c8-9873-2eeb2262dc5e",
+       "productA":"4f7b33be-49e1-4969-95f8-f11cd0670dcb",
+       "productB":"754f1fe2-2018-405f-bdc2-1b59ef38d363",
+       "productNameA":"Walnuts",
+       "productNameB":"Ferrero Collection"
+    },
+    {
+       "marketBasketId":"3b8a3c70-4790-441c-a06c-54d07de8e20b",
+       "productA":"fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0",
+       "productB":"754f1fe2-2018-405f-bdc2-1b59ef38d363",
+       "productNameA":"Chips Ahoy",
+       "productNameB":"Ferrero Collection"
+    },
+    {
+       "marketBasketId":"900d23b7-32c3-4994-9562-1be2ab9e3946",
+       "productA":"95e90ee4-07c9-44f7-812e-29e2a5fd3686",
+       "productB":"87d0344f-1f36-41dd-977a-8274fdbe5774",
+       "productNameA":"Milk Vitamin D",
+       "productNameB":"eggs"
+    },
+    {
+       "marketBasketId":"155d05ae-c664-4ef9-a58a-936da0189f0e",
+       "productA":"95e90ee4-07c9-44f7-812e-29e2a5fd3686",
+       "productB":"9d4772a9-2907-4353-8cd9-770b811837d8",
+       "productNameA":"Milk Vitamin D",
+       "productNameB":"Banana"
+    },
+    {
+       "marketBasketId":"8377f362-0660-45a6-b0d6-43d4bb6b202c",
+       "productA":"8255c1f7-209c-415a-becc-cee6a2240a38",
+       "productB":"9d4772a9-2907-4353-8cd9-770b811837d8",
+       "productNameA":"Plain Yogurt",
+       "productNameB":"Banana"
+    },
+    {
+       "marketBasketId":"b8576e9f-c0d0-4e68-8433-48e287da0563",
+       "productA":"95e90ee4-07c9-44f7-812e-29e2a5fd3686",
+       "productB":"fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0",
+       "productNameA":"Milk Vitamin D",
+       "productNameB":"Chips Ahoy"
+    },
+    {
+       "marketBasketId":"5aa5f533-ded8-4681-8793-df5110d6bc66",
+       "productA":"4f7b33be-49e1-4969-95f8-f11cd0670dcb",
+       "productB":"fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0",
+       "productNameA":"Walnuts",
+       "productNameB":"Chips Ahoy"
+    },
+    {
+       "marketBasketId":"49fddca5-b031-4d50-90fa-7c07c5824cd5",
+       "productA":"754f1fe2-2018-405f-bdc2-1b59ef38d363",
+       "productB":"fa004cbf-a66a-4f5d-8a26-1ff2718cfdf0",
+       "productNameA":"Ferrero Collection",
+       "productNameB":"Chips Ahoy"
+    },
+    {
+       "marketBasketId":"e6c987c7-5d80-433b-99bd-90c60cd73bd8",
+       "productA":"0d37e9db-caa8-46c9-9df6-8e085a566d4e",
+       "productB":"31ce0eab-88b6-4eb2-b189-5ff28b8c799f",
+       "productNameA":"Doritos",
+       "productNameB":"CocaCola 600 ml"
+    },
+    {
+       "marketBasketId":"e3a3c68c-ea43-4b7b-ad8a-01b413e03124",
+       "productA":"f4ac532e-5dc7-4a8e-bc02-013c1a98fc60",
+       "productB":"31ce0eab-88b6-4eb2-b189-5ff28b8c799f",
+       "productNameA":"Digiorno Italian Pizza",
+       "productNameB":"CocaCola 600 ml"
+    },
+    {
+       "marketBasketId":"dcefe5c5-6283-4594-939c-9ec808b5b05b",
+       "productA":"f3858387-80dd-4e82-a37e-033d34417a50",
+       "productB":"31ce0eab-88b6-4eb2-b189-5ff28b8c799f",
+       "productNameA":"Lays classic",
+       "productNameB":"CocaCola 600 ml"
+    },
+    {
+       "marketBasketId":"463e8005-3fec-41d1-9432-c709c6d9e815",
+       "productA":"0d37e9db-caa8-46c9-9df6-8e085a566d4e",
+       "productB":"f4ac532e-5dc7-4a8e-bc02-013c1a98fc60",
+       "productNameA":"Doritos",
+       "productNameB":"Digiorno Italian Pizza"
+    },
+    {
+       "marketBasketId":"d29f8261-9ab7-40a3-b582-61829479a4b3",
+       "productA":"31ce0eab-88b6-4eb2-b189-5ff28b8c799f",
+       "productB":"f4ac532e-5dc7-4a8e-bc02-013c1a98fc60",
+       "productNameA":"CocaCola 600 ml",
+       "productNameB":"Digiorno Italian Pizza"
+    },
+    {
+       "marketBasketId":"ef2bb549-b374-4fbd-ad70-f280c7c56dcb",
+       "productA":"31ce0eab-88b6-4eb2-b189-5ff28b8c799f",
+       "productB":"0d37e9db-caa8-46c9-9df6-8e085a566d4e",
+       "productNameA":"CocaCola 600 ml",
+       "productNameB":"Doritos"
+    },
+    {
+       "marketBasketId":"1f00f128-941c-417d-a855-4a5ed2ec5633",
+       "productA":"f4ac532e-5dc7-4a8e-bc02-013c1a98fc60",
+       "productB":"0d37e9db-caa8-46c9-9df6-8e085a566d4e",
+       "productNameA":"Digiorno Italian Pizza",
+       "productNameB":"Doritos"
+    },
+    {
+       "marketBasketId":"0334b9ed-dd9f-4649-8386-00a8e5d4e34b",
+       "productA":"31ce0eab-88b6-4eb2-b189-5ff28b8c799f",
+       "productB":"f3858387-80dd-4e82-a37e-033d34417a50",
+       "productNameA":"CocaCola 600 ml",
+       "productNameB":"Lays classic"
+    },
+    {
+       "marketBasketId":"66ad0576-46d0-4189-b58b-7814352b07f9",
+       "productA":"4667f230-f260-467a-8a04-f50239ff3ee8",
+       "productB":"19ad80f0-1797-43c7-99be-7195eb2e014a",
+       "productNameA":"Asparagus",
+       "productNameB":"Plain Greek Yogurt"
+    },
+    {
+       "marketBasketId":"349201d0-f892-4169-b502-9392e05b4e22",
+       "productA":"4667f230-f260-467a-8a04-f50239ff3ee8",
+       "productB":"3b76467c-8c5c-41d0-ac60-ba5692ca263a",
+       "productNameA":"Asparagus",
+       "productNameB":"Whipped Cream"
+    },
+    {
+       "marketBasketId":"4baaa08e-1b05-46b5-9d6e-606eccfb90fa",
+       "productA":"4667f230-f260-467a-8a04-f50239ff3ee8",
+       "productB":"48dbb483-93c0-438d-9983-0ed006c0b640",
+       "productNameA":"Asparagus",
+       "productNameB":"Artichoke"
+    },
+    {
+       "marketBasketId":"b7e7d744-64d4-46e3-a467-347239189987",
+       "productA":"4667f230-f260-467a-8a04-f50239ff3ee8",
+       "productB":"85686ebe-9c15-4b0a-bccc-d15927d7447e",
+       "productNameA":"Asparagus",
+       "productNameB":"Fish"
+    },
+    {
+       "marketBasketId":"e1970d9f-eab6-44c4-870e-c807984dfd16",
+       "productA":"fbcdbfe6-73e5-4240-8f34-a13b7c3ed4b9",
+       "productB":"85686ebe-9c15-4b0a-bccc-d15927d7447e",
+       "productNameA":"Silk Almond Milk",
+       "productNameB":"Fish"
+    },
+    {
+       "marketBasketId":"c85ed3f1-f0cb-4054-b656-b3a3cb209837",
+       "productA":"19ad80f0-1797-43c7-99be-7195eb2e014a",
+       "productB":"4667f230-f260-467a-8a04-f50239ff3ee8",
+       "productNameA":"Plain Greek Yogurt",
+       "productNameB":"Asparagus"
+    },
+    {
+       "marketBasketId":"47efd12e-aa34-40eb-b5f5-686b0bf84327",
+       "productA":"3b76467c-8c5c-41d0-ac60-ba5692ca263a",
+       "productB":"4667f230-f260-467a-8a04-f50239ff3ee8",
+       "productNameA":"Whipped Cream",
+       "productNameB":"Asparagus"
+    },
+    {
+       "marketBasketId":"1474948c-fbe5-429a-8967-1fbc8db31c89",
+       "productA":"48dbb483-93c0-438d-9983-0ed006c0b640",
+       "productB":"4667f230-f260-467a-8a04-f50239ff3ee8",
+       "productNameA":"Artichoke",
+       "productNameB":"Asparagus"
+    },
+    {
+       "marketBasketId":"77231fe2-eb5c-402a-823a-eef669321ca4",
+       "productA":"85686ebe-9c15-4b0a-bccc-d15927d7447e",
+       "productB":"4667f230-f260-467a-8a04-f50239ff3ee8",
+       "productNameA":"Fish",
+       "productNameB":"Asparagus"
+    },
+    {
+       "marketBasketId":"ee6a63c4-72dd-4938-9913-4c9706c6811a",
+       "productA":"eee5b1c7-cba6-450e-be94-83799db81ee8",
+       "productB":"1d450726-dbe3-415f-878e-b9a93f5688db",
+       "productNameA":"Orange",
+       "productNameB":"Apple"
+    },
+    {
+       "marketBasketId":"7469ea20-f4a7-4e16-b18f-d4b9d20c7e6a",
+       "productA":"1d450726-dbe3-415f-878e-b9a93f5688db",
+       "productB":"eee5b1c7-cba6-450e-be94-83799db81ee8",
+       "productNameA":"Apple",
+       "productNameB":"Orange"
+    },
+    {
+       "marketBasketId":"9925928c-d27c-4489-804d-6dfa0f8d0d4b",
+       "productA":"25d7753a-bb2a-44d9-8577-7ab579085462",
+       "productB":"fdee02ab-af54-4d5f-961c-c5fa233cba0a",
+       "productNameA":"Mozzarella",
+       "productNameB":"Spinach & Ricotta Ravioli"
+    },
+    {
+       "marketBasketId":"4f45f69f-8d7b-41e3-a9df-cee51c8513f9",
+       "productA":"fdee02ab-af54-4d5f-961c-c5fa233cba0a",
+       "productB":"25d7753a-bb2a-44d9-8577-7ab579085462",
+       "productNameA":"Spinach & Ricotta Ravioli",
+       "productNameB":"Mozzarella"
+    },
+    {
+       "marketBasketId":"579ac376-22b2-46ee-86a2-a01d57b29eda",
+       "productA":"f27b816b-f6db-465f-9609-0350dfd319bf",
+       "productB":"320beacd-65d0-4ab4-b38f-1a2784533975",
+       "productNameA":"Lays Wavy",
+       "productNameB":"Sour Cream"
+    },
+    {
+       "marketBasketId":"f00df08c-e965-4271-a996-d08b60c8e594",
+       "productA":"320beacd-65d0-4ab4-b38f-1a2784533975",
+       "productB":"f27b816b-f6db-465f-9609-0350dfd319bf",
+       "productNameA":"Sour Cream",
+       "productNameB":"Lays Wavy"
+    },
+    {
+       "marketBasketId":"3794f9b0-5a53-4bf4-934c-7a8b5d3437b4",
+       "productA":"85686ebe-9c15-4b0a-bccc-d15927d7447e",
+       "productB":"fbcdbfe6-73e5-4240-8f34-a13b7c3ed4b9",
+       "productNameA":"Fish",
+       "productNameB":"Silk Almond Milk"
+    },
+    {
+       "marketBasketId":"8fc71807-ee16-440a-8c24-b05825e6893f",
+       "productA":"aa3709d2-10b0-4a28-9c1f-1f83f681082f",
+       "productB":"fbcdbfe6-73e5-4240-8f34-a13b7c3ed4b9",
+       "productNameA":"Chicken",
+       "productNameB":"Silk Almond Milk"
+    },
+    {
+       "marketBasketId":"14e9f2b6-a110-404a-be28-805b9e011cf4",
+       "productA":"9e2a14d3-c72a-4dc5-b8b3-b7efb05212d9",
+       "productB":"fbcdbfe6-73e5-4240-8f34-a13b7c3ed4b9",
+       "productNameA":"Beans",
+       "productNameB":"Silk Almond Milk"
+    },
+    {
+       "marketBasketId":"f47e0d5c-286d-4f0d-b5a7-ddcb5b4eba87",
+       "productA":"7c3bf2d0-dbec-432a-b5f0-9aa84425003f",
+       "productB":"a67f8a47-02de-4f75-acf2-c8e435ed36c1",
+       "productNameA":"Onion",
+       "productNameB":"Tomato"
+    },
+    {
+       "marketBasketId":"3f8e2682-8d37-4ee4-ad30-cc9e6eb85165",
+       "productA":"a67f8a47-02de-4f75-acf2-c8e435ed36c1",
+       "productB":"7c3bf2d0-dbec-432a-b5f0-9aa84425003f",
+       "productNameA":"Tomato",
+       "productNameB":"Onion"
+    },
+    {
+       "marketBasketId":"62d4e908-49ae-4e79-adce-0be7d1a61968",
+       "productA":"8255c1f7-209c-415a-becc-cee6a2240a38",
+       "productB":"aa3709d2-10b0-4a28-9c1f-1f83f681082f",
+       "productNameA":"Plain Yogurt",
+       "productNameB":"Chicken"
+    },
+    {
+       "marketBasketId":"518244d6-378a-4370-b871-6b20cdbd633c",
+       "productA":"fbcdbfe6-73e5-4240-8f34-a13b7c3ed4b9",
+       "productB":"aa3709d2-10b0-4a28-9c1f-1f83f681082f",
+       "productNameA":"Silk Almond Milk",
+       "productNameB":"Chicken"
+    },
+    {
+       "marketBasketId":"a3dfd7ee-5389-413b-b5d2-8f29e15d5ded",
+       "productA":"9e2a14d3-c72a-4dc5-b8b3-b7efb05212d9",
+       "productB":"aa3709d2-10b0-4a28-9c1f-1f83f681082f",
+       "productNameA":"Beans",
+       "productNameB":"Chicken"
+    },
+    {
+       "marketBasketId":"ec08f490-8698-49c1-8cf9-292a90c7e75a",
+       "productA":"9d4772a9-2907-4353-8cd9-770b811837d8",
+       "productB":"8255c1f7-209c-415a-becc-cee6a2240a38",
+       "productNameA":"Banana",
+       "productNameB":"Plain Yogurt"
+    },
+    {
+       "marketBasketId":"39d91738-87a9-494c-ba28-f7014461d3d8",
+       "productA":"aa3709d2-10b0-4a28-9c1f-1f83f681082f",
+       "productB":"8255c1f7-209c-415a-becc-cee6a2240a38",
+       "productNameA":"Chicken",
+       "productNameB":"Plain Yogurt"
+    },
+    {
+       "marketBasketId":"9d4af714-3d9d-4eb2-9c71-669c756ce522",
+       "productA":"aa3709d2-10b0-4a28-9c1f-1f83f681082f",
+       "productB":"9e2a14d3-c72a-4dc5-b8b3-b7efb05212d9",
+       "productNameA":"Chicken",
+       "productNameB":"Beans"
+    },
+    {
+       "marketBasketId":"0d1551b1-565b-4d4e-8a0d-f36efc6d4ee9",
+       "productA":"fbcdbfe6-73e5-4240-8f34-a13b7c3ed4b9",
+       "productB":"9e2a14d3-c72a-4dc5-b8b3-b7efb05212d9",
+       "productNameA":"Silk Almond Milk",
+       "productNameB":"Beans"
+    }
+ ]

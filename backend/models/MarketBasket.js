@@ -25,6 +25,14 @@ const MarketBasket = SQL.define(
                 key: 'productId',
             },
         },
+        productNameA: {
+            type: Sequelize.STRING,
+            allowNull: false,
+        },
+        productNameB: {
+            type: Sequelize.STRING,
+            allowNull: false,
+        },
     },
     {
         timestamps: false,

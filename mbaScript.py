@@ -78,6 +78,42 @@ encoded2_basket['productB'] = encoded2_basket['productB'].astype('|S')
 encoded3_basket = encoded2_basket.applymap(encoder3)
 encoded3_basket['marketBasketId'] = encoded3_basket.apply(lambda _: str(uuid.uuid4()), axis=1)
 encoded3_basket = encoded3_basket[['marketBasketId', 'productA', 'productB']]
-result = encoded3_basket.to_json(r'./backend/_data/mba.json',orient="records")
+
+## Generate Customer Registration csv
+REGISTRATION_SQL_QUERY = """
+SELECT * FROM products;
+"""
+
+connection = pymysql.connect(host='ewa-term-project-instance.ccstkwakl93l.us-east-2.rds.amazonaws.com',
+                             user='admin',
+                             password='#ewa_term_project#',
+                             db='ewaDB')
+
+with contextlib.closing(connection):
+    with connection.cursor() as cursor:
+        cursor.execute(REGISTRATION_SQL_QUERY)
+        registration_results = cursor.fetchall()
+
+registration_col_names = [i[0] for i in cursor.description]
+
+registration_results = (tuple(registration_col_names),) + registration_results
+        
+registartion_output_file = './backend/_data/products.csv'
+with open(registartion_output_file, 'w', newline='') as csvfile:
+    csv_writer = csv.writer(csvfile, lineterminator='\n')
+    csv_writer.writerows(registration_results)
+
+products = pd.read_csv('products.csv')
+products = products[['productId','productName']]
+products = products.rename(columns={"productId": "productA", "productName": "productNameA"})
+products['productA'] = products['productA'].astype('|S')
+products['productNameA'] = products['productNameA'].astype('|S')
+crazy_df = pd.merge(encoded3_basket, products, on="productA")
+products = products.rename(columns={"productA": "productB", "productNameA": "productNameB"})
+products['productB'] = products['productB'].astype('|S')
+products['productNameB'] = products['productNameB'].astype('|S')
+super_crazy_df = pd.merge(crazy_df, products, on="productB")
+result = super_crazy_df.to_json(r'./backend/_data/mba.json',orient="records")
+
 print('Success!')
 

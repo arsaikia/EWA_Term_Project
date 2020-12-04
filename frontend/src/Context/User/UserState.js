@@ -143,7 +143,7 @@ const UserState = (props) => {
             body: { storeId },
         });
 
-        Cookie.set('USER_STORE', storeId);
+        Cookie.set('STORE_ID', storeId);
     };
 
     return (

@@ -1,6 +1,7 @@
-import React, { Component, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components/macro';
 import { Button } from 'react-bootstrap';
+import Cookie from 'js-cookie';
 import {
     Container,
     FlexContainer,
@@ -8,6 +9,7 @@ import {
     FadeInContainer,
 } from '../../components/StylingComponents/index';
 import { Check } from '../../components/Icons';
+
 import {
     FormInput,
     DateInput,
@@ -245,6 +247,30 @@ const ExistingAddress = ({
         </SingleCard>
     );
 };
+
+const ExistingStores = ({
+    storeId,
+    street1,
+    selectedStore,
+    setSelectedStore,
+}) => {
+    return (
+        <SingleCard
+            onClick={() => {
+                setSelectedStore(storeId);
+            }}
+            flexDirection='row'
+            justifyContent='space-between'
+            padding='10px'
+            backgroundColor='rgb(176,184,211)'
+            margin='2% 0% 2% 0%'
+            borderRadius='4px'>
+            <Note text={`${street1}`} bold={600} />
+
+            {selectedStore === storeId && <Check />}
+        </SingleCard>
+    );
+};
 const Address = ({
     userAddresses,
     selectedAddress,
@@ -280,64 +306,125 @@ const Address = ({
     checkoutStep,
     setCheckoutStep,
     continueHandler,
+
+    allStores,
+
+    selectedStore,
+    setSelectedStore,
     ...props
 }) => {
+    const [pickup, setPickup] = useState(!false);
+
+    useEffect(() => {
+        if (pickup) {
+            setSelectedStore(Cookie.get('STORE_ID'));
+            // setSelectedAddress('');
+        } else if (!pickup) {
+            setSelectedStore('');
+        }
+    }, [pickup]);
+
     return (
         <FlexContainer
             flexDirection='column'
             width='100%'
             height='100%'
             justifyContent='space-between'>
-            <ExpandingContainer
+            <FlexContainer
                 width='100%'
-                height='40px'
-                overflow='hidden'
-                padding='5px'
-                borderRadius='8px'
-                border='1px solid #35475e'>
-                <FlexContainer
-                    width='100%'
-                    flexDirection='row'
-                    justifyContent='center'
-                    alignSelf='center'
-                    alignItems='center'>
+                margin='20px 0px'
+                justifyContent='space-between'>
+                <Container marginLeft='20px' onClick={() => setPickup(true)}>
                     <Description
-                        text={<p>Select an existing Address</p>}
+                        text={<p>Pickup</p>}
                         color={lightOnDark}
                         pointer={'pointer'}
                     />
-                </FlexContainer>
-                <Spacing height='10px' />
+                </Container>
+                <Container marginRight='20px' onClick={() => setPickup(false)}>
+                    <Description
+                        text={<p>Delivery</p>}
+                        color={lightOnDark}
+                        pointer={'pointer'}
+                    />
+                </Container>
+            </FlexContainer>
 
-                {userAddresses &&
-                    userAddresses.length > 0 &&
-                    userAddresses.map((address) => (
-                        <ExistingAddress
-                            key={address.addressId}
-                            addressId={address.addressId}
-                            street1={address.street1}
-                            city={address.city}
-                            zip={address.zip}
-                            state={address.state}
-                            selectedAddress={selectedAddress}
-                            setSelectedAddress={setSelectedAddress}
+            {pickup && (
+                <ExpandingContainer
+                    width='100%'
+                    height='40px'
+                    overflow='scroll'
+                    padding='5px'
+                    borderRadius='8px'
+                    border='1px solid #35475e'>
+                    <FlexContainer
+                        width='100%'
+                        flexDirection='row'
+                        justifyContent='center'
+                        alignSelf='center'
+                        alignItems='center'>
+                        <Description
+                            text={<p>Store for order pickup</p>}
+                            color={lightOnDark}
+                            pointer={'pointer'}
                         />
-                    ))}
+                    </FlexContainer>
+                    {/* <Spacing height='10px' /> */}
 
-                <FlexContainer
+                    {allStores &&
+                        allStores.length > 0 &&
+                        allStores.map((store) => (
+                            <ExistingStores
+                                key={store.storeId}
+                                storeId={store.storeId}
+                                street1={store.storeName}
+                                selectedStore={selectedStore}
+                                setSelectedStore={setSelectedStore}
+                            />
+                        ))}
+                </ExpandingContainer>
+            )}
+            {/* <Spacing height='20px' mobileHeight='15px' /> */}
+
+            {!pickup && (
+                <ExpandingContainer
                     width='100%'
-                    flexDirection='row'
-                    justifyContent='center'
-                    alignSelf='center'
-                    alignItems='center'>
-                    <Description
-                        text={<p>Select an existing Address</p>}
-                        color={lightOnDark}
-                        pointer={'pointer'}
-                    />
-                    
-                </FlexContainer>
-            </ExpandingContainer>
+                    height='40px'
+                    overflow='hidden'
+                    padding='5px'
+                    borderRadius='8px'
+                    border='1px solid #35475e'>
+                    <FlexContainer
+                        width='100%'
+                        flexDirection='row'
+                        justifyContent='center'
+                        alignSelf='center'
+                        alignItems='center'>
+                        <Description
+                            text={<p>Select an existing Address</p>}
+                            color={lightOnDark}
+                            pointer={'pointer'}
+                        />
+                    </FlexContainer>
+                    <Spacing height='10px' />
+
+                    {userAddresses &&
+                        userAddresses.length > 0 &&
+                        userAddresses.map((address) => (
+                            <ExistingAddress
+                                key={address.addressId}
+                                addressId={address.addressId}
+                                street1={address.street1}
+                                city={address.city}
+                                zip={address.zip}
+                                state={address.state}
+                                selectedAddress={selectedAddress}
+                                setSelectedAddress={setSelectedAddress}
+                            />
+                        ))}
+                </ExpandingContainer>
+            )}
             <Spacing height='50px' mobileHeight='30px' />
 
             <FlexContainer
@@ -350,7 +437,7 @@ const Address = ({
                 // backgroundColor={'#35475e'}
                 padding={'1em'}>
                 <HeaderTwo
-                    text={<p>Add new Delivery Address</p>}
+                    text={<p>{pickup ? '' : 'Add new Delivery Address'}</p>}
                     color={lightOnDark}
                 />
                 <Spacing height='50px' mobileHeight='30px' />
@@ -360,59 +447,68 @@ const Address = ({
                     width='100%'
                     height='100%'
                     justifyContent='space-between'>
-                    <FormInput
-                        cancellable={!isEmpty(street)}
-                        error={null}
-                        errorMessage={'Street Address'}
-                        onChange={setStreet}
-                        title={'Street Address'}
-                        value={street}
-                        handleBlur={() => setNameError(isEmpty(nameOnCard))}
-                        required
-                    />
-                    <FormInput
-                        cancellable={!isEmpty(city)}
-                        error={null}
-                        errorMessage={'Street Address'}
-                        onChange={setCity}
-                        title={'City'}
-                        value={city}
-                        handleBlur={() => setNameError(isEmpty(nameOnCard))}
-                        required
-                    />
-                    <FlexContainer
-                        width='100%'
-                        justifyContent='space-between'
-                        marginBottom='10px'>
-                        <FlexContainer width='40%'>
+                    {!pickup && (
+                        <>
                             <FormInput
-                                cancellable={!isEmpty(zip)}
+                                cancellable={!isEmpty(street)}
                                 error={null}
                                 errorMessage={'Street Address'}
-                                onChange={setZip}
-                                title={'Zip'}
-                                value={zip}
+                                onChange={setStreet}
+                                title={'Street Address'}
+                                value={street}
                                 handleBlur={() =>
                                     setNameError(isEmpty(nameOnCard))
                                 }
                                 required
                             />
-                        </FlexContainer>
-                        <FlexContainer width='40%'>
                             <FormInput
-                                cancellable={!isEmpty(state)}
+                                cancellable={!isEmpty(city)}
                                 error={null}
                                 errorMessage={'Street Address'}
-                                onChange={setState}
-                                title={'State'}
-                                value={state}
+                                onChange={setCity}
+                                title={'City'}
+                                value={city}
                                 handleBlur={() =>
                                     setNameError(isEmpty(nameOnCard))
                                 }
                                 required
                             />
-                        </FlexContainer>
-                    </FlexContainer>
+                            <FlexContainer
+                                width='100%'
+                                justifyContent='space-between'
+                                marginBottom='10px'>
+                                <FlexContainer width='40%'>
+                                    <FormInput
+                                        cancellable={!isEmpty(zip)}
+                                        error={null}
+                                        errorMessage={'Street Address'}
+                                        onChange={setZip}
+                                        title={'Zip'}
+                                        value={zip}
+                                        handleBlur={() =>
+                                            setNameError(isEmpty(nameOnCard))
+                                        }
+                                        required
+                                    />
+                                </FlexContainer>
+                                <FlexContainer width='40%'>
+                                    <FormInput
+                                        cancellable={!isEmpty(state)}
+                                        error={null}
+                                        errorMessage={'Street Address'}
+                                        onChange={setState}
+                                        title={'State'}
+                                        value={state}
+                                        handleBlur={() =>
+                                            setNameError(isEmpty(nameOnCard))
+                                        }
+                                        required
+                                    />
+                                </FlexContainer>
+                            </FlexContainer>
+                        </>
+                    )}
+
                     <Button
                         variant='primary'
                         onClick={() => {
@@ -464,6 +560,11 @@ const AddressAndCards = ({
     setZip,
     setState,
     continueHandler,
+
+    selectedStore,
+    setSelectedStore,
+
+    allStores,
     ...props
 }) =>
     checkoutStep === 'ADD_PAYMENT' ? (
@@ -527,6 +628,9 @@ const AddressAndCards = ({
             checkoutStep={checkoutStep}
             setCheckoutStep={setCheckoutStep}
             continueHandler={continueHandler}
+            allStores={allStores}
+            selectedStore={selectedStore}
+            setSelectedStore={setSelectedStore}
             props={props}
         />
     );

@@ -47,13 +47,10 @@ const Category = ({ getFilteredProducts, category, allSubcategoriers }) => {
     cat = cat.substring(0, 1) + cat.substring(1, cat.length).toLowerCase();
     const subcategory = get(allSubcategoriers, category, []);
 
-
-    const subCatFilter = async(category, sub) => {
+    const subCatFilter = async (category, sub) => {
         await getFilteredProducts(category, 'CATEGORY');
         await getFilteredProducts(sub, 'SUB_CATEGORY');
-
-    }
-
+    };
 
     return (
         <FlexContainer
@@ -111,18 +108,19 @@ const Category = ({ getFilteredProducts, category, allSubcategoriers }) => {
 };
 
 const allCategoriers = [
+    'DAIRY_AND_EGGS',
     'PRODUCE',
-    // 'DAIRY_AND_EGGS',
     'FROZEN',
     'BEVERAGES',
     'SNACKS',
 ];
 
 const allSubcategoriers = {
-    PRODUCE: ['Fruits', 'Vegetable', 'Meat'],
-    BEVERAGES: ['Energy drinks', 'Fruit beverage', 'Tea bevaraged'],
-    FROZEN: ['Icecream', 'Frozenfoods', 'Vegetables'],
-    SNACKS: ['Nuts', 'Cookies and chocolates', 'Chips'],
+    DAIRY_AND_EGGS: ['Milk', 'Breakfast', 'Eggs'],
+    PRODUCE: ['Fruits', 'Vegetables', 'Meat'],
+    BEVERAGES: ['Soda', 'Tea', 'Fruit'],
+    FROZEN: ['Meals', 'Veggies', 'dessert'],
+    SNACKS: ['Chips', 'Cookies & Chocolates', 'Nuts'],
 };
 const LeftNav = ({ getFilteredProducts, showSidebar, showSidebarHandler }) => {
     return (

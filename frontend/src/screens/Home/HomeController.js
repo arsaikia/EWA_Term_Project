@@ -148,7 +148,7 @@ const HomeController = ({
      * LOADING AND PAGE POPULATION HANDLERS
      **************************************************
      */
-    const prefStore = Cookie.get('USER_STORE');
+    const prefStore = Cookie.get('STORE_ID');
     const loadDataOnMount = useCallback(() => {
         if (prefStore) {
             const storeDetails = storeData.filter((store) => {

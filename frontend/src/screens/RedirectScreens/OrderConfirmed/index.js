@@ -10,6 +10,7 @@ import ORDERED from '../../../Images/orderSuccessful.svg';
 import { useHistory } from 'react-router-dom';
 import CartContext from '../../../Context/Cart/cartContext';
 import { isEmpty, get } from 'lodash';
+import storeData from '../../../utils/stores.json';
 
 const RowItem = ({ name = 'Order Id:', value = '#12beaf' }) => {
     return (
@@ -39,12 +40,25 @@ const Index = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [userAddress, setUserAddress] = useState('');
 
+    const selectedAddressId = get(history.location.state, 'selectedAddressId');
+    const selectedCardId = get(history.location.state, 'selectedCardId');
+    const selectedStore = get(history.location.state, 'selectedStore', null);
+
+    console.log('transferCreated', history);
+
+    const getStore = () => {
+        let store = storeData.filter((s) => s.storeId === selectedStore);
+        store = store.length > 0 && store[0];
+        console.log('store', store);
+        return get(store, 'street1', '');
+    };
+
     const loadData = useCallback(() => {
         if (transferCreated) {
             const x = userAddresses.filter((add) => {
                 return add.addressId === lastTransfer.addressId;
             });
-            setUserAddress(x[0].street1);
+            x.length > 0 && setUserAddress(x[0].street1);
 
             // console.log('userAddresses', x);
             setIsLoading(false);
@@ -86,15 +100,29 @@ const Index = () => {
                     value={`#${lastTransfer.transactionId.substring(0, 8)}`}
                 />
                 <RowItem
-                    name={'Total Price:'}
+                    name={'Order type:'}
                     value={`$${lastTransfer.totalPrice}`}
                 />
                 <RowItem
-                    name={'Delivery Address:'}
-                    value={`${userAddress.substring(0, 25)}`}
+                    name={'Total Price:'}
+                    value={`${
+                        lastTransfer.deliveryMethod === 'STORE'
+                            ? 'Pickup'
+                            : 'Delivery'
+                    }`}
                 />
                 <RowItem
-                    name={'Expected Delivery:'}
+                    name={
+                        selectedStore ? 'Selected store:' : 'Delivery Address:'
+                    }
+                    value={
+                        selectedStore
+                            ? getStore()
+                            : `${userAddress.substring(0, 25)}`
+                    }
+                />
+                <RowItem
+                    name={selectedStore ? 'Pickup by:' : 'Expected Delivery:'}
                     value={`${lastTransfer.deliveryForcast}`}
                 />
                 <Spacing height={'10%'} />

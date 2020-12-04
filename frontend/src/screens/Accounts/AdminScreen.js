@@ -125,15 +125,22 @@ const MKB = ({ allMBA }) => {
             // backgroundColor='khaki'
         >
             <FlexContainer height='100%' flexDirection='column'>
-                {allMBA.map((product) => (
-                    <FlexContainer
-                        padding='10px'
-                        flexDirection='row'
-                        justifyContent='space-between'>
-                        <Container width='50%'>{product.productA}</Container>
-                        <Container width='50%'>{product.productB}</Container>
-                    </FlexContainer>
-                ))}
+                {allMBA.map((product) => {
+                    console.log('product', product);
+                    return (
+                        <FlexContainer
+                            padding='10px'
+                            flexDirection='row'
+                            justifyContent='space-between'>
+                            <Container width='50%'>
+                                {product.productNameA}
+                            </Container>
+                            <Container width='50%'>
+                                {product.productNameB}
+                            </Container>
+                        </FlexContainer>
+                    );
+                })}
             </FlexContainer>
         </FlexContainer>
     );

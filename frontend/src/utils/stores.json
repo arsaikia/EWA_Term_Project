@@ -32,12 +32,12 @@
     {
         "storeId": "9b7f3adf-d139-404f-9cd4-dee018d0821f",
         "storeName" : "Eat Fresh",
-        "street1" : "Chicago South Loop",
+        "street1" : "4000 N Michigan Rd",
         "street2":"",
-        "city" : "Chicago",
+        "city" : "Indianapolis",
         "zip":60605,
-        "state" : "Illinois",
-        "coordinates": [-87.626372, 41.859078]
+        "state" : "Indianapolis",
+        "coordinates": [-86.156211853, 39.768451691]
     },
     {
         "storeId": "706ab483-b96f-4b88-81ed-66b7beca5f5a",

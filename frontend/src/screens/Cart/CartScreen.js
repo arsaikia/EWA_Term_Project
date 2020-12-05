@@ -23,6 +23,7 @@ import {
     Description,
     HeaderTwo,
     Note,
+    HeaderThree,
     FinePrint,
 } from '../../components/Texts';
 
@@ -148,11 +149,16 @@ const CartProductItem = ({
             </FlexContainer>
             <FlexContainer
                 width='10%'
-                backgroundColor='#66b032'
+                // backgroundColor='#66b032'
                 justifyContent='space-between'>
-                <p>-</p>
-                <Container>{quantity}</Container>
-                <p>+</p>
+                {/* <p>-</p> */}
+                <Container>
+                    <HeaderThree
+                        text={<p>{quantity}</p>}
+                        color={lightTextColor}
+                    />
+                </Container>
+                {/* <p>+</p> */}
             </FlexContainer>
             <FlexContainer width='15%'>
                 <FlexContainer

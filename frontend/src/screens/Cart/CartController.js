@@ -150,19 +150,25 @@ const CartController = ({ ...props }) => {
             return setCheckoutStep('ADD_ADDRESS');
         }
         if (val === 'Checkout') {
-            const selectedCardX = userCards.filter(
-                (card) => card.cardId === selectedCard
-            );
-            const selectedAddressX = userAddresses.filter(
-                (address) => address.addressId === selectedAddress
-            );
+            const selectedCardX =
+                userCards &&
+                userCards.length > 0 &&
+                userCards.filter((card) => card.cardId === selectedCard);
+            const selectedAddressX =
+                userAddresses &&
+                userAddresses.length > 0 &&
+                userAddresses.filter(
+                    (address) => address.addressId === selectedAddress
+                );
             const addId =
+                selectedAddressX &&
                 selectedAddressX.length > 0 &&
                 get(selectedAddressX[0], 'addressId');
             const payId =
                 selectedCardX.length > 0 && get(selectedCardX[0], 'cardId');
 
-            // console.log('addId', addId, 'payId', payId);
+            console.log('addId', addId, 'payId', payId, 'userCards', userCards);
+
             setSelectedAddressId(addId);
             setSelectedCardId(payId);
             setIsTransferCreating(true);

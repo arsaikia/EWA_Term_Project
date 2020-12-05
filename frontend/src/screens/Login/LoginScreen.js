@@ -1,6 +1,7 @@
 import React, { Component, useState } from 'react';
 import styled from 'styled-components/macro';
-import { Alert } from 'react-bootstrap';
+import { Alert, Form } from 'react-bootstrap';
+
 import {
     Container,
     FlexContainer,
@@ -82,6 +83,24 @@ const LoginScreen = ({
                         </div>
 
                         <div className='form-group'>
+                            <Form.Control
+                                as='select'
+                                className='mr-sm-2'
+                                id='inlineFormCustomSelect'
+                                onChange={(e) => null}
+                                custom>
+                                <option value='CUSTOMER'>
+                                    Select user type{' '}
+                                </option>
+                                <option value='CUSTOMER'>CUSTOMER</option>
+                                <option value='ADMIN'>ADMIN</option>
+                                <option value='STORE_MANAGER'>
+                                    STORE_MANAGER
+                                </option>
+                            </Form.Control>
+                        </div>
+
+                        <div className='form-group'>
                             <div className='custom-control custom-checkbox'>
                                 <input
                                     type='checkbox'
@@ -98,6 +117,7 @@ const LoginScreen = ({
                                 </label>
                             </div>
                         </div>
+
                         <button
                             type='submit'
                             className='btn btn-dark btn-logn btn-lg btn-block'

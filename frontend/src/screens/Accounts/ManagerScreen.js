@@ -32,7 +32,8 @@ const StoreProducts = ({ getStoreProducts, storeProducts }) => {
 
     return (
         <FlexContainer flexDirection='column'>
-            {storeProducts.length > 0 &&
+            {storeProducts &&
+                storeProducts.length > 0 &&
                 storeProducts.map((sp) => {
                     return (
                         <Container

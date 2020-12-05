@@ -151,7 +151,9 @@ const CaoruselHome = ({ tweetDeals }) => {
                 clearTimeout(resetTimeout);
                 if (index + 1 === totalPages) {
                     resetTimeout = setTimeout(() => {
-                        !isEmpty(carouselRef) && carouselRef.current.goTo(0);
+                        !isEmpty(carouselRef) &&
+                            !isEmpty(carouselRef.current) &&
+                            carouselRef.current.goTo(0);
                     }, 1500); // same time
                 }
             }}>

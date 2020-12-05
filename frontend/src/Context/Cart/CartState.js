@@ -337,6 +337,7 @@ const CartState = (props) => {
             url: `addresses/${id}`,
         });
         const allAddresses = get(get(addresses, 'data'), 'data');
+
         dispatch({
             payload: allAddresses,
             type: GET_USER_ADDRESSES,
@@ -400,7 +401,7 @@ const CartState = (props) => {
         let allStores = get(response.data, 'data');
 
         dispatch({
-            payload: allStores[0],
+            payload: allStores,
             type: GET_ALL_STORE_PRODUCTS,
         });
     };

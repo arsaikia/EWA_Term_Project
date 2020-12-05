@@ -9,6 +9,7 @@ import { Button } from '../../components/Button';
 import Cookie from 'js-cookie';
 import ConfirmationPopup from './ConfirmationPopup';
 import PaymentCard from 'react-payment-card-component';
+import { useHistory } from 'react-router-dom';
 
 import {
     HeaderOne,
@@ -31,7 +32,7 @@ const FoodPreferenceOptions = [
     { value: 'I eat only Healthy', label: 'HEALTHY' },
 ];
 
-const AccountDetails = ({ loggedInUser, updateUser }) => {
+const AccountDetails = ({ loggedInUser, updateUser, isUserAuthenticated }) => {
     const [showPopup, setShowPopup] = useState(false);
     const currentUserId = Cookie.get('USER_ID');
     const [email, setEmail] = useState(get(loggedInUser, 'email', ''));
@@ -56,6 +57,12 @@ const AccountDetails = ({ loggedInUser, updateUser }) => {
         await updateUser(currentUserId, body);
         setShowPopup(true);
     };
+
+    const history = useHistory();
+
+    if (!isUserAuthenticated) {
+        return history.push('/login');
+    }
 
     return (
         <>
@@ -323,11 +330,17 @@ const CustomerScreen = ({
     userCards,
     updateCard,
     userAddresses,
-    updateProductsInCart
+    updateProductsInCart,
 }) => {
-    const [selectedOption, setSelectedOption] = useState(1);
+    const [selectedOption, setSelectedOption] = useState(2);
 
     const [cardId, setCardId] = useState(-1);
+
+    const history = useHistory();
+
+    // if (!isUserAuthenticated) {
+    //     return history.push('/login');
+    // }
 
     return (
         <FadeInContainer
@@ -387,6 +400,7 @@ const CustomerScreen = ({
                     <AccountDetails
                         loggedInUser={loggedInUser}
                         updateUser={updateUser}
+                        isUserAuthenticated={isUserAuthenticated}
                     />
                 )}
 
@@ -397,7 +411,10 @@ const CustomerScreen = ({
                     alignItems='center'
                     paddingTop='120px'>
                     {selectedOption === 2 &&
+                        userAddresses &&
+                        userAddresses.length > 0 &&
                         userAddresses.map((address) => {
+                            console.log('address', address);
                             return (
                                 <>
                                     <Spacing
@@ -417,6 +434,7 @@ const CustomerScreen = ({
                         flexDirection='column'
                         alignItems='center'>
                         {userCards &&
+                            userCards.length > 0 &&
                             userCards.map((card, idx) => {
                                 {
                                     console.log(card);

@@ -154,6 +154,24 @@ const SignupScreen = ({
                                 as='select'
                                 className='mr-sm-2'
                                 id='inlineFormCustomSelect'
+                                onChange={(e) => null}
+                                custom>
+                                <option value='CUSTOMER'>
+                                    Select user type{' '}
+                                </option>
+                                <option value='CUSTOMER'>CUSTOMER</option>
+                                <option value='ADMIN'>ADMIN</option>
+                                <option value='STORE_MANAGER'>
+                                    STORE_MANAGER
+                                </option>
+                            </Form.Control>
+                        </div>
+
+                        <div className='form-group'>
+                            <Form.Control
+                                as='select'
+                                className='mr-sm-2'
+                                id='inlineFormCustomSelect'
                                 onChange={(e) =>
                                     setSelectedPreference(e.target.value)
                                 }

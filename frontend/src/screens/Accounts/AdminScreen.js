@@ -181,7 +181,7 @@ const AdminScreen = ({
                     <Button
                         inverted={true}
                         type={'flexible'}
-                        text={'Make Admin'}
+                        text={'Make Manager'}
                         onClick={() => setSelectedOption(1)}
                     />
                     <Spacing width='15px' />

@@ -57,7 +57,7 @@ const AccountsController = ({
         storeNotProductsFetched,
         addStoreProduct,
         deleteStoreProduct,
-        updateProductsInCart
+        updateProductsInCart,
     } = cartContext;
 
     const transactionContext = useContext(TransactionContext);
@@ -84,9 +84,7 @@ const AccountsController = ({
     );
     const [isLoading, setIsLoading] = useState(true);
     const [fetchingCards, setFetchingCards] = useState(!userCardsFetched);
-    const [fetchingAddress, setFetchingAddress] = useState(
-        userAddressesFetched
-    );
+    const [fetchingAddress, setFetchingAddress] = useState(true);
 
     const [isMBAFetching, setIsMBAFetching] = useState(!allMBAFetched);
 
@@ -127,8 +125,13 @@ const AccountsController = ({
             setIsMBAFetching(false);
             getAllMBA();
         }
-
         if (isFetchingStoreProducts && !storeProductsFetched && storeId) {
+            // console.log(
+            //     'IAM HERE ->>>>>>>> ',
+            //     isFetchingStoreProducts,
+            //     storeProductsFetched,
+            //     storeId
+            // );
             setIsFetchingStoreProducts(false);
             getStoreProducts(storeId);
         }

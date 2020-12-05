@@ -32,7 +32,7 @@ const getTransactions = asyncHandler(async (req, res, next) => {
  */
 
 const getTransaction = asyncHandler(async (req, res, next) => {
-    const query = `SELECT DISTINCT * FROM transactions T INNER JOIN orders O INNER JOIN products P ON T.transactionId = O.transactionId  and O.productId=P.productId where T.userId='${req.params.id}'  order by T.purchaseDate desc;`;
+    const query = `SELECT DISTINCT * FROM transactions T INNER JOIN orders O INNER JOIN products P ON T.transactionId = O.transactionId  and O.productId=P.productId where T.userId='${req.params.id}'  order by T.purchaseDate asc;`;
     const transaction = await SQL.query(query, { raw: true });
     if (!transaction || transaction.length == 0) {
         console.log(`Transaction Not Found with id ${req.params.id}`);

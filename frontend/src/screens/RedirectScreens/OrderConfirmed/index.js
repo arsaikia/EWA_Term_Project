@@ -55,10 +55,14 @@ const Index = () => {
 
     const loadData = useCallback(() => {
         if (transferCreated) {
-            const x = userAddresses.filter((add) => {
-                return add.addressId === lastTransfer.addressId;
-            });
-            x.length > 0 && setUserAddress(x[0].street1);
+            const x =
+                userAddresses &&
+                userAddresses.length > 0 &&
+                userAddresses.filter((add) => {
+                    return add.addressId === lastTransfer.addressId;
+                });
+
+            x && x.length > 0 && setUserAddress(x[0].street1);
 
             // console.log('userAddresses', x);
             setIsLoading(false);
@@ -100,11 +104,11 @@ const Index = () => {
                     value={`#${lastTransfer.transactionId.substring(0, 8)}`}
                 />
                 <RowItem
-                    name={'Order type:'}
+                    name={'Total Price:'}
                     value={`$${lastTransfer.totalPrice}`}
                 />
                 <RowItem
-                    name={'Total Price:'}
+                    name={'Order type:'}
                     value={`${
                         lastTransfer.deliveryMethod === 'STORE'
                             ? 'Pickup'

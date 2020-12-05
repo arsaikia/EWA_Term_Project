@@ -144,22 +144,26 @@ const ProductDetails = ({
             <FlexContainer marginTop='2%'>
                 <Rating value={productRating} text={totalRatings} />
             </FlexContainer>
-            <Container marginTop='3%' overflow='hidden'>
+            <Container marginTop='3%' overflow='hidden' width='100%'>
                 <Note
                     bold
                     text={
                         <p>
-                            Quick Overview: expedita earum alias? Quidem maiores
-                            illum quo doloribus
+                            Quick Overview: Freshest food on all seasons
+                            throughout the year right at you doorsteps.
                         </p>
                     }
                 />
-                expedita earum alias? Quidem maiores illum quo doloribus
-                deleniti explicabo libero corrupti excepturi iusto tempora
-                soluta, laudantium a fugit, labore unde debitis illo vitae,
-                animi cumque sed est et obcaecati placeat! Suscipit, vero
-                consectetur labore laboriosam pariatur est sit vitae veritatis?
-                Veritatis, corrupti. Corporis
+                Each product we feature has been independently selected and
+                reviewed by our editorial team.<br></br>Save time and money
+                every day with Eat Fresh! Eat Fresh organizes shopping lists,
+                suggests great recipe ideas and helps save with grocery coupons.
+                Each product we feature has been independently selected and
+                reviewed by our editorial team.
+                <br></br>
+                <br></br>
+                Each product we feature has been independently selected and
+                reviewed by our editorial team.
             </Container>
             <FlexContainer
                 // backgroundColor='khaki'

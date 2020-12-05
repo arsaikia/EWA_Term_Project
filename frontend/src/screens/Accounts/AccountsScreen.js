@@ -36,10 +36,8 @@ const AccountsScreen = ({
     updateProductsInCart,
     ...props
 }) => {
-    // const history = useHistory();
-    // if (!isUserAuthenticated) {
-    //     return history.push('/login');
-    // }
+    
+    
     return (
         <>
             <FadeInContainer
